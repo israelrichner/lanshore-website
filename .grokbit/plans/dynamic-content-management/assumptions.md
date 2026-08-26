@@ -26,11 +26,10 @@ T6 fixes review blocker B2, but local `next start` reads the real filesystem and
 `linkify` (`src/app/blog/[slug]/page.tsx:38-59`) strips trailing `.,);` from detected URLs before linking. `remark-gfm`'s autolink literal has its own trailing-punctuation rules which are **similar but not proven identical**.
 **Closed by:** direct comparison of every external anchor (href + link text) on all five blog pages between the golden capture and post-T7 output — **identical**, including the "Retrieved from https://…" reference lines. Visible text and JSON-LD are also byte-identical on all five. No custom remark plugin needed.
 
-## A5 — Derived index `lastmod` values are asserted, not yet verified — OPEN until T11
+## A5 — Derived index `lastmod` values are asserted, not yet verified — CLOSED (T9)
 
 Source plan `:843` claims §6.7's derived index dates compute to the values already hardcoded in `contentDates.ts`. Survey confirmed the *inputs* exist but did not compute the *outputs*.
-**Closes when:** T11 shows `sitemap.xml` byte-identical to the T0 baseline.
-**If it diverges:** decide explicitly whether the new value is more honest than the old one. A changed `lastmod` is not automatically a bug — but it must be a *decision*, since `src/app/sitemap.ts:10-13` documents why honest `lastmod` matters.
+**Closed by:** `sitemap.xml` is **byte-identical** to the T0 golden capture after T9. All three derived values compute to exactly what was hardcoded — `/blog` 2026-07-11 (max post date), `/case-studies` 2026-07-08 (all 14 fall back), `/resources` 2026-07-15 (the manual floor wins over the blog max). The behaviour only starts diverging the day an editor actually publishes, which is the point of the change.
 
 ## A6 — No test runner exists — ACCEPTED RISK
 
