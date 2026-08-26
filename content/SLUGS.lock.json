@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "blog": [
+    "elevating-sales-performance-the-power-of-agentic-ai-in-spm",
+    "sales-performance-management-build-vs-buy-in-the-agentic-ai-era",
+    "beyond-dashboards-selecting-an-spm-system-in-the-age-of-agentic-ai",
+    "territory-white-space-in-sales-performance-management-what-it-is-why-it-matters-and-how-to-fix-it",
+    "the-agent-advantage-how-ai-powered-agents-are-transforming-dispute-management-across-hr-finance-crm-and-sales-performance-management"
+  ],
+  "caseStudies": [
+    "commission-architecture-redesign",
+    "crm-financial-systems-commission-link",
+    "spm-build-on-existing-systems",
+    "spreadsheet-to-spm-platform",
+    "managed-services-commission-management",
+    "flexible-spm-for-changing-business",
+    "rpa-sales-territory-tracking",
+    "rpa-banking-sba-loans",
+    "rpa-retail-order-processing",
+    "rpa-government-reports",
+    "rpa-healthcare-provider",
+    "rpa-manufacturing-plants",
+    "oilfield-invoicing-automation",
+    "rpa-university-enrollments"
+  ],
+  "whitePapers": [
+    "death-of-commissions",
+    "implementation-methodology",
+    "five-focus-areas-vendor-evaluation",
+    "nearshore-team-configuration",
+    "retail-corporate-strategy-commissions"
+  ],
+  "retired": []
+}

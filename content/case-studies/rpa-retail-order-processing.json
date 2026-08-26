@@ -1,0 +1,18 @@
+{
+  "title": "Eliminating backlogs and getting orders to customers in retail",
+  "client": "Apparel company",
+  "industry": "Retail",
+  "pillar": "Services",
+  "outcome": "Order processing reduced to eight minutes, clearing the backlog",
+  "challenge": "Order processing backlogs were delaying shipments and frustrating customers during peak periods.",
+  "whatWeDid": "We replicated the manual order process with RPA and tuned it until a full order ran in eight minutes.",
+  "results": [
+    "Order processing time cut to 8 minutes",
+    "Backlog cleared",
+    "Peak-period orders shipped on time"
+  ],
+  "stack": [
+    "UiPath RPA"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/rpa-enhancing-productivity-in-retail-using-rpa-to-eliminate-backlogs-and-get-orders-to-customers-in-retail/"
+}

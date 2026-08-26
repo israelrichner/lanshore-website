@@ -1,0 +1,18 @@
+{
+  "title": "Revolutionizing oilfield invoicing with automation",
+  "client": "L&L Oilfield",
+  "industry": "Oil & Gas",
+  "pillar": "Services",
+  "outcome": "Invoice processing cut from hours to minutes per ticket",
+  "challenge": "Field ticket invoicing was a manual, hours-per-ticket process that delayed billing and tied up office staff.",
+  "whatWeDid": "We implemented UiPath RPA to process field tickets and generate invoices automatically, with exceptions routed for review.",
+  "results": [
+    "Processing time cut from hours to minutes per ticket",
+    "Billing cycle shortened",
+    "Office staff freed from manual entry"
+  ],
+  "stack": [
+    "UiPath RPA"
+  ],
+  "legacyUrl": "https://lanshore.com/"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "A smart way to build on existing systems to keep pace with growth",
+  "client": "Fast-growing software vendor",
+  "industry": "Technology & Digital",
+  "pillar": "Services",
+  "outcome": "Audit capability and scalability added without replacing existing systems",
+  "challenge": "A fast-growing software vendor needed audit capability, transparent reporting, and cost modeling that could scale with the business — without ripping out the systems already in place.",
+  "whatWeDid": "We extended the existing SPM setup with audit-ready calculation logic, transparent reporting for reps and finance, and comp cost modeling for planning.",
+  "results": [
+    "Audit capability across the comp process",
+    "Transparent reporting for reps and finance",
+    "Comp cost modeling for growth planning"
+  ],
+  "stack": [
+    "SPM platform",
+    "Reporting layer"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/sales-performance-management-a-smart-way-to-build-on-existing-systems-to-keep-pace-with-business-growth/"
+}

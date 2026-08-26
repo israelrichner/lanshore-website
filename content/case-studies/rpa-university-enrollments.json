@@ -1,0 +1,18 @@
+{
+  "title": "Graduate enrollment follow-up that helps more students reach their goals",
+  "client": "University",
+  "industry": "Education",
+  "pillar": "Services",
+  "outcome": "Prospective students no longer lost between application steps",
+  "challenge": "The university was losing track of prospective students who started but didn't complete enrollment forms — and losing the students with them.",
+  "whatWeDid": "We built RPA-driven follow-up that identifies incomplete applications and triggers outreach at the right step.",
+  "results": [
+    "Incomplete applications identified automatically",
+    "Timely follow-up at every enrollment step",
+    "More prospective students completing enrollment"
+  ],
+  "stack": [
+    "UiPath RPA"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/rpa-university-graduate-enrollments-follow-up-means-more-students-successfully-reach-their-goals/"
+}

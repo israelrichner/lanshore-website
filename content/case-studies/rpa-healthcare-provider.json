@@ -1,0 +1,18 @@
+{
+  "title": "Customized automation for a home and community-based healthcare provider",
+  "client": "Diversified independent healthcare provider",
+  "industry": "Healthcare",
+  "pillar": "Services",
+  "outcome": "Clinical and operational processes optimized across multiple service settings",
+  "challenge": "A leading home and community-based healthcare provider needed clinical and operational optimization across multiple service settings, each with its own systems and rules.",
+  "whatWeDid": "We built customized RPA solutions per service setting, standardizing where possible and automating the highest-volume workflows first.",
+  "results": [
+    "High-volume workflows automated across settings",
+    "Clinical staff time returned to patient care",
+    "Standardized process baseline established"
+  ],
+  "stack": [
+    "UiPath RPA"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/customized-rpa-solutions-for-healthcare/"
+}

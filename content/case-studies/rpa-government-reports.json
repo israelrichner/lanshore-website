@@ -1,0 +1,18 @@
+{
+  "title": "Automation of civil reports for a government office",
+  "client": "Government office",
+  "industry": "Public Sector",
+  "pillar": "Services",
+  "outcome": "Weekly report run cut to 15 minutes, freeing 520 work hours a year",
+  "challenge": "Weekly civil reports consumed hours of staff time that should have gone to serving constituents.",
+  "whatWeDid": "We automated report generation end to end, cutting the weekly run to 15 minutes.",
+  "results": [
+    "Weekly run time reduced to 15 minutes",
+    "520 annual work hours freed",
+    "Staff redeployed to constituent service"
+  ],
+  "stack": [
+    "UiPath RPA"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/rpa-automation-of-reports-governmental-answer-to-serving-constituents-more-efficiently-while-raising-job-satisfaction-of-multiple-employees/"
+}
