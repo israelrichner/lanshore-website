@@ -21,11 +21,10 @@ T6 fixes review blocker B2, but local `next start` reads the real filesystem and
 **Who:** owner, or whoever holds Vercel deploy rights.
 **Until then:** T6's verify proves only that the config is *present and syntactically valid*, not that it *works*. Do not claim B2 is closed.
 
-## A4 — `remark-gfm` autolink vs. the old `linkify` — OPEN until T11
+## A4 — `remark-gfm` autolink vs. the old `linkify` — CLOSED (T7)
 
 `linkify` (`src/app/blog/[slug]/page.tsx:38-59`) strips trailing `.,);` from detected URLs before linking. `remark-gfm`'s autolink literal has its own trailing-punctuation rules which are **similar but not proven identical**.
-**Closes when:** T11's golden diff comes back clean on the posts containing "Retrieved from https://…" reference lines.
-**If it diverges:** the fix is a custom `remark` plugin or a post-process, not loosening the diff.
+**Closed by:** direct comparison of every external anchor (href + link text) on all five blog pages between the golden capture and post-T7 output — **identical**, including the "Retrieved from https://…" reference lines. Visible text and JSON-LD are also byte-identical on all five. No custom remark plugin needed.
 
 ## A5 — Derived index `lastmod` values are asserted, not yet verified — OPEN until T11
 

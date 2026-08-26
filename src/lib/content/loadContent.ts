@@ -176,7 +176,8 @@ export function loadCaseStudies(): CaseStudyRecord[] {
     const data = JSON.parse(raw) as Record<string, unknown> & { draft?: boolean };
     validateOrThrow("caseStudies", data, slug);
     if (data.draft === true) continue;
-    const { draft: _draft, ...rest } = data;
+    const rest = { ...data };
+    delete rest.draft;
     records.push({ slug, ...(rest as Omit<CaseStudyRecord, "slug">) });
   }
 

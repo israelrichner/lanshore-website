@@ -184,7 +184,8 @@ for (const f of files.filter((x) => x.collection === "blog")) {
 for (const f of files.filter((x) => x.collection !== "blog")) {
   const source = f.collection === "caseStudies" ? CASE_STUDIES : WHITE_PAPERS;
   const original = source.find((x) => x.slug === f.slug);
-  const { slug, ...rest } = original;
+  const rest = { ...original };
+  delete rest.slug;
   assert.deepEqual(JSON.parse(f.contents), rest, `record mismatch: ${f.collection}/${f.slug}`);
 }
 
