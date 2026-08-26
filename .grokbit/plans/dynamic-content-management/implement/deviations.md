@@ -50,6 +50,23 @@ Counting deviations (`counts: yes`) escalate at **3**: stop, hand back to `grokb
 - **disposition:** front matter gains an optional `cardTitle`, emitted only when the two differ (so it appears on exactly one of five files). `/resources` prefers it and falls back to `title`.
 - **why not counting:** same reasoning as D4 — an omission in the plan, resolved additively inside a declared file, with the rendered output preserved rather than changed.
 
+## D6 — T4 modified two files declared under T2 and T3
+
+- **counts:** no
+- **type:** incidental, mechanically required
+- **found:** T4
+- **detail:** T4 needs `markdownToBlocks` at runtime (to keep `BlogPost.blocks` available — see D7), and T3's migration script already had its own copy. Writing a second parser in `src/` would have created exactly the duplicate-implementation drift that T2 exists to prevent. So the Markdown↔blocks pair moved into `scripts/lib/content-rules.mjs` (T2's file) and `scripts/migrate-content.mjs` (T3's file) was refactored to import it.
+- **disposition:** Accepted. Both files belong to this plan and neither changed behavior: T2's 30 tests stayed green and T3's `--verify` still reports the on-disk content byte-identical to the source arrays, both re-run immediately after the refactor. No third file was touched.
+
+## D7 — `BlogPost.blocks` is retained as derived data, not removed
+
+- **counts:** no
+- **type:** task-ordering gap in the plan, worked around without widening scope
+- **found:** T4
+- **detail:** The plan has T5 rewrite the loaders and T7 replace the block renderer, in that order. But `src/app/blog/[slug]/page.tsx` reads `post.blocks`, and that page is T7's file — so a T5 that swapped `blocks` for `body` would break the build one task early and T5's own `npm run build` verify could never pass.
+- **disposition:** `loadContent` exposes **both** `body` (the Markdown) and `blocks` (parsed from it), so every task's verify stays green and the shape contract the plan demands — "preserve every exported name and type", including `BlogBlock` — holds literally.
+- **residual:** once T7 switches the page to `<Markdown>`, `blocks` becomes vestigial. It is **left in place deliberately**: hard rule 3 says do not delete what the plan did not schedule for deletion, and removing it would mean editing `src/lib/blog.ts` from inside T7, whose declared files do not include it. Flagged in the handoff as a one-line follow-up for the owner to schedule, not silently dropped.
+
 ---
 
 **Counting total: 0 of 3.**

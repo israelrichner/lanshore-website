@@ -29,82 +29,16 @@ import assert from "node:assert/strict";
    through pathToFileURL so this runs on Windows as well as POSIX. */
 import { pathToFileURL } from "node:url";
 import matter from "gray-matter";
-import { VALIDATORS } from "./lib/content-rules.mjs";
+import {
+  VALIDATORS,
+  blocksToMarkdown,
+  markdownToBlocks,
+  countEscapableParagraphs,
+} from "./lib/content-rules.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const CONTENT = path.join(ROOT, "content");
 const VERIFY_ONLY = process.argv.includes("--verify");
-
-/* ------------------------------------------------------------------ *
- * Markdown conversion
- * ------------------------------------------------------------------ */
-
-/* Survey finding: across all 234 blocks, the ONLY Markdown-hostile
-   construct is a paragraph whose text opens with an ordered-list marker
-   ("1. ", "2. " ...). Ten p-blocks do. Written raw they would re-parse as
-   <ol><li>, silently restructuring the article. Five h3 blocks share the
-   prefix but are safe — heading content is never list-parsed.
-
-   No block text contains an underscore, asterisk, bracket, or a leading
-   #, -, > or +. The escaper below therefore handles exactly one case, and
-   asserts loudly if that ever stops being true. */
-const ORDERED_PREFIX = /^(\d+)\. /;
-const ESCAPED_PREFIX = /^(\d+)\\\. /;
-const UNEXPECTED_LEADER = /^([#\-*>|+~=]|\d+\))\s/;
-
-function escapeParagraph(text) {
-  if (UNEXPECTED_LEADER.test(text)) {
-    throw new Error(
-      `Unhandled Markdown-hostile prefix in paragraph, escaping table is incomplete: ${JSON.stringify(text.slice(0, 60))}`
-    );
-  }
-  return text.replace(ORDERED_PREFIX, "$1\\. ");
-}
-
-function unescapeParagraph(text) {
-  return text.replace(ESCAPED_PREFIX, "$1. ");
-}
-
-/** blocks[] -> Markdown body */
-export function blocksToMarkdown(blocks) {
-  const chunks = [];
-  for (let i = 0; i < blocks.length; i++) {
-    const b = blocks[i];
-    if (b.type === "li") {
-      /* Consecutive li blocks are one list — the same grouping groupBlocks()
-         did at render time, now expressed in the source format. */
-      const items = [];
-      while (i < blocks.length && blocks[i].type === "li") {
-        items.push(`- ${escapeParagraph(blocks[i].text)}`);
-        i++;
-      }
-      i--;
-      chunks.push(items.join("\n"));
-    } else if (b.type === "h2") {
-      chunks.push(`## ${b.text}`);
-    } else if (b.type === "h3") {
-      chunks.push(`### ${b.text}`);
-    } else if (b.type === "p") {
-      chunks.push(escapeParagraph(b.text));
-    } else {
-      throw new Error(`Unknown block type: ${JSON.stringify(b.type)}`);
-    }
-  }
-  return chunks.join("\n\n") + "\n";
-}
-
-/** Markdown body -> blocks[]. Verification only; the site renders Markdown. */
-export function markdownToBlocks(md) {
-  const blocks = [];
-  for (const line of md.split("\n")) {
-    if (!line.trim()) continue;
-    if (line.startsWith("### ")) blocks.push({ type: "h3", text: line.slice(4) });
-    else if (line.startsWith("## ")) blocks.push({ type: "h2", text: line.slice(3) });
-    else if (line.startsWith("- ")) blocks.push({ type: "li", text: unescapeParagraph(line.slice(2)) });
-    else blocks.push({ type: "p", text: unescapeParagraph(line) });
-  }
-  return blocks;
-}
 
 /* ------------------------------------------------------------------ *
  * Sources
@@ -255,7 +189,7 @@ for (const f of files.filter((x) => x.collection !== "blog")) {
 }
 
 console.log(`round-trip OK: ${files.length} records (${files.filter((f) => f.collection === "blog").length} blog, ${files.filter((f) => f.collection === "caseStudies").length} case studies, ${files.filter((f) => f.collection === "whitePapers").length} white papers)`);
-console.log(`escaped paragraphs: ${BLOG_POSTS.flatMap((p) => p.blocks).filter((b) => b.type === "p" && ORDERED_PREFIX.test(b.text)).length}`);
+console.log(`escaped paragraphs: ${countEscapableParagraphs(BLOG_POSTS.flatMap((p) => p.blocks))}`);
 
 if (VERIFY_ONLY) {
   /* Compare against what is already on disk rather than rewriting it. */

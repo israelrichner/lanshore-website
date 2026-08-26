@@ -19,6 +19,92 @@
 export const SLUG_RE = /^[a-z0-9][a-z0-9-]*$/;
 export const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
+/* ------------------------------------------------------------------ *
+ * Markdown <-> blocks
+ *
+ * Lives here, not in the migration script, because both the one-shot
+ * migration and the runtime loader need the same mapping and a second copy
+ * is how the two drift. Survey finding: across all 234 blocks the only
+ * Markdown-hostile construct is a paragraph opening with an ordered-list
+ * marker ("1. "). Ten p-blocks do; written raw they re-parse as <ol><li>,
+ * silently restructuring the article. Five h3 blocks share the prefix but
+ * are safe — heading content is never list-parsed. No block text contains
+ * an underscore, asterisk, bracket, or a leading #, -, > or +.
+ * ------------------------------------------------------------------ */
+
+const ORDERED_PREFIX = /^(\d+)\. /;
+const ESCAPED_PREFIX = /^(\d+)\\\. /;
+const UNEXPECTED_LEADER = /^([#\-*>|+~=]|\d+\))\s/;
+
+export function escapeParagraph(text) {
+  if (UNEXPECTED_LEADER.test(text)) {
+    throw new Error(
+      `Unhandled Markdown-hostile prefix, escaping table is incomplete: ${JSON.stringify(text.slice(0, 60))}`
+    );
+  }
+  return text.replace(ORDERED_PREFIX, "$1\\. ");
+}
+
+export function unescapeParagraph(text) {
+  return text.replace(ESCAPED_PREFIX, "$1. ");
+}
+
+export function countEscapableParagraphs(blocks) {
+  return blocks.filter((b) => b.type === "p" && ORDERED_PREFIX.test(b.text)).length;
+}
+
+/** blocks[] -> Markdown body */
+export function blocksToMarkdown(blocks) {
+  const chunks = [];
+  for (let i = 0; i < blocks.length; i++) {
+    const b = blocks[i];
+    if (b.type === "li") {
+      /* Consecutive li blocks are one list — the grouping groupBlocks() did
+         at render time, now expressed in the source format. */
+      const items = [];
+      while (i < blocks.length && blocks[i].type === "li") {
+        items.push(`- ${escapeParagraph(blocks[i].text)}`);
+        i++;
+      }
+      i--;
+      chunks.push(items.join("\n"));
+    } else if (b.type === "h2") {
+      chunks.push(`## ${b.text}`);
+    } else if (b.type === "h3") {
+      chunks.push(`### ${b.text}`);
+    } else if (b.type === "p") {
+      chunks.push(escapeParagraph(b.text));
+    } else {
+      throw new Error(`Unknown block type: ${JSON.stringify(b.type)}`);
+    }
+  }
+  return chunks.join("\n\n") + "\n";
+}
+
+/**
+ * Markdown body -> blocks[].
+ *
+ * Safe as a line-based parser only because of a verified property of this
+ * corpus: no block text contains a newline (checked across all 234 blocks).
+ * If that ever stops holding, this needs a real Markdown AST walk.
+ */
+export function markdownToBlocks(md) {
+  const blocks = [];
+  for (const line of md.split("\n")) {
+    if (!line.trim()) continue;
+    if (line.startsWith("### ")) blocks.push({ type: "h3", text: line.slice(4) });
+    else if (line.startsWith("## ")) blocks.push({ type: "h2", text: line.slice(3) });
+    else if (line.startsWith("- ")) blocks.push({ type: "li", text: unescapeParagraph(line.slice(2)) });
+    else blocks.push({ type: "p", text: unescapeParagraph(line) });
+  }
+  return blocks;
+}
+
+/** Case-insensitive, so "gartner" in body copy still trips the footnote. */
+export function derivesMentionsGartner(...parts) {
+  return parts.some((p) => typeof p === "string" && p.toLowerCase().includes("gartner"));
+}
+
 /** Mirrors the `pillar` union in src/lib/caseStudies.ts. */
 export const PILLARS = [
   "Executive Dashboards",
