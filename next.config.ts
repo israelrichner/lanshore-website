@@ -173,6 +173,17 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{ protocol: "https", hostname: "img.youtube.com" }],
   },
+  /* Pages read content/ at build time, so they need nothing at runtime. The
+     white-paper download route is the exception: it is a POST handler that
+     runs in a serverless function and imports the registry at module scope.
+     @vercel/nft cannot trace a directory read through fs at runtime, so
+     without this the build stays green and every gated download 500s in
+     production on the first request. Local `next start` reads the real
+     filesystem and passes either way — this can only be proven on a
+     deployed preview. */
+  outputFileTracingIncludes: {
+    "/api/whitepaper": ["./content/white-papers/**", "./content/SLUGS.lock.json"],
+  },
   async redirects() {
     return [
       // Migrated blog posts: old root-level slug → /blog/<slug>
