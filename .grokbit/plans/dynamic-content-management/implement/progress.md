@@ -2,31 +2,45 @@
 
 The session's memory. If the process dies, this is what knows where things stand.
 
+**All 12 tasks done. 0 blocked. 0 counting deviations (cap 3).**
+
 | Task | State | Commit | Note |
 |---|---|---|---|
-| T0 — golden baseline | **done** | (no repo files) | 60 files captured: 56 HTML + sitemap.xml + robots/llms/llms-full. Verified >=30 HTML. |
-| T1 — deps + engines pin | pending | | dependency gate (Loop I4) required first |
-| T2 — content-rules.mjs | pending | | |
-| T3 — migrate-content.mjs + 24 files | pending | | |
-| T4 — loadContent.ts | pending | | |
-| T5 — rewrite 3 loaders | pending | | |
-| T6 — outputFileTracingIncludes | pending | | |
-| T7 — Markdown.tsx + blog detail | pending | | |
-| T8 — Footer mentionsGartner | pending | | |
-| T9 — resources/sitemap/dates | pending | | |
-| T10 — SLUGS.lock + check-content | pending | | |
-| T11 — golden diff | pending | | |
+| T0 — golden baseline | **done** | `7f26b42` (plan only) | 60 files: 56 HTML + sitemap + robots/llms/llms-full |
+| T1 — deps + engines pin | **done** | `49b744d` | dependency gate cleared for all 3 |
+| T2 — content-rules.mjs | **done** | `dfc4b82` | 30 `node --test` assertions, all green |
+| T3 — migrate + 24 files | **done** | `e22a81a` | round-trip lossless; exactly 10 paragraphs escaped |
+| T4 — loadContent.ts | **done** | `81285b9` | order + blocks verified against originals |
+| T5 — rewrite 3 loaders | **done** | `275db41` | with T8 — see D8 |
+| T6 — outputFileTracingIncludes | **done** | `176b268` | config present; **not** provable locally (A3) |
+| T7 — Markdown.tsx | **done** | `6fa58e1` | A4 closed — anchors identical |
+| T8 — Footer mentionsGartner | **done** | `275db41` | pulled forward to close a T5 regression |
+| T9 — resources/sitemap/dates | **done** | `e183d0a` | A5 closed — sitemap byte-identical |
+| T10 — check:content gate | **done** | `9cdcfda` | proven to bite on 3 violation types |
+| T11 — golden diff | **done** | this commit | 55/60 identical; 5 justified in `05-review.md` |
 
-## T0 — done
+## Verification summary
 
-- **verify:** 56 `.html` captures (needed >= 30); `sitemap.xml` 9224 B, `robots.txt` 394 B, `llms.txt` 6267 B, `llms-full.txt` 24217 B — all non-empty. **PASS**
-- Route counts from the sitemap match the survey exactly: blog **5**, case-studies **14**, industries **6**; 56 sitemap URLs total.
-- Captured from `npm start` on the untouched tree, build green, before any edit.
-- Golden dir: `C:/Users/israe/AppData/Local/Temp/claude/C--Users-israe-Projects-lanshore-web/6a245150-5817-46da-8382-a45356e2fdf7/scratchpad/golden`
-- Capture script kept at `../scratchpad/capture.mjs` so T11 re-runs it identically against a fresh server.
+| Check | Result |
+|---|---|
+| `npm run build` | green (with `prebuild` → `check:content`) |
+| `npx tsc --noEmit` | exit 0 |
+| `npm run lint` | exit 0, **zero warnings** |
+| `npm run test:rules` | 30 pass, 0 fail |
+| `npm run check:content` | exit 0; bites correctly on rename / unpublish / bad field |
+| Golden diff | 55/60 byte-identical; 5 differ only in React keys + inter-block newlines |
+| Visible text / JSON-LD / title / meta / canonical / og / robots / anchors | **0 differences across all 56 captures** |
+| `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` | raw byte-identical, no normalisation |
 
-## Open assumptions bearing on remaining tasks
+## Assumptions
 
-- **A3** — T6 cannot be truly verified locally; its verify proves config presence only.
-- **A4** — T7's autolink behavior vs. old `linkify` is unproven until T11.
-- **A5** — T9's derived index dates are asserted by the source plan, not yet computed.
+- **A1** base branch — CLOSED (owner decision)
+- **A2** P2/P3 out of scope — CLOSED (and it is the thing most likely to be misread; see handoff)
+- **A3** `outputFileTracingIncludes` — **OPEN**, needs a Vercel preview. Do not claim blocker B2 closed.
+- **A4** remark-gfm vs linkify — CLOSED at T7
+- **A5** derived index lastmods — CLOSED at T9
+- **A6** no test runner — ACCEPTED RISK; the golden diff is the only real regression detector
+
+## Method note worth carrying forward
+
+The golden diff was originally scheduled once, at T11. Running it early — at T5 — is what caught the Gartner footnote regression that every other check passed. It also exposed that a raw byte diff is useless here without normalising Next's per-build asset hashes and build ID, which is why `scratchpad/compare.mjs` exists.
