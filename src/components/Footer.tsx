@@ -20,9 +20,13 @@ const GARTNER_PATHS = [
   ...SPM_PLATFORMS.filter(
     (p) => p.gartnerPartnerLeadIn || p.analystNote?.includes("Gartner")
   ).map((p) => `/spm/${p.slug}`),
-  ...BLOG_POSTS.filter((p) => JSON.stringify(p).includes("Gartner")).map(
-    (p) => `/blog/${p.slug}`
-  ),
+  /* Was `JSON.stringify(p).includes("Gartner")`, which scanned the whole
+     serialized post. That was always fragile — it depended on the body text
+     being part of the object — and it broke outright once posts gained a
+     `mentionsGartner` field, because the KEY NAME contains "Gartner" and so
+     every post matched. `mentionsGartner` is derived in loadContent from the
+     title, description, body and FAQ, case-insensitively. */
+  ...BLOG_POSTS.filter((p) => p.mentionsGartner).map((p) => `/blog/${p.slug}`),
 ];
 
 const FOOTER_LINKS = [

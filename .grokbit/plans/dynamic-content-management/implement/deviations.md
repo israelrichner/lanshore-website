@@ -67,6 +67,23 @@ Counting deviations (`counts: yes`) escalate at **3**: stop, hand back to `grokb
 - **disposition:** `loadContent` exposes **both** `body` (the Markdown) and `blocks` (parsed from it), so every task's verify stays green and the shape contract the plan demands — "preserve every exported name and type", including `BlogBlock` — holds literally.
 - **residual:** once T7 switches the page to `<Markdown>`, `blocks` becomes vestigial. It is **left in place deliberately**: hard rule 3 says do not delete what the plan did not schedule for deletion, and removing it would mean editing `src/lib/blog.ts` from inside T7, whose declared files do not include it. Flagged in the handoff as a one-line follow-up for the owner to schedule, not silently dropped.
 
+## D8 — T8 pulled forward and committed with T5
+
+- **counts:** no
+- **type:** task reordering to avoid a knowingly-broken intermediate commit
+- **found:** T5 (via the interim golden diff)
+- **detail:** T5 passed every one of its declared verify criteria — `tsc` clean, `npm run build` green, `blog.ts` under 4 KB, all ten exported symbols intact — and **still introduced a live regression**. Giving `BlogPost` a `mentionsGartner` field made `JSON.stringify(p).includes("Gartner")` in `src/components/Footer.tsx:23` true for *every* post, because the serialized object now contains that **key name**. The Gartner trademark footnote went from 3 blog paths to 5, and since `GartnerFooterNote` is a client component the array is serialized into the RSC payload of every page — so all 56 captures changed.
+- **disposition:** T8 was run immediately, out of plan order. Its declared dependency on T7 is artificial — it needs only `mentionsGartner` from T4 — and deferring it would have meant carrying a known-broken state through two more tasks, against the "verify or revert, no partial state" rule. T5 and T8 are committed together because splitting them would deliberately land a broken commit. Neither task's declared files or verify criteria changed.
+- **what this cost and bought:** the plan's own §10.2 golden diff was scheduled only at T11. Running it early at T5 is what caught this; four more tasks would have been built on top otherwise. The interim diff is now part of the working method, not a one-off.
+
+## D9 — T8's grep-based verify was imprecise
+
+- **counts:** no
+- **type:** verify-criterion defect
+- **found:** T8
+- **detail:** T8's stated verify is "`src/components/Footer.tsx` no longer contains `JSON.stringify`". The replacement carries a comment explaining what the old heuristic was and why it broke, which quotes the literal token — so the grep fails on a file that is functionally correct.
+- **disposition:** Verified two better ways instead of weakening the check or deleting a useful comment: (a) the same grep with comments stripped, which passes; (b) functionally, against rendered output — `GARTNER_PATHS` is back to 14 entries / 3 blog paths, matching the golden capture exactly. (b) is a strictly stronger check than the original grep.
+
 ---
 
 **Counting total: 0 of 3.**
