@@ -18,13 +18,17 @@ Nothing in this package contacts GitHub during implementation. The write path is
 
 P1+P2 were merged to `main` (`1fa4346`) first, so the branch the admin writes to can actually render what it receives.
 
-## A4 — Nobody has completed a real Google sign-in — OPEN, AND IT GATES THE MERGE
+## A4 — Real Google sign-in — CLOSED 2026-08-27, MERGE GATE LIFTED
 
 P2's gate is code-reviewed, unit-tested across nine access-control states, and has **never been used**. P3 builds a write path to `main` behind it.
 
-**P3 must not merge until a real sign-in succeeds.** This is the source plan's own rule — *"Do not merge P3 before P2 is reviewed — that ordering is the whole safety argument: there is never a moment when a write endpoint exists without a working gate in front of it."*
+**Closed by:** the owner completed a real sign-in on production, 2026-08-27.
 
-Now that P1+P2 are live on `main`, this is testable immediately at `https://lanshore.com/studio/signed-out`.
+Getting there also surfaced and fixed a genuine configuration gap: Google returned `Error 400: redirect_uri_mismatch`, because `https://lanshore.com/api/studio/auth/callback` was not registered on the OAuth client. Code-side nothing was wrong — the URI is built from the `SITE_URL` constant precisely so it cannot be steered by a request header.
+
+**What that failure proved along the way**, before it was fixed: `/studio/signed-out` rendered, the button worked, `/api/studio/auth/login` was reachable (so the proxy exempted it correctly), and the fail-closed config check passed with a real client ID. Reaching a Google error page is itself evidence that most of the gate works.
+
+**This also closes P2's caveat C1**, which was the largest open item across both prior packages: the gate had never been exercised. It now has.
 
 ## A5 — The source plan contradicts itself on the unauthenticated response — RESOLVED AS 404
 
