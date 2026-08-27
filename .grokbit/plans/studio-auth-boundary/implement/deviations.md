@@ -29,6 +29,20 @@ Counting deviations (`counts: yes`) escalate at **3**: stop, hand back to `grokb
 - **disposition:** Created `src/lib/studio/redirect-uri.ts` rather than triplicating the constants. Duplication here is not a style question: three copies of a cookie **name** is a live auth bug the moment one of them is edited — login would set a cookie the callback never reads, and sign-in would fail with no error. The file also carries the reasoning for why `redirect_uri` is built from `NODE_ENV` + the `SITE_URL` constant and never from a request header.
 - **why not counting:** the cap measures whether the *survey* misread the codebase. `02-survey.md` was correct about every entity; this is a decomposition detail the plan did not foresee, resolved additively inside the package's own directory, with no third-party surface touched. Recorded rather than absorbed silently, and surfaced to the owner.
 
+## D4 — T6's structure is unimplementable as specified: the gate would 404 the sign-in page
+
+- **counts:** **YES** (1 of 3)
+- **type:** plan-specification contradiction found at implementation
+- **found:** T6
+- **detail:** `plan.md` T6 places `requireAdmin()` in `src/app/studio/layout.tsx` and `signed-out/page.tsx` beneath it. In App Router a layout wraps **every** descendant route, so that gate would also cover `/studio/signed-out` — and `requireAdmin()` fails via `notFound()`. The sign-in page would 404 for exactly the people who need it, leaving **no way into the admin at all**.
+
+  This is review blocker **B3 in a different costume**. B3 was the *proxy* 404ing `/studio/signed-out`; the plan fixed that and then reintroduced the same failure at the *layout* level. `02-survey.md` S3 analysed layout nesting for Header/Footer but never followed it through to the gate-versus-signed-out interaction — a genuine survey gap, which is why this counts.
+- **disposition:** The gate moved into a **route group**, `src/app/studio/(gated)/layout.tsx`. Route groups do not appear in the URL, so `/studio` is unchanged while `signed-out` sits outside the gate. `src/app/studio/layout.tsx` keeps the shell and the `noindex` metadata.
+
+  Files differ from T6's declared set: `(gated)/layout.tsx` is new and `page.tsx` moved into the group.
+- **verify:** T6's stated verify asserts `src/app/studio/layout.tsx` contains **both** `requireAdmin` and `index: false`. After the restructure that is false and **cannot** be made true without reintroducing the bug. The verify was **not** edited to match the build — hard rule 5. Instead the same assertion was run across the two files it now legitimately spans, and both halves pass: `requireAdmin` in `(gated)/layout.tsx`, `index: false` in `layout.tsx`. Build green, lint 0, both routes register.
+- **owner action:** none required. Flagged because a task's verify no longer matches its plan text, and that discrepancy should be visible rather than quietly reconciled.
+
 ---
 
-**Counting total: 0 of 3.**
+**Counting total: 1 of 3.**
