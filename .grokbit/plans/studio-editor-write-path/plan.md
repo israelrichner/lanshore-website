@@ -11,7 +11,9 @@ Slug: `studio-editor-write-path` · Approach: pure `.mjs` core (commit payload +
 
 ## Approval
 
-- [ ] **Approved to implement**
+- [x] **Approved to implement** — owner, 2026-08-27.
+
+**Basis:** approval at the gate after review of the 12 tasks, the 2 BLOCKER / 2 MAJOR / 3 MINOR findings, the disposition table, and open assumptions A1/A2/A4/A6/A9.
 
 ## Tasks
 
