@@ -209,6 +209,12 @@ export function validateBlogPost(record, slug) {
   if (record.draft !== undefined && typeof record.draft !== "boolean") {
     errors.push(`${where}: "draft" must be a boolean when present`);
   }
+  /* Set by Publish and never cleared — the only durable answer to "was this
+     ever live?", which Delete needs (see ledger-ops.mjs). Stripped from every
+     public record by loadContent. */
+  if (record.publishedOnce !== undefined && typeof record.publishedOnce !== "boolean") {
+    errors.push(`${where}: "publishedOnce" must be a boolean when present`);
+  }
   return errors;
 }
 
@@ -234,6 +240,12 @@ export function validateCaseStudy(record, slug) {
   if (record.draft !== undefined && typeof record.draft !== "boolean") {
     errors.push(`${where}: "draft" must be a boolean when present`);
   }
+  /* Set by Publish and never cleared — the only durable answer to "was this
+     ever live?", which Delete needs (see ledger-ops.mjs). Stripped from every
+     public record by loadContent. */
+  if (record.publishedOnce !== undefined && typeof record.publishedOnce !== "boolean") {
+    errors.push(`${where}: "publishedOnce" must be a boolean when present`);
+  }
   return errors;
 }
 
@@ -256,6 +268,12 @@ export function validateWhitePaper(record, slug) {
   }
   if (record.draft !== undefined && typeof record.draft !== "boolean") {
     errors.push(`${where}: "draft" must be a boolean when present`);
+  }
+  /* Set by Publish and never cleared — the only durable answer to "was this
+     ever live?", which Delete needs (see ledger-ops.mjs). Stripped from every
+     public record by loadContent. */
+  if (record.publishedOnce !== undefined && typeof record.publishedOnce !== "boolean") {
+    errors.push(`${where}: "publishedOnce" must be a boolean when present`);
   }
   return errors;
 }
