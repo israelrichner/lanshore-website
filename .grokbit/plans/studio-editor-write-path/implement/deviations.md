@@ -43,6 +43,13 @@ Counting deviations (`counts: yes`) escalate at **3**.
 - **detail:** `if (op.refusal) return ...` failed to narrow, because the union is discriminated on a **nullable string** and an empty string is falsy — so TypeScript cannot prove the non-refusal branch. Three `possibly null` errors followed.
 - **disposition:** narrowed on `!== null` instead, with the reason in a comment. The alternative — non-null assertions at each use — would have silenced the checker exactly where a real null would matter most.
 
+## D6 — the A1 allowlist widened from 6 to 7, and the check is what forced the decision
+
+- **counts:** no · **type:** the guard working as designed
+- **detail:** T9's build failed `check:admin`. Three new files — `CaseStudyForm.tsx`, `EditorShell.tsx`, `WhitePaperForm.tsx` — reference `/studio` from `src/components/studio/`, which was not an allowlisted path.
+- **the sequence matters, and it is the one P2's comment asked for:** the check fired first; each file was then confirmed to be admin-only client UI imported by **zero** public pages; only then was the directory added and the count moved to 7. The assertion exists to force exactly that decision rather than to be edited around, and the reasoning is now written into the script beside the number.
+- **why not counting:** a new admin directory is a legitimate widening, categorically identical to the existing `src/app/studio/**` and `src/lib/studio/**` entries. A stray nav link from a public page would still fail, which is the property being protected.
+
 ---
 
 **Counting total: 0 of 3.**
