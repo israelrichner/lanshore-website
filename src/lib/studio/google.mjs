@@ -122,8 +122,12 @@ export async function exchangeCode({ code, clientId, clientSecret, redirectUri }
  * restarts — on serverless, intermittently and unpredictably (04-review.md
  * M2). So: on an unknown `kid`, refetch ONCE and retry. Still unknown after
  * that is a real rejection, not a stale cache.
+ *
+ * @param {object} options
+ * @param {() => Promise<{ keys: Array<Record<string, any>> }>} options.fetchJwks
+ * @param {number} [options.ttlSeconds]
  */
-export function createJwksCache({ fetchJwks, ttlSeconds = 3600 } = {}) {
+export function createJwksCache({ fetchJwks, ttlSeconds = 3600 }) {
   let keys = null;
   let fetchedAt = -Infinity;
   let fetches = 0;
