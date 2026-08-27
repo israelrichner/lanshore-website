@@ -340,11 +340,7 @@ export function webPageSchema(
  * markup. The \uXXXX escapes are valid JSON, so consumers parse the exact
  * original strings.
  */
-export function toJsonLd(schema: unknown): string {
-  return JSON.stringify(schema)
-    .replace(/</g, "\\u003c")
-    .replace(/>/g, "\\u003e")
-    .replace(/&/g, "\\u0026")
-    .replace(/\u2028/g, "\\u2028")
-    .replace(/\u2029/g, "\\u2029");
-}
+/* Implementation lives in ./jsonld-escape.mjs so `node --test` can cover it:
+   this file cannot be loaded by bare Node ESM because it imports "./site"
+   without a file extension. Re-exported, never duplicated. */
+export { toJsonLd } from "./jsonld-escape.mjs";
