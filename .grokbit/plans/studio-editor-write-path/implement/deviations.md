@@ -50,6 +50,25 @@ Counting deviations (`counts: yes`) escalate at **3**.
 - **the sequence matters, and it is the one P2's comment asked for:** the check fired first; each file was then confirmed to be admin-only client UI imported by **zero** public pages; only then was the directory added and the count moved to 7. The assertion exists to force exactly that decision rather than to be edited around, and the reasoning is now written into the script beside the number.
 - **why not counting:** a new admin directory is a legitimate widening, categorically identical to the existing `src/app/studio/**` and `src/lib/studio/**` entries. A stray nav link from a public page would still fail, which is the property being protected.
 
+## D7 — T11's "zero new differences" is NOT literally met: one extra script tag per page
+
+- **counts:** no · **type:** verify criterion not literally met; measured and accepted
+- **detail:** T11 requires zero new differences versus P1's golden set. All **56** captures differ. Rather than assume a class of noise, it was measured:
+
+  | | pre-P3 (`main` 1fa4346) | post-P3 |
+  |---|---|---|
+  | `<script>` tags on `/privacy` | 9 | **10** |
+  | JS bytes a visitor downloads | 671,694 | **671,841** |
+  | `.next/static/chunks` on disk | 876K | 1.1M |
+
+  **+147 bytes and one extra request.** The disk growth is the studio route chunks, which no public page loads.
+- **cause:** Next's chunk-splitting boundary shifted as total client code grew. An attempted fix — having `CaseStudyForm` import `PILLARS` from the leaf `content-rules.mjs` instead of `validate.ts`, which re-exports the whole validation surface plus the redirect list — **did not change the count**. It was kept anyway on its own merits (a client component has no business pulling the validation surface into a browser bundle), but it is not presented as a fix.
+- **what was verified, rather than assumed:**
+  - **No studio code on public pages.** No chunk loaded by `/privacy` contains `useEditorActions`, `CaseStudyForm`, `EditorShell`, `saveDraft`, `commitFiles` or `isRedirectDestination`.
+  - **No admin identifiers in any client chunk:** `studio_session`, `ADMIN_ALLOWED`, `verifySession`, `checkLedger`, `publishedOnce`, `GITHUB_TOKEN` — all zero.
+  - **Nothing a reader or crawler sees changed.** Across all 56 captures: visible text **0** differences, JSON-LD **0**, anchor hrefs **0**. `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` raw byte-identical.
+- **disposition:** accepted as a justified difference under T11's own clause, with the numbers above as the justification. Reported rather than normalised away — unlike the `og:image` hash (D3), this one is a real change to every page's HTML, just a negligible one.
+
 ---
 
 **Counting total: 0 of 3.**

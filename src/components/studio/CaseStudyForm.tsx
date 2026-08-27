@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { PILLARS } from "@/lib/studio/validate";
+/* From the leaf module, NOT validate.ts: validate.ts re-exports the whole
+   validation surface plus the redirect-destination list, and a client
+   component has no business pulling either into the browser bundle just to
+   populate a dropdown. */
+import { PILLARS } from "../../../scripts/lib/content-rules.mjs";
 import { useEditorActions, EditorMessages, Field, ActionButtons, SlugField, inputClass } from "./EditorShell";
 
 export type CaseStudyValues = {
