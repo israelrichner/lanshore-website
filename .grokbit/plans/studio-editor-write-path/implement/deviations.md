@@ -29,6 +29,20 @@ Counting deviations (`counts: yes`) escalate at **3**.
 - **disposition:** added to the normalizer with the evidence in a comment. Re-verified: back to 55/60, exactly the 5 blog pages already justified in P1's R1.
 - **why this matters beyond P3:** every future parity check inherits this. Had it been waved through as "probably noise", the normalizer would have stayed wrong and a *real* difference could hide behind the same assumption later.
 
+## D4 — T6 required an undeclared file: `src/lib/studio/apply-action.ts`
+
+- **counts:** no · **type:** undeclared file
+- **detail:** T6's declared files are the two route handlers. Both need the same sequence — read ledger and on-disk state from GitHub at head, run the ledger operation, run pre-flight, commit or refuse. Inlining it would duplicate roughly 80 lines across two files, and a divergence between them would mean one action validates differently from another.
+- **disposition:** one orchestrator, `apply-action.ts`. It is the **only** place that performs I/O for a write, so there is exactly one path a change can take to the repo. The pure pieces it composes (`ledger-ops.mjs`, `commit-payload.mjs`, `validate.ts`) stay separately tested.
+- **notable behaviour it adds:** for publish/unpublish/delete the record is re-read **from head** rather than trusted from the browser, so a stale tab cannot resurrect old field values — or, worse, submit a cleared `publishedOnce` and unlock a Delete that should be refused.
+- **why not counting:** decomposition detail the plan did not foresee, resolved additively inside the package's own directory. The survey was not wrong about anything.
+
+## D5 — TypeScript could not narrow the ledger-op union on truthiness
+
+- **counts:** no · **type:** incidental, resolved in-place
+- **detail:** `if (op.refusal) return ...` failed to narrow, because the union is discriminated on a **nullable string** and an empty string is falsy — so TypeScript cannot prove the non-refusal branch. Three `possibly null` errors followed.
+- **disposition:** narrowed on `!== null` instead, with the reason in a comment. The alternative — non-null assertions at each use — would have silenced the checker exactly where a real null would matter most.
+
 ---
 
 **Counting total: 0 of 3.**
