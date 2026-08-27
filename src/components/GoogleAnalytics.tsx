@@ -1,26 +1,28 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { usePathname } from "next/navigation";
 import Script from "next/script";
+/* Shared with the other tracker and unit-tested — see
+   src/lib/studio/tracker-gate.test.mjs. The literal admin path lives there,
+   not here, but this file still appears in the A1 allowlist because it
+   imports from a studio path. */
+import { shouldLoadTracker, isAdminPath } from "@/lib/studio/tracker-gate.mjs";
 import { GA_MEASUREMENT_ID } from "@/lib/analytics-config";
 
-/* Keep in sync with CANONICAL_HOSTS in src/proxy.ts and HubSpotLoader —
-   host-gating lives client-side so preview hosts (*.vercel.app) and local
-   dev do not pollute the production GA4 property. */
-const CANONICAL_HOSTS = new Set(["lanshore.com", "www.lanshore.com"]);
-
-function shouldLoadTracker(): boolean {
-  if (process.env.NEXT_PUBLIC_GA_TRACKING === "force") return true;
-  if (typeof window === "undefined") return false;
-  return CANONICAL_HOSTS.has(window.location.hostname.toLowerCase());
-}
-
-/* Host is fixed for the page lifetime; no real subscription needed. */
+/* Host is fixed for the page lifetime; no real subscription needed. The
+   PATH is not — a client-side navigation into /studio must switch the
+   tracker off, which is why usePathname() drives the snapshot below. */
 const subscribe = () => () => {};
-const getServerSnapshot = () => process.env.NEXT_PUBLIC_GA_TRACKING === "force";
+const FORCE = process.env.NEXT_PUBLIC_GA_TRACKING === "force";
 
 export default function GoogleAnalytics() {
-  const load = useSyncExternalStore(subscribe, shouldLoadTracker, getServerSnapshot);
+  const pathname = usePathname();
+  const load = useSyncExternalStore(
+    subscribe,
+    () => shouldLoadTracker({ hostname: window.location.hostname, pathname, force: FORCE }),
+    () => FORCE && !isAdminPath(pathname)
+  );
 
   if (!load) return null;
 

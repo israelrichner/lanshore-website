@@ -1,0 +1,18 @@
+{
+  "title": "Automating manufacturing plants to stay competitive",
+  "client": "Manufacturer",
+  "industry": "Manufacturing",
+  "pillar": "Services",
+  "outcome": "Business-critical daily processes automated, freeing employee capacity",
+  "challenge": "Business-critical processes had to finish daily, and they were consuming employee time needed elsewhere in the plant.",
+  "whatWeDid": "We automated the daily critical processes with RPA so they complete on schedule without pulling staff off other duties.",
+  "results": [
+    "Daily critical processes run unattended",
+    "Employee capacity returned to plant operations",
+    "On-schedule completion every day"
+  ],
+  "stack": [
+    "UiPath RPA"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/rpa-automating-manufacturing-plants-to-make-them-more-competitive-in-all-markets/"
+}

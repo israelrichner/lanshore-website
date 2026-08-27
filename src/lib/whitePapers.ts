@@ -1,8 +1,7 @@
 /**
- * Gated white-paper registry. Each entry maps a public PDF under
- * `/public/whitepapers/` to a HubSpot contact-property option value.
- * Leave empty until PDFs and portal options exist — resources page keeps
- * the "request via contact form" copy while this array is empty.
+ * Gated white-paper registry, sourced from content/white-papers/*.json.
+ * Each entry maps a public PDF under `/public/whitepapers/` to a HubSpot
+ * contact-property option value.
  *
  * `file` must be a same-origin path: `/whitepapers/<name>.pdf` (no `..`,
  * no protocol-relative or absolute URLs).
@@ -10,6 +9,9 @@
  * HubSpot: dropdown contact property `whitepaper_requested` must include
  * an option whose internal value matches each `hubspotValue` below.
  */
+
+import { loadWhitePapers } from "./content/loadContent";
+
 export type WhitePaper = {
   slug: string;
   title: string;
@@ -31,49 +33,13 @@ function assertWhitePaperFile(file: string, slug: string): void {
   }
 }
 
-export const WHITE_PAPERS: WhitePaper[] = [
-  {
-    slug: "death-of-commissions",
-    title: "The Death of Commissions and Its Subsequent Rebirth",
-    description:
-      "Why commission structures are evolving—not dying—and how to design plans that fit modern sales roles, from high-risk unit sales to sophisticated team deals.",
-    file: "/whitepapers/death-of-commissions.pdf",
-    hubspotValue: "death-of-commissions",
-  },
-  {
-    slug: "implementation-methodology",
-    title: "Lanshore Implementation Methodology: Commissions",
-    description:
-      "A seven-phase approach to SPM/commissions delivery—prepare, define, design, develop, and hand over—with the toolkits and checkpoints that keep projects on track.",
-    file: "/whitepapers/implementation-methodology.pdf",
-    hubspotValue: "implementation-methodology",
-  },
-  {
-    slug: "five-focus-areas-vendor-evaluation",
-    title: "Five Focus Areas for a Successful Vendor Evaluation",
-    description:
-      "Stakeholder buy-in, scorecards, product demos, true implementation cost, and change management—practical criteria for evaluating SPM and enterprise software vendors.",
-    file: "/whitepapers/five-focus-areas-vendor-evaluation.pdf",
-    hubspotValue: "five-focus-areas-vendor-evaluation",
-  },
-  {
-    slug: "nearshore-team-configuration",
-    title: "Nearshore Team Configuration Through the Stages",
-    description:
-      "How to integrate a nearshore team across design, configuration, testing, UAT, and handover—roles, leadership, and communication that prevent a sunken investment.",
-    file: "/whitepapers/nearshore-team-configuration.pdf",
-    hubspotValue: "nearshore-team-configuration",
-  },
-  {
-    slug: "retail-corporate-strategy-commissions",
-    title: "Retail: Corporate Strategy and Commissions",
-    description:
-      "Linking retail incentive plans to corporate strategy—people, targets, and ICM automation that motivate store teams while protecting margin.",
-    file: "/whitepapers/retail-corporate-strategy-commissions.pdf",
-    hubspotValue: "retail-corporate-strategy-commissions",
-  },
-];
+export const WHITE_PAPERS: WhitePaper[] = loadWhitePapers();
 
+/* Kept deliberately, even though content-rules.mjs enforces the same rule
+   when each file is read. This is the last line of defence closest to the
+   thing that matters: `file` is handed to the browser as a download URL by
+   src/app/api/whitepaper/route.ts, so a bad value here is a same-origin
+   escape, not a cosmetic bug. Throwing at module load fails the build. */
 for (const paper of WHITE_PAPERS) {
   assertWhitePaperFile(paper.file, paper.slug);
   if (paper.file !== `/whitepapers/${paper.slug}.pdf`) {

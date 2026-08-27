@@ -2,17 +2,28 @@
   "name": "lanshore-web",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:content": "node --experimental-strip-types scripts/check-content.mjs",
+    "test:rules": "node --test scripts/lib/content-rules.test.mjs",
+    "prebuild": "npm run check:content && npm run test:auth && npm run check:admin",
+    "test:auth": "node --test src/lib/studio/session.test.mjs src/lib/studio/google.test.mjs src/lib/studio/tracker-gate.test.mjs src/lib/studio/escaping.test.mjs",
+    "check:admin": "node scripts/check-admin-isolation.mjs"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "lucide-react": "^1.23.0",
     "next": "16.2.10",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

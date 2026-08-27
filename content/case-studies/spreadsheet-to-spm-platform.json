@@ -1,0 +1,19 @@
+{
+  "title": "When the pressure gets too much for a manual spreadsheet system",
+  "client": "Mid-market company",
+  "industry": "Technology & Digital",
+  "pillar": "Services",
+  "outcome": "Variable pay administration moved off Excel onto a governed platform",
+  "challenge": "Variable pay was administered in Excel. The spreadsheets couldn't keep up with plan complexity, and errors were eroding rep trust — but the team was wary of change.",
+  "whatWeDid": "We implemented an SPM platform sized to the plans, migrated the spreadsheet logic, and ran change management so admins and reps came along.",
+  "results": [
+    "Excel-based comp administration retired",
+    "Plan logic moved into a governed platform",
+    "Rep trust in statements rebuilt"
+  ],
+  "stack": [
+    "SPM platform implementation",
+    "Change management"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/sales-compensation-when-the-pressure-gets-too-much-for-a-manual-spreadsheet/"
+}

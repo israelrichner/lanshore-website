@@ -1,0 +1,19 @@
+{
+  "title": "Reacting to changing business needs for variable compensation",
+  "client": "Procurement technology provider",
+  "industry": "Technology & Digital",
+  "pillar": "Services",
+  "outcome": "Third-party dependency for every plan change replaced with a flexible model",
+  "challenge": "Every comp plan change meant engaging third-party service providers — slow and expensive, with the business changing faster than vendors could respond.",
+  "whatWeDid": "We restructured the SPM configuration for maintainability and set up a flexible support model so plan changes ship in days, not procurement cycles.",
+  "results": [
+    "Plan changes delivered without third-party lock-in",
+    "Faster response to business changes",
+    "Lower cost per change"
+  ],
+  "stack": [
+    "SPM platform",
+    "Support model redesign"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/technology-reacting-to-changing-business-needs-for-variable-compensation/"
+}

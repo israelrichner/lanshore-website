@@ -1,0 +1,18 @@
+{
+  "title": "Enhancing productivity in banking during peak loan volume",
+  "client": "Bank",
+  "industry": "Financial Services",
+  "pillar": "Services",
+  "outcome": "$503M in SBA loans processed with automation during peak volume",
+  "challenge": "SBA loan volume spiked far past what the team could process manually, with businesses waiting on funds.",
+  "whatWeDid": "We built RPA automation for loan processing steps so the bank could absorb the volume without proportional headcount.",
+  "results": [
+    "$503,000,000 in SBA loans processed",
+    "3,000+ applicants served",
+    "Throughput scaled without new hires"
+  ],
+  "stack": [
+    "UiPath RPA"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/rpa-enhancing-productivity-in-retail-using-rpa-to-eliminate-backlogs-and-get-orders-to-customers/"
+}

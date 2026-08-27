@@ -13,6 +13,28 @@ import { SPM_PLATFORMS } from "@/lib/spmPlatforms";
    restamps every URL on every deploy gets the signal discarded wholesale. */
 type Entry = { path: string; lastModified: string };
 
+/* Index pages are stamped from the content they list, not from a
+   hand-maintained registry entry. Otherwise publishing a post changes what
+   /blog shows while its <lastmod> stays frozen — the inverse of the failure
+   this file's header warns about, and just as corrosive.
+
+   /resources keeps its manual date as a FLOOR: the page also carries press
+   and glossary content that the collections know nothing about, so the
+   registry value can legitimately be newer than any post. */
+const BLOG_INDEX_LASTMOD = BLOG_POSTS.reduce(
+  (max, p) => (p.dateModified > max ? p.dateModified : max),
+  ""
+);
+const CASE_STUDIES_LASTMOD = CASE_STUDIES.reduce(
+  (max, cs) => {
+    const d = cs.dateModified ?? UPDATED.caseStudies;
+    return d > max ? d : max;
+  },
+  UPDATED.caseStudies as string
+);
+const RESOURCES_LASTMOD =
+  BLOG_INDEX_LASTMOD > UPDATED.resources ? BLOG_INDEX_LASTMOD : UPDATED.resources;
+
 const staticEntries: Entry[] = [
   { path: "", lastModified: UPDATED.home },
   { path: "/agentic-spm/executive-dashboards/demo", lastModified: UPDATED.pillars },
@@ -22,10 +44,10 @@ const staticEntries: Entry[] = [
   { path: "/spm/compare", lastModified: UPDATED.spm },
   { path: "/services", lastModified: UPDATED.services },
   { path: "/services/automation", lastModified: UPDATED.automation },
-  { path: "/case-studies", lastModified: UPDATED.caseStudies },
+  { path: "/case-studies", lastModified: CASE_STUDIES_LASTMOD },
   { path: "/industries", lastModified: UPDATED.industries },
-  { path: "/blog", lastModified: UPDATED.blogIndex },
-  { path: "/resources", lastModified: UPDATED.resources },
+  { path: "/blog", lastModified: BLOG_INDEX_LASTMOD },
+  { path: "/resources", lastModified: RESOURCES_LASTMOD },
   { path: "/resources/glossary", lastModified: UPDATED.glossary },
   { path: "/about", lastModified: UPDATED.about },
   { path: "/about/why-lanshore", lastModified: UPDATED.whyLanshore },
@@ -45,7 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...CASE_STUDIES.map((cs) => ({
       path: `/case-studies/${cs.slug}`,
-      lastModified: UPDATED.caseStudies,
+      lastModified: cs.dateModified ?? UPDATED.caseStudies,
     })),
     ...INDUSTRIES.map((i) => ({
       path: `/industries/${i.slug}`,

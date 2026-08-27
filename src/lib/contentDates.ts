@@ -11,6 +11,10 @@
  *
  * Blog posts are the exception — they carry a per-post `dateModified` in
  * lib/blog.ts, because freshness is read per article, not per section.
+ *
+ * The three index pages (/blog, /case-studies, /resources) are NOT listed
+ * here as content dates: sitemap.ts derives them from the collections they
+ * list. `resources` survives as the floor for that derivation.
  */
 export const UPDATED = {
   home: "2026-07-13",
@@ -23,7 +27,6 @@ export const UPDATED = {
   caseStudies: "2026-07-08",
   industries: "2026-07-08",
   glossary: "2026-07-13",
-  blogIndex: "2026-07-11",
   resources: "2026-07-15",
 
   about: "2026-07-13",

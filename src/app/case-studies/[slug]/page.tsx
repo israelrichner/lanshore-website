@@ -47,7 +47,7 @@ export default async function CaseStudyDetail({
 
   return (
     <>
-      <JsonLd data={caseStudySchema({ ...study, dateModified: UPDATED.caseStudies })} />
+      <JsonLd data={caseStudySchema({ ...study, dateModified: study.dateModified ?? UPDATED.caseStudies })} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", href: "/" },

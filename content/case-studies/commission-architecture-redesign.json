@@ -1,0 +1,19 @@
+{
+  "title": "Architecture redesign to fix a broken compensation process",
+  "client": "Multi-billion-dollar software company",
+  "industry": "Technology & Digital",
+  "pillar": "Services",
+  "outcome": "Commission process broken for over a year, restored to systematic accuracy",
+  "challenge": "The commission process had been broken for over a year. Payments went out on manual overrides, statements couldn't be trusted, and every cycle added more workarounds on top of a mis-architected implementation.",
+  "whatWeDid": "We redesigned the SPM architecture from the plan document down: rebuilt crediting and calculation logic, removed the override layer, and re-established a controlled monthly cycle.",
+  "results": [
+    "Systematic calculation accuracy restored",
+    "Manual override layer eliminated",
+    "Controlled, repeatable monthly cycle re-established"
+  ],
+  "stack": [
+    "SPM platform re-architecture",
+    "Plan logic rebuild"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/architecture-redesign-to-fix-a-broken-compensation-process/"
+}

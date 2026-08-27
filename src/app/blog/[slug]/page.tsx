@@ -3,9 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import NewsletterForm from "@/components/NewsletterForm";
+import Markdown from "@/components/Markdown";
 import { blogPostingSchema, breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { formatDate } from "@/lib/contentDates";
-import { BLOG_POSTS, getPost, type BlogBlock } from "@/lib/blog";
+import { BLOG_POSTS, getPost } from "@/lib/blog";
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({ slug: post.slug }));
@@ -32,49 +33,6 @@ export async function generateMetadata({
       type: "article",
     },
   };
-}
-
-/* Render bare URLs (e.g. the "Retrieved from https://…" references) as links. */
-function linkify(text: string) {
-  const parts = text.split(/(https?:\/\/[^\s]+)/g);
-  if (parts.length === 1) return text;
-  return parts.map((part, i) => {
-    if (!/^https?:\/\//.test(part)) return part;
-    const url = part.replace(/[.,);]+$/, "");
-    const trailing = part.slice(url.length);
-    return (
-      <span key={i}>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="break-all font-medium text-accent underline hover:text-accent-hover"
-        >
-          {url}
-        </a>
-        {trailing}
-      </span>
-    );
-  });
-}
-
-/* Group consecutive li blocks into lists so they render as real <ul>s. */
-function groupBlocks(blocks: BlogBlock[]) {
-  const groups: ({ type: "h2" | "h3" | "p"; text: string } | { type: "ul"; items: string[] })[] =
-    [];
-  for (const block of blocks) {
-    if (block.type === "li") {
-      const last = groups[groups.length - 1];
-      if (last && last.type === "ul") {
-        last.items.push(block.text);
-      } else {
-        groups.push({ type: "ul", items: [block.text] });
-      }
-    } else {
-      groups.push({ type: block.type, text: block.text });
-    }
-  }
-  return groups;
 }
 
 export default async function BlogPostPage({
@@ -113,36 +71,7 @@ export default async function BlogPostPage({
       </section>
 
       <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-        {groupBlocks(post.blocks).map((group, i) => {
-          if (group.type === "ul") {
-            return (
-              <ul key={i} className="my-4 list-disc space-y-2 pl-6 text-muted">
-                {group.items.map((item) => (
-                  <li key={item}>{linkify(item)}</li>
-                ))}
-              </ul>
-            );
-          }
-          if (group.type === "h2") {
-            return (
-              <h2 key={i} className="mt-10 mb-3 text-2xl font-bold text-ink">
-                {group.text}
-              </h2>
-            );
-          }
-          if (group.type === "h3") {
-            return (
-              <h3 key={i} className="mt-8 mb-2 text-xl font-bold text-ink">
-                {group.text}
-              </h3>
-            );
-          }
-          return (
-            <p key={i} className="my-4 text-foreground">
-              {linkify(group.text)}
-            </p>
-          );
-        })}
+        <Markdown>{post.body}</Markdown>
 
         <p className="mt-12 border-t border-line pt-6 text-muted">
           See how this works in practice:{" "}

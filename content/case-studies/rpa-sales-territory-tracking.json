@@ -1,0 +1,18 @@
+{
+  "title": "Software company increases sales and territory tracking with automation",
+  "client": "Software company",
+  "industry": "Technology & Digital",
+  "pillar": "Services",
+  "outcome": "Daily manual process cut from 8–12 hours across two employees to 20 minutes",
+  "challenge": "A daily sales and territory tracking process consumed 8–12 hours across two employees, every day, before the sales team could act on the data.",
+  "whatWeDid": "We automated the end-to-end process — data pulls, matching, and distribution — so it runs unattended each morning.",
+  "results": [
+    "8–12 hours of daily manual work reduced to 20 minutes",
+    "Two employees freed for higher-value work",
+    "Sales team working from current data every morning"
+  ],
+  "stack": [
+    "UiPath RPA"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/rpa-automation-of-processes-software-company-increases-sales-and-territory-tracking-to-enhance-customer-satisfaction/"
+}

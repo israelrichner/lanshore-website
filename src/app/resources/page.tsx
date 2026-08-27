@@ -4,6 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import WhitePaperGate from "@/components/WhitePaperGate";
 import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { WHITE_PAPERS } from "@/lib/whitePapers";
+import { BLOG_POSTS } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Resources: Blog, White Papers, Glossary & Press | Lanshore",
@@ -21,45 +22,15 @@ export const metadata: Metadata = {
   },
 };
 
-const BLOG_POSTS = [
-  {
-    title: "Elevating Sales Performance: The Power of Agentic AI in SPM",
-    summary:
-      "How agentic AI changes sales performance management: autonomous multi-step comp tasks, better forecasting, less administrative burden. The foundational read on AI Assisted SPM.",
-    url: "/blog/elevating-sales-performance-the-power-of-agentic-ai-in-spm",
-    featured: true,
-  },
-  {
-    title: "Sales Performance Management: Build vs. Buy in the Agentic AI Era",
-    summary:
-      "When to build custom comp tooling and when to buy a platform, now that agents change the economics of both.",
-    url: "/blog/sales-performance-management-build-vs-buy-in-the-agentic-ai-era",
-    featured: false,
-  },
-  {
-    title: "Beyond Dashboards: Selecting an SPM System in the Age of Agentic AI",
-    summary:
-      "Selection criteria for SPM platforms that go beyond traditional reporting capabilities.",
-    url: "/blog/beyond-dashboards-selecting-an-spm-system-in-the-age-of-agentic-ai",
-    featured: false,
-  },
-  {
-    title:
-      "Territory White Space in Sales Performance Management: What It Is, Why It Matters, and How to Fix It",
-    summary:
-      "Unallocated territory gaps in SPM frameworks and how to find and fix them.",
-    url: "/blog/territory-white-space-in-sales-performance-management-what-it-is-why-it-matters-and-how-to-fix-it",
-    featured: false,
-  },
-  {
-    title:
-      "The Agent Advantage: How AI-Powered Agents Are Transforming Dispute Management",
-    summary:
-      "How intelligent agents streamline dispute resolution across HR, finance, CRM, and sales performance management.",
-    url: "/blog/the-agent-advantage-how-ai-powered-agents-are-transforming-dispute-management-across-hr-finance-crm-and-sales-performance-management",
-    featured: false,
-  },
-];
+/* Derived from the blog collection rather than duplicated here. The card
+   shows `cardTitle` when a post defines one — one post's real title is far
+   too long for this grid — and otherwise its title. */
+const RESOURCE_POSTS = BLOG_POSTS.map((post) => ({
+  title: post.cardTitle ?? post.title,
+  summary: post.summary,
+  url: `/blog/${post.slug}`,
+  featured: post.featured,
+}));
 
 export default function ResourcesPage() {
   const hasPapers = WHITE_PAPERS.length > 0;
@@ -99,7 +70,7 @@ export default function ResourcesPage() {
       <section id="blog" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6">
         <h2 className="mb-8 text-2xl font-bold text-ink sm:text-3xl">Blog</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {BLOG_POSTS.map((post) => (
+          {RESOURCE_POSTS.map((post) => (
             <a
               key={post.url}
               href={post.url}

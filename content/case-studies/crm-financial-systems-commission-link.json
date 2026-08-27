@@ -1,0 +1,19 @@
+{
+  "title": "Linking sales commission data between financial systems and CRM",
+  "client": "Fortune 500 high-tech company",
+  "industry": "Technology & Digital",
+  "pillar": "Services",
+  "outcome": "Manual link between financial systems and CRM fully automated",
+  "challenge": "Commission data moved between the financial systems and the CRM through a manual process — slow, error-prone, and dependent on a handful of people who knew the steps.",
+  "whatWeDid": "We built an automated integration for commission data between the financial systems and the CRM, with validation on every transfer.",
+  "results": [
+    "Manual transfer process eliminated",
+    "Validated data flow between finance and CRM",
+    "Key-person dependency removed"
+  ],
+  "stack": [
+    "SPM/CRM integration",
+    "Data validation"
+  ],
+  "legacyUrl": "https://lanshore.com/case_studies/linking-sales-commission-data-between-financial-systems-and-crm/"
+}

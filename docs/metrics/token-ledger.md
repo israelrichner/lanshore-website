@@ -1,7 +1,7 @@
 # Token & model usage ledger
 
-**Template version:** 0.1.17  
-**Last updated:** 2026-07-22  
+**Template version:** 0.1.44  
+**Last updated:** 2026-08-27  
 **Policy:** update **VERSION** + this ledger on **every git commit** (`scripts/prepare_commit_metrics.py` / pre-commit hook).  
 **Source of figures:** session stats (`/context`, `/session-info`, host UI) — never invent.
 
@@ -13,8 +13,8 @@
 | Total output tokens (measured) | 0 |
 | Total tokens (measured) | 0 |
 | Measured entries | 0 |
-| Unmeasured commit stamps | 19 |
-| All ledger entries | 19 |
+| Unmeasured commit stamps | 46 |
+| All ledger entries | 46 |
 
 ## By model (measured only)
 
@@ -45,6 +45,33 @@
 | 2026-07-22 | commit-2026-07-22 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.15: auto unmeasured (no metrics in env/pending file) [unmeasured] |
 | 2026-07-22 | commit-2026-07-22 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.16: auto unmeasured (no metrics in env/pending file) [unmeasured] |
 | 2026-07-22 | commit-2026-07-22 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.17: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.18: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.19: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.20: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.21: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.22: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.23: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.24: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.25: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.26: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.27: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-26 | commit-2026-08-26 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.28: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.29: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.30: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.31: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.32: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.33: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.34: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.35: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.36: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.37: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.38: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.39: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.40: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.41: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.42: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.43: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-08-27 | commit-2026-08-27 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.44: auto unmeasured (no metrics in env/pending file) [unmeasured] |
 
 <!-- LEDGER_END -->
 
