@@ -2,18 +2,16 @@
 
 Most recent session only. Not a running log.
 
-**Slug:** `studio-auth-boundary` (Package 2)
+**Slug:** `studio-editor-write-path` (Package 3 — the last one)
 **Phase reached:** implement complete (12/12), ready for `grokbit-test` verify
-**Branch:** `feat/content-migration-p1` — P2 stacks on P1, which is pushed but unmerged
+**Branch:** `feat/studio-editor-p3`, cut from `main` @ `1fa4346`
 **Date:** 2026-08-27
 
 ## Scope
 
-The `/studio` authentication gate: Google OAuth, email allowlist, stateless signed cookie, optimistic proxy 404 over a `requireAdmin()` boundary. **No editor UI, no GitHub write path** — that ordering is deliberate, so a write endpoint never exists without a reviewed gate in front of it.
+The editor UI and the atomic GitHub write path. Completes the original request: content is editable in a browser, with no git and no Vercel.
 
-**The owner's original ask remains undelivered.** Updating a blog post still needs a developer. That is P3.
-
-Prior: `dynamic-content-management` (P1) — complete, SHIP WITH CAVEATS.
+Prior: `dynamic-content-management` (P1) and `studio-auth-boundary` (P2), both merged to `main` and live. A real Google sign-in has been completed, so the auth gate is proven in production.
 
 ## Blocked tasks
 
@@ -21,19 +19,18 @@ None.
 
 ## Open items
 
-- **A1** — the 8 Vercel env vars are unverifiable from the repo (no CLI). The design fails closed, so a typo'd name yields a 404 indistinguishable from correct behaviour. First real sign-in is the only validation.
-- **A2** — Google's live endpoints unexercised. 63 tests prove the verifier rejects bad tokens; only a real sign-in proves it accepts a genuine one.
-- **A4** — is `lanshore.com` a Google Workspace domain? If so the consent screen should be **Internal**. Affects setup only, but switching later may force re-consent.
-- **B2 (from P1)** — the gated white-paper download still needs exercising on a Vercel preview.
-- **A7** — the golden capture used for parity lives in an ephemeral scratchpad. Promoting `capture.mjs`/`compare.mjs` into the repo is an open scope decision.
-- **P1 stash** — `stash@{0}` holds scaffolding belonging to `preview/faq-agentic-spm`. Restore there, not on the feature branch.
+- **A9** — `docs/CONTENT-EDITING.md` has two deliberate placeholders: `GITHUB_TOKEN` expiry date and who rotates it. Owner-only. Failure mode is silent publishing failure about a year out.
+- **A1/A2** — the write path has never contacted GitHub, by owner decision. Source plan E3, E5, E6, E11 remain owner-run on a deployment. **E3 is the one that matters**: exactly one commit per editor action.
+- **A7** — no React component tests and no headless browser here; five editor surfaces are unverified visually.
+- **A8** — HubSpot `whitepaper_requested` still a dropdown.
+- **D7** — every public page carries one extra script tag (+147 bytes) versus pre-P3. Measured, benign, documented.
 
 ## If planning resumes here
 
-Three defects were found in the source plan during P1/P2 and corrected in the grokbit plans, not in `docs/plans/dynamic-content-management.md`. Check whether that document still carries them:
+Three defects in `docs/plans/dynamic-content-management.md` were corrected in the grokbit plans, not in that document — check whether it still carries them:
 
-1. It says to baseline on clean `main`, but `GARTNER_PATHS` does not exist there.
-2. It never specifies how content ordering survives the move to files (now in `SLUGS.lock.json`).
-3. Its task `:857` requires `/studio` to omit the public Header/Footer, which App Router cannot do without route groups.
+1. Baseline on clean `main` (GARTNER_PATHS does not exist there).
+2. Content ordering after the move to files (now `SLUGS.lock.json`).
+3. Task `:857` requiring `/studio` to omit Header/Footer (App Router cannot without route groups).
 
-And two inside P2's own plan: the A1 allowlist count (5 vs the real 6), and T6's layout structure, which would have 404'd the sign-in page.
+And within P3's own source: §10.5 **E1 says "bare 403"** while §6.5.3 specifies **404**. P2 shipped 404 and the cloaking rationale depends on it — E1 is stale, and whoever runs it will otherwise report a failure that is not one.
