@@ -10,7 +10,9 @@ Slug: `studio-auth-boundary` · Approach: hand-rolled Google OAuth + env allowli
 
 ## Approval
 
-- [ ] **Approved to implement**
+- [x] **Approved to implement** — owner, 2026-08-27.
+
+**Basis:** approval given at the gate after review of the 12 tasks, the 2 BLOCKER / 4 MAJOR findings, the disposition table, and open assumptions A1/A2/A4/A7.
 
 ## Tasks
 
@@ -100,15 +102,15 @@ Slug: `studio-auth-boundary` · Approach: hand-rolled Google OAuth + env allowli
 
 ### T8 — Path-gate GA4 and HubSpot off `/studio`
 - **intent:** Stop admin sessions being recorded in analytics and marketing automation
-- **files:** `src/components/GoogleAnalytics.tsx`, `src/components/HubSpotLoader.tsx`
+- **files:** `src/lib/studio/tracker-gate.mjs`, `src/lib/studio/tracker-gate.test.mjs`, `src/components/GoogleAnalytics.tsx`, `src/components/HubSpotLoader.tsx`
 - **cwd:** none
 - **depends:** T6
-- **verify:** `npm run build` exits 0, then with `npx next start` running: the HTML of `/` still contains the GA/HubSpot script tags, and the HTML of `/studio/signed-out` does **not**. AND `npm run lint` exits 0
+- **verify:** `node --test src/lib/studio/tracker-gate.test.mjs` exits 0 — asserts the gate returns **false** for `/studio` and `/studio/anything` on a canonical host, and **true** for `/`, `/blog`, `/resources` on a canonical host, and false on a non-canonical host regardless of path. AND both components are asserted to call the shared gate: `node -e "for (const f of ['src/components/GoogleAnalytics.tsx','src/components/HubSpotLoader.tsx']) { const s=require('fs').readFileSync(f,'utf8'); if(!s.includes('tracker-gate')) process.exit(1) }"` exits 0. AND `npm run build` and `npm run lint` exit 0
 - **removes:** the unconditional firing of both trackers on admin routes
 - **baseline:** **REQUIRED.** Both currently load on every canonical-host page via `src/app/layout.tsx:75-78`; each has a `shouldLoadTracker()` host gate (`GoogleAnalytics.tsx:12`, `HubSpotLoader.tsx:13`). Capture which pages emit the script tags before editing.
 - **rollback:** `git checkout src/components/GoogleAnalytics.tsx src/components/HubSpotLoader.tsx`
 - **state-after:** working
-- **notes:** Add the path check **inside the existing `shouldLoadTracker()`**, which already exists for exactly this kind of exclusion — do not restructure the components. Use `/studio` as a path prefix here (unlike the proxy's exact-match exempt list; the goals are opposite — this one should over-exclude). Each addition carries a comment explaining why, and why it is in A1's allowlist (T10).
+- **notes:** **Corrected by baseline capture** (`test/baseline.md` T8). The original verify compared tracker script tags in served HTML; baseline measurement showed **zero** such tags on every page, because both components are `"use client"` and inject after hydration — so that check would have compared 0 to 0 and passed vacuously. The gate logic therefore moves into a pure `.mjs` that can actually be tested, and the components call it. Keep the existing host gate behaviour intact inside that function — the path check is an addition, not a replacement. Use `/studio` as a path prefix here (unlike the proxy's exact-match exempt list; the goals are opposite — this one should over-exclude). Each addition carries a comment explaining why, and why it is in A1's allowlist (T10).
 
 ### T9 — Wire `test:auth` into `prebuild` **without replacing** `check:content`
 - **intent:** Make the auth tests a deploy gate
@@ -136,15 +138,15 @@ Slug: `studio-auth-boundary` · Approach: hand-rolled Google OAuth + env allowli
 
 ### T11 — Committed regression tests for content escaping (T15, T16)
 - **intent:** Pin two properties that currently hold only by inspection, now that editor input is on the horizon
-- **files:** `src/lib/studio/escaping.test.mjs`
+- **files:** `src/lib/jsonld-escape.mjs`, `src/lib/schema.ts`, `src/lib/studio/escaping.test.mjs`
 - **cwd:** none
 - **depends:** T9
-- **verify:** `node --test src/lib/studio/escaping.test.mjs` exits 0 — T15 asserts `toJsonLd` escapes `</script>`, `<`, `>`, `&`, U+2028 and U+2029 so a title containing `</script><img onerror=…>` cannot break out of the JSON-LD sink; T16 asserts the Markdown pipeline renders raw HTML as **text**, not markup
+- **verify:** `node --test src/lib/studio/escaping.test.mjs` exits 0 — T15 imports the escaper from `src/lib/jsonld-escape.mjs` (NOT from `schema.ts`, which bare Node ESM cannot load) and asserts it escapes `</script>`, `<`, `>`, `&`, U+2028 and U+2029 so a title containing `</script><img onerror=…>` cannot break out of the JSON-LD sink; T16 asserts the Markdown pipeline renders raw HTML as **text**, not markup
 - **removes:** the "verified by inspection only" status of both properties
 - **baseline:** `toJsonLd` exists and is correct at `src/lib/schema.ts:343-350`. T16 was already established empirically in P1's test phase (8 hostile inputs, all inert — `dynamic-content-management/test/security.md`).
 - **rollback:** `git rm -f src/lib/studio/escaping.test.mjs`
 - **state-after:** working
-- **notes:** Neither test exists to find a bug — both properties already hold. They exist so that a future "simplification" of `toJsonLd`, or a future `rehype-raw`, **fails the build** instead of silently opening an injection path. Say that in a comment, or someone will delete them as redundant.
+- **notes:** **Corrected by baseline capture** (`test/baseline.md` T11). `src/lib/schema.ts` imports `./site` without a file extension, so a `.mjs` test cannot import `toJsonLd` from it (`ERR_MODULE_NOT_FOUND`) — the same root cause that made `blog.ts` unimportable in P1. The escaper therefore moves to `src/lib/jsonld-escape.mjs` and `schema.ts` uses it, keeping **one** implementation. T16 needs no change: a `.mjs` test can import `react-markdown` directly, proven in P1's verify phase. Neither test exists to find a bug — both properties already hold. They exist so that a future "simplification" of `toJsonLd`, or a future `rehype-raw`, **fails the build** instead of silently opening an injection path. Say that in a comment, or someone will delete them as redundant.
 
 ### T12 — Live verification: A4, proxy incumbents, and P1 parity
 - **intent:** Prove the gate works end to end and that P2 did not disturb the public site
