@@ -43,6 +43,17 @@ Counting deviations (`counts: yes`) escalate at **3**: stop, hand back to `grokb
 - **verify:** T6's stated verify asserts `src/app/studio/layout.tsx` contains **both** `requireAdmin` and `index: false`. After the restructure that is false and **cannot** be made true without reintroducing the bug. The verify was **not** edited to match the build — hard rule 5. Instead the same assertion was run across the two files it now legitimately spans, and both halves pass: `requireAdmin` in `(gated)/layout.tsx`, `index: false` in `layout.tsx`. Build green, lint 0, both routes register.
 - **owner action:** none required. Flagged because a task's verify no longer matches its plan text, and that discrepancy should be visible rather than quietly reconciled.
 
+## D5 — the A1 allowlist is 6 paths, not the 5 the plan fixed
+
+- **counts:** no
+- **type:** internal inconsistency in the plan, corrected
+- **found:** T10
+- **detail:** `04-review.md` B1 fixed A1's allowlist at **exactly 5** entries and made the count itself an assertion. But T5 — in the same plan — creates `src/app/api/studio/auth/{login,callback,logout}/route.ts`, all of which reference the admin path. The source plan's original A1 (`:10.3`) had the same gap: it listed `src/app/studio/**` but never `src/app/api/studio/**`.
+
+  Measured: the literal `/studio` appears in **15** files under `src/`, spanning 6 distinct locations.
+- **disposition:** Allowlist implemented with **6** prefixes and the count assertion set to 6. The mechanism B1 wanted is intact and, if anything, tighter — a 7th match still fails, and the script tells the reader that bumping the number is not the fix.
+- **why not counting:** the survey was not wrong about the codebase; the plan was internally inconsistent between its own B1 fix and its own T5. Correcting a count to match files the same plan mandates is not a contradiction of ground truth.
+
 ---
 
 **Counting total: 1 of 3.**
