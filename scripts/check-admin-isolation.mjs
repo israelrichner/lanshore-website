@@ -31,10 +31,16 @@ const A1_ALLOWED = [
   "src/app/api/studio/",         // the OAuth route handlers
   "src/lib/studio/",             // auth core, typed wrappers, tracker gate
   "src/proxy.ts",                // the optimistic 404 gate
+  "src/components/studio/",      // admin-only editor UI (P3)
   "src/components/GoogleAnalytics.tsx", // path-gates itself off the admin
   "src/components/HubSpotLoader.tsx",   // path-gates itself off the admin
 ];
-const A1_EXPECTED_COUNT = 6;
+/* Widened from 6 to 7 in P3, deliberately and with the check having fired
+   first: three new files under src/components/studio/ tripped A1, each was
+   confirmed to be admin-only UI imported by zero public pages, and only then
+   was the directory added. That is the intended sequence — the assertion
+   exists to force this decision, not to be edited around. */
+const A1_EXPECTED_COUNT = 7;
 
 const errors = [];
 

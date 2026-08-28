@@ -13,10 +13,12 @@
  *      was review blocker B1, where three of the admin's four buttons
  *      failed the build.
  *
- *   2. Redirect destinations come from next.config.ts's own `redirects()`,
- *      not from a regex over the source. A hand-written pattern would drift
- *      the moment someone adds a redirect in a shape it didn't anticipate,
- *      and rule L4 would quietly stop protecting those URLs.
+ *   2. Redirect destinations come from scripts/lib/redirect-destinations.mjs,
+ *      which is generated from next.config.ts and kept honest by its own
+ *      drift test. The admin's request path needs the same list and must not
+ *      import the framework config, so both sides read one source rather
+ *      than each deriving it — a second derivation would drift and rule L4
+ *      would quietly stop protecting whichever URLs fell out.
  *
  * All rules live in scripts/lib/content-rules.mjs. This file only gathers
  * inputs and reports.
@@ -24,9 +26,9 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
 import matter from "gray-matter";
 import { VALIDATORS, checkLedger } from "./lib/content-rules.mjs";
+import { REDIRECT_DESTINATIONS } from "./lib/redirect-destinations.mjs";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 const CONTENT = path.join(ROOT, "content");
@@ -72,26 +74,12 @@ for (const { slug, record } of onDiskRaw.whitePapers) {
   }
 }
 
-/* --- redirect destinations, from the real config --------------------- */
-const { default: nextConfig } = await import(pathToFileURL(path.join(ROOT, "next.config.ts")).href);
-const redirects = await nextConfig.redirects();
+/* --- redirect destinations ------------------------------------------- */
 
-const dest = (prefix) => [
-  ...new Set(
-    redirects
-      .map((r) => r.destination)
-      .filter((d) => typeof d === "string" && d.startsWith(prefix))
-      .map((d) => d.slice(prefix.length))
-      /* Exclude wildcard/param destinations — only concrete slugs are
-         content the ledger can be asked to guarantee. */
-      .filter((s) => s && !s.includes("/") && !s.includes(":"))
-  ),
-];
-
-const redirectDestinations = {
-  blog: dest("/blog/"),
-  caseStudies: dest("/case-studies/"),
-};
+/* From the generated list, which redirect-destinations.test.mjs keeps in
+   agreement with next.config.ts. The admin's request path needs the same
+   data and must not import the framework config, so both read one source. */
+const redirectDestinations = REDIRECT_DESTINATIONS;
 
 /* --- ledger rules L1-L4 ---------------------------------------------- */
 const ledgerPath = path.join(CONTENT, "SLUGS.lock.json");

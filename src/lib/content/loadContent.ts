@@ -34,6 +34,47 @@ import {
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
+/**
+ * Editorial state that must NEVER reach a public record.
+ *
+ * This is not defensive tidiness. `/case-studies` passes whole records to
+ * <CaseStudyGrid>, a "use client" component, so every key on a record is
+ * serialised into the RSC payload — measured: all 11 real fields appear,
+ * including `legacyUrl` and `whatWeDid`, neither of which is rendered
+ * anywhere. An admin-only field reaching a record therefore changes the
+ * public bytes, which is exactly how P1's mentionsGartner regression
+ * happened.
+ *
+ * Add to this list when adding an admin-only field. The guard below is what
+ * makes forgetting fail loudly instead of silently.
+ */
+export const ADMIN_ONLY_FIELDS = ["draft", "publishedOnce"] as const;
+
+function stripAdminFields(data: Record<string, unknown>): Record<string, unknown> {
+  const out = { ...data };
+  for (const f of ADMIN_ONLY_FIELDS) delete out[f];
+  return out;
+}
+
+/**
+ * Fail the build rather than ship editorial state to a reader.
+ *
+ * Blog and white papers build their records field-by-field and are
+ * incidentally safe today; case studies spread. Asserting on all three means
+ * the next loader written in either style is covered without anyone
+ * remembering which style is which.
+ */
+function assertNoAdminFields(record: object, where: string): void {
+  for (const f of ADMIN_ONLY_FIELDS) {
+    if (f in record) {
+      throw new Error(
+        `${where}: "${f}" is admin-only and must not reach a public record — ` +
+          `it would be serialised into the RSC payload and change the public output.`
+      );
+    }
+  }
+}
+
 export type BlogBlock = { type: "h2" | "h3" | "p" | "li"; text: string };
 export type FaqEntry = { question: string; answer: string };
 
@@ -123,7 +164,7 @@ export function loadBlog(): BlogRecord[] {
 
     const faq = data.faq as FaqEntry[] | undefined;
 
-    records.push({
+    const record: BlogRecord = {
       slug,
       title: String(data.title),
       description: String(data.description),
@@ -143,7 +184,9 @@ export function loadBlog(): BlogRecord[] {
         body,
         ...(faq ?? []).flatMap((f) => [f.question, f.answer])
       ),
-    });
+    };
+    assertNoAdminFields(record, `blog/${slug}`);
+    records.push(record);
   }
 
   return byLedgerOrder(records, "blog");
@@ -176,9 +219,10 @@ export function loadCaseStudies(): CaseStudyRecord[] {
     const data = JSON.parse(raw) as Record<string, unknown> & { draft?: boolean };
     validateOrThrow("caseStudies", data, slug);
     if (data.draft === true) continue;
-    const rest = { ...data };
-    delete rest.draft;
-    records.push({ slug, ...(rest as Omit<CaseStudyRecord, "slug">) });
+    const rest = stripAdminFields(data);
+    const record = { slug, ...(rest as Omit<CaseStudyRecord, "slug">) };
+    assertNoAdminFields(record, `caseStudies/${slug}`);
+    records.push(record);
   }
 
   return byLedgerOrder(records, "caseStudies");
@@ -204,7 +248,7 @@ export function loadWhitePapers(): WhitePaperRecord[] {
     validateOrThrow("whitePapers", data, slug);
     if (data.draft === true) continue;
 
-    records.push({
+    const record: WhitePaperRecord = {
       slug,
       title: String(data.title),
       description: String(data.description),
@@ -212,7 +256,9 @@ export function loadWhitePapers(): WhitePaperRecord[] {
       /* Defaults to the slug — true for all five current papers, and the
          value the HubSpot dropdown option is keyed on. */
       hubspotValue: typeof data.hubspotValue === "string" ? data.hubspotValue : slug,
-    });
+    };
+    assertNoAdminFields(record, `whitePapers/${slug}`);
+    records.push(record);
   }
 
   return byLedgerOrder(records, "whitePapers");
