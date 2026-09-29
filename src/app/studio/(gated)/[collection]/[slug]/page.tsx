@@ -1,11 +1,17 @@
 import { notFound } from "next/navigation";
-import { createGitHubClientFromEnv } from "@/lib/studio/github";
+import {
+  createGitHubClientFromEnv,
+  requireGitHubClientFromEnv,
+  isPublishingUnavailable,
+  type GitHubFile,
+} from "@/lib/studio/github";
 import { parseRecord } from "@/lib/studio/apply-action";
 import { contentPath } from "@/lib/studio/ledger-ops.mjs";
 import { COLLECTIONS } from "@/lib/studio/validate";
 import BlogForm from "@/components/studio/BlogForm";
 import CaseStudyForm from "@/components/studio/CaseStudyForm";
 import WhitePaperForm from "@/components/studio/WhitePaperForm";
+import PublishingUnavailable from "@/components/studio/PublishingUnavailable";
 import type { CollectionKey } from "@/lib/content/loadContent";
 
 /* Reads from GitHub at head — see the note in github.ts. Also why this is
@@ -24,10 +30,21 @@ export default async function EditorPage({ params }: { params: Promise<{ collect
   let record: Record<string, unknown> = {};
   let sha: string | null = null;
 
-  if (!isNew) {
-    const client = createGitHubClientFromEnv();
-    if (!client) notFound();
-    const file = await client.getFile(contentPath(key, slug));
+  if (isNew) {
+    /* Nothing to read for a new item, but with no token configured nothing
+       could be saved either — say so up front instead of after typing. */
+    if (!createGitHubClientFromEnv()) return <PublishingUnavailable backLink />;
+  } else {
+    /* Only the GitHub read is inside the try: notFound() works by throwing,
+       and must never be caught here. */
+    let file: GitHubFile | null;
+    try {
+      file = await requireGitHubClientFromEnv().getFile(contentPath(key, slug));
+    } catch (e) {
+      if (!isPublishingUnavailable(e)) throw e;
+      return <PublishingUnavailable backLink />;
+    }
+    /* 404 from GitHub = no such item: unchanged, still a not-found page. */
     if (!file) notFound();
     record = parseRecord(key, file.content);
     /* The sha the editor's tab loaded. Sent back on save so a second tab

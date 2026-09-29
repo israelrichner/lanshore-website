@@ -10,7 +10,7 @@
  */
 
 import matter from "gray-matter";
-import type { GitHubClient } from "./github";
+import { isPublishingUnavailable, type GitHubClient } from "./github";
 import { commitFiles, commitMessage, ConflictError } from "./commit-payload.mjs";
 import { saveDraft, publish, unpublish, remove, LEDGER_PATH, contentPath } from "./ledger-ops.mjs";
 import { preflight, type Ledger, type OnDiskEntry } from "./validate";
@@ -147,6 +147,8 @@ export async function applyAction(args: {
     return { ok: true, commitSha };
   } catch (e) {
     if (e instanceof ConflictError) return { ok: false, status: 409, errors: [e.message] };
+    /* Let the route map this to its standard 503 reply. */
+    if (isPublishingUnavailable(e)) throw e;
     return { ok: false, status: 502, errors: [(e as Error).message] };
   }
 }

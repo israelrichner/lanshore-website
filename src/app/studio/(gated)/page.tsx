@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { getSession } from "@/lib/studio/session";
-import { createGitHubClientFromEnv } from "@/lib/studio/github";
+import { requireGitHubClientFromEnv, isPublishingUnavailable } from "@/lib/studio/github";
 import { parseRecord } from "@/lib/studio/apply-action";
+import PublishingUnavailable from "@/components/studio/PublishingUnavailable";
 import type { CollectionKey } from "@/lib/content/loadContent";
 
 /* Read from GitHub at head, never from loadContent: local files are whatever
@@ -17,9 +18,9 @@ const COLLECTIONS: { key: CollectionKey; label: string; dir: string; ext: string
 
 type Item = { slug: string; title: string; draft: boolean };
 
-async function loadItems(): Promise<Record<string, Item[]> | null> {
-  const client = createGitHubClientFromEnv();
-  if (!client) return null;
+/** Throws PublishingUnavailableError on a missing token or any GitHub failure other than 404. */
+async function loadItems(): Promise<Record<string, Item[]>> {
+  const client = requireGitHubClientFromEnv();
   const out: Record<string, Item[]> = {};
   for (const c of COLLECTIONS) {
     const entries = await client.listDir(c.dir);
@@ -38,7 +39,16 @@ async function loadItems(): Promise<Record<string, Item[]> | null> {
 
 export default async function StudioPage() {
   const session = await getSession();
-  const items = await loadItems();
+  /* null = publishing unavailable. Caught here rather than left to an error
+     boundary so the editor gets a sentence, not a Server Components crash
+     page. Anything that is NOT a GitHub availability problem still throws. */
+  let items: Record<string, Item[]> | null;
+  try {
+    items = await loadItems();
+  } catch (e) {
+    if (!isPublishingUnavailable(e)) throw e;
+    items = null;
+  }
 
   return (
     <main>
@@ -51,10 +61,7 @@ export default async function StudioPage() {
       <p className="mt-1 text-sm text-muted">Signed in as {session?.email}</p>
 
       {items === null ? (
-        <p className="mt-8 rounded border border-line bg-paper p-4 text-sm text-ink">
-          Publishing is not configured yet — <code>GITHUB_TOKEN</code> or <code>GITHUB_REPO</code> is missing.
-          You can sign in, but nothing can be saved.
-        </p>
+        <PublishingUnavailable />
       ) : (
         COLLECTIONS.map((c) => (
           <section key={c.key} className="mt-10">
