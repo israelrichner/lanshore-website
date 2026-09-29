@@ -71,7 +71,12 @@ const CASES = [
   //     Values are those recorded in test/results.md Step 1, not re-observed.
   //     Each was classified INTENDED with a citation into 03-design.md, and
   //     each is now MUST-NOT-CHANGE for P3 and beyond. ---
-  { path: "/studio", host: "lanshore.com", status: 404, robots: "noindex, nofollow", note: "MUST NOT CHANGE - gated: 404 from the proxy, indistinguishable from a missing page" },
+  /* CHANGED 2026-09-29 (fix/studio-signin-and-github-errors, approved by
+     Israel): signed-out /studio now 307-redirects to /studio/signed-out.
+     Every other gated path keeps its 404 (rows below). */
+  { path: "/studio", host: "lanshore.com", status: 307, robots: "noindex, nofollow", note: "MUST NOT CHANGE - signed-out /studio redirects to the sign-in page (was 404 before 2026-09-29)" },
+  { path: "/studio/blog/some-post", host: "lanshore.com", status: 404, robots: "noindex, nofollow", note: "MUST NOT CHANGE - other gated paths still 404 when signed out" },
+  { path: "/login", host: "lanshore.com", status: 307, robots: "noindex, nofollow", note: "MUST NOT CHANGE - alias for the sign-in page (added 2026-09-29)" },
   { path: "/studio/signed-out", host: "lanshore.com", status: 200, robots: "noindex, nofollow", note: "MUST NOT CHANGE - the sign-in entry point; 404 here is blocker B3" },
   { path: "/studio/signed-out-and-then-something", host: "lanshore.com", status: 404, robots: "noindex, nofollow", note: "MUST NOT CHANGE - proves the exempt list is exact-match, not prefix" },
   { path: "/api/studio/auth/login", host: "lanshore.com", status: 404, robots: "noindex, nofollow", note: "MUST NOT CHANGE *WHEN UNCONFIGURED* - fail-closed. With admin env set this is 307 to Google; run this file without admin env or expect this row to differ" },
