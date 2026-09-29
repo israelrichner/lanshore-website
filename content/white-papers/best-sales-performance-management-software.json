@@ -3,5 +3,6 @@
   "description": "Best Sales Performance Management Software? 16 Options, Sorted by Who They Actually Fit\n\nMost \"best SPM software\" lists are written by vendors, and each one ranks its publisher first. This guide from Lanshore founder Doug Erb, who has architected commission systems since 2000 on platforms from Callidus TrueComp to Varicent, Xactly, CaptivateIQ, Performio, and SAP, takes a different approach. It doesn't rank anything. Instead, it maps 16 options, 14 you buy and two you build, to the customer each one was built for.\n\nInside, you'll learn how G2 scores and Gartner placements are made, and what they don't measure. You'll also see the three architectural families behind every commission engine and why the data model matters more than the demo. The guide includes candid pros and cons for each platform, drawn from implementation experience and independent review data, plus a fit table covering payee count, plan complexity, systems landscape, and Finance requirements. It closes with a practical six-week selection process and guidance on when an agentic AI build beats buying a platform.\n\nWritten for comp leaders, RevOps, and Finance teams who want a shortlist based on fit, not marketing.",
   "hubspotValue": "best-sales-performance-management-software",
   "file": "/whitepapers/best-sales-performance-management-software.pdf",
-  "draft": true
+  "draft": false,
+  "publishedOnce": true
 }
