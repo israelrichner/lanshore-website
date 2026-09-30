@@ -1,7 +1,7 @@
 # Token & model usage ledger
 
-**Template version:** 0.1.61  
-**Last updated:** 2026-09-29  
+**Template version:** 0.1.62  
+**Last updated:** 2026-09-30  
 **Policy:** update **VERSION** + this ledger on **every git commit** (`scripts/prepare_commit_metrics.py` / pre-commit hook).  
 **Source of figures:** session stats (`/context`, `/session-info`, host UI) — never invent.
 
@@ -13,8 +13,8 @@
 | Total output tokens (measured) | 0 |
 | Total tokens (measured) | 0 |
 | Measured entries | 0 |
-| Unmeasured commit stamps | 63 |
-| All ledger entries | 63 |
+| Unmeasured commit stamps | 64 |
+| All ledger entries | 64 |
 
 ## By model (measured only)
 
@@ -89,6 +89,7 @@
 | 2026-09-29 | commit-2026-09-29 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.59: auto unmeasured (no metrics in env/pending file) [unmeasured] |
 | 2026-09-29 | commit-2026-09-29 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.60: shorten best-SPM white paper description [unmeasured] |
 | 2026-09-29 | commit-2026-09-29 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.61: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-09-30 | commit-2026-09-30 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.62: fix(studio): refuse white-paper saves without PDF (host did not report usage) [unmeasured] |
 
 <!-- LEDGER_END -->
 

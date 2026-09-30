@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { checkPdf, MAX_PDF_BYTES, base64Size, registryFilePath, storedPdfPath } from "./pdf-check.mjs";
+import { checkPdf, MAX_PDF_BYTES, base64Size, registryFilePath, storedPdfPath, missingPdfProblem, PDF_DIR } from "./pdf-check.mjs";
 
 const PDF_MAGIC = [0x25, 0x50, 0x44, 0x46, 0x2d]; // %PDF-
 const ok = (over = {}) => ({ type: "application/pdf", size: 500_000, head: PDF_MAGIC, ...over });
@@ -53,4 +53,32 @@ test("the stored filename is derived from the slug, never the upload", () => {
 
 test("a missing file is reported, not crashed on", () => {
   assert.match(checkPdf(undefined), /No file/);
+});
+
+/* --- the build gate's PDF rule, run before the studio commits ---------- */
+
+test("missing PDF at head is refused with a clear message (the 2026-09-29 failure)", () => {
+  const p = missingPdfProblem("best-sales-performance-management-software", ["death-of-commissions.pdf"]);
+  assert.match(p, /not on the site yet/);
+  assert.match(p, /public\/whitepapers\/best-sales-performance-management-software\.pdf/);
+  assert.match(p, /Nothing was saved/);
+});
+
+test("PDF present at head passes", () => {
+  assert.equal(missingPdfProblem("death-of-commissions", ["x.pdf", "death-of-commissions.pdf"]), null);
+});
+
+test("a PDF written by the same commit passes", () => {
+  assert.equal(missingPdfProblem("new-paper", [], ["public/whitepapers/new-paper.pdf"]), null);
+});
+
+test("near-miss names do not count: exact <slug>.pdf only", () => {
+  for (const names of [["new-paper.PDF"], ["new-paper"], ["new-paper.pdf.bak"], ["old-new-paper.pdf"]]) {
+    assert.ok(missingPdfProblem("new-paper", names), names.join());
+  }
+  assert.ok(missingPdfProblem("new-paper", [], ["public/whitepapers/other.pdf", "content/white-papers/new-paper.json"]));
+});
+
+test("PDF_DIR agrees with storedPdfPath", () => {
+  assert.equal(storedPdfPath("a"), `${PDF_DIR}/a.pdf`);
 });

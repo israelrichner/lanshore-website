@@ -44,11 +44,14 @@ export default function WhitePaperForm({ slug: initialSlug, initial, isNew, sha 
         <textarea className={inputClass} rows={3} value={v.description} onChange={(e) => set("description", e.target.value)} />
       </Field>
 
-      <Field label="PDF" hint="Up to 4 MB. The file is renamed to match the web address automatically.">
+      <Field
+        label="PDF"
+        hint={`Uploading from the studio is not available yet. A developer adds the file as public/whitepapers/${slug || "<web-address>"}.pdf; saving is refused until it is there. You can still check a file here (PDF, up to 4 MB).`}
+      >
         <input type="file" accept="application/pdf" onChange={(e) => onPick(e.target.files?.[0])} />
       </Field>
       {pdfError && <p className="mt-2 rounded border border-line bg-paper p-3 text-sm text-ink">{pdfError}</p>}
-      {pdfName && <p className="mt-2 text-sm text-muted">Checked. Will be stored as {slug}.pdf</p>}
+      {pdfName && <p className="mt-2 text-sm text-muted">Checked. Send it to a developer to add as {slug}.pdf — the studio does not upload it.</p>}
 
       <Field
         label="HubSpot value"

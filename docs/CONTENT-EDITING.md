@@ -74,7 +74,7 @@ The **preview on the right is exactly what will publish.** It uses the same rend
 
 ### White papers
 
-- **PDF** — up to 4 MB. It is renamed automatically to match the web address.
+- **PDF** — **the studio cannot upload PDFs yet.** Send the PDF to a developer, who adds it as `public/whitepapers/<web-address>.pdf`. Until that file is on the site, Save draft and Publish for that white paper are refused with a message saying so — nothing is saved and the live site is unaffected. (Before 2026-09-30 the studio saved anyway, and the site rebuild failed.)
 - **HubSpot value** — must match an option of the `whitepaper_requested` contact property.
 
 > **Adding a brand-new white paper currently needs one 2-minute step in HubSpot** before the download will record properly: the `whitepaper_requested` property is a dropdown, so a new value has to be added there first. Editing existing papers is unaffected. Ask a developer to switch that property to free text and this step disappears.
