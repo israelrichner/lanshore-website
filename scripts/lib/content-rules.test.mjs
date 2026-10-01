@@ -17,6 +17,8 @@ import {
   validateWhitePaper,
   checkLedger,
   PILLARS,
+  AUTHOR_IDS,
+  CASE_STUDIES_DEFAULT_MODIFIED,
 } from "./content-rules.mjs";
 
 /* ------------------------------------------------------------------ *
@@ -96,6 +98,7 @@ test("blog: dateModified must be a REAL date, not just the right shape", () => {
 test("blog: faq is optional but must be well-formed when present", () => {
   const ok = okBlog();
   ok.faq = [{ question: "Q?", answer: "A." }];
+  ok.body += "\n\n### Q?\n\nA.";
   assert.deepEqual(validateBlogPost(ok, "a-post"), []);
 
   const bad = okBlog();
@@ -350,4 +353,248 @@ test("ledger: the invariant is a subset, not an equality", () => {
   const onDisk = baseDisk();
   onDisk.blog.push({ slug: "brand-new-draft", draft: true });
   assert.deepEqual(checkLedger({ ledger, onDisk, redirectDestinations: baseRedirects() }), []);
+});
+
+/* ------------------------------------------------------------------ *
+ * Byline fields: author, datePublished, image
+ *
+ * Shared by blog posts and case studies, so every rule is exercised against
+ * both collections. The rule that matters most is the datePublished ordering
+ * check: an invented publish date is the specific failure this whole field
+ * exists to prevent.
+ * ------------------------------------------------------------------ */
+
+test("author: a known id is accepted on both collections", () => {
+  const post = okBlog();
+  post.author = AUTHOR_IDS[0];
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+
+  const study = okCaseStudy();
+  study.author = AUTHOR_IDS[0];
+  assert.deepEqual(validateCaseStudy(study, "a-study"), []);
+});
+
+test("author: an unknown id is rejected", () => {
+  const post = okBlog();
+  post.author = "not-a-real-person";
+  assert.ok(has(validateBlogPost(post, "a-post"), '"author" must be one of'));
+
+  const study = okCaseStudy();
+  study.author = "not-a-real-person";
+  assert.ok(has(validateCaseStudy(study, "a-study"), '"author" must be one of'));
+});
+
+test("author: a non-string is rejected", () => {
+  const post = okBlog();
+  post.author = { name: "Doug" };
+  assert.ok(has(validateBlogPost(post, "a-post"), '"author" must be one of'));
+});
+
+test("author: absent is valid, the org byline is the default", () => {
+  assert.deepEqual(validateBlogPost(okBlog(), "a-post"), []);
+});
+
+test("datePublished: a real date at or before dateModified is accepted", () => {
+  const earlier = okBlog();
+  earlier.datePublished = "2026-03-02";
+  assert.deepEqual(validateBlogPost(earlier, "a-post"), []);
+
+  const same = okBlog();
+  same.datePublished = same.dateModified;
+  assert.deepEqual(validateBlogPost(same, "a-post"), []);
+});
+
+test("datePublished: a date AFTER dateModified is rejected", () => {
+  const post = okBlog();
+  post.dateModified = "2026-07-11";
+  post.datePublished = "2026-09-01";
+  assert.ok(has(validateBlogPost(post, "a-post"), "is after"));
+});
+
+test("datePublished: a shape-valid but impossible date is rejected", () => {
+  const post = okBlog();
+  post.datePublished = "2026-02-30";
+  assert.ok(has(validateBlogPost(post, "a-post"), "is not a real date"));
+});
+
+test("datePublished: a malformed date is rejected", () => {
+  const post = okBlog();
+  post.datePublished = "March 2026";
+  assert.ok(has(validateBlogPost(post, "a-post"), "must be YYYY-MM-DD"));
+});
+
+test("datePublished: a case study with no dateModified is checked against the fallback it displays", () => {
+  const study = okCaseStudy();
+  assert.equal(study.dateModified, undefined);
+  study.datePublished = "2026-03-02";
+  assert.deepEqual(validateCaseStudy(study, "a-study"), []);
+
+  /* Would render "Published Sep 15 · Last updated Jul 8". */
+  study.datePublished = "2026-09-15";
+  assert.ok("2026-09-15" > CASE_STUDIES_DEFAULT_MODIFIED);
+  assert.ok(has(validateCaseStudy(study, "a-study"), "is after"));
+});
+
+test("image: a site-absolute path or an https url is accepted", () => {
+  for (const value of ["/images/x.png", "https://cdn.example.com/x.png"]) {
+    const post = okBlog();
+    post.image = value;
+    assert.deepEqual(validateBlogPost(post, "a-post"), [], `expected ${value} to be valid`);
+  }
+});
+
+test("image: a bare or protocol-relative path is rejected", () => {
+  for (const value of ["images/x.png", "//cdn.example.com/x.png", "http://insecure.example/x.png"]) {
+    const post = okBlog();
+    post.image = value;
+    assert.ok(
+      has(validateBlogPost(post, "a-post"), '"image" must be a site-absolute path'),
+      `expected ${value} to be rejected`
+    );
+  }
+});
+
+test("image: an empty string is rejected rather than treated as absent", () => {
+  const post = okBlog();
+  post.image = "   ";
+  assert.ok(has(validateBlogPost(post, "a-post"), '"image" must be a non-empty string'));
+});
+
+/* ------------------------------------------------------------------ *
+ * keyTakeaways and howTo
+ * ------------------------------------------------------------------ */
+
+/* A body that really contains the okHowTo() steps, as the mirror rule requires. */
+const HOWTO_BODY = "## How\n\n### Step 1: Define TAM\n\nDefine it.\n\n### Step 2: Map coverage\n\nMap it.";
+
+const howToPost = () => ({ ...okBlog(), body: HOWTO_BODY, howTo: okHowTo() });
+
+const okHowTo = () => ({
+  name: "How to identify white space",
+  description: "A five-step framework.",
+  steps: [
+    { name: "Step 1: Define TAM", text: "Define it." },
+    { name: "Step 2: Map coverage", text: "Map it." },
+  ],
+});
+
+test("keyTakeaways: 2 to 6 non-empty strings are accepted; absent is valid", () => {
+  const post = okBlog();
+  post.keyTakeaways = ["One.", "Two."];
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+  post.keyTakeaways = ["1", "2", "3", "4", "5", "6"];
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+  assert.deepEqual(validateBlogPost(okBlog(), "a-post"), []);
+});
+
+test("keyTakeaways: one item or seven items is rejected", () => {
+  for (const items of [["Only one."], ["1", "2", "3", "4", "5", "6", "7"]]) {
+    const post = okBlog();
+    post.keyTakeaways = items;
+    assert.ok(has(validateBlogPost(post, "a-post"), "must have 2 to 6 items"), `length ${items.length}`);
+  }
+});
+
+test("keyTakeaways: a blank item or a non-array is rejected", () => {
+  const post = okBlog();
+  post.keyTakeaways = ["Fine.", "  "];
+  assert.ok(has(validateBlogPost(post, "a-post"), "keyTakeaways[1] must be a non-empty string"));
+  post.keyTakeaways = "One string";
+  assert.ok(has(validateBlogPost(post, "a-post"), '"keyTakeaways" must be an array'));
+});
+
+test("howTo: a well-formed procedure is accepted, with or without totalTime", () => {
+  const post = howToPost();
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+  for (const totalTime of ["P1DT2H", "PT30M", "P1W", "P1Y2M"]) {
+    post.howTo.totalTime = totalTime;
+    assert.deepEqual(validateBlogPost(post, "a-post"), [], totalTime);
+  }
+});
+
+test("howTo: fewer than two steps, or no steps, is rejected", () => {
+  for (const steps of [[], [{ name: "Only", text: "One." }], undefined]) {
+    const post = okBlog();
+    post.howTo = { ...okHowTo(), steps };
+    assert.ok(has(validateBlogPost(post, "a-post"), "at least 2 steps"));
+  }
+});
+
+test("howTo: a step missing text, or two steps sharing a name, is rejected", () => {
+  const post = okBlog();
+  post.howTo = okHowTo();
+  post.howTo.steps[1] = { name: "Step 2: Map coverage" };
+  assert.ok(has(validateBlogPost(post, "a-post"), 'howTo.steps[1]: "text"'));
+
+  post.howTo = okHowTo();
+  post.howTo.steps[1].name = post.howTo.steps[0].name;
+  assert.ok(has(validateBlogPost(post, "a-post"), "duplicate step name"));
+
+  /* Different text, same anchor. */
+  post.howTo = okHowTo();
+  post.howTo.steps[0].name = "Step 1: Define";
+  post.howTo.steps[1].name = "Step 1 - Define";
+  assert.ok(has(validateBlogPost(post, "a-post"), "duplicate step name"));
+});
+
+test("howTo: a non-ISO totalTime is rejected, including the empty forms", () => {
+  for (const totalTime of ["2 hours", "P", "PT", "P1DT"]) {
+    const post = okBlog();
+    post.howTo = { ...okHowTo(), totalTime };
+    assert.ok(has(validateBlogPost(post, "a-post"), "ISO 8601 duration"), totalTime);
+  }
+});
+
+test("howTo: a non-object or a missing name is rejected", () => {
+  const post = okBlog();
+  post.howTo = ["step"];
+  assert.ok(has(validateBlogPost(post, "a-post"), '"howTo" must be an object'));
+  post.howTo = { ...okHowTo(), name: "" };
+  assert.ok(has(validateBlogPost(post, "a-post"), 'howTo: "name"'));
+});
+
+/* ------------------------------------------------------------------ *
+ * Body mirror: front matter that restates the body must match it.
+ * These are the edits a studio user can make to the body alone.
+ * ------------------------------------------------------------------ */
+
+test("mirror: an FAQ whose question and answer are in the body passes, through Markdown formatting", () => {
+  const post = okBlog();
+  post.body = "## FAQ\n\n### Can it be **automated**?\n\nYes — to a [significant](https://x.example) degree.";
+  post.faq = [{ question: "Can it be automated?", answer: "Yes — to a significant degree." }];
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+});
+
+test("mirror: rewording the body answer without the front matter copy is rejected", () => {
+  const post = okBlog();
+  post.body = "### How often?\n\nAt least quarterly.";
+  post.faq = [{ question: "How often?", answer: "At least annually." }];
+  const errors = validateBlogPost(post, "a-post");
+  assert.ok(has(errors, "faq[0] answer does not match the body"));
+  assert.equal(has(errors, "faq[0] question"), false);
+});
+
+test("mirror: a one-word answer is not satisfied by a longer word that contains it", () => {
+  const post = okBlog();
+  post.body = "### Is it done?\n\nYesterday it was.";
+  post.faq = [{ question: "Is it done?", answer: "Yes" }];
+  assert.ok(has(validateBlogPost(post, "a-post"), "faq[0] answer does not match the body"));
+});
+
+test("mirror: renaming a step heading in the body is rejected", () => {
+  const post = howToPost();
+  post.body = post.body.replace("### Step 2: Map coverage", "### Step 2: Map your coverage");
+  assert.ok(has(validateBlogPost(post, "a-post"), "howTo.steps[1] name must be the exact text of a heading"));
+});
+
+test("mirror: a step name that is in the prose but not a heading is rejected", () => {
+  const post = howToPost();
+  post.body = post.body.replace("### Step 1: Define TAM", "Step 1: Define TAM");
+  assert.ok(has(validateBlogPost(post, "a-post"), "howTo.steps[0] name must be the exact text of a heading"));
+});
+
+test("mirror: step text missing from the body is rejected", () => {
+  const post = howToPost();
+  post.howTo.steps[0].text = "Something the body never says.";
+  assert.ok(has(validateBlogPost(post, "a-post"), "howTo.steps[0] text does not appear in the body"));
 });

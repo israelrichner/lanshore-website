@@ -16,6 +16,8 @@
  * here as content dates: sitemap.ts derives them from the collections they
  * list. `resources` survives as the floor for that derivation.
  */
+import { CASE_STUDIES_DEFAULT_MODIFIED } from "../../scripts/lib/content-rules.mjs";
+
 export const UPDATED = {
   home: "2026-07-13",
 
@@ -24,7 +26,8 @@ export const UPDATED = {
   services: "2026-07-13",
   automation: "2026-07-11",
 
-  caseStudies: "2026-07-08",
+  /* Single definition in content-rules.mjs; see the note there. */
+  caseStudies: CASE_STUDIES_DEFAULT_MODIFIED,
   industries: "2026-07-08",
   glossary: "2026-07-13",
   resources: "2026-07-15",

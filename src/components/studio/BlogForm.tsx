@@ -5,6 +5,11 @@ import Markdown from "@/components/Markdown";
 import {
   useEditorActions, EditorMessages, Field, ActionButtons, SlugField, inputClass,
 } from "./EditorShell";
+import { AUTHORS } from "@/lib/authors";
+
+/* Derived once. The picker offers exactly the people AUTHOR_IDS allows, so the
+   admin cannot save a byline that check:content would then reject. */
+const AUTHOR_OPTIONS = Object.values(AUTHORS);
 
 /**
  * Blog editor with a side-by-side live preview.
@@ -19,6 +24,11 @@ export type BlogFormValues = {
   title: string;
   description: string;
   dateModified: string;
+  /* Optional byline. Blank in the form means "no named author" / "no known
+     publish date" and is sent as null, which the server turns into an absent
+     key (see lib/studio/record-edit.mjs). Never sent as "". */
+  author?: string | null;
+  datePublished?: string | null;
   summary: string;
   cardTitle?: string;
   featured: boolean;
@@ -36,7 +46,16 @@ export default function BlogForm({
   const { state, run } = useEditorActions("blog", slug, isNew);
   const set = <K extends keyof BlogFormValues>(k: K, val: BlogFormValues[K]) => setV((p) => ({ ...p, [k]: val }));
 
-  const record = () => ({ ...v, faq: v.faq?.filter((f) => f.question.trim() && f.answer.trim()) });
+  /* A blank optional field is sent as null, never omitted and never "".
+     Omitted would let Publish (which merges over head) bring back the value
+     the editor just cleared; "" would fail validation. The server drops the
+     nulls after the merge. */
+  const record = () => ({
+    ...v,
+    faq: v.faq?.filter((f) => f.question.trim() && f.answer.trim()),
+    author: v.author?.trim() ? v.author : null,
+    datePublished: v.datePublished?.trim() ? v.datePublished : null,
+  });
 
   return (
     <div>
@@ -60,6 +79,34 @@ export default function BlogForm({
         hint="Bump this when you change the words, not when the page is restyled — search engines only trust this date if it is honest."
       >
         <input type="date" className={inputClass} value={v.dateModified} onChange={(e) => set("dateModified", e.target.value)} />
+      </Field>
+
+      <Field
+        label="Published"
+        hint="Leave blank unless you know the real date this went live. A guessed date is a false freshness signal, and search engines weigh it. Blank is honest; wrong is not."
+      >
+        <input
+          type="date"
+          className={inputClass}
+          value={v.datePublished ?? ""}
+          onChange={(e) => set("datePublished", e.target.value || undefined)}
+        />
+      </Field>
+
+      <Field
+        label="Author"
+        hint="Leave as Lanshore unless a named person wrote this. The byline shown to readers and the author in structured data are the same value."
+      >
+        <select
+          className={inputClass}
+          value={v.author ?? ""}
+          onChange={(e) => set("author", e.target.value || undefined)}
+        >
+          <option value="">Lanshore (no named author)</option>
+          {AUTHOR_OPTIONS.map((a) => (
+            <option key={a.id} value={a.id}>{a.name}</option>
+          ))}
+        </select>
       </Field>
 
       <label className="mt-4 flex items-center gap-2">

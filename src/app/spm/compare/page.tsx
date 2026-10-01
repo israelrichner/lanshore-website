@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
-import { breadcrumbSchema, faqSchema, itemListSchema, type FaqItem } from "@/lib/schema";
+import {
+  breadcrumbSchema,
+  faqSchema,
+  itemListSchema,
+  softwareApplicationSchema,
+  type FaqItem,
+} from "@/lib/schema";
 import { SPM_PLATFORMS, NEAR_MISS_VENDORS } from "@/lib/spmPlatforms";
 
 export const metadata: Metadata = {
@@ -71,6 +77,7 @@ export default function SpmComparePage() {
           SPM_PLATFORMS.map((platform) => ({
             name: platform.name,
             href: `/spm/${platform.slug}`,
+            item: softwareApplicationSchema(platform),
           }))
         )}
       />

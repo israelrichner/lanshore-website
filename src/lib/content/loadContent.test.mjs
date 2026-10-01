@@ -143,3 +143,56 @@ test("ADMIN_ONLY_FIELDS is exported so the list has one home", async () => {
   const m = await freshLoad();
   assert.deepEqual([...m.ADMIN_ONLY_FIELDS], ADMIN_ONLY);
 });
+
+test("blog: byline, keyTakeaways and howTo pass through; absent ones stay absent, not undefined", async () => {
+  const full = "zz-fixture-byline";
+  const bare = "zz-fixture-bare";
+  const fullBody = [
+    "---", "title: Fixture", "description: d", "dateModified: '2026-07-11'",
+    "datePublished: '2026-03-02'", "author: doug-erb", "image: /images/x.png",
+    "keyTakeaways:", "  - First point.", "  - Gartner says something.",
+    "howTo:", "  name: How", "  steps:",
+    "    - name: 'Step 1: Do'", "      text: Do it.",
+    "    - name: 'Step 2: Check'", "      text: Check it.",
+    "---", "", "## How", "", "### Step 1: Do", "", "Do it.", "", "### Step 2: Check", "", "Check it.", "",
+  ].join("\n");
+  const bareBody = ["---", "title: Bare", "description: d", "dateModified: '2026-07-11'", "---", "", "## H", "", "Body.", ""].join("\n");
+
+  await withFixtures(
+    { [`blog/${full}.md`]: fullBody, [`blog/${bare}.md`]: bareBody },
+    { blog: [full, bare] },
+    async () => {
+      const m = await freshLoad();
+      const rec = m.loadBlog().find((r) => r.slug === full);
+      assert.ok(rec, "fixture should load");
+      assert.equal(rec.datePublished, "2026-03-02");
+      assert.equal(rec.author, "doug-erb");
+      assert.equal(rec.image, "/images/x.png");
+      assert.deepEqual(rec.keyTakeaways, ["First point.", "Gartner says something."]);
+      assert.deepEqual(rec.howTo.steps.map((s) => s.name), ["Step 1: Do", "Step 2: Check"]);
+      /* The trademark footnote must fire on a mention that lives only in a takeaway. */
+      assert.equal(rec.mentionsGartner, true);
+
+      const b = m.loadBlog().find((r) => r.slug === bare);
+      for (const k of ["datePublished", "author", "image", "keyTakeaways", "howTo"]) {
+        assert.equal(k in b, false, `"${k}" should be absent, not present as undefined`);
+      }
+    }
+  );
+});
+
+test("case studies: byline fields pass through", async () => {
+  const slug = "zz-fixture-study-byline";
+  const body = JSON.stringify({
+    title: "Fixture", client: "Acme", industry: "Technology", pillar: "SPM Operations",
+    outcome: "o", challenge: "c", whatWeDid: "w", results: ["r"], stack: ["s"],
+    legacyUrl: "/case_studies/z", author: "doug-erb", datePublished: "2026-03-02",
+  }, null, 2);
+
+  await withFixtures({ [`case-studies/${slug}.json`]: body }, { caseStudies: [slug] }, async () => {
+    const m = await freshLoad();
+    const rec = m.loadCaseStudies().find((r) => r.slug === slug);
+    assert.equal(rec.author, "doug-erb");
+    assert.equal(rec.datePublished, "2026-03-02");
+  });
+});

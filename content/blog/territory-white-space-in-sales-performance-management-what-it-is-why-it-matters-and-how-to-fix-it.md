@@ -9,6 +9,20 @@ description: >-
 dateModified: '2026-07-11'
 featured: false
 summary: Unallocated territory gaps in SPM frameworks and how to find and fix them.
+howTo:
+  name: 'How to Identify Territory White Space: An Analytical Framework'
+  description: 'Correcting white space begins with visibility. Sales operations and revenue operations teams should conduct a structured territory white space analysis as part of each annual planning cycle and as a mid-year diagnostic. The following framework provides a systematic approach.'
+  steps:
+    - name: 'Step 1: Define Your Total Addressable Market (TAM) with Precision'
+      text: 'Begin by establishing a clear, data-driven definition of your TAM.'
+    - name: 'Step 2: Map Coverage Against TAM'
+      text: 'Once TAM is defined, overlay your current territory assignments.'
+    - name: 'Step 3: Calculate Territory Potential and Balance'
+      text: 'Use your SPM platform to calculate a territory potential score for each assigned territory.'
+    - name: 'Step 4: Segment White Space by Priority'
+      text: 'Not all white space is equally worth pursuing. Segment identified white space by estimated revenue potential, sales cycle complexity, competitive intensity, and strategic alignment.'
+    - name: 'Step 5: Validate with Field Intelligence'
+      text: 'Data analysis should be validated with input from frontline sales managers and experienced reps.'
 faq:
   - question: What is the difference between territory white space and market expansion?
     answer: >-
