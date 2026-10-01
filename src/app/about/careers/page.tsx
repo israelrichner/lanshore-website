@@ -31,7 +31,7 @@ export default function CareersPage() {
           </p>
           <h1 className="text-4xl font-bold sm:text-5xl">Careers</h1>
           <p className="mt-6 text-lg text-white/75">
-            AI Assisted SPM by Lanshore is built by people who know comp from the inside —
+            AI Assisted SPM by Lanshore is built by people who know comp from the inside:
             consultants, comp analysts, and engineers who want their work in production,
             not in a deck.
           </p>
@@ -64,8 +64,8 @@ export default function CareersPage() {
             No open role listed that fits? Send your background to{" "}
             <a href={`mailto:${CONTACT.email}`} className="font-semibold text-accent">
               {CONTACT.email}
-            </a>{" "}
-            — we read every one.
+            </a>
+            . We read every one.
           </p>
         )}
       </section>

@@ -9,7 +9,7 @@ import { breadcrumbSchema, faqSchema, serviceSchema, type FaqItem } from "@/lib/
 export const metadata: Metadata = {
   title: "Automation & Integration Services | Lanshore",
   description:
-    "Tool-agnostic automation delivery: UiPath and Power Automate RPA, n8n workflow orchestration, agentic development with Claude Code and VS Code, and direct API integrations — whatever tools your team prefers.",
+    "Tool-agnostic automation delivery on whatever tools your team prefers: UiPath and Power Automate RPA, n8n workflow orchestration, agentic development with Claude Code and VS Code, and direct API integrations.",
   alternates: { canonical: "/services/automation" },
   openGraph: {
     siteName: "Lanshore",
@@ -26,7 +26,7 @@ const TOOLING = [
   {
     icon: Bot,
     name: "UiPath",
-    body: "Enterprise RPA from a UiPath Fast Track Partner: process assessment, bot development, deployment, and hypercare — 15+ years of automation delivery.",
+    body: "Enterprise RPA from a UiPath Fast Track Partner: process assessment, bot development, deployment, and hypercare, backed by 15+ years of automation delivery.",
   },
   {
     icon: Workflow,
@@ -36,35 +36,35 @@ const TOOLING = [
   {
     icon: Code2,
     name: "Claude Code & VS Code",
-    body: "Agentic development: AI coding agents that build, test, and maintain automations and integrations — supervised by senior Lanshore engineers.",
+    body: "Agentic development: AI coding agents that build, test, and maintain automations and integrations, supervised by senior Lanshore engineers.",
   },
   {
     icon: Cpu,
     name: "Microsoft Power Automate",
-    body: "Microsoft-stack automation from a Microsoft Certified Partner — flows that live where your organization already works: Teams, SharePoint, Dynamics, Excel.",
+    body: "Microsoft-stack automation from a Microsoft Certified Partner, with flows that live where your organization already works: Teams, SharePoint, Dynamics, Excel.",
   },
   {
     icon: Plug,
     name: "Direct API & MCP integrations",
-    body: "When a platform exposes an API or MCP server, we integrate it directly — no middleware tax, no batch exports, real-time data for your agents.",
+    body: "When a platform exposes an API or MCP server, we integrate it directly: no middleware tax, no batch exports, real-time data for your agents.",
   },
 ];
 
 const ROADMAP = [
   {
     step: "01",
-    title: "RPA — automate the repetitive",
+    title: "RPA: automate the repetitive",
     body: "Deterministic bots for structured, rules-based work: invoice processing, claims, commission reconciliation. Fast ROI, proven tooling.",
   },
   {
     step: "02",
-    title: "Orchestration — connect the stack",
-    body: "Workflows that move data across CRM, ERP, SPM, and finance systems reliably — the integration layer most automation programs are missing.",
+    title: "Orchestration: connect the stack",
+    body: "Workflows that move data across CRM, ERP, SPM, and finance systems reliably: the integration layer most automation programs are missing.",
   },
   {
     step: "03",
-    title: "Agentic AI — automate the judgment calls",
-    body: "AI agents that handle variation, reason over unstructured data, and escalate when unsure — with human-in-the-loop controls on high-stakes decisions.",
+    title: "Agentic AI: automate the judgment calls",
+    body: "AI agents that handle variation, reason over unstructured data, and escalate when unsure, with human-in-the-loop controls on high-stakes decisions.",
   },
 ];
 
@@ -72,17 +72,17 @@ const AUTOMATION_FAQ: FaqItem[] = [
   {
     question: "Which automation tools does Lanshore work with?",
     answer:
-      "All the major ones: UiPath and Microsoft Power Automate for RPA, n8n for workflow orchestration, Claude Code and VS Code for agentic development, plus direct API and MCP integrations. We're tool-agnostic — we build on the stack your team prefers and already trusts.",
+      "All the major ones: UiPath and Microsoft Power Automate for RPA, n8n for workflow orchestration, Claude Code and VS Code for agentic development, plus direct API and MCP integrations. We're tool-agnostic: we build on the stack your team prefers and already trusts.",
   },
   {
     question: "What's the difference between RPA and agentic AI?",
     answer:
-      "RPA replays fixed steps and excels at structured, rules-based work but breaks when screens or formats change. Agentic AI works toward an outcome, handles variation, reasons over unstructured data, and escalates when unsure. We've delivered automation for 15+ years — RPA since its earliest enterprise wave, agentic AI as the technology matured — and use each where it fits, often together.",
+      "RPA replays fixed steps and excels at structured, rules-based work but breaks when screens or formats change. Agentic AI works toward an outcome, handles variation, reasons over unstructured data, and escalates when unsure. We've delivered automation for 15+ years (RPA since its earliest enterprise wave, agentic AI as the technology matured) and use each where it fits, often together.",
   },
   {
     question: "We have an existing UiPath estate. Can Lanshore take it over?",
     answer:
-      "Yes. We provide RPA support and managed services for existing bot estates — stabilizing, documenting, and extending them — and we can chart the roadmap from RPA to agentic automation when you're ready.",
+      "Yes. We provide RPA support and managed services for existing bot estates (stabilizing, documenting, and extending them), and we can chart the roadmap from RPA to agentic automation when you're ready.",
   },
   {
     question: "Do we need to buy new software to start?",
@@ -121,9 +121,9 @@ export default function AutomationServicesPage() {
           </h1>
           {/* Direct answer paragraph for answer-engine extraction */}
           <p className="mt-6 text-lg text-white/75">
-            Lanshore delivers automation on whatever tools your team prefers — UiPath,
+            Lanshore delivers automation on whatever tools your team prefers (UiPath,
             n8n, Claude Code, VS Code, Microsoft Power Automate, or direct API and MCP
-            integrations — from RPA bots to fully agentic AI workflows. We do it all, on
+            integrations), from RPA bots to fully agentic AI workflows. We do it all, on
             your stack, with 15+ years of enterprise delivery behind it.
           </p>
         </div>
@@ -137,7 +137,7 @@ export default function AutomationServicesPage() {
         <p className="mb-10 max-w-2xl text-muted">
           Tool religion is expensive. We hold certifications and delivery experience
           across the automation landscape so the tool choice can follow your
-          requirements — not the other way around.
+          requirements, not the other way around.
         </p>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {TOOLING.map(({ icon: Icon, name, body }) => (
@@ -159,7 +159,7 @@ export default function AutomationServicesPage() {
       <section className="bg-paper">
         <div className="container-site py-16">
           <h2 className="mb-2 text-2xl font-black text-ink sm:text-3xl">
-            From RPA to agentic AI — one roadmap
+            From RPA to agentic AI: one roadmap
           </h2>
           <p className="mb-10 max-w-2xl text-muted">
             Most automation programs stall between the pilot and the payoff. We sequence
@@ -195,7 +195,7 @@ export default function AutomationServicesPage() {
             </h2>
             <ul className="space-y-3">
               {[
-                "Process assessment — automation candidates ranked by ROI and feasibility, documented as a roadmap",
+                "Process assessment: automation candidates ranked by ROI and feasibility, documented as a roadmap",
                 "Design agreed with your team before a line of code is written",
                 "Build by certified developers and supervised AI coding agents, with full documentation",
                 "Managed deployment, cutover planning, and hypercare",
@@ -245,7 +245,7 @@ export default function AutomationServicesPage() {
         </div>
       </section>
 
-      <FaqSection items={AUTOMATION_FAQ} heading="Automation & Integration — FAQ" />
+      <FaqSection items={AUTOMATION_FAQ} heading="Automation & Integration: FAQ" />
 
       <CtaBand
         heading="Get an Automation Assessment"

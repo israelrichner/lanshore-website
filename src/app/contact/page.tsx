@@ -90,7 +90,7 @@ export default function ContactPage() {
               Prefer to grab time directly?
             </h2>
             <p className="mt-3 max-w-2xl text-muted">
-              Book a 30-minute SPM assessment. Pick a slot that works — we&rsquo;ll
+              Book a 30-minute SPM assessment. Pick a slot that works; we&rsquo;ll
               send a calendar invite.
             </p>
             <div className="mt-8">

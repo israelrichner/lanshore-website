@@ -23,7 +23,7 @@ const PARTNERS = [
     name: "Microsoft Certified Partner",
     href: "/services/automation",
     cta: "Microsoft automation services",
-    body: "Gold-level competency across the Microsoft stack means the Power Automate flows, Azure infrastructure, and integrations we build for clients follow supported patterns Microsoft will stand behind — and your IT team can maintain them.",
+    body: "Gold-level competency across the Microsoft stack means the Power Automate flows, Azure infrastructure, and integrations we build for clients follow supported patterns Microsoft will stand behind, and your IT team can maintain them.",
   },
   {
     name: "UiPath Fast Track Partner",
@@ -59,19 +59,19 @@ const PARTNERS = [
     name: "SAP",
     href: "/spm/sap-incentive-management",
     cta: "Lanshore + SAP Incentive Management",
-    body: "Partnership on SAP SuccessFactors Incentive Management (formerly SAP Commissions, CallidusCloud) for enterprises running comp inside the SAP ecosystem — implementations, upgrades, and managed operations.",
+    body: "Partnership on SAP SuccessFactors Incentive Management (formerly SAP Commissions, CallidusCloud) for enterprises running comp inside the SAP ecosystem: implementations, upgrades, and managed operations.",
   },
   {
     name: "Anaplan",
     href: "/spm/anaplan",
     cta: "Lanshore + Anaplan",
-    body: "Partnership covering Anaplan's SPM applications — territory and quota planning, capacity modeling, and incentive compensation. We build Anaplan models for clients who want sales planning connected to enterprise planning, and we wire those plans back to whichever ICM engine does the calculation.",
+    body: "Partnership covering Anaplan's SPM applications: territory and quota planning, capacity modeling, and incentive compensation. We build Anaplan models for clients who want sales planning connected to enterprise planning, and we wire those plans back to whichever ICM engine does the calculation.",
   },
   {
     name: "Akeron",
     href: "/spm/akeron",
     cta: "Lanshore + Akeron",
-    body: "Implementation partnership on Vulki by Akeron, which handles variable compensation for sales and non-sales populations alike and embeds the Akyba agent center. We deliver Vulki rollouts end to end — plan design, configuration, data integration, and go-live.",
+    body: "Implementation partnership on Vulki by Akeron, which handles variable compensation for sales and non-sales populations alike and embeds the Akyba agent center. We deliver Vulki rollouts end to end: plan design, configuration, data integration, and go-live.",
   },
   {
     name: "Incentivate",
@@ -91,7 +91,7 @@ export default function PartnersPage() {
           </p>
           <h1 className="text-4xl font-bold sm:text-5xl">Partners</h1>
           <p className="mt-6 text-lg text-white/75">
-            Lanshore partners across the platforms AI Assisted SPM runs on — so clients get
+            Lanshore partners across the platforms AI Assisted SPM runs on, so clients get
             supported patterns, vendor escalation paths, and consultants the vendors
             know.
           </p>

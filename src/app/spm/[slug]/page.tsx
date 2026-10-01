@@ -134,7 +134,7 @@ export default async function SpmPlatformPage({
         <div className="mt-12 rounded-xl bg-teal-light p-6 sm:p-8">
           <h2 className="text-2xl font-black text-ink">Lanshore + {platform.name}</h2>
           <p className="mt-2 text-sm text-muted">
-            Implementation, managed services, and agentic augmentation — from the team
+            Implementation, managed services, and agentic augmentation, from the team
             behind{" "}
             <Link
               href="/agentic-spm/executive-dashboards"
@@ -178,11 +178,11 @@ export default async function SpmPlatformPage({
         </p>
       </section>
 
-      <FaqSection items={platform.faq} heading={`${platform.name} — FAQ`} />
+      <FaqSection items={platform.faq} heading={`${platform.name}: FAQ`} />
 
       <CtaBand
         heading={`Talk to ${platform.name} specialists`}
-        body="A 30-minute call. We look at your stack, your plans, and whether this platform — or another — fits best."
+        body="A 30-minute call. We look at your stack, your plans, and whether this platform, or another, fits best."
         {...(process.env.HUBSPOT_MEETINGS_URL
           ? { secondaryHref: "/contact#book", secondaryLabel: "Book a call" }
           : {})}

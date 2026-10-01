@@ -23,8 +23,8 @@ export default function PrivacyPage() {
       <h1 className="text-3xl font-bold text-ink">Privacy Policy</h1>
       <div className="mt-6 space-y-4 text-muted">
         <p>
-          Lanshore collects only the information you submit through this site — typically
-          your name, work email, company, and message — and uses it to respond to your
+          Lanshore collects only the information you submit through this site (typically
+          your name, work email, company, and message) and uses it to respond to your
           inquiry. We do not sell or share this information with third parties for
           marketing purposes.
         </p>
@@ -51,21 +51,21 @@ export default function PrivacyPage() {
         </p>
         <ul className="list-disc space-y-2 pl-6">
           <li>
-            <code className="text-sm text-ink">hubspotutk</code> — visitor identity for
+            <code className="text-sm text-ink">hubspotutk</code>: visitor identity for
             form attribution and contact timeline
           </li>
           <li>
-            <code className="text-sm text-ink">__hstc</code> — main tracking cookie
+            <code className="text-sm text-ink">__hstc</code>: main tracking cookie
             (domain, UTK, initial/last/current timestamps, session count)
           </li>
           <li>
-            <code className="text-sm text-ink">__hssc</code> — session tracking
+            <code className="text-sm text-ink">__hssc</code>: session tracking
           </li>
           <li>
-            <code className="text-sm text-ink">__hssrc</code> — session restart marker
+            <code className="text-sm text-ink">__hssrc</code>: session restart marker
           </li>
           <li>
-            <code className="text-sm text-ink">messagesUtk</code> — chat widget visitor
+            <code className="text-sm text-ink">messagesUtk</code>: chat widget visitor
             identity (when live chat is enabled)
           </li>
         </ul>

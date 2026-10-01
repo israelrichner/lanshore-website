@@ -42,10 +42,10 @@ export default function OperationsDemoPage() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             This is the SPM Operations pillar of AI Assisted SPM by Lanshore, running on
-            Meridian Trust Bank — a fictitious regional financial institution. Two
+            Meridian Trust Bank, a fictitious regional financial institution. Two
             scenarios: the June comp cycle executed by agents with humans approving what
             matters, and a live migration from Xactly Incent to Varicent ICM. Try the
-            exception queue — approve a fix and watch it apply.
+            exception queue: approve a fix and watch it apply.
           </p>
         </div>
       </section>
@@ -68,7 +68,7 @@ export default function OperationsDemoPage() {
         <p className="text-muted">
           In the <strong className="text-ink">agent-run cycle</strong>, agents execute
           data loads, calculation runs, and validations on schedule, and route the three
-          things that need judgment to a queue with suggested fixes — every action logged
+          things that need judgment to a queue with suggested fixes, every action logged
           with timestamp and approver. In the{" "}
           <strong className="text-ink">vendor migration</strong>, agents translate plan
           rules between platforms and prove correctness with parallel runs before
@@ -76,7 +76,7 @@ export default function OperationsDemoPage() {
           equivalent. Same team, both jobs.
         </p>
         <p className="mt-6 text-muted">
-          This demo is one pillar of AI Assisted SPM by Lanshore — read more about{" "}
+          This demo is one pillar of AI Assisted SPM by Lanshore. Read more about{" "}
           <Link href="/agentic-spm/operations" className="font-semibold text-accent">
             SPM Operations
           </Link>
@@ -94,7 +94,7 @@ export default function OperationsDemoPage() {
 
       <CtaBand
         heading="Want your cycle to run like this?"
-        body="Most engagements deliver the first agent-run cycle in six to ten weeks — migrations are scoped after a platform assessment."
+        body="Most engagements deliver the first agent-run cycle in six to ten weeks; migrations are scoped after a platform assessment."
       />
     </>
   );

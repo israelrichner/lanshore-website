@@ -48,7 +48,7 @@ export default function DemoPage() {
           <h1 className="text-4xl font-bold sm:text-5xl">See it with your own numbers</h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             This is the Executive Dashboards pillar of AI Assisted SPM by Lanshore, running on
-            Meridian Trust Bank — a fictitious regional financial institution. Pick your
+            Meridian Trust Bank, a fictitious regional financial institution. Pick your
             role and see what the dashboard answers for you. Every figure below is
             illustrative; on an engagement, this runs on your comp platform, CRM, and
             finance data.
@@ -96,7 +96,7 @@ export default function DemoPage() {
           </tbody>
         </table>
         <p className="mt-6 text-muted">
-          This demo is one pillar of AI Assisted SPM by Lanshore — read more about{" "}
+          This demo is one pillar of AI Assisted SPM by Lanshore. Read more about{" "}
           <Link href="/agentic-spm/executive-dashboards" className="font-semibold text-accent">
             Executive Dashboards
           </Link>

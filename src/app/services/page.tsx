@@ -6,14 +6,14 @@ import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "SPM Implementation, Managed Services & AI Development | Lanshore",
   description:
-    "Lanshore's services are how AI Assisted SPM gets delivered — from platform implementation to ongoing managed operations. One team from platform selection to agents in production.",
+    "Lanshore's services are how AI Assisted SPM gets delivered, from platform implementation to ongoing managed operations. One team from platform selection to agents in production.",
   alternates: { canonical: "/services" },
   openGraph: {
     siteName: "Lanshore",
     locale: "en_US",
     title: "SPM Implementation, Managed Services & AI Development | Lanshore",
     description:
-      "From platform implementation to ongoing managed operations — one team from platform selection to agents in production.",
+      "From platform implementation to ongoing managed operations: one team from platform selection to agents in production.",
     url: "/services",
     type: "website",
   },
@@ -31,14 +31,14 @@ const SERVICES = [
     title: "Managed Services",
     href: "/contact",
     description:
-      "We run your comp operations — increasingly with agents doing the repetitive work and our team handling judgment calls — for a predictable monthly fee.",
+      "We run your comp operations, increasingly with agents doing the repetitive work and our team handling judgment calls, for a predictable monthly fee.",
     cta: "Talk to us →",
   },
   {
     title: "Automation & Integration",
     href: "/services/automation",
     description:
-      "Tool-agnostic automation delivery: UiPath, n8n, Claude Code, VS Code, Microsoft Power Automate, and direct API integrations — from RPA bots to agentic workflows.",
+      "Tool-agnostic automation delivery: UiPath, n8n, Claude Code, VS Code, Microsoft Power Automate, and direct API integrations, from RPA bots to agentic workflows.",
     cta: "Explore automation services →",
   },
   {
@@ -63,7 +63,7 @@ export default function ServicesPage() {
       <JsonLd
         data={serviceSchema(
           "SPM Implementation, Managed Services & Agentic AI Development",
-          "Lanshore's services are how AI Assisted SPM gets delivered — from SPM platform implementation and managed comp operations to vendor evaluation and custom agentic AI development.",
+          "Lanshore's services are how AI Assisted SPM gets delivered, from SPM platform implementation and managed comp operations to vendor evaluation and custom agentic AI development.",
           "/services",
           SERVICES.map((service) => ({
             name: service.title,
@@ -85,7 +85,7 @@ export default function ServicesPage() {
           </p>
           <h1 className="text-4xl font-black sm:text-5xl">How we deliver AI Assisted SPM</h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
-            Lanshore&rsquo;s services are how AI Assisted SPM gets delivered — from platform
+            Lanshore&rsquo;s services are how AI Assisted SPM gets delivered, from platform
             implementation to ongoing managed operations. One team takes you from platform
             selection to agents in production. No handoffs between a &ldquo;strategy
             firm&rdquo; and a &ldquo;delivery shop.&rdquo;

@@ -111,7 +111,7 @@ export default async function CaseStudyDetail({
                 href={relatedPillar.path}
                 className="font-semibold text-accent hover:text-accent-hover"
               >
-                {relatedPillar.name} — AI Assisted SPM by Lanshore
+                {relatedPillar.name}, part of AI Assisted SPM by Lanshore
               </Link>
             </>
           ) : (

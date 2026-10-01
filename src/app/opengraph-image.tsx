@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "AI Assisted SPM by Lanshore — AI Agents for Sales Performance Management";
+export const alt = "AI Assisted SPM by Lanshore: AI Agents for Sales Performance Management";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
