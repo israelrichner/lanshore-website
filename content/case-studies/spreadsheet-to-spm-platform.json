@@ -4,7 +4,7 @@
   "industry": "Technology & Digital",
   "pillar": "Services",
   "outcome": "Variable pay administration moved off Excel onto a governed platform",
-  "challenge": "Variable pay was administered in Excel. The spreadsheets couldn't keep up with plan complexity, and errors were eroding rep trust — but the team was wary of change.",
+  "challenge": "Variable pay was administered in Excel. The spreadsheets couldn't keep up with plan complexity, and errors were eroding rep trust, but the team was wary of change.",
   "whatWeDid": "We implemented an SPM platform sized to the plans, migrated the spreadsheet logic, and ran change management so admins and reps came along.",
   "results": [
     "Excel-based comp administration retired",
