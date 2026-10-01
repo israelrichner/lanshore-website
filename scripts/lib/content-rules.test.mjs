@@ -560,8 +560,8 @@ test("howTo: a non-object or a missing name is rejected", () => {
 
 test("mirror: an FAQ whose question and answer are in the body passes, through Markdown formatting", () => {
   const post = okBlog();
-  post.body = "## FAQ\n\n### Can it be **automated**?\n\nYes — to a [significant](https://x.example) degree.";
-  post.faq = [{ question: "Can it be automated?", answer: "Yes — to a significant degree." }];
+  post.body = "## FAQ\n\n### Can it be **automated**?\n\nYes, to a [significant](https://x.example) degree.";
+  post.faq = [{ question: "Can it be automated?", answer: "Yes, to a significant degree." }];
   assert.deepEqual(validateBlogPost(post, "a-post"), []);
 });
 
@@ -597,4 +597,37 @@ test("mirror: step text missing from the body is rejected", () => {
   const post = howToPost();
   post.howTo.steps[0].text = "Something the body never says.";
   assert.ok(has(validateBlogPost(post, "a-post"), "howTo.steps[0] text does not appear in the body"));
+});
+
+/* ------------------------------------------------------------------ *
+ * House style: no em dashes, in any field, in every collection
+ * ------------------------------------------------------------------ */
+
+import { EM_DASH } from "./house-style.mjs";
+
+test("house style: an em dash in a blog body or FAQ answer is rejected, naming the field", () => {
+  const post = okBlog();
+  post.body = `## Heading\n\nSome prose ${EM_DASH} with a dash.`;
+  assert.ok(has(validateBlogPost(post, "a-post"), '"body" contains an em dash'));
+
+  const faqPost = okBlog();
+  faqPost.faq = [{ question: "Q?", answer: `A ${EM_DASH} B.` }];
+  faqPost.body += `\n\n### Q?\n\nA ${EM_DASH} B.`;
+  assert.ok(has(validateBlogPost(faqPost, "a-post"), '"faq[0].answer" contains an em dash'));
+});
+
+test("house style: case studies and white papers are covered too", () => {
+  const study = okCaseStudy();
+  study.outcome = `Faster ${EM_DASH} and cheaper.`;
+  assert.ok(has(validateCaseStudy(study, "a-study"), '"outcome" contains an em dash'));
+
+  const paper = okWhitePaper();
+  paper.description = `About ${EM_DASH} things.`;
+  assert.ok(has(validateWhitePaper(paper, "a-paper"), '"description" contains an em dash'));
+});
+
+test("house style: en dashes in number ranges are allowed", () => {
+  const post = okBlog();
+  post.body = "## Heading\n\nCosts fell 20–30% in year one.";
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
 });

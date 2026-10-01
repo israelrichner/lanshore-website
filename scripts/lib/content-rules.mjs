@@ -18,6 +18,7 @@
 
 import { normalize, containsPhrase, markdownText, markdownHeadings } from "./schema-mirror.mjs";
 import { headingId } from "../../src/lib/heading-id.mjs";
+import { findInRecord } from "./house-style.mjs";
 
 export const SLUG_RE = /^[a-z0-9][a-z0-9-]*$/;
 export const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -373,6 +374,20 @@ function validateBodyMirror(record, where, errors) {
   }
 }
 
+/**
+ * House style: no em dashes in any field (owner decision, plan WP7). Checked
+ * here as well as over the build output so a studio editor sees the problem
+ * in the pre-save list instead of as a failed deploy.
+ */
+function validateHouseStyle(record, where, errors) {
+  for (const field of findInRecord(record)) {
+    errors.push(
+      `${where}: "${field}" contains an em dash (U+2014). House style uses none: ` +
+        `use a comma, colon, parentheses, or a new sentence.`
+    );
+  }
+}
+
 /* ------------------------------------------------------------------ *
  * Per-collection field validation
  * ------------------------------------------------------------------ */
@@ -424,6 +439,7 @@ export function validateBlogPost(record, slug) {
   if (record.publishedOnce !== undefined && typeof record.publishedOnce !== "boolean") {
     errors.push(`${where}: "publishedOnce" must be a boolean when present`);
   }
+  validateHouseStyle(record, where, errors);
   return errors;
 }
 
@@ -456,6 +472,7 @@ export function validateCaseStudy(record, slug) {
   if (record.publishedOnce !== undefined && typeof record.publishedOnce !== "boolean") {
     errors.push(`${where}: "publishedOnce" must be a boolean when present`);
   }
+  validateHouseStyle(record, where, errors);
   return errors;
 }
 
@@ -485,6 +502,7 @@ export function validateWhitePaper(record, slug) {
   if (record.publishedOnce !== undefined && typeof record.publishedOnce !== "boolean") {
     errors.push(`${where}: "publishedOnce" must be a boolean when present`);
   }
+  validateHouseStyle(record, where, errors);
   return errors;
 }
 
