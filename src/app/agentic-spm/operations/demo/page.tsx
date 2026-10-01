@@ -51,6 +51,12 @@ export default function OperationsDemoPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        {/* The demo's stage titles are h3. Without this h2 the outline jumps
+            h1 to h3, which breaks the screen-reader outline and the document
+            structure answer engines read. */}
+        <h2 className="mb-6 text-2xl font-bold text-ink">
+          Inside the Lanshore comp operations run
+        </h2>
         <OperationsDemo />
         <p className="mt-4 text-center text-xs text-muted">
           Meridian Trust Bank is fictitious; all data on this page is illustrative.

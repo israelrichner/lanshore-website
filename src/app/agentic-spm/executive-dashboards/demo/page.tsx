@@ -57,6 +57,12 @@ export default function DemoPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        {/* The dashboard's panel titles are h3. Without this h2 the outline
+            jumps h1 to h3, which breaks the screen-reader outline and the
+            document structure answer engines read. */}
+        <h2 className="mb-6 text-2xl font-bold text-ink">
+          Inside the Lanshore executive dashboard
+        </h2>
         {/* DemoDashboard reads ?persona= via useSearchParams, which requires a
             Suspense boundary while the page prerenders. */}
         <Suspense
