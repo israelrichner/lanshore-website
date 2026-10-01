@@ -9,7 +9,7 @@ export default function ContactForm() {
   if (status === "sent") {
     return (
       <div className="rounded-md border border-line bg-paper p-8 text-center">
-        <p className="text-lg font-semibold text-ink">Thanks — we got it.</p>
+        <p className="text-lg font-semibold text-ink">Thanks, we got it.</p>
         <p className="mt-2 text-muted">We respond within one business day.</p>
       </div>
     );

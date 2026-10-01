@@ -28,7 +28,7 @@ const AI_PROBLEMS = [
 const AI_SOLUTIONS = [
   "Full process automation that unlocks ROI beyond simple task automation",
   "AI integration that handles unstructured data seamlessly",
-  "Greater scalability — AI agents learn from variations and adapt automatically",
+  "Greater scalability: AI agents learn from variations and adapt automatically",
   "Enhanced decision-making powered by complex real-time data analysis",
 ];
 

@@ -25,47 +25,47 @@ const TABS: { id: Tab; label: string; icon: string }[] = [
    Every rate × base must equal its amount — CalculatorView runs the same plan. */
 const STATEMENT_LINES = [
   {
-    item: "Base commission — $290K to quota @ 0.85%",
+    item: "Base commission: $290K to quota @ 0.85%",
     amount: 2465,
     trace: {
-      deal: "4 facilities funded in June before the quota crossing — largest: Brightline Capital (60% split with T. Nguyen)",
-      clause: "Plan §2.1 — base rate, 0.85% to 100% of quota",
+      deal: "4 facilities funded in June before the quota crossing; largest: Brightline Capital (60% split with T. Nguyen)",
+      clause: "Plan §2.1: base rate, 0.85% to 100% of quota",
       run: "Calc run #149 · Jun 30, 02:47",
     },
   },
   {
-    item: "Accelerator — $190K above quota @ 1.25%",
+    item: "Accelerator: $190K above quota @ 1.25%",
     amount: 2375,
     trace: {
       deal: "Quota ($2.4M) crossed Jun 9 with the Meridian Grain facility; $190K funded above it",
-      clause: "Plan §2.3 — 1.25% accelerator above 100%, uncapped to 200%",
+      clause: "Plan §2.3: 1.25% accelerator above 100%, uncapped to 200%",
       run: "Calc run #149 · Jun 30, 02:47",
     },
   },
   {
-    item: "Treasury referral SPIF — 3 referrals @ $150",
+    item: "Treasury referral SPIF: 3 referrals @ $150",
     amount: 450,
     trace: {
       deal: "Referrals accepted: Brightline Capital, Gulfstream Logistics, Pier & Main",
-      clause: "Plan §3.4 — $150 per accepted treasury referral",
+      clause: "Plan §3.4: $150 per accepted treasury referral",
       run: "Calc run #149 · referral log synced Jun 28",
     },
   },
   {
-    item: "Clawback — Hartwell Logistics early paydown",
+    item: "Clawback: Hartwell Logistics early paydown",
     amount: -1840,
     trace: {
-      deal: "Hartwell Logistics facility — funded Mar 4, borrower paydown May 22 (day 79 of the 90-day window)",
-      clause: "Plan §5.1 — clawback inside 90 days of funding",
+      deal: "Hartwell Logistics facility: funded Mar 4, borrower paydown May 22 (day 79 of the 90-day window)",
+      clause: "Plan §5.1: clawback inside 90 days of funding",
       run: "Calc run #149 · validation check #221",
     },
   },
   {
-    item: "Draw recovery — month 4 of 6",
+    item: "Draw recovery: month 4 of 6",
     amount: -500,
     trace: {
       deal: "Recovery month 4 of 6 · $1,000 balance remains after this deduction",
-      clause: "Plan §4.2 — draw recovery, negative carryforward",
+      clause: "Plan §4.2: draw recovery, negative carryforward",
       run: "Recovery schedule R-2211",
     },
   },
@@ -182,17 +182,17 @@ const BOT_SCRIPT: BotItem[] = [
   {
     question: "Why is my June payout lower than May?",
     answer:
-      "Your June statement includes a $1,840 clawback on the Hartwell Logistics facility — it closed in March and was paid down early on May 22, inside the 90-day clawback window (plan §5.1). Your base commission is actually up 6% month-over-month. Without the clawback, June would have been $4,790.",
+      "Your June statement includes a $1,840 clawback on the Hartwell Logistics facility. It closed in March and was paid down early on May 22, inside the 90-day clawback window (plan §5.1). Your base commission is actually up 6% month-over-month. Without the clawback, June would have been $4,790.",
     followUps: [
       {
         question: "Can I dispute the Hartwell clawback?",
         answer:
-          "You can, but the data says it will likely be denied: the facility closed March 4 and paid down May 22 — day 79 of the 90-day window in plan §5.1, with no carve-out for borrower-initiated paydowns. If you still want to file, I'll open a dispute with the deal record, the payoff notice, and the clause reference attached, so the comp admin sees full context.",
+          "You can, but the data says it will likely be denied: the facility closed March 4 and paid down May 22, day 79 of the 90-day window in plan §5.1, with no carve-out for borrower-initiated paydowns. If you still want to file, I'll open a dispute with the deal record, the payoff notice, and the clause reference attached, so the comp admin sees full context.",
         followUps: [
           {
             question: "File the dispute anyway",
             answer:
-              "Done — dispute #D-2214 is open with the Hartwell deal record, the May 22 payoff notice, and plan §5.1 attached. The comp admin has everything they need; average decision time is under 48 hours, and I'll notify you here either way.",
+              "Done. Dispute #D-2214 is open with the Hartwell deal record, the May 22 payoff notice, and plan §5.1 attached. The comp admin has everything they need; average decision time is under 48 hours, and I'll notify you here either way.",
           },
         ],
       },
@@ -201,17 +201,17 @@ const BOT_SCRIPT: BotItem[] = [
   {
     question: "Am I getting credit for the Brightline deal?",
     answer:
-      "Yes. Brightline Capital is split 60/40 with T. Nguyen under the treasury referral rule (plan §3.4). Your 60% — $412K of funded volume — posts with the June calc run and appears on this statement in your base commission line. The split was verified against the crediting hierarchy on Jun 1.",
+      "Yes. Brightline Capital is split 60/40 with T. Nguyen under the treasury referral rule (plan §3.4). Your 60% ($412K of funded volume) posts with the June calc run and appears on this statement in your base commission line. The split was verified against the crediting hierarchy on Jun 1.",
   },
   {
     question: "How does my accelerator work?",
     answer:
-      "Once your funded volume passes 100% of quota ($2.4M), every dollar above it pays 1.25% instead of 0.85%. You're at $2.59M, so $190K is earning the accelerated rate — worth $2,375 this quarter so far. There's no cap until 200% of quota.",
+      "Once your funded volume passes 100% of quota ($2.4M), every dollar above it pays 1.25% instead of 0.85%. You're at $2.59M, so $190K is earning the accelerated rate, worth $2,375 this quarter so far. There's no cap until 200% of quota.",
   },
   {
     question: "When is my draw fully recovered?",
     answer:
-      "You're in month 4 of a 6-month recovery at $500/month, so $1,000 remains — July and August are the last deductions. From September your statement shows no draw line, which at your current pace puts your net payout around $3,450/month. If a month's earnings ever fall below the recovery amount, the balance carries forward instead of going negative (plan §4.2).",
+      "You're in month 4 of a 6-month recovery at $500/month, so $1,000 remains; July and August are the last deductions. From September your statement shows no draw line, which at your current pace puts your net payout around $3,450/month. If a month's earnings ever fall below the recovery amount, the balance carries forward instead of going negative (plan §4.2).",
   },
 ];
 
@@ -233,7 +233,7 @@ function BotView() {
   >([
     {
       role: "bot",
-      text: "Hi Ana — I can answer questions about your statement from your plan document and live comp data. Ask me anything, or tap a question below.",
+      text: "Hi Ana, I can answer questions about your statement from your plan document and live comp data. Ask me anything, or tap a question below.",
     },
   ]);
   const [asked, setAsked] = useState<string[]>([]);
@@ -281,7 +281,7 @@ function BotView() {
         </div>
       )}
       <p className="mt-4 text-[11px] text-white/45">
-        Answers come from plan logic and live data — with clause references. Unresolved
+        Answers come from plan logic and live data, with clause references. Unresolved
         questions escalate to the comp admin with full context attached.
       </p>
     </div>
@@ -292,7 +292,7 @@ function BotView() {
 
 const WORKFLOWS = [
   {
-    title: "Q3 Treasury SPIF — Gulf Coast push",
+    title: "Q3 Treasury SPIF: Gulf Coast push",
     requested: "RevOps · Jun 12",
     steps: [
       { step: "Submitted with cost model ($38K est.)", status: "done", who: "R. Vance, RevOps" },
@@ -302,7 +302,7 @@ const WORKFLOWS = [
     ],
   },
   {
-    title: "Quota relief — Windward account bankruptcy",
+    title: "Quota relief: Windward account bankruptcy",
     requested: "District mgr · Jun 18",
     steps: [
       { step: "Submitted with impact analysis (2 payees)", status: "done", who: "K. Brandt · Jun 18" },
@@ -379,7 +379,7 @@ const PLANS: Plan[] = [
     accelRate: 0.0125,
     spif: 150,
     defaultVolumeM: 2.59,
-    blurb: "0.85% base to quota, 1.25% accelerator above it — uncapped to 200%.",
+    blurb: "0.85% base to quota, 1.25% accelerator above it, uncapped to 200%.",
   },
   {
     id: "treasury-sales",
@@ -389,7 +389,7 @@ const PLANS: Plan[] = [
     accelRate: 0.016,
     spif: 200,
     defaultVolumeM: 1.62,
-    blurb: "Leaner 0.70% base with a steep 1.60% accelerator — built for referral velocity.",
+    blurb: "Leaner 0.70% base with a steep 1.60% accelerator, built for referral velocity.",
   },
   {
     id: "wealth-advisor",
@@ -564,13 +564,13 @@ function CalculatorView() {
         </label>
         <div className="mt-6 space-y-2 border-t border-white/10 pt-4 text-sm">
           <div className="flex justify-between text-white/80">
-            <span>Base — up to quota @ {(plan.baseRate * 100).toFixed(2)}%</span>
+            <span>Base: up to quota @ {(plan.baseRate * 100).toFixed(2)}%</span>
             <span className="font-semibold text-white">
               ${Math.round(result.base).toLocaleString("en-US")}
             </span>
           </div>
           <div className="flex justify-between text-white/80">
-            <span>Accelerator — above quota @ {(plan.accelRate * 100).toFixed(2)}%</span>
+            <span>Accelerator: above quota @ {(plan.accelRate * 100).toFixed(2)}%</span>
             <span className="font-semibold text-gold-light">
               ${Math.round(result.accel).toLocaleString("en-US")}
             </span>
@@ -593,7 +593,7 @@ function CalculatorView() {
         <h3 className={panelTitle}>Payout curve · {plan.name} · gold = accelerator zone</h3>
         <PayoutCurve volumeM={volumeM} plan={plan} />
         <p className="mt-3 text-[11px] text-white/45">
-          Switch plans and drag the sliders — the math is each plan document&rsquo;s math,
+          Switch plans and drag the sliders: the math is each plan document&rsquo;s math,
           not a spreadsheet approximation. Purpose-built calculators like this cover draws,
           clawbacks, and edge cases the platform can&rsquo;t model.
         </p>
