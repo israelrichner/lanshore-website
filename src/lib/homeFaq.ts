@@ -8,7 +8,7 @@ export const HOME_FAQ: FaqItem[] = [
   {
     question: "What is AI Assisted SPM?",
     answer:
-      "AI Assisted SPM is Lanshore's approach to sales performance management that uses AI agents — software that completes multi-step work, not just chat. Agents run comp operations, answer executive questions from live data, and power custom apps that fill platform gaps. It runs alongside the SPM platforms you already own.",
+      "AI Assisted SPM is Lanshore's approach to sales performance management that uses AI agents: software that completes multi-step work, not just chat. Agents run comp operations, answer executive questions from live data, and power custom apps that fill platform gaps. It runs alongside the SPM platforms you already own.",
   },
   {
     question: "Why does agentic-build experience matter for SPM?",
@@ -33,7 +33,7 @@ export const HOME_FAQ: FaqItem[] = [
   {
     question: "How is AI Assisted SPM different from my platform's built-in AI features?",
     answer:
-      "Platform AI follows a vendor roadmap inside one product. AI Assisted SPM is built around your end-to-end process — platform, CRM, spreadsheets, and the people who run the cycle — so agents solve your workflow, not only the features a single vendor ships next.",
+      "Platform AI follows a vendor roadmap inside one product. AI Assisted SPM is built around your end-to-end process (platform, CRM, spreadsheets, and the people who run the cycle), so agents solve your workflow, not only the features a single vendor ships next.",
   },
   {
     question: "Do we need to replace our comp platform to use AI Assisted SPM?",
@@ -43,7 +43,7 @@ export const HOME_FAQ: FaqItem[] = [
   {
     question: "What is MCP, and why should buyers care?",
     answer:
-      "MCP (Model Context Protocol) is a standard way for AI agents to connect securely to systems and data. In practice, it means agents can act under your policies with a clearer audit trail — without brittle one-off integrations for every tool.",
+      "MCP (Model Context Protocol) is a standard way for AI agents to connect securely to systems and data. In practice, it means agents can act under your policies with a clearer audit trail, without brittle one-off integrations for every tool.",
   },
   {
     question: "Has Lanshore been named in industry analyst research on SPM implementation partners?",

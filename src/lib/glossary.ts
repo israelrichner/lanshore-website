@@ -19,7 +19,7 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: "AI Assisted SPM",
     definition:
-      "AI Assisted SPM is a term coined by Lanshore for sales performance management operated by AI agents: software that completes multi-step comp tasks — calculations, validations, exception handling, and reporting — autonomously, on top of the SPM platform a company already runs. It covers three areas: executive dashboards, comp operations, and custom applications.",
+      "AI Assisted SPM is a term coined by Lanshore for sales performance management operated by AI agents: software that completes multi-step comp tasks (calculations, validations, exception handling, and reporting) autonomously, on top of the SPM platform a company already runs. It covers three areas: executive dashboards, comp operations, and custom applications.",
     linkTo: "/",
   },
   {
@@ -35,7 +35,7 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: "Agentic AI",
     definition:
-      "AI systems that pursue a goal through multiple steps — planning, using tools, checking results, and adjusting — rather than answering a single prompt. In comp operations, agentic AI can run a data load, validate the output, and escalate exceptions without a human driving each step.",
+      "AI systems that pursue a goal through multiple steps (planning, using tools, checking results, and adjusting) rather than answering a single prompt. In comp operations, agentic AI can run a data load, validate the output, and escalate exceptions without a human driving each step.",
   },
   {
     term: "AI agent",
@@ -45,12 +45,12 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: "Audit trail",
     definition:
-      "The complete, timestamped record of every action taken in a comp process — who or what did it, with what inputs and outputs, and who approved it. Required for SOX and internal audit review of incentive compensation.",
+      "The complete, timestamped record of every action taken in a comp process: who or what did it, with what inputs and outputs, and who approved it. Required for SOX and internal audit review of incentive compensation.",
   },
   {
     term: "Chargeback",
     definition:
-      "The reversal of a commission when the underlying sale unwinds — a canceled order, a returned product, or a churned customer. Chargebacks are netted against future payouts and are a major source of statement disputes.",
+      "The reversal of a commission when the underlying sale unwinds: a canceled order, a returned product, or a churned customer. Chargebacks are netted against future payouts and are a major source of statement disputes.",
   },
   {
     term: "Clawback",
@@ -70,12 +70,12 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: "Crediting",
     definition:
-      "The rules that decide which people get credit for a sale — direct rep, overlay specialist, manager, channel partner — and how much. Crediting logic is usually the most complex part of an SPM implementation, especially with multi-tier or team-selling motions.",
+      "The rules that decide which people get credit for a sale (direct rep, overlay specialist, manager, channel partner) and how much. Crediting logic is usually the most complex part of an SPM implementation, especially with multi-tier or team-selling motions.",
   },
   {
     term: "Dispute (comp dispute)",
     definition:
-      "A rep's formal challenge to a commission statement — a missing deal, a wrong rate, an unexpected chargeback. Dispute volume is a direct signal of comp process quality, and resolving disputes fast is one of the highest-leverage uses of agents in comp operations.",
+      "A rep's formal challenge to a commission statement: a missing deal, a wrong rate, an unexpected chargeback. Dispute volume is a direct signal of comp process quality, and resolving disputes fast is one of the highest-leverage uses of agents in comp operations.",
   },
   {
     term: "Draw",
@@ -85,7 +85,7 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: "Exception handling",
     definition:
-      "The process of catching and resolving records that don't fit the rules — an unmapped territory, a deal with no owner, a negative payout. In agent-run operations, exceptions route to a review queue with suggested fixes instead of failing silently in logs.",
+      "The process of catching and resolving records that don't fit the rules: an unmapped territory, a deal with no owner, a negative payout. In agent-run operations, exceptions route to a review queue with suggested fixes instead of failing silently in logs.",
   },
   {
     term: "Incentive compensation management (ICM)",
@@ -95,17 +95,17 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: "On-target earnings (OTE)",
     definition:
-      "A rep's expected total pay at 100% quota attainment — base salary plus variable compensation at plan. OTE is the headline number in sales offer letters and the anchor for comp plan design.",
+      "A rep's expected total pay at 100% quota attainment: base salary plus variable compensation at plan. OTE is the headline number in sales offer letters and the anchor for comp plan design.",
   },
   {
     term: "Payout curve",
     definition:
-      "The relationship between attainment and payout in a comp plan — where it starts paying, how fast it rises, and where accelerators or caps kick in. The shape of the curve is what actually drives selling behavior.",
+      "The relationship between attainment and payout in a comp plan: where it starts paying, how fast it rises, and where accelerators or caps kick in. The shape of the curve is what actually drives selling behavior.",
   },
   {
     term: "Plan document",
     definition:
-      "The formal document defining a rep's comp plan: measures, rates, quotas, crediting rules, and terms like clawback windows. It's the legal source of truth — when the platform and the plan document disagree, the document wins, which is why implementations start there.",
+      "The formal document defining a rep's comp plan: measures, rates, quotas, crediting rules, and terms like clawback windows. It's the legal source of truth: when the platform and the plan document disagree, the document wins, which is why implementations start there.",
   },
   {
     term: "Quota",
@@ -120,7 +120,7 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: "RPA (robotic process automation)",
     definition:
-      "Software that replays fixed sequences of clicks and keystrokes to automate repetitive tasks. RPA is effective for stable, rule-based processes but breaks when screens or data change — the gap that agentic AI closes by working toward outcomes instead of replaying steps.",
+      "Software that replays fixed sequences of clicks and keystrokes to automate repetitive tasks. RPA is effective for stable, rule-based processes but breaks when screens or data change, the gap that agentic AI closes by working toward outcomes instead of replaying steps.",
   },
   {
     term: "Sales performance management (SPM)",
@@ -130,12 +130,12 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: "SPIF",
     definition:
-      "A short-term sales incentive — Sales Performance Incentive Fund — layered on top of the regular comp plan to push a specific product, segment, or time window. SPIFs are effective but operationally messy: they're launched fast, tracked separately, and reconciled late.",
+      "A short-term sales incentive (Sales Performance Incentive Fund) layered on top of the regular comp plan to push a specific product, segment, or time window. SPIFs are effective but operationally messy: they're launched fast, tracked separately, and reconciled late.",
   },
   {
     term: "Territory management",
     definition:
-      "Defining and maintaining the account, geographic, or segment boundaries each rep sells into. Territory rules feed crediting directly, so territory churn — reps moving, accounts reassigning — is a leading cause of comp errors.",
+      "Defining and maintaining the account, geographic, or segment boundaries each rep sells into. Territory rules feed crediting directly, so territory churn (reps moving, accounts reassigning) is a leading cause of comp errors.",
   },
   {
     term: "True-up",
@@ -145,6 +145,6 @@ export const GLOSSARY: GlossaryTerm[] = [
   {
     term: "Variable compensation",
     definition:
-      "The portion of pay tied to performance — commissions, bonuses, SPIFs — as opposed to base salary. For sales roles it commonly represents 40–50% of on-target earnings, which is why comp accuracy has a direct effect on rep trust and retention.",
+      "The portion of pay tied to performance (commissions, bonuses, SPIFs) as opposed to base salary. For sales roles it commonly represents 40–50% of on-target earnings, which is why comp accuracy has a direct effect on rep trust and retention.",
   },
 ];

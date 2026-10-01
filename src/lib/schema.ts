@@ -99,7 +99,7 @@ export const webSiteSchema = {
   url: SITE_URL,
   name: "Lanshore",
   description:
-    "AI Assisted SPM by Lanshore — sales performance management expertise converged with agentic AI.",
+    "AI Assisted SPM by Lanshore: sales performance management expertise converged with agentic AI.",
   publisher: { "@id": ORG_ID },
 };
 
@@ -109,7 +109,7 @@ export const localBusinessSchemas = [
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": `${SITE_URL}/#localbusiness-us`,
-    name: "Lanshore — United States",
+    name: "Lanshore (United States)",
     parentOrganization: { "@id": ORG_ID },
     url: `${SITE_URL}/contact`,
     telephone: "+1-408-899-0140",
@@ -170,7 +170,7 @@ export function serviceSchema(
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: `AI Assisted SPM by Lanshore — ${pillarName}`,
+    name: `AI Assisted SPM by Lanshore: ${pillarName}`,
     serviceType: pillarName,
     description,
     url: `${SITE_URL}${path}`,
@@ -182,7 +182,7 @@ export function serviceSchema(
     ...(offerings && {
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: `${pillarName} — offerings`,
+        name: `${pillarName}: offerings`,
         itemListElement: offerings.map((offering) => ({
           "@type": "Offer",
           itemOffered: {

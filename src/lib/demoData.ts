@@ -104,18 +104,18 @@ export const CRO_INSIGHTS: AgentInsight[] = [
   {
     id: "gulf-spend-anomaly",
     district: "Gulf Coast",
-    title: "Comp-spend anomaly — Gulf Coast",
+    title: "Comp-spend anomaly: Gulf Coast",
     finding:
       "Accelerator payouts rose 18% month-over-month while district attainment pacing sits at 74%. The spike concentrates in two treasury payees whose crediting splits predate the April realignment.",
     action:
-      "Review crediting splits on the two flagged treasury deals before June statements release — an estimated $22K of June spend is at stake.",
+      "Review crediting splits on the two flagged treasury deals before June statements release; an estimated $22K of June spend is at stake.",
   },
   {
     id: "ne-accelerator-exposure",
     district: "Northeast",
-    title: "Accelerator exposure — Northeast",
+    title: "Accelerator exposure: Northeast",
     finding:
-      "If Northeast finishes above 102% attainment, accelerator tiers add an estimated $42K over the June projection — 71% of it from three commercial lending payees.",
+      "If Northeast finishes above 102% attainment, accelerator tiers add an estimated $42K over the June projection, 71% of it from three commercial lending payees.",
     action:
       "Hold $42K of accrual headroom for Northeast in the June close. No plan change recommended; exposure is within design intent.",
   },
@@ -142,12 +142,12 @@ export type BucketRep = {
 /* Representative payees per histogram bucket (sampled from the 170). */
 export const BUCKET_REPS: Record<string, BucketRep[]> = {
   "<50%": [
-    { name: "Marcus Chen", role: "Treasury Sales Officer", district: "Gulf Coast", attainment: 41, note: "Crediting gap — corrected est. 78%" },
+    { name: "Marcus Chen", role: "Treasury Sales Officer", district: "Gulf Coast", attainment: 41, note: "Crediting gap: corrected est. 78%" },
     { name: "L. Fontaine", role: "Relationship Manager", district: "Gulf Coast", attainment: 47 },
     { name: "D. Kowalski", role: "Relationship Manager", district: "Southeast", attainment: 44 },
   ],
   "50–70%": [
-    { name: "Tom Okafor", role: "Relationship Manager", district: "Southeast", attainment: 55, note: "Pipeline coverage 1.1x — flagged" },
+    { name: "Tom Okafor", role: "Relationship Manager", district: "Southeast", attainment: 55, note: "Pipeline coverage 1.1x, flagged" },
     { name: "R. Ibarra", role: "Treasury Sales Officer", district: "Gulf Coast", attainment: 62 },
     { name: "C. Maddox", role: "Relationship Manager", district: "Central", attainment: 66 },
   ],
@@ -162,12 +162,12 @@ export const BUCKET_REPS: Record<string, BucketRep[]> = {
     { name: "H. Osei-Bonsu", role: "Relationship Manager", district: "Southeast", attainment: 102 },
   ],
   "110–130%": [
-    { name: "Priya Raman", role: "Wealth Advisor", district: "Central", attainment: 122, note: "Top decile — crediting verified" },
+    { name: "Priya Raman", role: "Wealth Advisor", district: "Central", attainment: 122, note: "Top decile, crediting verified" },
     { name: "T. Nguyen", role: "Treasury Sales Officer", district: "Northeast", attainment: 117 },
     { name: "E. Marsh", role: "Relationship Manager", district: "Northeast", attainment: 112 },
   ],
   ">130%": [
-    { name: "Dana Whitfield", role: "Relationship Manager", district: "Northeast", attainment: 168, note: "Payout spike — split under review" },
+    { name: "Dana Whitfield", role: "Relationship Manager", district: "Northeast", attainment: 168, note: "Payout spike: split under review" },
     { name: "J. Salazar", role: "Wealth Advisor", district: "Northeast", attainment: 141 },
     { name: "B. Ferreira", role: "Treasury Sales Officer", district: "Central", attainment: 134 },
   ],
@@ -181,9 +181,9 @@ export const OUTLIERS = [
     attainment: 168,
     flag: "Payout spike",
     detail:
-      "A single commercial lending deal carries 62% of her quarter credit. Crediting split with the treasury officer on the deal hasn't been applied — flagged before the statement released.",
+      "A single commercial lending deal carries 62% of her quarter credit. Crediting split with the treasury officer on the deal hasn't been applied. Flagged before the statement released.",
     agentWhy:
-      "I compared her credited deals against the crediting hierarchy. Deal #91188 ($1.4M funded) should split 70/30 with T. Nguyen under the treasury referral rule (plan §3.4), but the split was never applied after the deal record merged in Salesforce. With the split applied, her attainment is 131% — still top decile, no longer an anomaly. I've staged the correction for approval.",
+      "I compared her credited deals against the crediting hierarchy. Deal #91188 ($1.4M funded) should split 70/30 with T. Nguyen under the treasury referral rule (plan §3.4), but the split was never applied after the deal record merged in Salesforce. With the split applied, her attainment is 131%: still top decile, no longer an anomaly. I've staged the correction for approval.",
   },
   {
     rep: "Marcus Chen",
@@ -194,7 +194,7 @@ export const OUTLIERS = [
     detail:
       "Three of his assigned accounts moved to Southeast in April's realignment but crediting rules weren't updated. Agent estimates corrected attainment at 78%.",
     agentWhy:
-      "His funded volume didn't drop — his crediting did. Three accounts (Halvorsen Foods, Pier & Main, Gulfstream Logistics) moved to Southeast in the April realignment, but the crediting rule still routes their volume to the old territory owner. Replaying the quarter with corrected rules puts him at 78%, in line with his trailing six-month average of 81%.",
+      "His funded volume didn't drop; his crediting did. Three accounts (Halvorsen Foods, Pier & Main, Gulfstream Logistics) moved to Southeast in the April realignment, but the crediting rule still routes their volume to the old territory owner. Replaying the quarter with corrected rules puts him at 78%, in line with his trailing six-month average of 81%.",
   },
   {
     rep: "Tom Okafor",
@@ -203,9 +203,9 @@ export const OUTLIERS = [
     attainment: 55,
     flag: "Pipeline coverage",
     detail:
-      "Pacing 55% with pipeline coverage at 1.1x — lowest in the district. Surfaced mid-quarter, not at review.",
+      "Pacing 55% with pipeline coverage at 1.1x, lowest in the district. Surfaced mid-quarter, not at review.",
     agentWhy:
-      "This one is a real performance gap, not a data artifact. His crediting checks out clean. Coverage is 1.1x against a district norm of 2.3x, and 60% of his open pipeline sits in two stalled deals untouched for 30+ days. Recommend a coaching conversation now — at current velocity he finishes the quarter near 61%.",
+      "This one is a real performance gap, not a data artifact. His crediting checks out clean. Coverage is 1.1x against a district norm of 2.3x, and 60% of his open pipeline sits in two stalled deals untouched for 30+ days. Recommend a coaching conversation now. At current velocity he finishes the quarter near 61%.",
   },
   {
     rep: "Priya Raman",
@@ -216,7 +216,7 @@ export const OUTLIERS = [
     detail:
       "Top decile, no anomalies. Crediting verified against the referral hierarchy on all 14 booked deals.",
     agentWhy:
-      "I verified all 14 booked deals against the referral hierarchy and the funding dates in core banking — every credit is legitimate and well distributed (largest deal is 16% of her quarter). Her mix skews toward advisory fees, which carry no accelerator, so there's no payout-spike risk either.",
+      "I verified all 14 booked deals against the referral hierarchy and the funding dates in core banking. Every credit is legitimate and well distributed (largest deal is 16% of her quarter). Her mix skews toward advisory fees, which carry no accelerator, so there's no payout-spike risk either.",
   },
 ];
 
@@ -237,8 +237,8 @@ export const ACCRUALS: {
     variance: "+0.6%",
     status: "Reconciled",
     drivers: [
-      { label: "New-hire proration — 2 April starts", amountK: 6 },
-      { label: "FX adjustment — LatAm referral book", amountK: 4 },
+      { label: "New-hire proration: 2 April starts", amountK: 6 },
+      { label: "FX adjustment: LatAm referral book", amountK: 4 },
     ],
   },
   {
@@ -248,7 +248,7 @@ export const ACCRUALS: {
     variance: "+1.4%",
     status: "Reconciled",
     drivers: [
-      { label: "Accelerator timing — deals funded May 28–31", amountK: 18 },
+      { label: "Accelerator timing: deals funded May 28–31", amountK: 18 },
       { label: "Duplicate-credit reversal, deal #88213", amountK: 8 },
       { label: "Draw recovery schedule shift", amountK: 4 },
     ],
@@ -258,11 +258,11 @@ export const ACCRUALS: {
     booked: 2.25,
     calculated: 2.31,
     variance: "+2.7%",
-    status: "Open — true-up est. $58K",
+    status: "Open: true-up est. $58K",
     drivers: [
-      { label: "Accelerator exposure — Northeast", amountK: 42 },
-      { label: "Realignment crediting corrections — Gulf Coast", amountK: 11 },
-      { label: "New-hire proration — June class", amountK: 5 },
+      { label: "Accelerator exposure: Northeast", amountK: 42 },
+      { label: "Realignment crediting corrections: Gulf Coast", amountK: 11 },
+      { label: "New-hire proration: June class", amountK: 5 },
     ],
   },
 ];
@@ -293,19 +293,19 @@ export function cfoWhatIf(att: number): CfoWhatIf {
   const drivers: AccrualDriver[] = [];
   if (northeastK > 0) {
     drivers.push({
-      label: `Accelerator exposure — Northeast at ${(att + 6.5).toFixed(1)}%`,
+      label: `Accelerator exposure: Northeast at ${(att + 6.5).toFixed(1)}%`,
       amountK: northeastK,
     });
   }
   if (centralK > 0) {
     drivers.push({
-      label: `Accelerator exposure — Central at ${(att + 2).toFixed(1)}%`,
+      label: `Accelerator exposure: Central at ${(att + 2).toFixed(1)}%`,
       amountK: centralK,
     });
   }
   drivers.push(
-    { label: "Realignment crediting corrections — Gulf Coast", amountK: 11 },
-    { label: "New-hire proration — June class", amountK: 5 }
+    { label: "Realignment crediting corrections: Gulf Coast", amountK: 11 },
+    { label: "New-hire proration: June class", amountK: 5 }
   );
 
   const trueUpK = drivers.reduce((sum, d) => sum + d.amountK, 0);
@@ -317,7 +317,7 @@ export function cfoWhatIf(att: number): CfoWhatIf {
     trueUpK,
     juneCalculated,
     juneVariance: `+${(((juneCalculated - 2.25) / 2.25) * 100).toFixed(1)}%`,
-    juneStatus: `Open — true-up est. $${trueUpK}K`,
+    juneStatus: `Open: true-up est. $${trueUpK}K`,
     liability: `$${liability.toFixed(2)}M`,
     breach: trueUpK > CFO_TOLERANCE_K,
   };
@@ -326,7 +326,7 @@ export function cfoWhatIf(att: number): CfoWhatIf {
 export const AUDIT_TRAIL = [
   {
     timestamp: "May 31, 23:42",
-    action: "Monthly calculation run #148 completed — 170 statements generated",
+    action: "Monthly calculation run #148 completed: 170 statements generated",
     actor: "Agent (auto)",
   },
   {
@@ -336,30 +336,30 @@ export const AUDIT_TRAIL = [
   },
   {
     timestamp: "Jun 1, 08:20",
-    action: "Accrual export to Workday Financials — $2.22M May liability",
+    action: "Accrual export to Workday Financials: $2.22M May liability",
     actor: "Approved by J. Moreno",
   },
   {
     timestamp: "Jun 1, 09:02",
-    action: "Crediting hierarchy sync — 3 Gulf Coast account moves applied",
+    action: "Crediting hierarchy sync: 3 Gulf Coast account moves applied",
     actor: "Agent (auto)",
   },
   {
     timestamp: "Jun 1, 09:30",
-    action: "June projection refreshed — accelerator exposure recomputed at 96% attainment",
+    action: "June projection refreshed: accelerator exposure recomputed at 96% attainment",
     actor: "Agent (auto)",
   },
   {
     timestamp: "Jun 1, 10:12",
-    action: "True-up journal entry drafted for review — $58K June estimate",
-    actor: "Pending — J. Moreno",
+    action: "True-up journal entry drafted for review: $58K June estimate",
+    actor: "Pending: J. Moreno",
   },
 ];
 
 export const REQUEST_LOG = [
   {
     asked: "CFO, Jun 1",
-    question: "May accrual vs. booked — where's the variance?",
+    question: "May accrual vs. booked: where's the variance?",
     time: "answered in 8s",
   },
   {
@@ -391,7 +391,7 @@ export type ExceptionItem = {
 export const EXCEPTION_QUEUE: ExceptionItem[] = [
   {
     id: 1,
-    title: "Duplicate credit — deal #88213, commercial lending split",
+    title: "Duplicate credit: deal #88213, commercial lending split",
     source: "May calc run #148",
     ageHours: 2,
     suggestion:
@@ -399,7 +399,7 @@ export const EXCEPTION_QUEUE: ExceptionItem[] = [
   },
   {
     id: 2,
-    title: "Missing crediting rule — new hire M. Osei",
+    title: "Missing crediting rule: new hire M. Osei",
     source: "HR roster sync",
     ageHours: 9,
     suggestion:
@@ -407,7 +407,7 @@ export const EXCEPTION_QUEUE: ExceptionItem[] = [
   },
   {
     id: 3,
-    title: "Statement dispute — R. Alvarez, missing referral SPIF",
+    title: "Statement dispute: R. Alvarez, missing referral SPIF",
     source: "Dispute bot escalation",
     ageHours: 27,
     suggestion:
@@ -415,7 +415,7 @@ export const EXCEPTION_QUEUE: ExceptionItem[] = [
   },
   {
     id: 4,
-    title: "Negative payout — clawback exceeds T. Nguyen's June earnings",
+    title: "Negative payout: clawback exceeds T. Nguyen's June earnings",
     source: "June preview run",
     ageHours: 4,
     suggestion:
@@ -423,11 +423,11 @@ export const EXCEPTION_QUEUE: ExceptionItem[] = [
   },
   {
     id: 5,
-    title: "Attainment jump >25 pts — K. Osei-Bonsu",
+    title: "Attainment jump >25 pts: K. Osei-Bonsu",
     source: "Validation warning",
     ageHours: 54,
     suggestion:
-      "The movement traces entirely to April realignment corrections. Recommend dismissing — no plan action needed.",
+      "The movement traces entirely to April realignment corrections. Recommend dismissing; no plan action needed.",
   },
 ];
 
@@ -468,7 +468,7 @@ export const PERSONAS: {
       {
         question: "Are we overspending on comp relative to attainment?",
         answer:
-          "No. Comp spend is tracking 0.7% under plan while blended attainment runs 87.4% — comp cost of revenue is 8.9%, down from 9.3% last quarter. The accelerator exposure if attainment finishes at 96% is already reflected in the June projection.",
+          "No. Comp spend is tracking 0.7% under plan while blended attainment runs 87.4%; comp cost of revenue is 8.9%, down from 9.3% last quarter. The accelerator exposure if attainment finishes at 96% is already reflected in the June projection.",
         sources: "Varicent ICM · Workday Financials · plan model v2.4",
       },
     ],
@@ -487,13 +487,13 @@ export const PERSONAS: {
       {
         question: "Who are my biggest outliers this month and why?",
         answer:
-          "Dana Whitfield (168%) — one deal is 62% of her credit and a missing crediting split inflates it. Marcus Chen (41%) — three accounts moved districts without a crediting update; corrected attainment is ~78%. Both were flagged before statements released, so neither becomes a dispute.",
+          "Dana Whitfield (168%): one deal is 62% of her credit and a missing crediting split inflates it. Marcus Chen (41%): three accounts moved districts without a crediting update; corrected attainment is ~78%. Both were flagged before statements released, so neither becomes a dispute.",
         sources: "Varicent ICM · Salesforce · crediting hierarchy, synced Jun 1",
       },
       {
         question: "Which territories need attention before quarter close?",
         answer:
-          "Houston Metro (63% pacing) and Coastal (58%) in Gulf Coast. Coastal's gap is real — pipeline coverage is 1.2x. Houston Metro improves to ~71% once June crediting corrections post.",
+          "Houston Metro (63% pacing) and Coastal (58%) in Gulf Coast. Coastal's gap is real: pipeline coverage is 1.2x. Houston Metro improves to ~71% once June crediting corrections post.",
         sources: "Varicent ICM · Salesforce pipeline · territory model",
       },
     ],
@@ -512,13 +512,13 @@ export const PERSONAS: {
       {
         question: "What's our comp accrual exposure if attainment finishes at 96%?",
         answer:
-          "Full-quarter liability at 96% attainment is $6.59M against $6.49M booked — a $58K true-up plus $42K accelerator exposure concentrated in Northeast. Every input is traceable to calc run #148 and the June projection model.",
+          "Full-quarter liability at 96% attainment is $6.59M against $6.49M booked: a $58K true-up plus $42K accelerator exposure concentrated in Northeast. Every input is traceable to calc run #148 and the June projection model.",
         sources: "Varicent ICM calc run #148 · Workday Financials · audit log",
       },
       {
         question: "Can I get the audit trail for the May calculation?",
         answer:
-          "Yes — 170 statements from run #148, every action logged with timestamp, input, output, and approver. One exception (duplicate credit, deal #88213) was routed, fixed, and approved by S. Patel. Export is SOX-formatted.",
+          "Yes: 170 statements from run #148, every action logged with timestamp, input, output, and approver. One exception (duplicate credit, deal #88213) was routed, fixed, and approved by S. Patel. Export is SOX-formatted.",
         sources: "Agent audit log · Varicent ICM · export to internal audit",
       },
     ],
@@ -537,13 +537,13 @@ export const PERSONAS: {
       {
         question: "How many statement disputes came from the May calc run?",
         answer:
-          "Nine — down from 31 in February. Seven traced to the duplicate-credit exception on commercial lending splits and were resolved from the exception queue in a median 3.1 hours. Two remain open with the comp admin.",
+          "Nine, down from 31 in February. Seven traced to the duplicate-credit exception on commercial lending splits and were resolved from the exception queue in a median 3.1 hours. Two remain open with the comp admin.",
         sources: "Dispute bot log · Varicent ICM · exception queue",
       },
       {
         question: "What did leadership ask the dashboard this week?",
         answer:
-          "Twelve questions — attainment pacing (5), accrual variance (3), realignment impact (2), and accelerator exposure (2). All answered from live data with sources; zero came to your team as tickets.",
+          "Twelve questions: attainment pacing (5), accrual variance (3), realignment impact (2), and accelerator exposure (2). All answered from live data with sources; zero came to your team as tickets.",
         sources: "Agent request log, May 26 – Jun 1",
       },
     ],
