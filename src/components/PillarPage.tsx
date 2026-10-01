@@ -187,7 +187,7 @@ export default function PillarPage({ pillar }: { pillar: Pillar }) {
           </p>
           <div className="overflow-hidden rounded-xl border border-line shadow-card-hover">
             <Image
-              src="/images/fable-cooking.png"
+              src="/images/claude-code-agentic-development.png"
               alt="Claude Code AI agents building a production web application inside VS Code"
               width={1917}
               height={1032}
