@@ -141,11 +141,11 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
     officialUrl: "https://www.captivateiq.com",
     titleTag: "CaptivateIQ Implementation & Managed Services | Lanshore",
     metaDescription:
-      "Lanshore implements CaptivateIQ, operates comp cycles on it, and extends it with agentic AI, including MCP-based integrations with your AI stack.",
+      "Lanshore implements CaptivateIQ, operates comp cycles on it, and extends it with agentic AI, including integrations with your AI stack.",
     firstSentence:
       "CaptivateIQ is a modern incentive compensation management platform known for its spreadsheet-like modeling flexibility; Lanshore implements CaptivateIQ, operates comp on it, and connects it to your AI stack.",
     positioning:
-      "CaptivateIQ combines the flexibility comp teams love in spreadsheets with the control and scale of an enterprise platform. It has moved aggressively into agentic AI, shipping CaptivateIQ Agents and an MCP server that make comp data programmatically available to AI assistants.",
+      "CaptivateIQ combines the flexibility comp teams love in spreadsheets with the control and scale of an enterprise platform. It has moved aggressively into agentic AI: CaptivateIQ Agents launched in limited beta in May 2026, and an MCP server that makes comp data available to AI assistants is announced, with general availability of both planned for later in 2026.",
     capabilities: [
       "Incentive compensation modeling with spreadsheet-like logic",
       "Commission processing and statements reps actually read",
@@ -155,15 +155,15 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
     customerProfile:
       "High-growth and enterprise teams that iterate on comp plans frequently and want modeling flexibility without a services-heavy change cycle.",
     aiFeatures: [
-      "CaptivateIQ Agents for comp workflows (2026)",
-      "MCP server exposing comp data to AI assistants (2026)",
+      "CaptivateIQ Agents for comp workflows (limited beta, May 2026)",
+      "MCP server exposing comp data to AI assistants (announced; general availability planned for later in 2026)",
     ],
     analystNote:
       "Named a Leader in both The Forrester Wave™: Incentive Compensation Management, Q1 2025, and the 2026 Gartner® Magic Quadrant™ for Sales Performance Management.",
     lanshoreAngle: [
       "CaptivateIQ implementation and plan migration from spreadsheets or legacy ICM",
       "Managed comp operations on CaptivateIQ with agent-run validations",
-      "MCP-native integrations: Lanshore builds agentic workflows that talk to CaptivateIQ's MCP server from Claude Code, n8n, or your own stack",
+      "AI-stack integrations: Lanshore builds agentic workflows against CaptivateIQ from Claude Code, n8n, or your own stack, ready to adopt its MCP server as it becomes available",
     ],
     faq: [
       {
@@ -174,7 +174,7 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
       {
         question: "Can Lanshore connect CaptivateIQ to our AI tools?",
         answer:
-          "Yes. CaptivateIQ ships an MCP server, and Lanshore builds agentic workflows on top of it, from Claude Code and n8n to fully custom agents under your accounts.",
+          "Yes. Lanshore builds agentic workflows against CaptivateIQ, from Claude Code and n8n to fully custom agents under your accounts. CaptivateIQ has also announced an MCP server, with general availability planned for later in 2026.",
       },
       {
         question: "Is CaptivateIQ a good fit for enterprise comp plans?",
@@ -191,11 +191,11 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
     officialUrl: "https://www.sap.com/products/hcm/incentive-management.html",
     titleTag: "SAP Incentive Management (SAP Commissions) Services | Lanshore",
     metaDescription:
-      "Lanshore supports SAP SuccessFactors Incentive Management (formerly SAP Commissions/CallidusCloud): implementations, managed operations, and migration planning before legacy support ends.",
+      "Lanshore supports SAP SuccessFactors Incentive Management (formerly SAP Commissions/CallidusCloud): implementations, managed operations, and migration planning off legacy stacks.",
     firstSentence:
       "SAP SuccessFactors Incentive Management (formerly SAP Commissions and CallidusCloud) is SAP's enterprise incentive compensation platform; Lanshore implements it, operates it, and plans migrations for teams on legacy SAP comp stacks.",
     positioning:
-      "SAP's incentive management platform is the enterprise incumbent, deeply embedded in SAP-centric IT estates and capable of extreme calculation scale. With legacy-stack support winding down beyond 2026, many SAP comp customers face a modernization decision: upgrade within the SAP SuccessFactors line or migrate to another platform.",
+      "SAP's incentive management platform is the enterprise incumbent, deeply embedded in SAP-centric IT estates and capable of extreme calculation scale. With SAP moving legacy Callidus Commissions customers onto SAP SuccessFactors Incentive Management, a move SAP describes as a reimplementation, many SAP comp customers face a modernization decision: upgrade within the SAP SuccessFactors line or migrate to another platform.",
     capabilities: [
       "High-volume commission calculation at enterprise scale",
       "Deep integration with SAP ERP, SuccessFactors, and S/4HANA estates",
@@ -208,7 +208,7 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
     gartnerPartnerLeadIn:
       "Lanshore's SAP incentive compensation practice dates back to the CallidusCloud era.",
     lanshoreAngle: [
-      "Legacy deadline planning: support for legacy SAP Commissions stacks ends beyond 2026; Lanshore assesses upgrade-vs-migrate and executes either path",
+      "Legacy migration planning: SAP is moving Callidus Commissions customers to SAP SuccessFactors Incentive Management as a reimplementation; Lanshore assesses upgrade-vs-migrate and executes either path",
       "Implementation and plan builds on SAP SuccessFactors Incentive Management",
       "Managed operations for SAP comp environments, including agent-run validations",
       "Migrations from SAP Commissions to Varicent, Xactly, or CaptivateIQ when that's the right answer",
@@ -217,7 +217,7 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
       {
         question: "What happened to SAP Commissions?",
         answer:
-          "SAP Commissions (originally CallidusCloud) is now SAP SuccessFactors Incentive Management. Legacy-stack support is winding down beyond 2026, which is driving a wave of upgrade and migration projects.",
+          "SAP Commissions (originally CallidusCloud) is now SAP SuccessFactors Incentive Management. SAP is moving legacy Callidus Commissions customers onto it, a move SAP describes as a reimplementation rather than an upgrade, so many teams are planning migration projects.",
       },
       {
         question: "Should we upgrade within SAP or migrate to another SPM platform?",
