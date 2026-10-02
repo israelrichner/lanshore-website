@@ -281,3 +281,14 @@ test("allocator: a heading with no slug-able text still gets a usable id", () =>
   assert.equal(next("???", 0), "section");
   assert.equal(next("!!!", 1), "section-2");
 });
+
+import { inPageItemListNode } from "./schema-nodes.mjs";
+
+test("inPageItemListNode links each entry to its heading anchor, in order", () => {
+  const node = inPageItemListNode({ name: "Seven questions", items: ["1. Who owns it?", "2. What breaks?"] }, PAGE);
+  assert.equal(node.numberOfItems, 2);
+  assert.deepEqual(node.itemListElement.map((e) => [e.position, e.url]), [
+    [1, `${PAGE}#1-who-owns-it`],
+    [2, `${PAGE}#2-what-breaks`],
+  ]);
+});

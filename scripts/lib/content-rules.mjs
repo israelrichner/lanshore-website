@@ -375,6 +375,86 @@ function validateBodyMirror(record, where, errors) {
 }
 
 /**
+ * Where a blog-collection record is published. Guides share the collection
+ * (validation, ledger, studio, byline and Gartner footnote all come with it)
+ * but live under /resources/guides instead of /blog.
+ */
+export const POST_KINDS = ["guide"];
+
+/**
+ * Article-format fields for the Group 2 content.
+ *
+ *   kind        absent (a /blog post) or "guide" (/resources/guides)
+ *   comparison  true on a piece that compares named vendors or firms; it then
+ *               MUST carry `sources`, because every competitor claim has to
+ *               trace to a dated public source (plan AC12)
+ *   sources     [{ title, url (https), retrieved (YYYY-MM-DD) }], rendered
+ *               visibly under the article
+ *   itemList    { name, items: [...] } for a listicle: each item is the exact
+ *               text of a heading in the body, emitted as ItemList JSON-LD
+ *               whose entries link to those headings
+ */
+function validateArticleFormat(record, where, errors) {
+  if (record.kind !== undefined && !POST_KINDS.includes(record.kind)) {
+    errors.push(`${where}: "kind" must be one of ${POST_KINDS.map((k) => `"${k}"`).join(", ")} when present`);
+  }
+  if (record.comparison !== undefined && typeof record.comparison !== "boolean") {
+    errors.push(`${where}: "comparison" must be a boolean when present`);
+  }
+
+  if (record.sources !== undefined) {
+    if (!Array.isArray(record.sources)) {
+      errors.push(`${where}: "sources" must be an array when present`);
+    } else {
+      record.sources.forEach((src, i) => {
+        if (!src || typeof src !== "object") {
+          errors.push(`${where}: sources[${i}] must be an object`);
+          return;
+        }
+        reqString(src, "title", `${where} sources[${i}]`, errors);
+        if (typeof src.url !== "string" || !src.url.startsWith("https://")) {
+          errors.push(`${where} sources[${i}]: "url" must be an https URL`);
+        }
+        validDate(src.retrieved, "retrieved", `${where} sources[${i}]`, errors);
+      });
+    }
+  }
+  if (record.comparison === true && (!Array.isArray(record.sources) || record.sources.length === 0)) {
+    errors.push(
+      `${where}: a comparison piece must list "sources": every claim about a named vendor or firm ` +
+        `needs a dated public source.`
+    );
+  }
+
+  if (record.itemList !== undefined) {
+    const list = record.itemList;
+    if (!list || typeof list !== "object" || Array.isArray(list)) {
+      errors.push(`${where}: "itemList" must be an object when present`);
+      return;
+    }
+    reqString(list, "name", `${where} itemList`, errors);
+    if (!Array.isArray(list.items) || list.items.length < 2) {
+      errors.push(`${where} itemList: "items" must list at least 2 entries; a list of one is not a list`);
+      return;
+    }
+    const headings = typeof record.body === "string" ? new Set(markdownHeadings(record.body)) : new Set();
+    const anchors = new Set();
+    list.items.forEach((item, i) => {
+      if (typeof item !== "string" || item.trim() === "") {
+        errors.push(`${where} itemList.items[${i}] must be a non-empty string`);
+        return;
+      }
+      if (!headings.has(normalize(item))) {
+        errors.push(`${where} itemList.items[${i}] must be the exact text of a heading in the body, got ${JSON.stringify(item)}`);
+      }
+      const anchor = headingId(item);
+      if (anchors.has(anchor)) errors.push(`${where} itemList.items[${i}]: duplicate entry (anchor #${anchor})`);
+      anchors.add(anchor);
+    });
+  }
+}
+
+/**
  * House style: no em dashes in any field (owner decision, plan WP7). Checked
  * here as well as over the build output so a studio editor sees the problem
  * in the pre-save list instead of as a failed deploy.
@@ -408,6 +488,7 @@ export function validateBlogPost(record, slug) {
   validateKeyTakeaways(record, where, errors);
   validateHowTo(record, where, errors);
   validateBodyMirror(record, where, errors);
+  validateArticleFormat(record, where, errors);
 
   if (record.faq !== undefined) {
     if (!Array.isArray(record.faq)) {

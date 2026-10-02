@@ -3,7 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { blogSchema, breadcrumbSchema, itemListSchema } from "@/lib/schema";
 import { formatDate } from "@/lib/contentDates";
-import { BLOG_POSTS } from "@/lib/blog";
+import { ARTICLES } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog: Agentic AI & Sales Performance Management | Lanshore",
@@ -35,7 +35,7 @@ export default function BlogIndexPage() {
         data={itemListSchema(
           "Lanshore Blog Posts",
           "/blog",
-          BLOG_POSTS.map((post) => ({
+          ARTICLES.map((post) => ({
             name: post.title,
             href: `/blog/${post.slug}`,
           }))
@@ -59,7 +59,7 @@ export default function BlogIndexPage() {
 
       <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
         <div className="space-y-6">
-          {BLOG_POSTS.map((post) => (
+          {ARTICLES.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}

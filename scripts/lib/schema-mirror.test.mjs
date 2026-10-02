@@ -170,3 +170,29 @@ test("an id attribute in a data-id or similar is not mistaken for a heading id",
   );
   assert.ok(has(checkPage(html, "/x"), "M5"));
 });
+
+/* ---------------- M6: in-page ItemList ---------------- */
+
+const listLd = (entries) =>
+  ld({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: entries.map(([name, url], i) => ({ "@type": "ListItem", position: i + 1, name, url })),
+  });
+
+test("M6: entries that link to their own headings pass", () => {
+  const html = page(listLd([["1. First", "https://lanshore.com/blog/x#1-first"]]), `<h2 id="1-first">1. First</h2>`);
+  assert.deepEqual(checkPage(html, "/x"), []);
+});
+
+test("M6: an entry whose anchor is missing or on another heading fails", () => {
+  const missing = page(listLd([["1. First", "https://lanshore.com/blog/x#1-first"]]), `<h2 id="other">1. First</h2>`);
+  assert.ok(has(checkPage(missing, "/x"), "M6"));
+  const wrong = page(listLd([["1. First", "https://lanshore.com/blog/x#intro"]]), `<h2 id="intro">Intro</h2><h2 id="1-first">1. First</h2>`);
+  assert.ok(has(checkPage(wrong, "/x"), "M6"));
+});
+
+test("M6: index-page lists of other pages (no fragment) are not checked", () => {
+  const html = page(listLd([["A post", "https://lanshore.com/blog/a-post"]]), `<p>nothing</p>`);
+  assert.deepEqual(checkPage(html, "/blog"), []);
+});

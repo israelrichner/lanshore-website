@@ -4,6 +4,8 @@ import { SPM_PLATFORMS } from "@/lib/spmPlatforms";
 import { INDUSTRIES } from "@/lib/industries";
 import { GLOSSARY } from "@/lib/glossary";
 import { HOME_FAQ } from "@/lib/homeFaq";
+import { SOLUTIONS } from "@/lib/solutions";
+import { GUIDES, postPath } from "@/lib/blog";
 import type { FaqItem } from "@/lib/schema";
 
 export const dynamic = "force-static";
@@ -36,6 +38,20 @@ ${p.firstSentence}
 ${p.positioning}`
   ).join("\n\n");
 
+  const solutions = SOLUTIONS.map(
+    (s) => `### ${s.name} (${SITE_URL}/solutions/${s.slug})
+
+${s.firstSentence}
+
+${s.whoItIsFor}
+
+${faqBlock(s.faq)}`
+  ).join("\n\n");
+
+  const guides = GUIDES.map(
+    (g) => `- [${g.title}](${SITE_URL}${postPath(g)}): ${g.description}`
+  ).join("\n");
+
   const industries = INDUSTRIES.map(
     (i) => `### ${i.name} (${SITE_URL}/industries/${i.slug})
 
@@ -63,6 +79,14 @@ ${faqBlock(HOME_FAQ)}
 ## SPM Platforms
 
 ${platforms}
+
+## Solutions
+
+${solutions}
+
+## Guides
+
+${guides}
 
 ## Industries
 

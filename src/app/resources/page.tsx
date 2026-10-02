@@ -4,7 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import WhitePaperGate from "@/components/WhitePaperGate";
 import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { WHITE_PAPERS } from "@/lib/whitePapers";
-import { BLOG_POSTS } from "@/lib/blog";
+import { ARTICLES, GUIDES, postPath } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Resources: Blog, White Papers, Glossary & Press | Lanshore",
@@ -25,12 +25,21 @@ export const metadata: Metadata = {
 /* Derived from the blog collection rather than duplicated here. The card
    shows `cardTitle` when a post defines one — one post's real title is far
    too long for this grid — and otherwise its title. */
-const RESOURCE_POSTS = BLOG_POSTS.map((post) => ({
+const card = (post: (typeof ARTICLES)[number]) => ({
   title: post.cardTitle ?? post.title,
   summary: post.summary,
-  url: `/blog/${post.slug}`,
+  url: postPath(post),
   featured: post.featured,
-}));
+});
+
+/* A preview, not the archive: featured first, then ledger order, capped so
+   the page stays scannable as the collection grows. /blog and
+   /resources/guides list everything. */
+const PREVIEW = 6;
+const byFeatured = <T extends { featured: boolean }>(xs: T[]) =>
+  [...xs.filter((x) => x.featured), ...xs.filter((x) => !x.featured)];
+const RESOURCE_POSTS = byFeatured(ARTICLES.map(card)).slice(0, PREVIEW);
+const RESOURCE_GUIDES = byFeatured(GUIDES.map(card)).slice(0, PREVIEW);
 
 export default function ResourcesPage() {
   const hasPapers = WHITE_PAPERS.length > 0;
@@ -88,7 +97,34 @@ export default function ResourcesPage() {
             </a>
           ))}
         </div>
+        {ARTICLES.length > PREVIEW && (
+          <Link href="/blog" className="mt-6 inline-block font-semibold text-accent hover:text-accent-hover">
+            All {ARTICLES.length} blog posts →
+          </Link>
+        )}
       </section>
+
+      {/* Guides */}
+      {RESOURCE_GUIDES.length > 0 && (
+        <section id="guides" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-16 sm:px-6">
+          <h2 className="mb-8 text-2xl font-bold text-ink sm:text-3xl">Guides</h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {RESOURCE_GUIDES.map((guide) => (
+              <a
+                key={guide.url}
+                href={guide.url}
+                className="group rounded-lg border border-line p-6 hover:border-accent"
+              >
+                <h3 className="font-bold text-ink group-hover:text-accent">{guide.title}</h3>
+                <p className="mt-2 text-sm text-muted">{guide.summary}</p>
+              </a>
+            ))}
+          </div>
+          <Link href="/resources/guides" className="mt-6 inline-block font-semibold text-accent hover:text-accent-hover">
+            All guides →
+          </Link>
+        </section>
+      )}
 
       {/* White papers */}
       <section id="white-papers" className="scroll-mt-20 bg-paper">

@@ -631,3 +631,53 @@ test("house style: en dashes in number ranges are allowed", () => {
   post.body = "## Heading\n\nCosts fell 20–30% in year one.";
   assert.deepEqual(validateBlogPost(post, "a-post"), []);
 });
+
+/* ------------------------------------------------------------------ *
+ * Article format: kind, comparison + sources, itemList
+ * ------------------------------------------------------------------ */
+
+const SRC = { title: "Vendor pricing page", url: "https://vendor.example/pricing", retrieved: "2026-10-02" };
+const LIST_BODY = "## Intro\n\nText.\n\n## 1. First thing\n\nOne.\n\n## 2. Second thing\n\nTwo.";
+
+test("kind: absent or guide is accepted; anything else is rejected", () => {
+  const post = okBlog();
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+  post.kind = "guide";
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+  post.kind = "whitepaper";
+  assert.ok(has(validateBlogPost(post, "a-post"), '"kind" must be one of'));
+});
+
+test("comparison: requires a non-empty sources list", () => {
+  const post = okBlog();
+  post.comparison = true;
+  assert.ok(has(validateBlogPost(post, "a-post"), "must list \"sources\""));
+  post.sources = [];
+  assert.ok(has(validateBlogPost(post, "a-post"), "must list \"sources\""));
+  post.sources = [SRC];
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+});
+
+test("sources: each needs a title, an https url and a real retrieved date", () => {
+  const post = okBlog();
+  post.sources = [{ ...SRC, url: "http://insecure.example" }];
+  assert.ok(has(validateBlogPost(post, "a-post"), '"url" must be an https URL'));
+  post.sources = [{ ...SRC, retrieved: "2026-02-30" }];
+  assert.ok(has(validateBlogPost(post, "a-post"), "is not a real date"));
+  post.sources = [{ url: SRC.url, retrieved: SRC.retrieved }];
+  assert.ok(has(validateBlogPost(post, "a-post"), '"title" must be a non-empty string'));
+});
+
+test("itemList: items that are body headings are accepted", () => {
+  const post = { ...okBlog(), body: LIST_BODY, itemList: { name: "Two things", items: ["1. First thing", "2. Second thing"] } };
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+});
+
+test("itemList: an item that is not a heading, one item, or a duplicate anchor is rejected", () => {
+  const base = { ...okBlog(), body: LIST_BODY };
+  assert.ok(has(validateBlogPost({ ...base, itemList: { name: "L", items: ["1. First thing", "2. Missing"] } }, "a-post"),
+    "items[1] must be the exact text of a heading"));
+  assert.ok(has(validateBlogPost({ ...base, itemList: { name: "L", items: ["1. First thing"] } }, "a-post"), "at least 2 entries"));
+  const dup = { ...okBlog(), body: "## A thing\n\nx\n\n## A Thing\n\ny", itemList: { name: "L", items: ["A thing", "A Thing"] } };
+  assert.ok(has(validateBlogPost(dup, "a-post"), "duplicate entry"));
+});

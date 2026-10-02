@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { createIdAllocator } from "@/lib/heading-id.mjs";
 import { KEY_TAKEAWAYS_ID } from "@/components/KeyTakeaways";
+import { SOURCES_ID } from "@/components/SourcesList";
 
 /** Plain text of a rendered heading's children, for deriving its id. */
 function textOf(node: ReactNode): string {
@@ -45,7 +46,7 @@ export default function Markdown({ children }: { children: string }) {
   /* Keyed on the heading's source offset, so a second render of the same
      heading (StrictMode double-invokes in the studio preview) returns the same
      id instead of counting it again as a duplicate. */
-  const allocate = createIdAllocator([KEY_TAKEAWAYS_ID]);
+  const allocate = createIdAllocator([KEY_TAKEAWAYS_ID, SOURCES_ID]);
   const idFor = (children: ReactNode, offset: number | undefined) => allocate(textOf(children), offset);
 
   return (
@@ -62,7 +63,29 @@ export default function Markdown({ children }: { children: string }) {
         ul: ({ children }) => (
           <ul className="my-4 list-disc space-y-2 pl-6 text-muted">{children}</ul>
         ),
+        /* Without this mapping the CSS reset strips the numbers off an
+           ordered list, which a listicle or a procedure depends on. */
+        ol: ({ children }) => (
+          <ol className="my-4 list-decimal space-y-2 pl-6 text-muted">{children}</ol>
+        ),
         li: ({ children }) => <li>{children}</li>,
+        /* GFM tables (comparison pieces). A real <table>, which is what makes
+           it extractable; it scrolls inside its own container at narrow
+           widths so the page itself never scrolls sideways. */
+        table: ({ children }) => (
+          <div className="my-6 overflow-x-auto rounded-lg border border-line">
+            <table className="w-full min-w-[36rem] border-collapse text-left text-sm">{children}</table>
+          </div>
+        ),
+        thead: ({ children }) => <thead className="bg-paper">{children}</thead>,
+        th: ({ children }) => (
+          <th scope="col" className="border-b border-line px-3 py-2 font-semibold text-ink">
+            {children}
+          </th>
+        ),
+        td: ({ children }) => (
+          <td className="border-b border-line px-3 py-2 align-top text-foreground">{children}</td>
+        ),
         a: ({ href, children }) => (
           <a
             href={href}

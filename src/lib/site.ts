@@ -69,6 +69,7 @@ export const NAV: NavItem[] = [
     label: "Services",
     children: [
       { label: "Services Overview", href: "/services" },
+      { label: "Solutions", href: "/solutions" },
       { label: "Automation & Integration", href: "/services/automation" },
       { label: "SPM Platforms", href: "/spm" },
     ],
@@ -78,6 +79,7 @@ export const NAV: NavItem[] = [
     label: "Resources",
     children: [
       { label: "Blog", href: "/blog" },
+      { label: "Guides", href: "/resources/guides" },
       { label: "White Papers", href: "/resources#white-papers" },
       { label: "FAQ & Glossary", href: "/resources/glossary" },
       { label: "Events", href: "/resources#events-press" },

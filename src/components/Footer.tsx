@@ -5,7 +5,7 @@ import GartnerFooterNote from "@/components/GartnerFooterNote";
 import NewsletterForm from "@/components/NewsletterForm";
 import { CONTACT } from "@/lib/site";
 import { SPM_PLATFORMS } from "@/lib/spmPlatforms";
-import { BLOG_POSTS } from "@/lib/blog";
+import { BLOG_POSTS, postPath } from "@/lib/blog";
 
 /* Every page that mentions Gartner must appear here so the required trademark
    attribution renders in its footer. Data-driven pages are computed; the
@@ -26,7 +26,7 @@ const GARTNER_PATHS = [
      `mentionsGartner` field, because the KEY NAME contains "Gartner" and so
      every post matched. `mentionsGartner` is derived in loadContent from the
      title, description, body and FAQ, case-insensitively. */
-  ...BLOG_POSTS.filter((p) => p.mentionsGartner).map((p) => `/blog/${p.slug}`),
+  ...BLOG_POSTS.filter((p) => p.mentionsGartner).map((p) => postPath(p)),
 ];
 
 const FOOTER_LINKS = [

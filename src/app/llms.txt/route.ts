@@ -2,6 +2,8 @@ import { SITE_URL, CONTACT, GARTNER_2019 } from "@/lib/site";
 import { PILLARS } from "@/lib/pillars";
 import { SPM_PLATFORMS } from "@/lib/spmPlatforms";
 import { INDUSTRIES } from "@/lib/industries";
+import { SOLUTIONS } from "@/lib/solutions";
+import { GUIDES, postPath } from "@/lib/blog";
 
 export const dynamic = "force-static";
 
@@ -13,6 +15,14 @@ export function GET() {
 
   const platforms = SPM_PLATFORMS.map(
     (p) => `- [${p.name}](${SITE_URL}/spm/${p.slug}): ${p.firstSentence}`
+  ).join("\n");
+
+  const solutions = SOLUTIONS.map(
+    (s) => `- [${s.name}](${SITE_URL}/solutions/${s.slug}): ${s.firstSentence}`
+  ).join("\n");
+
+  const guides = GUIDES.map(
+    (g) => `- [${g.title}](${SITE_URL}${postPath(g)}): ${g.description}`
   ).join("\n");
 
   const industries = INDUSTRIES.map(
@@ -46,6 +56,11 @@ ${platforms}
 - [Services Overview](${SITE_URL}/services): implementation & consulting, managed services, vendor evaluation, custom agentic AI development.
 - [Automation & Integration](${SITE_URL}/services/automation): tool-agnostic automation delivery (UiPath, n8n, Claude Code, VS Code, Microsoft Power Automate, and direct API integrations).
 
+## Solutions
+
+- [All Solutions](${SITE_URL}/solutions)
+${solutions}
+
 ## Industries
 
 ${industries}
@@ -54,6 +69,8 @@ ${industries}
 
 - [Case Studies](${SITE_URL}/case-studies)
 - [Blog](${SITE_URL}/blog)
+- [SPM Guides](${SITE_URL}/resources/guides)
+${guides}
 - [SPM Glossary](${SITE_URL}/resources/glossary)
 - [About Lanshore](${SITE_URL}/about)
 - [Contact](${SITE_URL}/contact)

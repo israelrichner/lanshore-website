@@ -8,6 +8,7 @@ import {
   personNode,
   howToNode,
   softwareApplicationNode,
+  inPageItemListNode,
 } from "./schema-nodes.mjs";
 
 export type FaqItem = { question: string; answer: string };
@@ -247,11 +248,15 @@ export function blogPostingSchema(post: {
   datePublished?: string;
   author?: string;
   image?: string;
+  /* Guides share the blog collection but are published under
+     /resources/guides as an `Article`, outside the Blog. */
+  kind?: string;
 }) {
-  const url = `${SITE_URL}/blog/${post.slug}`;
+  const isGuide = post.kind === "guide";
+  const url = `${SITE_URL}${isGuide ? "/resources/guides" : "/blog"}/${post.slug}`;
   return {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": isGuide ? "Article" : "BlogPosting",
     "@id": `${url}#article`,
     headline: headline(post.title),
     name: post.title,
@@ -262,9 +267,18 @@ export function blogPostingSchema(post: {
     publisher: { "@id": ORG_ID },
     url,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
-    isPartOf: { "@id": BLOG_ID },
+    isPartOf: { "@id": isGuide ? WEBSITE_ID : BLOG_ID },
     inLanguage: "en-US",
   };
+}
+
+/**
+ * ItemList for a listicle: each entry links to the heading that carries it
+ * on the same page. check-schema-mirror.mjs (M6) fails the build if an entry
+ * does not land on a heading with that exact text.
+ */
+export function inPageItemListSchema(list: { name: string; items: string[] }, path: string) {
+  return { "@context": "https://schema.org", ...inPageItemListNode(list, `${SITE_URL}${path}`) };
 }
 
 export function blogSchema() {

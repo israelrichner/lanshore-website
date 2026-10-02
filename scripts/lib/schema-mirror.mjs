@@ -20,6 +20,9 @@
  *   M4  every HowTo step text appears in the page's visible text
  *   M5  every HowTo step url's #fragment is the id of the heading that
  *       carries that step (not merely an id that exists somewhere)
+ *   M6  every ItemList entry that links into its own page (url has a
+ *       #fragment) lands on a heading whose text is the entry's name.
+ *       Lists of other pages (index pages) have no fragment and are skipped.
  */
 
 const LD_JSON_RE = /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi;
@@ -106,18 +109,25 @@ export function containsPhrase(haystack, needle) {
  * phrase match, which is all it is used for.
  */
 export function markdownText(md) {
+  return inlineText(md).replace(/^\s{0,3}(#{1,6}|[-+]|\d+\.|>)\s+/gm, "");
+}
+
+/* Inline markup only: links keep their text, emphasis/code markers and
+   backslash escapes go. No block prefixes are touched, which matters for
+   headings: "## 1. First thing" renders as the text "1. First thing", and a
+   listicle's numbered headings must match their ItemList entries verbatim. */
+function inlineText(md) {
   return String(md)
     .replace(/!?\[([^\]]*)\]\([^)]*\)/g, "$1")
     .replace(/\\(.)/g, "$1")
-    .replace(/(\*\*|__|\*|`)/g, "")
-    .replace(/^\s{0,3}(#{1,6}|[-+]|\d+\.|>)\s+/gm, "");
+    .replace(/(\*\*|__|\*|`)/g, "");
 }
 
 /** Normalized text of every ATX heading (## to ######) in a Markdown body. */
 export function markdownHeadings(md) {
   const out = [];
   for (const m of String(md).matchAll(/^\s{0,3}#{1,6}\s+(.+?)\s*#*\s*$/gm)) {
-    out.push(normalize(markdownText(m[1])));
+    out.push(normalize(inlineText(m[1])));
   }
   return out;
 }
@@ -182,7 +192,24 @@ export function checkPage(html, route) {
 
   const faqs = nodesOfType(blocks, "FAQPage");
   const howTos = nodesOfType(blocks, "HowTo");
-  if (faqs.length === 0 && howTos.length === 0) return errors;
+  const inPageEntries = nodesOfType(blocks, "ItemList")
+    .flatMap((list) => [list.itemListElement ?? []].flat())
+    .filter((e) => typeof e.url === "string" && e.url.includes("#"));
+  if (faqs.length === 0 && howTos.length === 0 && inPageEntries.length === 0) return errors;
+
+  if (inPageEntries.length > 0) {
+    const byId = headingIds(html);
+    for (const entry of inPageEntries) {
+      const fragment = entry.url.split("#")[1];
+      const name = String(entry.name ?? "");
+      if (byId.get(fragment) !== normalize(name)) {
+        errors.push(
+          `M6 ${route}: ItemList entry ${clip(name)} links to #${fragment}, which is ` +
+            `${byId.has(fragment) ? `the heading ${clip(byId.get(fragment))}` : "not a heading on the page"}`
+        );
+      }
+    }
+  }
 
   const text = visibleText(html);
   const visible = (s) => typeof s === "string" && containsPhrase(text, normalize(s));

@@ -4,8 +4,9 @@ import { UPDATED } from "@/lib/contentDates";
 import { PILLARS } from "@/lib/pillars";
 import { CASE_STUDIES } from "@/lib/caseStudies";
 import { INDUSTRIES } from "@/lib/industries";
-import { BLOG_POSTS } from "@/lib/blog";
+import { ARTICLES, BLOG_POSTS, GUIDES, postPath } from "@/lib/blog";
 import { SPM_PLATFORMS } from "@/lib/spmPlatforms";
+import { SOLUTIONS } from "@/lib/solutions";
 
 /* Every entry carries a real <lastmod> — the date that page's content actually
    changed (see lib/contentDates.ts). Deliberately NOT the build date: Google
@@ -21,10 +22,11 @@ type Entry = { path: string; lastModified: string };
    /resources keeps its manual date as a FLOOR: the page also carries press
    and glossary content that the collections know nothing about, so the
    registry value can legitimately be newer than any post. */
-const BLOG_INDEX_LASTMOD = BLOG_POSTS.reduce(
-  (max, p) => (p.dateModified > max ? p.dateModified : max),
-  ""
-);
+const newest = (xs: { dateModified: string }[], floor = "") =>
+  xs.reduce((max, p) => (p.dateModified > max ? p.dateModified : max), floor);
+const BLOG_INDEX_LASTMOD = newest(ARTICLES);
+const GUIDES_INDEX_LASTMOD = newest(GUIDES, UPDATED.resources);
+const COLLECTION_LASTMOD = newest(BLOG_POSTS);
 const CASE_STUDIES_LASTMOD = CASE_STUDIES.reduce(
   (max, cs) => {
     const d = cs.dateModified ?? UPDATED.caseStudies;
@@ -33,7 +35,7 @@ const CASE_STUDIES_LASTMOD = CASE_STUDIES.reduce(
   UPDATED.caseStudies as string
 );
 const RESOURCES_LASTMOD =
-  BLOG_INDEX_LASTMOD > UPDATED.resources ? BLOG_INDEX_LASTMOD : UPDATED.resources;
+  COLLECTION_LASTMOD > UPDATED.resources ? COLLECTION_LASTMOD : UPDATED.resources;
 
 const staticEntries: Entry[] = [
   { path: "", lastModified: UPDATED.home },
@@ -44,10 +46,12 @@ const staticEntries: Entry[] = [
   { path: "/spm/compare", lastModified: UPDATED.spm },
   { path: "/services", lastModified: UPDATED.services },
   { path: "/services/automation", lastModified: UPDATED.automation },
+  { path: "/solutions", lastModified: SOLUTIONS.reduce((m, s) => (s.dateModified > m ? s.dateModified : m), "") },
   { path: "/case-studies", lastModified: CASE_STUDIES_LASTMOD },
   { path: "/industries", lastModified: UPDATED.industries },
   { path: "/blog", lastModified: BLOG_INDEX_LASTMOD },
   { path: "/resources", lastModified: RESOURCES_LASTMOD },
+  { path: "/resources/guides", lastModified: GUIDES_INDEX_LASTMOD },
   { path: "/resources/glossary", lastModified: UPDATED.glossary },
   { path: "/about", lastModified: UPDATED.about },
   { path: "/about/why-lanshore", lastModified: UPDATED.whyLanshore },
@@ -65,6 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       path: `/spm/${p.slug}`,
       lastModified: UPDATED.spm,
     })),
+    ...SOLUTIONS.map((s) => ({ path: `/solutions/${s.slug}`, lastModified: s.dateModified })),
     ...CASE_STUDIES.map((cs) => ({
       path: `/case-studies/${cs.slug}`,
       lastModified: cs.dateModified ?? UPDATED.caseStudies,
@@ -75,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     /* Posts carry their own date — freshness is read per article. */
     ...BLOG_POSTS.map((post) => ({
-      path: `/blog/${post.slug}`,
+      path: postPath(post),
       lastModified: post.dateModified,
     })),
   ];

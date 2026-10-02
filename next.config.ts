@@ -108,7 +108,8 @@ const SIMPLE_REDIRECTS: Record<string, string[]> = {
   "/services": [
     "/agentic-pmo-by-lanshore",
     "/agentic-ai-rpa-roadmap-and-business-case",
-    "/solutions",
+    /* "/solutions" was redirected here until /solutions became a real index
+       (AEO Group 2A, 2026-10). Old inbound links now land on that page. */
     "/solutions/pmo",
     "/development-services",
     "/full-stack-development",

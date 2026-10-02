@@ -78,6 +78,9 @@ function assertNoAdminFields(record: object, where: string): void {
 export type BlogBlock = { type: "h2" | "h3" | "p" | "li"; text: string };
 export type FaqEntry = { question: string; answer: string };
 
+export type SourceEntry = { title: string; url: string; retrieved: string };
+export type ItemListEntry = { name: string; items: string[] };
+
 export type HowToEntry = {
   name: string;
   description?: string;
@@ -160,6 +163,14 @@ export type BlogRecord = {
   keyTakeaways?: string[];
   /* A procedure already written into the body; emitted as HowTo JSON-LD. */
   howTo?: HowToEntry;
+  /* "guide" publishes under /resources/guides; absent means /blog. */
+  kind?: "guide";
+  /* A piece comparing named vendors or firms; requires `sources`. */
+  comparison?: boolean;
+  /* Dated public sources, rendered visibly under the article. */
+  sources?: SourceEntry[];
+  /* Listicle entries (each the text of a body heading) for ItemList JSON-LD. */
+  itemList?: ItemListEntry;
   body: string;
   blocks: BlogBlock[];
   featured: boolean;
@@ -184,6 +195,8 @@ export function loadBlog(): BlogRecord[] {
     const faq = data.faq as FaqEntry[] | undefined;
     const keyTakeaways = data.keyTakeaways as string[] | undefined;
     const howTo = data.howTo as HowToEntry | undefined;
+    const sources = data.sources as SourceEntry[] | undefined;
+    const itemList = data.itemList as ItemListEntry | undefined;
 
     const record: BlogRecord = {
       slug,
@@ -200,6 +213,10 @@ export function loadBlog(): BlogRecord[] {
       ...(faq ? { faq } : {}),
       ...(keyTakeaways ? { keyTakeaways } : {}),
       ...(howTo ? { howTo } : {}),
+      ...(data.kind === "guide" ? { kind: "guide" as const } : {}),
+      ...(data.comparison === true ? { comparison: true } : {}),
+      ...(sources ? { sources } : {}),
+      ...(itemList ? { itemList } : {}),
       body,
       blocks: markdownToBlocks(body) as BlogBlock[],
       featured: data.featured === true,

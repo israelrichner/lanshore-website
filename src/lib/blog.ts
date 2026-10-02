@@ -3,7 +3,7 @@
    migrated verbatim from lanshore.com and are unchanged. */
 
 import type { FaqItem } from "./schema";
-import { loadBlog, type HowToEntry } from "./content/loadContent";
+import { loadBlog, type HowToEntry, type SourceEntry, type ItemListEntry } from "./content/loadContent";
 
 export type BlogBlock = { type: "h2" | "h3" | "p" | "li"; text: string };
 
@@ -36,6 +36,15 @@ export type BlogPost = {
      HowTo JSON-LD; check-schema-mirror.mjs fails the build if a step name is
      not a heading on the rendered page. */
   howTo?: HowToEntry;
+  /* "guide" publishes under /resources/guides as an Article; absent is a
+     /blog post. Always build a URL with postPath(), never by hand. */
+  kind?: "guide";
+  /* Compares named vendors or firms; validation then requires `sources`. */
+  comparison?: boolean;
+  /* Dated public sources, rendered under the article. */
+  sources?: SourceEntry[];
+  /* Listicle entries, each the exact text of a body heading. */
+  itemList?: ItemListEntry;
   /* Markdown source of the post body. */
   body: string;
   /* Parsed from `body`. Retained so the block renderer keeps working; once
@@ -52,6 +61,21 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = loadBlog();
 
+/** The one place a post or guide URL is built. */
+export function postPath(post: { slug: string; kind?: string }): string {
+  return post.kind === "guide" ? `/resources/guides/${post.slug}` : `/blog/${post.slug}`;
+}
+
+/* The collection holds both; each route lists only its own. */
+export const ARTICLES: BlogPost[] = BLOG_POSTS.filter((p) => p.kind !== "guide");
+export const GUIDES: BlogPost[] = BLOG_POSTS.filter((p) => p.kind === "guide");
+
+/** A /blog post by slug. A guide's slug does not resolve here. */
 export function getPost(slug: string): BlogPost | undefined {
-  return BLOG_POSTS.find((p) => p.slug === slug);
+  return ARTICLES.find((p) => p.slug === slug);
+}
+
+/** A /resources/guides guide by slug. */
+export function getGuide(slug: string): BlogPost | undefined {
+  return GUIDES.find((p) => p.slug === slug);
 }

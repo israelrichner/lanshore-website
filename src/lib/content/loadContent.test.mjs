@@ -196,3 +196,24 @@ test("case studies: byline fields pass through", async () => {
     assert.equal(rec.datePublished, "2026-03-02");
   });
 });
+
+test("blog: guide kind, comparison sources and itemList pass through", async () => {
+  const slug = "zz-fixture-guide";
+  const body = [
+    "---", "title: Guide", "description: d", "dateModified: '2026-10-02'", "kind: guide",
+    "comparison: true",
+    "sources:", "  - title: Vendor page", "    url: https://vendor.example/x", "    retrieved: '2026-10-02'",
+    "itemList:", "  name: Two things", "  items:", "    - 1. First", "    - 2. Second",
+    "---", "", "## 1. First", "", "One.", "", "## 2. Second", "", "Two.", "",
+  ].join("\n");
+
+  await withFixtures({ [`blog/${slug}.md`]: body }, { blog: [slug] }, async () => {
+    const m = await freshLoad();
+    const rec = m.loadBlog().find((r) => r.slug === slug);
+    assert.ok(rec, "fixture should load");
+    assert.equal(rec.kind, "guide");
+    assert.equal(rec.comparison, true);
+    assert.deepEqual(rec.sources, [{ title: "Vendor page", url: "https://vendor.example/x", retrieved: "2026-10-02" }]);
+    assert.deepEqual(rec.itemList.items, ["1. First", "2. Second"]);
+  });
+});

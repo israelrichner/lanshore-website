@@ -170,3 +170,21 @@ export function softwareApplicationNode(platform, siteUrl) {
     subjectOf: { "@type": "WebPage", "@id": `${siteUrl}/spm/${platform.slug}` },
   };
 }
+
+/**
+ * `ItemList` whose entries are sections of one page (a listicle), each
+ * linking to its heading by the same headingId() Markdown.tsx stamps on it.
+ */
+export function inPageItemListNode(list, pageUrl) {
+  return {
+    "@type": "ItemList",
+    name: list.name,
+    numberOfItems: list.items.length,
+    itemListElement: list.items.map((name, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name,
+      url: `${pageUrl}#${headingId(name)}`,
+    })),
+  };
+}
