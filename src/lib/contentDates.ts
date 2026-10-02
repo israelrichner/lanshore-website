@@ -38,6 +38,7 @@ export const UPDATED = {
   careers: "2026-07-14",
   contact: "2026-07-14",
   privacy: "2026-07-14",
+  dirContract: "2026-10-02",
 } as const;
 
 
