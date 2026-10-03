@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 const DIFFERENTIATORS = [
   {
     title: "We've run comp, not just advised on it",
-    body: "Our team has administered live comp cycles for enterprise clients for years. We know where calculations break, where disputes come from, and what an auditor asks for — because we've been the ones answering.",
+    body: "Our team has administered live comp cycles for enterprise clients for years. We know where calculations break, where disputes come from, and what an auditor asks for, because we've been the ones answering.",
   },
   {
     title: "One team from platform to agents",
-    body: "Platform selection, implementation, managed operations, and agentic development sit in one practice — dual SPM depth and agentic-build capability. You are not coordinating two vendors who hand off and blame each other when something breaks.",
+    body: "Platform selection, implementation, managed operations, and agentic development sit in one practice: dual SPM depth and agentic-build capability. You are not coordinating two vendors who hand off and blame each other when something breaks.",
   },
   {
     title: "We own outcomes",

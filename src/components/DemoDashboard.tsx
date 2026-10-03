@@ -513,7 +513,7 @@ function DistributionChart({
           </p>
           {DISTRIBUTION[hover].flagged && (
             <p className="mt-0.5 text-[11px] font-semibold text-gold-light">
-              Agent watch zone — outlier screening runs here
+              Agent watch zone: outlier screening runs here
             </p>
           )}
         </div>
@@ -521,7 +521,7 @@ function DistributionChart({
       <div
         className="flex items-end gap-3"
         role="group"
-        aria-label="Rep attainment distribution — click a bucket to drill in"
+        aria-label="Rep attainment distribution: click a bucket to drill in"
       >
         {DISTRIBUTION.map((d, i) => (
           <button
@@ -604,7 +604,7 @@ function VpView({ kpis }: ViewProps) {
               </div>
               {bucket.count > bucketReps.length && (
                 <p className="mt-2 text-[11px] text-white/45">
-                  Showing {bucketReps.length} of {bucket.count} — full list one click away on an engagement.
+                  Showing {bucketReps.length} of {bucket.count}; full list one click away on an engagement.
                 </p>
               )}
             </div>
@@ -733,7 +733,7 @@ function CfoView({ kpis }: ViewProps) {
         ? {
             ...k,
             value: `$${scenario.trueUpK}K`,
-            delta: scenario.breach ? "exceeds 1% tolerance — review" : "within 1% tolerance",
+            delta: scenario.breach ? "exceeds 1% tolerance: review" : "within 1% tolerance",
             tone: scenario.breach ? ("warn" as const) : undefined,
           }
         : k
@@ -785,7 +785,7 @@ function CfoView({ kpis }: ViewProps) {
           June accrual recomputes to{" "}
           <span className="font-semibold text-white">${scenario.juneCalculated.toFixed(2)}M</span> · true-up{" "}
           <span className={`font-semibold ${scenario.breach ? "text-red-300" : "text-emerald-300"}`}>
-            ${scenario.trueUpK}K — {scenario.breach ? "exceeds" : "within"} the 1% tolerance
+            ${scenario.trueUpK}K ({scenario.breach ? "exceeds" : "within"} the 1% tolerance)
           </span>
           . April and May are actuals and don&rsquo;t move.
         </p>
@@ -969,7 +969,7 @@ function RevOpsView({ kpis }: ViewProps) {
             ))}
           </div>
           <p className="mt-3 text-[11px] text-white/45">
-            Median resolution time on exceptions is 3.1 hours — it was 2.4 days before agents.
+            Median resolution time on exceptions is 3.1 hours; it was 2.4 days before agents.
             Statement disputes for the May run: 9, down from 31 in February.
           </p>
         </div>
@@ -995,7 +995,7 @@ function RevOpsView({ kpis }: ViewProps) {
             </div>
             <p className="mt-1 text-[11px] text-white/45">
               {doneCount} of {items.length} triaged
-              {openCount === 0 ? " — queue clear; the repetitive 80% runs itself while your team designs plans" : ""}
+              {openCount === 0 ? ". Queue clear: the repetitive 80% runs itself while your team designs plans." : ""}
             </p>
           </div>
           <div className="space-y-3">
@@ -1044,7 +1044,7 @@ function RevOpsView({ kpis }: ViewProps) {
                   <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2">
                     {item.status === "approved" ? (
                       <p className="text-xs font-bold text-emerald-300">
-                        ✓ Fix applied — logged to audit trail
+                        ✓ Fix applied, logged to audit trail
                       </p>
                     ) : item.status === "routed" ? (
                       <p className="text-xs font-bold text-gold-light">
@@ -1052,7 +1052,7 @@ function RevOpsView({ kpis }: ViewProps) {
                       </p>
                     ) : (
                       <p className="text-xs font-bold text-white/60">
-                        Dismissed — decision logged, no plan action needed
+                        Dismissed: decision logged, no plan action needed
                       </p>
                     )}
                     <button
@@ -1068,10 +1068,10 @@ function RevOpsView({ kpis }: ViewProps) {
             {visible.length === 0 && (
               <p className="text-sm text-white/70">
                 {filter === "sla"
-                  ? "Nothing open is breaching SLA — the two overdue items have been triaged."
+                  ? "Nothing open is breaching SLA; the two overdue items have been triaged."
                   : filter === "done"
-                    ? "Nothing triaged yet — approve, route, or dismiss an exception to see it here."
-                    : "Queue clear — the repetitive 80% runs itself; your team designs plans."}
+                    ? "Nothing triaged yet. Approve, route, or dismiss an exception to see it here."
+                    : "Queue clear: the repetitive 80% runs itself; your team designs plans."}
               </p>
             )}
           </div>
@@ -1186,7 +1186,7 @@ function AskTheData({ qa }: { qa: QA[] }) {
       )}
       {remaining.length === 0 && !streaming && (
         <p className="mt-4 text-[11px] text-white/45">
-          That&rsquo;s the scripted set — on an engagement this is a live agent over your comp
+          That&rsquo;s the scripted set. On an engagement this is a live agent over your comp
           data, and any question is fair game.
         </p>
       )}

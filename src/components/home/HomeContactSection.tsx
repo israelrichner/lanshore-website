@@ -23,7 +23,7 @@ export default function HomeContactSection() {
             </h2>
             <p className="mb-6 text-lg leading-relaxed text-white/70 sm:mb-8">
               A Lanshore representative will reach out to discuss how we can help optimize
-              your SPM and automation strategy — no pitch, just substance.
+              your SPM and automation strategy. No pitch, just substance.
             </p>
 
             <ul className="space-y-4">

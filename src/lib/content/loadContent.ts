@@ -78,6 +78,15 @@ function assertNoAdminFields(record: object, where: string): void {
 export type BlogBlock = { type: "h2" | "h3" | "p" | "li"; text: string };
 export type FaqEntry = { question: string; answer: string };
 
+export type HowToEntry = {
+  name: string;
+  description?: string;
+  /** ISO 8601 duration, e.g. "PT2H". */
+  totalTime?: string;
+  /** Each `name` is the exact text of a heading in the body. */
+  steps: { name: string; text: string }[];
+};
+
 export type CollectionKey = "blog" | "caseStudies" | "whitePapers";
 
 type Ledger = {
@@ -140,7 +149,17 @@ export type BlogRecord = {
   title: string;
   description: string;
   dateModified: string;
+  /* Byline fields. All optional and all PUBLIC: they are rendered to readers
+     and emitted in Article JSON-LD, so they are deliberately not in
+     ADMIN_ONLY_FIELDS. See validateBylineFields in content-rules.mjs. */
+  datePublished?: string;
+  author?: string;
+  image?: string;
   faq?: FaqEntry[];
+  /* Rendered above the body by KeyTakeaways. */
+  keyTakeaways?: string[];
+  /* A procedure already written into the body; emitted as HowTo JSON-LD. */
+  howTo?: HowToEntry;
   body: string;
   blocks: BlogBlock[];
   featured: boolean;
@@ -163,13 +182,24 @@ export function loadBlog(): BlogRecord[] {
     if (data.draft === true) continue;
 
     const faq = data.faq as FaqEntry[] | undefined;
+    const keyTakeaways = data.keyTakeaways as string[] | undefined;
+    const howTo = data.howTo as HowToEntry | undefined;
 
     const record: BlogRecord = {
       slug,
       title: String(data.title),
       description: String(data.description),
       dateModified: String(data.dateModified),
+      /* Spread rather than assigned, so an absent field stays absent on the
+         record instead of becoming `undefined`. The schema layer relies on
+         that distinction: an emitted `datePublished: undefined` is worse than
+         no key at all. */
+      ...(typeof data.datePublished === "string" ? { datePublished: data.datePublished } : {}),
+      ...(typeof data.author === "string" ? { author: data.author } : {}),
+      ...(typeof data.image === "string" ? { image: data.image } : {}),
       ...(faq ? { faq } : {}),
+      ...(keyTakeaways ? { keyTakeaways } : {}),
+      ...(howTo ? { howTo } : {}),
       body,
       blocks: markdownToBlocks(body) as BlogBlock[],
       featured: data.featured === true,
@@ -182,7 +212,9 @@ export function loadBlog(): BlogRecord[] {
         data.title,
         data.description,
         body,
-        ...(faq ?? []).flatMap((f) => [f.question, f.answer])
+        ...(faq ?? []).flatMap((f) => [f.question, f.answer]),
+        ...(keyTakeaways ?? []),
+        ...(howTo ? [howTo.name, howTo.description ?? "", ...howTo.steps.flatMap((s) => [s.name, s.text])] : [])
       ),
     };
     assertNoAdminFields(record, `blog/${slug}`);
@@ -210,6 +242,12 @@ export type CaseStudyRecord = {
   legacyUrl: string;
   /** Optional; callers fall back to UPDATED.caseStudies when absent. */
   dateModified?: string;
+  /* Byline fields, same rules as BlogRecord. These arrive via the spread
+     below rather than being named individually, but they are declared here so
+     the public shape of a case study stays readable in one place. */
+  datePublished?: string;
+  author?: string;
+  image?: string;
 };
 
 export function loadCaseStudies(): CaseStudyRecord[] {

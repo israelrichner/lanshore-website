@@ -8,14 +8,14 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "SPM & Agentic AI Glossary | Lanshore",
   description:
-    "Plain-English definitions of sales performance management and agentic AI terms — AI Assisted SPM, ICM, crediting, clawbacks, SPIFs, true-ups, and more.",
+    "Plain-English definitions of sales performance management and agentic AI terms: AI Assisted SPM, ICM, crediting, clawbacks, SPIFs, true-ups, and more.",
   alternates: { canonical: "/resources/glossary" },
   openGraph: {
     siteName: "Lanshore",
     locale: "en_US",
     title: "SPM & Agentic AI Glossary | Lanshore",
     description:
-      "Plain-English definitions of sales performance management and agentic AI terms — AI Assisted SPM, ICM, crediting, clawbacks, SPIFs, true-ups, and more.",
+      "Plain-English definitions of sales performance management and agentic AI terms: AI Assisted SPM, ICM, crediting, clawbacks, SPIFs, true-ups, and more.",
     url: "/resources/glossary",
     type: "website",
   },
@@ -67,7 +67,7 @@ export default function GlossaryPage() {
             SPM & agentic AI, defined
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-white/75">
-            The terms behind AI Assisted SPM by Lanshore — sales performance management,
+            The terms behind AI Assisted SPM by Lanshore: sales performance management,
             incentive compensation, and agentic AI, in plain English.
           </p>
         </div>
@@ -123,8 +123,8 @@ export default function GlossaryPage() {
           Looking for a specific platform?{" "}
           <Link href="/spm" className="font-semibold text-accent hover:text-accent-hover">
             See the SPM platforms Lanshore implements
-          </Link>{" "}
-          — Varicent, Xactly, CaptivateIQ, SAP, Anaplan, Salesforce Spiff, Performio,
+          </Link>
+          : Varicent, Xactly, CaptivateIQ, SAP, Anaplan, Salesforce Spiff, Performio,
           Akeron, and Incentivate.
         </p>
       </section>

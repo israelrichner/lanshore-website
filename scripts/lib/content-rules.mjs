@@ -16,6 +16,10 @@
  * callers, which keeps this testable without fixtures on disk.
  */
 
+import { normalize, containsPhrase, markdownText, markdownHeadings } from "./schema-mirror.mjs";
+import { headingId } from "../../src/lib/heading-id.mjs";
+import { findInRecord } from "./house-style.mjs";
+
 export const SLUG_RE = /^[a-z0-9][a-z0-9-]*$/;
 export const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -115,6 +119,29 @@ export const PILLARS = [
 
 export const COLLECTIONS = ["blog", "caseStudies", "whitePapers"];
 
+/**
+ * Bylines a content record is allowed to claim.
+ *
+ * The list lives here, in the .mjs layer, because three things need the same
+ * answer and must not drift: the build gate (check:content), the studio admin's
+ * author picker, and src/lib/authors.ts, which throws at module load if its
+ * records do not match this list exactly.
+ *
+ * An id here is a person the site is willing to attribute work to in public and
+ * in `Person` schema. Adding one means adding a real human, not a label.
+ */
+export const AUTHOR_IDS = ["doug-erb"];
+
+/**
+ * The `dateModified` a case study shows when it carries none of its own.
+ *
+ * Lives here, not only in src/lib/contentDates.ts (which re-exports it as
+ * UPDATED.caseStudies), because the datePublished ordering rule must compare
+ * against the date the page will actually display. Without it, a study with
+ * no own dateModified could claim "Published Sep 15 · Last updated Jul 8".
+ */
+export const CASE_STUDIES_DEFAULT_MODIFIED = "2026-07-08";
+
 /* ------------------------------------------------------------------ *
  * Shared field helpers
  * ------------------------------------------------------------------ */
@@ -168,6 +195,199 @@ function validSlug(slug, where, errors) {
   return true;
 }
 
+/**
+ * Optional byline, publish date and image. Shared by blog posts and case
+ * studies, which carry identical rules for all three.
+ *
+ * All three fields are optional by design. `datePublished` in particular must
+ * never be back-filled with a guess: most of this content was migrated from
+ * the old lanshore.com, which never displayed a publish date, and an invented
+ * one is a false freshness signal aimed at the exact engines the schema exists
+ * to inform. Absent is honest; wrong is not.
+ */
+function validateBylineFields(record, where, errors, fallbackModified) {
+  if (record.author !== undefined && !AUTHOR_IDS.includes(record.author)) {
+    errors.push(
+      `${where}: "author" must be one of ${AUTHOR_IDS.map((a) => `"${a}"`).join(", ")}, ` +
+        `got ${JSON.stringify(record.author)}. Add the person to AUTHOR_IDS in ` +
+        `scripts/lib/content-rules.mjs and to AUTHORS in src/lib/authors.ts first.`
+    );
+  }
+
+  if (record.datePublished !== undefined) {
+    if (validDate(record.datePublished, "datePublished", where, errors)) {
+      /* Case studies may omit dateModified; the page then shows
+         CASE_STUDIES_DEFAULT_MODIFIED, so compare against that. */
+      const modified = record.dateModified ?? fallbackModified;
+      if (
+        typeof modified === "string" &&
+        DATE_RE.test(modified) &&
+        record.datePublished > modified
+      ) {
+        errors.push(
+          `${where}: "datePublished" (${record.datePublished}) is after "dateModified" ` +
+            `(${modified}). Content cannot be modified before it was published.`
+        );
+      }
+    }
+  }
+
+  if (record.image !== undefined) {
+    if (typeof record.image !== "string" || record.image.trim() === "") {
+      errors.push(`${where}: "image" must be a non-empty string when present`);
+    } else if (
+      /* "//evil.example/x.png" starts with "/" but is protocol-relative and
+         resolves to a third-party host, which is the same escape whitePapers.ts
+         guards against for PDF paths. Check it before the generic prefix test. */
+      record.image.startsWith("//") ||
+      (!record.image.startsWith("/") && !record.image.startsWith("https://"))
+    ) {
+      errors.push(
+        `${where}: "image" must be a site-absolute path ("/images/…") or an https URL, ` +
+          `got ${JSON.stringify(record.image)}`
+      );
+    }
+  }
+}
+
+/* A list of one is not a list, and past six the block stops being a
+   summary. Both bounds are what the KeyTakeaways component is designed for. */
+export const KEY_TAKEAWAYS_MIN = 2;
+export const KEY_TAKEAWAYS_MAX = 6;
+
+function validateKeyTakeaways(record, where, errors) {
+  if (record.keyTakeaways === undefined) return;
+  const items = record.keyTakeaways;
+  if (!Array.isArray(items)) {
+    errors.push(`${where}: "keyTakeaways" must be an array when present`);
+    return;
+  }
+  if (items.length < KEY_TAKEAWAYS_MIN || items.length > KEY_TAKEAWAYS_MAX) {
+    errors.push(
+      `${where}: "keyTakeaways" must have ${KEY_TAKEAWAYS_MIN} to ${KEY_TAKEAWAYS_MAX} items, got ${items.length}`
+    );
+  }
+  items.forEach((item, i) => {
+    if (typeof item !== "string" || item.trim() === "") {
+      errors.push(`${where}: keyTakeaways[${i}] must be a non-empty string`);
+    }
+  });
+}
+
+/* ISO 8601 duration, the form schema.org's `totalTime` requires: PT30M, P2D,
+   P1W, P1DT2H. The lookaheads reject the empty "P" and a dangling "T". */
+const ISO_DURATION_RE = /^P(?!$)(\d+Y)?(\d+M)?(\d+W)?(\d+D)?(T(?=\d)(\d+H)?(\d+M)?(\d+S)?)?$/;
+
+/**
+ * Optional `howTo` block: a procedure already written into the post body.
+ *
+ * Only the shape is checked here. Whether each step name really is a heading
+ * on the rendered page is checked against build output by
+ * scripts/check-schema-mirror.mjs, because only the built HTML can answer it.
+ */
+function validateHowTo(record, where, errors) {
+  if (record.howTo === undefined) return;
+  const howTo = record.howTo;
+  if (!howTo || typeof howTo !== "object" || Array.isArray(howTo)) {
+    errors.push(`${where}: "howTo" must be an object when present`);
+    return;
+  }
+  reqString(howTo, "name", `${where} howTo`, errors);
+  if (howTo.description !== undefined && (typeof howTo.description !== "string" || howTo.description.trim() === "")) {
+    errors.push(`${where} howTo: "description" must be a non-empty string when present`);
+  }
+  if (howTo.totalTime !== undefined && (typeof howTo.totalTime !== "string" || !ISO_DURATION_RE.test(howTo.totalTime))) {
+    errors.push(
+      `${where} howTo: "totalTime" must be an ISO 8601 duration such as "PT30M", got ${JSON.stringify(howTo.totalTime)}`
+    );
+  }
+  if (!Array.isArray(howTo.steps) || howTo.steps.length < 2) {
+    errors.push(`${where} howTo: "steps" must be an array of at least 2 steps; a one-step procedure is not a HowTo`);
+    return;
+  }
+  const seen = new Set();
+  howTo.steps.forEach((step, i) => {
+    if (!step || typeof step !== "object") {
+      errors.push(`${where} howTo.steps[${i}] must be an object`);
+      return;
+    }
+    reqString(step, "name", `${where} howTo.steps[${i}]`, errors);
+    reqString(step, "text", `${where} howTo.steps[${i}]`, errors);
+    /* Two steps whose names reduce to one anchor would share one heading
+       link ("Step 1: Define" and "Step 1 - Define" both become
+       step-1-define), so compare anchors, not raw names. */
+    if (typeof step.name === "string") {
+      const anchor = headingId(step.name);
+      if (seen.has(anchor)) {
+        errors.push(`${where} howTo.steps[${i}]: duplicate step name ${JSON.stringify(step.name)} (anchor #${anchor})`);
+      }
+      seen.add(anchor);
+    }
+  });
+}
+
+/**
+ * Front matter that restates the body must still match the body.
+ *
+ * A post's FAQ and HowTo live twice: as headings and prose in the Markdown
+ * body, and in front matter for the JSON-LD. The studio edits the body but has
+ * no fields for either copy, so without this rule a body edit would commit
+ * cleanly and then fail the deploy in check:schema-mirror, where an editor
+ * cannot fix it. Checking the source here puts the error in the editor's
+ * pre-save list and in check:content instead. The build-output check stays as
+ * the backstop for what this text-level match cannot see.
+ */
+function validateBodyMirror(record, where, errors) {
+  if (typeof record.body !== "string") return;
+  const needsText = Array.isArray(record.faq) || (record.howTo && Array.isArray(record.howTo.steps));
+  if (!needsText) return;
+
+  const text = normalize(markdownText(record.body));
+  const headings = new Set(markdownHeadings(record.body));
+  const inBody = (s) => typeof s === "string" && containsPhrase(text, normalize(s));
+
+  if (Array.isArray(record.faq)) {
+    record.faq.forEach((item, i) => {
+      if (!item || typeof item !== "object") return;
+      if (typeof item.question === "string" && !inBody(item.question)) {
+        errors.push(`${where}: faq[${i}] question is not in the body. Edit both copies together: ${JSON.stringify(item.question)}`);
+      }
+      if (typeof item.answer === "string" && !inBody(item.answer)) {
+        errors.push(`${where}: faq[${i}] answer does not match the body. Edit both copies together.`);
+      }
+    });
+  }
+
+  if (record.howTo && Array.isArray(record.howTo.steps)) {
+    record.howTo.steps.forEach((step, i) => {
+      if (!step || typeof step !== "object") return;
+      if (typeof step.name === "string" && !headings.has(normalize(step.name))) {
+        errors.push(
+          `${where}: howTo.steps[${i}] name must be the exact text of a heading in the body, ` +
+            `got ${JSON.stringify(step.name)}`
+        );
+      }
+      if (typeof step.text === "string" && !inBody(step.text)) {
+        errors.push(`${where}: howTo.steps[${i}] text does not appear in the body.`);
+      }
+    });
+  }
+}
+
+/**
+ * House style: no em dashes in any field (owner decision, plan WP7). Checked
+ * here as well as over the build output so a studio editor sees the problem
+ * in the pre-save list instead of as a failed deploy.
+ */
+function validateHouseStyle(record, where, errors) {
+  for (const field of findInRecord(record)) {
+    errors.push(
+      `${where}: "${field}" contains an em dash (U+2014). House style uses none: ` +
+        `use a comma, colon, parentheses, or a new sentence.`
+    );
+  }
+}
+
 /* ------------------------------------------------------------------ *
  * Per-collection field validation
  * ------------------------------------------------------------------ */
@@ -184,6 +404,10 @@ export function validateBlogPost(record, slug) {
   reqString(record, "description", where, errors);
   validDate(record.dateModified, "dateModified", where, errors);
   reqString(record, "body", where, errors);
+  validateBylineFields(record, where, errors);
+  validateKeyTakeaways(record, where, errors);
+  validateHowTo(record, where, errors);
+  validateBodyMirror(record, where, errors);
 
   if (record.faq !== undefined) {
     if (!Array.isArray(record.faq)) {
@@ -215,6 +439,7 @@ export function validateBlogPost(record, slug) {
   if (record.publishedOnce !== undefined && typeof record.publishedOnce !== "boolean") {
     errors.push(`${where}: "publishedOnce" must be a boolean when present`);
   }
+  validateHouseStyle(record, where, errors);
   return errors;
 }
 
@@ -237,6 +462,7 @@ export function validateCaseStudy(record, slug) {
   if (record.dateModified !== undefined) {
     validDate(record.dateModified, "dateModified", where, errors);
   }
+  validateBylineFields(record, where, errors, CASE_STUDIES_DEFAULT_MODIFIED);
   if (record.draft !== undefined && typeof record.draft !== "boolean") {
     errors.push(`${where}: "draft" must be a boolean when present`);
   }
@@ -246,6 +472,7 @@ export function validateCaseStudy(record, slug) {
   if (record.publishedOnce !== undefined && typeof record.publishedOnce !== "boolean") {
     errors.push(`${where}: "publishedOnce" must be a boolean when present`);
   }
+  validateHouseStyle(record, where, errors);
   return errors;
 }
 
@@ -275,6 +502,7 @@ export function validateWhitePaper(record, slug) {
   if (record.publishedOnce !== undefined && typeof record.publishedOnce !== "boolean") {
     errors.push(`${where}: "publishedOnce" must be a boolean when present`);
   }
+  validateHouseStyle(record, where, errors);
   return errors;
 }
 

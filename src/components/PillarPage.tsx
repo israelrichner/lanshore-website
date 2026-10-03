@@ -39,7 +39,7 @@ const DEMO_PERSONAS = [
 const DEMO_SECTIONS: Record<string, { intro: string; demo: ReactNode }> = {
   "executive-dashboards": {
     intro:
-      "The Executive Dashboards pillar running on Meridian Trust Bank, a fictitious regional financial institution. Pick your role and see what the dashboard answers for you — on an engagement, this runs on your comp platform, CRM, and finance data.",
+      "The Executive Dashboards pillar running on Meridian Trust Bank, a fictitious regional financial institution. Pick your role and see what the dashboard answers for you. On an engagement, this runs on your comp platform, CRM, and finance data.",
     demo: (
       // DemoDashboard reads ?persona= via useSearchParams, which requires a
       // Suspense boundary while the page prerenders.
@@ -52,12 +52,12 @@ const DEMO_SECTIONS: Record<string, { intro: string; demo: ReactNode }> = {
   },
   operations: {
     intro:
-      "The June comp cycle executed by agents with humans approving what matters, and a live migration from Xactly Incent to Varicent ICM — running on Meridian Trust Bank, a fictitious regional financial institution. Try the exception queue: approve a fix and watch it apply.",
+      "The June comp cycle executed by agents with humans approving what matters, and a live migration from Xactly Incent to Varicent ICM, running on Meridian Trust Bank, a fictitious regional financial institution. Try the exception queue: approve a fix and watch it apply.",
     demo: <OperationsDemo />,
   },
   "custom-apps": {
     intro:
-      "Meridian Comp Hub, a purpose-built comp tool for a fictitious regional bank. You’re signed in as a relationship manager — read your statement, ask the dispute bot why June came in low, track a SPIF approval, and drag the payout calculator’s sliders to model your quarter.",
+      "Meridian Comp Hub, a purpose-built comp tool for a fictitious regional bank. You’re signed in as a relationship manager: read your statement, ask the dispute bot why June came in low, track a SPIF approval, and drag the payout calculator’s sliders to model your quarter.",
     demo: <CustomAppDemo />,
   },
 };
@@ -151,7 +151,7 @@ export default function PillarPage({ pillar }: { pillar: Pillar }) {
             See the demo as your role
           </h2>
           <p className="mb-8 max-w-2xl text-muted">
-            The live demo opens on the view built for you — pick a role and it lands
+            The live demo opens on the view built for you. Pick a role and it lands
             on that tab.
           </p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -182,12 +182,12 @@ export default function PillarPage({ pillar }: { pillar: Pillar }) {
           </h2>
           <p className="mb-8 max-w-2xl text-muted">
             This is how custom apps get built at Lanshore: AI coding agents in Claude
-            Code working inside VS Code — planning, writing, and verifying production
+            Code working inside VS Code: planning, writing, and verifying production
             code under senior engineer supervision.
           </p>
           <div className="overflow-hidden rounded-xl border border-line shadow-card-hover">
             <Image
-              src="/images/fable-cooking.png"
+              src="/images/claude-code-agentic-development.png"
               alt="Claude Code AI agents building a production web application inside VS Code"
               width={1917}
               height={1032}
@@ -231,7 +231,7 @@ export default function PillarPage({ pillar }: { pillar: Pillar }) {
       {/* Cross-link strip */}
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <p className="text-center text-muted">
-          One pillar of AI Assisted SPM by Lanshore — see also{" "}
+          One pillar of AI Assisted SPM by Lanshore. See also{" "}
           {others.map((other, i) => (
             <span key={other.slug}>
               <Link

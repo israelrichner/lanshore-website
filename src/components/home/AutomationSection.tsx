@@ -7,7 +7,7 @@ const YT_ID = "cX8N9ge1Jrs";
 
 const HIGHLIGHTS = [
   "End-to-end workflow automation in minutes",
-  "UiPath, n8n, Claude Code, Power Automate, or direct API integrations — your stack, our delivery",
+  "UiPath, n8n, Claude Code, Power Automate, or direct API integrations: your stack, our delivery",
   "Handles structured & unstructured data at scale",
 ];
 
@@ -28,7 +28,7 @@ export default function AutomationSection() {
             </h2>
             <p className="mb-6 leading-relaxed text-foreground">
               From RPA with UiPath to agentic workflows built with n8n, Claude Code, VS
-              Code, Microsoft Power Automate, or direct API integrations — Lanshore delivers
+              Code, Microsoft Power Automate, or direct API integrations, Lanshore delivers
               automation on the stack your team already trusts. Watch a UiPath
               implementation eliminate repetitive manual work in real time.
             </p>

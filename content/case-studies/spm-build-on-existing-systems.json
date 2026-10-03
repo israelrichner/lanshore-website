@@ -4,7 +4,7 @@
   "industry": "Technology & Digital",
   "pillar": "Services",
   "outcome": "Audit capability and scalability added without replacing existing systems",
-  "challenge": "A fast-growing software vendor needed audit capability, transparent reporting, and cost modeling that could scale with the business — without ripping out the systems already in place.",
+  "challenge": "A fast-growing software vendor needed audit capability, transparent reporting, and cost modeling that could scale with the business, without ripping out the systems already in place.",
   "whatWeDid": "We extended the existing SPM setup with audit-ready calculation logic, transparent reporting for reps and finance, and comp cost modeling for planning.",
   "results": [
     "Audit capability across the comp process",

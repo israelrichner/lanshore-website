@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
+import AuthorByline from "@/components/AuthorByline";
 import { breadcrumbSchema, caseStudySchema } from "@/lib/schema";
 import { UPDATED } from "@/lib/contentDates";
 import { CASE_STUDIES, getCaseStudy } from "@/lib/caseStudies";
@@ -62,6 +63,15 @@ export default async function CaseStudyDetail({
           </p>
           <h1 className="text-3xl font-bold sm:text-4xl">{study.title}</h1>
           <p className="mt-4 text-lg text-white/75">{study.client}</p>
+          {/* Mirrors the Article node's author and dates. Case studies showed
+              no date at all before this; the structured data carried one, so a
+              reader had no way to judge the recency an engine was being told
+              about. */}
+          <AuthorByline
+            author={study.author}
+            dateModified={study.dateModified ?? UPDATED.caseStudies}
+            datePublished={study.datePublished}
+          />
         </div>
       </section>
 
@@ -101,7 +111,7 @@ export default async function CaseStudyDetail({
                 href={relatedPillar.path}
                 className="font-semibold text-accent hover:text-accent-hover"
               >
-                {relatedPillar.name} — AI Assisted SPM by Lanshore
+                {relatedPillar.name}, part of AI Assisted SPM by Lanshore
               </Link>
             </>
           ) : (

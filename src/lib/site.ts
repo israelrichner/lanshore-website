@@ -32,7 +32,7 @@ export const GARTNER_2019 = {
     standard:
       "Lanshore was named as a sample third-party SPM implementation provider in the Gartner® research note “Include Implementation Partners to Successfully Deploy Sales Performance Management Solutions” (Melissa Hilbert, Patrick Sullivan, 18 March 2019, G00380338).",
     heritage:
-      "As far back as 2019, Gartner® research on SPM implementation partners noted Lanshore’s work expanding client toolsets beyond SPM into business intelligence, data lakes, and robotic process automation — the foundation of what is now AI Assisted SPM by Lanshore.",
+      "As far back as 2019, Gartner® research on SPM implementation partners noted Lanshore’s work expanding client toolsets beyond SPM into business intelligence, data lakes, and robotic process automation, the foundation of what is now AI Assisted SPM by Lanshore.",
   },
   disclaimer:
     "GARTNER is a registered trademark and service mark of Gartner, Inc. and/or its affiliates in the U.S. and internationally and is used herein with permission. All rights reserved. Gartner does not endorse any vendor, product or service depicted in its research publications, and does not advise technology users to select only those vendors with the highest ratings or other designation.",

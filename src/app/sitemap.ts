@@ -55,6 +55,7 @@ const staticEntries: Entry[] = [
   { path: "/about/careers", lastModified: UPDATED.careers },
   { path: "/contact", lastModified: UPDATED.contact },
   { path: "/privacy", lastModified: UPDATED.privacy },
+  { path: "/dir-ai", lastModified: UPDATED.dirContract },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

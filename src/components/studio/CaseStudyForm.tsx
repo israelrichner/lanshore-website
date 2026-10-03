@@ -7,11 +7,18 @@ import { useState } from "react";
    populate a dropdown. */
 import { PILLARS } from "../../../scripts/lib/content-rules.mjs";
 import { useEditorActions, EditorMessages, Field, ActionButtons, SlugField, inputClass } from "./EditorShell";
+import { AUTHORS } from "@/lib/authors";
+
+/* Same picker as BlogForm: exactly the people AUTHOR_IDS allows. */
+const AUTHOR_OPTIONS = Object.values(AUTHORS);
 
 export type CaseStudyValues = {
   title: string; client: string; industry: string; pillar: string;
   outcome: string; challenge: string; whatWeDid: string;
   results: string[]; stack: string[]; legacyUrl: string; draft?: boolean;
+  /* Optional byline. Blank is sent as null and becomes an absent key on the
+     server (lib/studio/record-edit.mjs); never written to the file as "". */
+  author?: string | null; datePublished?: string | null;
 };
 
 function RepeatableList({ label, hint, values, onChange }: {
@@ -51,7 +58,15 @@ export default function CaseStudyForm({ slug: initialSlug, initial, isNew, sha }
   const [v, setV] = useState(initial);
   const { state, run } = useEditorActions("caseStudies", slug, isNew);
   const set = <K extends keyof CaseStudyValues>(k: K, val: CaseStudyValues[K]) => setV((p) => ({ ...p, [k]: val }));
-  const record = () => ({ ...v, results: v.results.filter(Boolean), stack: v.stack.filter(Boolean) });
+  /* Blank optional fields go as null so Publish cannot resurrect them from
+     head; see BlogForm. */
+  const record = () => ({
+    ...v,
+    results: v.results.filter(Boolean),
+    stack: v.stack.filter(Boolean),
+    author: v.author?.trim() ? v.author : null,
+    datePublished: v.datePublished?.trim() ? v.datePublished : null,
+  });
 
   return (
     <div>
@@ -93,6 +108,28 @@ export default function CaseStudyForm({ slug: initialSlug, initial, isNew, sha }
         values={v.stack}
         onChange={(x) => set("stack", x)}
       />
+
+      <Field
+        label="Published"
+        hint="Leave blank unless you know the real date this went live. A guessed date is a false freshness signal, and search engines weigh it. Blank is honest; wrong is not."
+      >
+        <input
+          type="date"
+          className={inputClass}
+          value={v.datePublished ?? ""}
+          onChange={(e) => set("datePublished", e.target.value || undefined)}
+        />
+      </Field>
+
+      <Field
+        label="Author"
+        hint="Leave as Lanshore unless a named person wrote this. The byline shown to readers and the author in structured data are the same value."
+      >
+        <select className={inputClass} value={v.author ?? ""} onChange={(e) => set("author", e.target.value || undefined)}>
+          <option value="">Lanshore (no named author)</option>
+          {AUTHOR_OPTIONS.map((a) => <option key={a.id} value={a.id}>{a.name}</option>)}
+        </select>
+      </Field>
 
       <Field label="Original address" hint="Provenance from the old site. Read-only.">
         <input className={inputClass} value={v.legacyUrl} readOnly disabled />

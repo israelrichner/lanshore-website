@@ -4,7 +4,7 @@
   "industry": "Education",
   "pillar": "Services",
   "outcome": "Prospective students no longer lost between application steps",
-  "challenge": "The university was losing track of prospective students who started but didn't complete enrollment forms — and losing the students with them.",
+  "challenge": "The university was losing track of prospective students who started but didn't complete enrollment forms, and losing the students with them.",
   "whatWeDid": "We built RPA-driven follow-up that identifies incomplete applications and triggers outreach at the right step.",
   "results": [
     "Incomplete applications identified automatically",

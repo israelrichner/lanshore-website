@@ -15,7 +15,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "L&L Oilfield revolutionized its invoicing process by implementing UiPath Robotic Process Automation technology. By automating this workflow, L&L Oilfield dramatically improved efficiency, accuracy, and speed — cutting invoicing time from several hours to mere minutes per ticket.",
+      "L&L Oilfield revolutionized its invoicing process by implementing UiPath Robotic Process Automation technology. By automating this workflow, L&L Oilfield dramatically improved efficiency, accuracy, and speed, cutting invoicing time from several hours to mere minutes per ticket.",
     name: "L&L Oilfield",
     company: "Client",
     initials: "LL",

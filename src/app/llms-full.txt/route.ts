@@ -44,9 +44,9 @@ ${i.firstSentence}
 ${i.complexity}`
   ).join("\n\n");
 
-  const glossary = GLOSSARY.map((g) => `**${g.term}** — ${g.definition}`).join("\n\n");
+  const glossary = GLOSSARY.map((g) => `**${g.term}**: ${g.definition}`).join("\n\n");
 
-  const body = `# Lanshore — Full Reference
+  const body = `# Lanshore: Full Reference
 
 > Lanshore is a sales performance management (SPM) consultancy delivering AI Assisted SPM: AI agents, executive dashboards, and custom apps for incentive compensation operations. 15+ years of SPM delivery converged with agentic AI. Office in Katy, Texas (US), with US and Latin America delivery.
 
