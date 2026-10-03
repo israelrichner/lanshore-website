@@ -7,7 +7,7 @@ import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "SPM Platforms We Implement | Lanshore",
   description:
-    "Lanshore implements and operates the leading sales performance management platforms — Varicent, Xactly, CaptivateIQ, SAP, Anaplan, Salesforce Spiff, Performio, Akeron, and Incentivate — technology-agnostic, with agentic AI on top.",
+    "Lanshore implements and operates the leading sales performance management platforms (Varicent, Xactly, CaptivateIQ, SAP, Anaplan, Salesforce Spiff, Performio, Akeron, and Incentivate): technology-agnostic, with agentic AI on top.",
   alternates: { canonical: "/spm" },
   openGraph: {
     siteName: "Lanshore",
@@ -51,7 +51,7 @@ export default function SpmIndexPage() {
           <p className="mt-6 text-lg text-white/75">
             Lanshore is technology-agnostic: we implement, operate, and extend the leading
             sales performance management platforms, and we recommend the one that fits your
-            comp plans — not a reseller quota. Every platform below can be augmented with
+            comp plans, not a reseller quota. Every platform below can be augmented with
             AI Assisted SPM by Lanshore.
           </p>
           <Link
@@ -97,7 +97,7 @@ export default function SpmIndexPage() {
         <p className="mt-10 text-sm text-muted">
           Also supported through our partner network: {NEAR_MISS_VENDORS.join(", ")}, and
           legacy estates on Iconixx and Incentivate. If your platform isn&apos;t
-          listed, <Link href="/contact" className="font-semibold text-accent hover:text-accent-hover">talk to us</Link> — odds are we&apos;ve worked in it.
+          listed, <Link href="/contact" className="font-semibold text-accent hover:text-accent-hover">talk to us</Link>. Odds are we&apos;ve worked in it.
         </p>
       </section>
     </>

@@ -131,11 +131,22 @@ A previous root `AGENTS.md` was backed up to `AGENTS.md.bak-before-agentic-templ
 ## Project Test Commands
 
 <!-- BEGIN PROJECT_TEST_COMMANDS -->
-<!-- Filled by install_agentic_team.py from: no pytest-cov / --cov in scan, package.json -->
+<!-- Corrected 2026-10-01 (plan WP0). The installer's scan looked for pytest-cov
+     and missed this repo's `node --test` suites, which ARE wired into prebuild.
+     Measured baseline at correction time: 137 tests passing, lint clean. -->
 
-- **Build:** `npm run build`
-- **Unit tests:** NONE — no tool in repo
-- **Coverage:** NONE — no tool in repo
-- **Regression / full suite:** NONE — no tool in repo
-- **Lint:** NONE — no tool in repo
+- **Build:** `npm run build`. `prebuild` runs check:content, test:rules, test:schema, test:auth,
+  test:loaders, test:redirects, check:admin. `postbuild` runs check:headings and
+  check:schema-mirror over `.next/server/app/**/*.html`.
+- **Unit tests:** `npm run test:rules` (content validators, 56 tests) ·
+  `npm run test:schema` (JSON-LD node builders, heading ids, schema mirror rules, 50) ·
+  `npm run test:loaders` (content loader, 7) ·
+  `npm run test:auth` (studio session/google/gate/escaping/commit/ledger/validate/pdf/record-edit, 107) ·
+  `npm run test:redirects` (redirect destinations, 3)
+- **Coverage:** NO COVERAGE TOOL — no instrumentation configured.
+  `node --experimental-test-coverage` works against the suites above and is the
+  recommended path; until it is wired up, coverage claims need a waiver under `docs/waivers/`.
+- **Regression / full suite:** `npm run check:content && npm run test:rules && npm run test:schema && npm run test:loaders && npm run test:auth && npm run test:redirects && npm run check:admin && npm run lint && npm run build`
+- **Lint:** `npm run lint` (eslint, flat config in `eslint.config.mjs`)
+- **Browser verification:** the `verify` skill (`.claude/skills/verify/SKILL.md`) — builds, serves, and drives the site with Playwright.
 <!-- END PROJECT_TEST_COMMANDS -->

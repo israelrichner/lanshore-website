@@ -14,6 +14,7 @@ import { isPublishingUnavailable, type GitHubClient } from "./github";
 import { commitFiles, commitMessage, ConflictError } from "./commit-payload.mjs";
 import { saveDraft, publish, unpublish, remove, LEDGER_PATH, contentPath } from "./ledger-ops.mjs";
 import { preflight, type Ledger, type OnDiskEntry } from "./validate";
+import { recordForAction } from "./record-edit.mjs";
 import type { CollectionKey } from "@/lib/content/loadContent";
 
 export type Action = "saveDraft" | "publish" | "unpublish" | "delete";
@@ -98,12 +99,14 @@ export async function applyAction(args: {
 
   /* The record the operation acts on. For publish/unpublish/delete we take
      what is at head rather than what the browser sent, so a stale tab cannot
-     resurrect old field values or, worse, a cleared publishedOnce. */
-  let record = args.record ?? {};
+     resurrect old field values or, worse, a cleared publishedOnce. A field
+     the editor cleared arrives as null and is removed after the merge; see
+     record-edit.mjs. */
+  let record: Record<string, unknown> = recordForAction("saveDraft", null, args.record);
   if (action !== "saveDraft") {
     const file = await client.getFile(contentPath(collection, slug));
     if (!file) return { ok: false, status: 404, errors: [`"${slug}" no longer exists.`] };
-    record = { ...parseRecord(collection, file.content), ...(args.record ?? {}) };
+    record = recordForAction(action, parseRecord(collection, file.content), args.record);
   }
 
   const op: OpResult =

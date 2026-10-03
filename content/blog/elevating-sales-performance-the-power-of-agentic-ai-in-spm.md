@@ -2,7 +2,7 @@
 title: 'Elevating Sales Performance: The Power of Agentic AI in SPM'
 description: >-
   What agentic AI changes in sales performance management: autonomous agents
-  that accelerate deals, sharpen forecasts, and cut admin work — and what
+  that accelerate deals, sharpen forecasts, and cut admin work, and what
   successful adoption requires.
 dateModified: '2026-07-11'
 featured: true

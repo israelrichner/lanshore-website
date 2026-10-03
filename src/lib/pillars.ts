@@ -33,7 +33,7 @@ export const PILLARS: Pillar[] = [
     sub: "Ask your comp data a question. Get an answer, not a ticket.",
     demoHref: "/agentic-spm/executive-dashboards/demo",
     painCards: [
-      "Comp data lives in three places — your SPM platform, your CRM, and someone's spreadsheet — and none of them agree.",
+      "Comp data lives in three places (your SPM platform, your CRM, and someone's spreadsheet), and none of them agree.",
       "Every leadership question becomes an analyst request with a three-day turnaround.",
       "Quota and territory decisions get made on last month's numbers.",
     ],
@@ -103,9 +103,9 @@ export const PILLARS: Pillar[] = [
     pillarNumber: 2,
     titleTag: "AI Agents for Sales Comp Operations | AI Assisted SPM by Lanshore",
     metaDescription:
-      "SPM Operations from AI Assisted SPM by Lanshore: AI agents that run calculations, validations, and exceptions inside Varicent, Xactly, CaptivateIQ, SAP, Anaplan, Salesforce Spiff, Performio, Akeron, or Incentivate — with a full audit trail.",
+      "SPM Operations from AI Assisted SPM by Lanshore: AI agents that run calculations, validations, and exceptions inside Varicent, Xactly, CaptivateIQ, SAP, Anaplan, Salesforce Spiff, Performio, Akeron, or Incentivate, with a full audit trail.",
     firstSentence:
-      "SPM Operations is the execution pillar of AI Assisted SPM by Lanshore: AI agents that run recurring comp administration — calculations, validations, and exceptions — inside the platform you already own.",
+      "SPM Operations is the execution pillar of AI Assisted SPM by Lanshore: AI agents that run recurring comp administration (calculations, validations, and exceptions) inside the platform you already own.",
     h1: "SPM operations",
     sub: "Your comp cycle, run by agents. Reviewed by humans. Closed on time.",
     demoHref: "/agentic-spm/operations/demo",
@@ -115,7 +115,7 @@ export const PILLARS: Pillar[] = [
       "Your platform admin left, and the tribal knowledge left with them.",
     ],
     solutionStatement:
-      "We build agents that execute the recurring cycle — data loads, calculation runs, validations, exception queues — with a full audit trail and a human approving what matters.",
+      "We build agents that execute the recurring cycle (data loads, calculation runs, validations, exception queues) with a full audit trail and a human approving what matters.",
     capabilityCards: [
       {
         title: "Agent-run cycles",
@@ -154,7 +154,7 @@ export const PILLARS: Pillar[] = [
       {
         question: "Which SPM platforms does Lanshore's operations team support?",
         answer:
-          "Varicent, Xactly, CaptivateIQ, SAP SuccessFactors Incentive Management, Anaplan, Salesforce Spiff, Performio, Akeron, and Incentivate — for both implementation and agent-run ongoing operations.",
+          "Varicent, Xactly, CaptivateIQ, SAP SuccessFactors Incentive Management, Anaplan, Salesforce Spiff, Performio, Akeron, and Incentivate, for both implementation and agent-run ongoing operations.",
       },
       {
         question: "Do agents replace our comp admin team?",
@@ -164,7 +164,7 @@ export const PILLARS: Pillar[] = [
       {
         question: "How is this different from RPA?",
         answer:
-          "RPA replays fixed clicks and breaks when screens change. Agents work toward an outcome, handle variation, and escalate when they're unsure — and we've built both, so we use each where it fits.",
+          "RPA replays fixed clicks and breaks when screens change. Agents work toward an outcome, handle variation, and escalate when they're unsure. We've built both, so we use each where it fits.",
       },
       {
         question: "What does the audit trail look like?",
@@ -180,7 +180,7 @@ export const PILLARS: Pillar[] = [
     pillarNumber: 3,
     titleTag: "Custom Agentic Apps for SPM | AI Assisted SPM by Lanshore",
     metaDescription:
-      "Custom Apps from AI Assisted SPM by Lanshore: dispute bots, approval workflows, integrations, and calculators — purpose-built agentic applications that cover what your SPM platform can't.",
+      "Custom Apps from AI Assisted SPM by Lanshore (dispute bots, approval workflows, integrations, and calculators) are purpose-built agentic applications that cover what your SPM platform can't.",
     firstSentence:
       "Custom Apps is the build pillar of AI Assisted SPM by Lanshore: purpose-built agentic applications that cover what your SPM platform can't do out of the box.",
     h1: "Custom apps",
@@ -192,7 +192,7 @@ export const PILLARS: Pillar[] = [
       "Rep inquiries and disputes flow through email with no tracking.",
     ],
     solutionStatement:
-      "We design and ship agentic applications around your specific motion — dispute bots, approval workflows, integrations, calculators — that plug into your platform instead of fighting it.",
+      "We design and ship agentic applications around your specific motion (dispute bots, approval workflows, integrations, calculators) that plug into your platform instead of fighting it.",
     capabilityCards: [
       {
         title: "Dispute and inquiry bots",
@@ -234,7 +234,7 @@ export const PILLARS: Pillar[] = [
       {
         question: "What kinds of custom apps does Lanshore build?",
         answer:
-          "Dispute and inquiry bots, approval workflows, cross-system integrations, and calculators for plan mechanics your platform can't model — all built to work alongside your existing SPM platform.",
+          "Dispute and inquiry bots, approval workflows, cross-system integrations, and calculators for plan mechanics your platform can't model, all built to work alongside your existing SPM platform.",
       },
       {
         question: "Who owns the app after delivery?",

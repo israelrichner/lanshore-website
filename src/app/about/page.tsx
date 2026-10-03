@@ -6,14 +6,14 @@ import { GARTNER_2019 } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About Lanshore | SPM Consultancy & Agentic AI Builders",
   description:
-    "Lanshore is a Houston-area consultancy that has implemented sales performance management for enterprises for 15+ years — and now builds the AI agents that run it.",
+    "Lanshore is a Houston-area consultancy that has implemented sales performance management for enterprises for 15+ years, and now builds the AI agents that run it.",
   alternates: { canonical: "/about" },
   openGraph: {
     siteName: "Lanshore",
     locale: "en_US",
     title: "About Lanshore | SPM Consultancy & Agentic AI Builders",
     description:
-      "Lanshore is a Houston-area consultancy that has implemented sales performance management for enterprises for 15+ years — and now builds the AI agents that run it.",
+      "Lanshore is a Houston-area consultancy that has implemented sales performance management for enterprises for 15+ years, and now builds the AI agents that run it.",
     url: "/about",
     type: "website",
   },
@@ -41,7 +41,7 @@ export default function AboutPage() {
         data={webPageSchema(
           "AboutPage",
           "About Lanshore",
-          "Lanshore is a Houston-area consultancy that has implemented sales performance management for enterprises for 15+ years — and now builds the AI agents that run it.",
+          "Lanshore is a Houston-area consultancy that has implemented sales performance management for enterprises for 15+ years, and now builds the AI agents that run it.",
           "/about"
         )}
       />
@@ -60,7 +60,7 @@ export default function AboutPage() {
           <h1 className="text-4xl font-bold sm:text-5xl">Company</h1>
           <p className="mt-6 text-lg text-white/75">
             Lanshore is a Houston-area consultancy that has implemented sales performance
-            management for enterprises for 15+ years — and now builds the AI agents that
+            management for enterprises for 15+ years, and now builds the AI agents that
             run it.
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function AboutPage() {
           SAP SuccessFactors Incentive Management, Anaplan, Salesforce Spiff, Performio,
           Akeron, and Incentivate, delivered for enterprises across healthcare,
           telecom, technology, retail, oil and gas, and financial services. Along the way
-          we added an RPA and automation practice, then managed services — running comp
+          we added an RPA and automation practice, then managed services: running comp
           operations for clients, not just building them. AI Assisted SPM is the next step of
           the same trajectory: the AI agents we build today do the work our consultants
           have done by hand for fifteen years, which is exactly why they work.

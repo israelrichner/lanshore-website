@@ -104,7 +104,7 @@ export default function Header() {
         <Link href="/" className="flex items-center">
           <Image
             src="/lanshore-logo.png"
-            alt="Lanshore — Advancing Intelligence"
+            alt="Lanshore: Advancing Intelligence"
             width={699}
             height={241}
             priority

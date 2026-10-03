@@ -43,7 +43,7 @@ export default function CustomAppsDemoPage() {
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             This is the Custom Apps pillar of AI Assisted SPM by Lanshore: Meridian Comp Hub,
             a purpose-built tool for a fictitious regional bank. You&rsquo;re signed in as
-            a relationship manager — read your statement, ask the dispute bot why June
+            a relationship manager. Read your statement, ask the dispute bot why June
             came in low, track a SPIF approval, and drag the payout calculator&rsquo;s
             sliders to model your quarter.
           </p>
@@ -51,6 +51,12 @@ export default function CustomAppsDemoPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        {/* The demo widget's panel titles are h3. Without this h2 the outline
+            jumps h1 to h3, which breaks the screen-reader outline and the
+            document structure answer engines read. */}
+        <h2 className="mb-6 text-2xl font-bold text-ink">
+          Inside the Lanshore custom comp app
+        </h2>
         <CustomAppDemo />
         <p className="mt-4 text-center text-xs text-muted">
           Meridian Trust Bank is fictitious; all data on this page is illustrative.
@@ -62,16 +68,16 @@ export default function CustomAppsDemoPage() {
         <p className="text-muted">
           Each tab is a capability from the Custom Apps pillar. The{" "}
           <strong className="text-ink">dispute bot</strong> answers statement questions
-          from plan logic and live data, with clause references — questions that used to
+          from plan logic and live data, with clause references. Those are questions that used to
           be week-long email threads. <strong className="text-ink">Approvals</strong>{" "}
           routes SPIFs and exceptions with full history, so nothing lives in an inbox.
           The <strong className="text-ink">payout calculator</strong> models draws,
-          accelerators, and plan mechanics the platform can&rsquo;t — retiring the shadow
+          accelerators, and plan mechanics the platform can&rsquo;t, retiring the shadow
           spreadsheet only one person understands. Apps like this ship in eight to twelve
           weeks, documented and owned by you.
         </p>
         <p className="mt-6 text-muted">
-          This demo is one pillar of AI Assisted SPM by Lanshore — read more about{" "}
+          This demo is one pillar of AI Assisted SPM by Lanshore. Read more about{" "}
           <Link href="/agentic-spm/custom-apps" className="font-semibold text-accent">
             Custom Apps
           </Link>

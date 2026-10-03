@@ -9,7 +9,7 @@ export default function CareersForm() {
   if (status === "sent") {
     return (
       <div className="rounded-md border border-line bg-paper p-8 text-center">
-        <p className="text-lg font-semibold text-ink">Thanks — we got your note.</p>
+        <p className="text-lg font-semibold text-ink">Thanks, we got your note.</p>
         <p className="mt-2 text-muted">We read every application and will follow up if there&rsquo;s a fit.</p>
       </div>
     );

@@ -8,9 +8,10 @@ import {
 import { parseRecord } from "@/lib/studio/apply-action";
 import { contentPath } from "@/lib/studio/ledger-ops.mjs";
 import { COLLECTIONS } from "@/lib/studio/validate";
-import BlogForm from "@/components/studio/BlogForm";
-import CaseStudyForm from "@/components/studio/CaseStudyForm";
-import WhitePaperForm from "@/components/studio/WhitePaperForm";
+import BlogForm, { type BlogFormValues } from "@/components/studio/BlogForm";
+import CaseStudyForm, { type CaseStudyValues } from "@/components/studio/CaseStudyForm";
+import WhitePaperForm, { type WhitePaperValues } from "@/components/studio/WhitePaperForm";
+import { initialFor } from "@/lib/studio/record-edit.mjs";
 import PublishingUnavailable from "@/components/studio/PublishingUnavailable";
 import type { CollectionKey } from "@/lib/content/loadContent";
 
@@ -52,61 +53,16 @@ export default async function EditorPage({ params }: { params: Promise<{ collect
     sha = file.sha;
   }
 
+  /* initialFor() starts every form from the WHOLE record so a draft save
+     cannot delete fields the form does not edit. See record-edit.mjs. */
+  const initial = initialFor(key, record, today());
+  const formSlug = isNew ? "" : slug;
+
   if (key === "blog") {
-    return (
-      <BlogForm
-        slug={isNew ? "" : slug}
-        isNew={isNew}
-        sha={sha}
-        initial={{
-          title: String(record.title ?? ""),
-          description: String(record.description ?? ""),
-          dateModified: String(record.dateModified ?? today()),
-          summary: String(record.summary ?? ""),
-          featured: record.featured === true,
-          body: String(record.body ?? ""),
-          faq: (record.faq as { question: string; answer: string }[]) ?? [],
-          draft: record.draft as boolean | undefined,
-          publishedOnce: record.publishedOnce as boolean | undefined,
-        }}
-      />
-    );
+    return <BlogForm slug={formSlug} isNew={isNew} sha={sha} initial={initial as BlogFormValues} />;
   }
-
   if (key === "caseStudies") {
-    return (
-      <CaseStudyForm
-        slug={isNew ? "" : slug}
-        isNew={isNew}
-        sha={sha}
-        initial={{
-          title: String(record.title ?? ""),
-          client: String(record.client ?? ""),
-          industry: String(record.industry ?? ""),
-          pillar: String(record.pillar ?? "SPM Operations"),
-          outcome: String(record.outcome ?? ""),
-          challenge: String(record.challenge ?? ""),
-          whatWeDid: String(record.whatWeDid ?? ""),
-          results: (record.results as string[]) ?? [""],
-          stack: (record.stack as string[]) ?? [""],
-          legacyUrl: String(record.legacyUrl ?? ""),
-          draft: record.draft as boolean | undefined,
-        }}
-      />
-    );
+    return <CaseStudyForm slug={formSlug} isNew={isNew} sha={sha} initial={initial as CaseStudyValues} />;
   }
-
-  return (
-    <WhitePaperForm
-      slug={isNew ? "" : slug}
-      isNew={isNew}
-      sha={sha}
-      initial={{
-        title: String(record.title ?? ""),
-        description: String(record.description ?? ""),
-        hubspotValue: String(record.hubspotValue ?? ""),
-        draft: record.draft as boolean | undefined,
-      }}
-    />
-  );
+  return <WhitePaperForm slug={formSlug} isNew={isNew} sha={sha} initial={initial as WhitePaperValues} />;
 }

@@ -4,12 +4,12 @@ const CARDS = [
   {
     step: "01",
     title: "The Gap",
-    text: "SPM sits at the intersection of revenue, incentives, and risk — but most SPM environments are static. They report on what happened, not what's about to go wrong.",
+    text: "SPM sits at the intersection of revenue, incentives, and risk, but most SPM environments are static. They report on what happened, not what's about to go wrong.",
   },
   {
     step: "02",
     title: "The Agents",
-    text: "We embed autonomous AI agents directly inside your SPM. They run continuously — surfacing risk, validating the data behind your decisions, and identifying opportunities to improve revenue performance.",
+    text: "We embed autonomous AI agents directly inside your SPM. They run continuously: surfacing risk, validating the data behind your decisions, and identifying opportunities to improve revenue performance.",
   },
   {
     step: "03",
@@ -27,7 +27,7 @@ export default function ProblemSolutionSection() {
             How It Works
           </p>
           <h2 className="text-3xl font-black text-accent lg:text-4xl">
-            Agentic AI that works inside your SPM — continuously.
+            Agentic AI that works inside your SPM, continuously.
           </h2>
         </div>
 

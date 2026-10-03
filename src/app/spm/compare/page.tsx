@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
-import { breadcrumbSchema, faqSchema, itemListSchema, type FaqItem } from "@/lib/schema";
+import {
+  breadcrumbSchema,
+  faqSchema,
+  itemListSchema,
+  softwareApplicationSchema,
+  type FaqItem,
+} from "@/lib/schema";
 import { SPM_PLATFORMS, NEAR_MISS_VENDORS } from "@/lib/spmPlatforms";
 
 export const metadata: Metadata = {
   title: "SPM Platform Comparison: Varicent vs Xactly vs CaptivateIQ & More | Lanshore",
   description:
-    "A vendor-neutral comparison of the leading sales performance management platforms — Varicent, Xactly, CaptivateIQ, SAP, Anaplan, Salesforce Spiff, Performio, Akeron, and Incentivate — by who each one fits, what it does, and its AI capabilities.",
+    "A vendor-neutral comparison of the leading sales performance management platforms (Varicent, Xactly, CaptivateIQ, SAP, Anaplan, Salesforce Spiff, Performio, Akeron, and Incentivate) by who each one fits, what it does, and its AI capabilities.",
   alternates: { canonical: "/spm/compare" },
   openGraph: {
     siteName: "Lanshore",
@@ -27,22 +33,22 @@ const COMPARE_FAQ: FaqItem[] = [
   {
     question: "What is the best SPM platform?",
     answer:
-      "There is no single best SPM platform — the right one depends on your plan complexity, data reality, and budget. Enterprises with high-volume, intricate comp plans tend to land on Varicent, Xactly, SAP, or Anaplan; teams that want comp analysts (not developers) to own plan logic tend to prefer CaptivateIQ, Salesforce Spiff, Performio, Akeron, or Incentivate. Lanshore is technology-agnostic and does not resell any platform, so our recommendation comes from a scored evaluation against your plans rather than a reseller quota.",
+      "There is no single best SPM platform. The right one depends on your plan complexity, data reality, and budget. Enterprises with high-volume, intricate comp plans tend to land on Varicent, Xactly, SAP, or Anaplan; teams that want comp analysts (not developers) to own plan logic tend to prefer CaptivateIQ, Salesforce Spiff, Performio, Akeron, or Incentivate. Lanshore is technology-agnostic and does not resell any platform, so our recommendation comes from a scored evaluation against your plans rather than a reseller quota.",
   },
   {
     question: "How does Varicent compare to Xactly?",
     answer:
-      "Both are established enterprise SPM suites, and both were named Leaders in the 2026 Gartner® Magic Quadrant™ for Sales Performance Management. Varicent spans incentive compensation, territory and quota planning, sales planning, and revenue intelligence, with a flexible calculation engine aimed at complex, high-volume plan mechanics. Xactly pairs incentive compensation with planning and its own benchmarking data. In practice the choice turns on your plan mechanics, your data volumes, and which platform's calculation model your comp logic maps onto most cleanly — which is what a scored platform evaluation is for.",
+      "Both are established enterprise SPM suites, and both were named Leaders in the 2026 Gartner® Magic Quadrant™ for Sales Performance Management. Varicent spans incentive compensation, territory and quota planning, sales planning, and revenue intelligence, with a flexible calculation engine aimed at complex, high-volume plan mechanics. Xactly pairs incentive compensation with planning and its own benchmarking data. In practice the choice turns on your plan mechanics, your data volumes, and which platform's calculation model your comp logic maps onto most cleanly, which is what a scored platform evaluation is for.",
   },
   {
     question: "Do I have to switch SPM platforms to use agentic AI?",
     answer:
-      "No. AI Assisted SPM by Lanshore runs on top of the SPM platform you already own. Every platform on this page can be augmented with AI agents for executive dashboards, comp operations, and custom apps — the agents sit above the system of record rather than replacing it. Replatforming is a separate decision, and it should be driven by whether the platform fits your comp plans, not by whether you want AI.",
+      "No. AI Assisted SPM by Lanshore runs on top of the SPM platform you already own. Every platform on this page can be augmented with AI agents for executive dashboards, comp operations, and custom apps; the agents sit above the system of record rather than replacing it. Replatforming is a separate decision, and it should be driven by whether the platform fits your comp plans, not by whether you want AI.",
   },
   {
     question: "Which SPM platforms have built-in AI features?",
     answer:
-      "Most of the leading platforms now ship some form of AI assistance — plan design assistants, anomaly detection, forecasting, and natural-language querying are the common patterns. The AI capabilities column above lists what each vendor ships natively. The practical gap is that native features are scoped to what the vendor built; agentic augmentation is what covers the workflows your comp team actually runs across systems.",
+      "Most of the leading platforms now ship some form of AI assistance: plan design assistants, anomaly detection, forecasting, and natural-language querying are the common patterns. The AI capabilities column above lists what each vendor ships natively. The practical gap is that native features are scoped to what the vendor built; agentic augmentation is what covers the workflows your comp team actually runs across systems.",
   },
   {
     question: "Which SPM platforms does Lanshore implement?",
@@ -71,6 +77,7 @@ export default function SpmComparePage() {
           SPM_PLATFORMS.map((platform) => ({
             name: platform.name,
             href: `/spm/${platform.slug}`,
+            item: softwareApplicationSchema(platform),
           }))
         )}
       />
@@ -87,7 +94,7 @@ export default function SpmComparePage() {
             There is no single best sales performance management platform. The right one
             depends on your plan complexity, data reality, and budget. Below is a
             vendor-neutral comparison of the {SPM_PLATFORMS.length} leading SPM platforms
-            Lanshore implements — who each one fits, what it does, and what AI it ships.
+            Lanshore implements: who each one fits, what it does, and what AI it ships.
             Lanshore resells none of them, which is what makes the comparison worth
             anything.
           </p>
@@ -173,8 +180,8 @@ export default function SpmComparePage() {
           your platform isn&apos;t listed,{" "}
           <Link href="/contact" className="font-semibold text-accent hover:text-accent-hover">
             talk to us
-          </Link>{" "}
-          — odds are we&apos;ve worked in it.
+          </Link>
+          . Odds are we&apos;ve worked in it.
         </p>
       </section>
 
@@ -185,14 +192,14 @@ export default function SpmComparePage() {
             <div>
               <h3 className="font-bold text-ink">Start from your comp plans, not the demo</h3>
               <p className="mt-2 text-muted">
-                The platform has to model the plan mechanics you actually run — accelerators,
+                The platform has to model the plan mechanics you actually run: accelerators,
                 multi-tier crediting, clawbacks, true-ups. A platform that demos beautifully
                 and can&apos;t express your crediting rules is the wrong platform.
               </p>
             </div>
             <div>
               <h3 className="font-bold text-ink">
-                Check who can change a plan — an analyst, or a developer
+                Check who can change a plan: an analyst, or a developer
               </h3>
               <p className="mt-2 text-muted">
                 Comp structures change, sometimes several times a year. If every plan change

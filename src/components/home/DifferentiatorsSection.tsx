@@ -14,14 +14,14 @@ const STATS = [
     value: "9",
     label: "SPM Platforms",
     description:
-      "Supported — Varicent, Xactly, CaptivateIQ, SAP, Anaplan, Salesforce Spiff, Performio, Akeron, and Incentivate",
+      "Supported: Varicent, Xactly, CaptivateIQ, SAP, Anaplan, Salesforce Spiff, Performio, Akeron, and Incentivate",
   },
   {
     icon: Bot,
     value: "AI-First",
     label: "Agentic",
     description:
-      "Deep capability building autonomous AI agents directly into commission and incentive workflows — continuously monitoring, validating, and acting on your behalf.",
+      "Deep capability building autonomous AI agents directly into commission and incentive workflows, continuously monitoring, validating, and acting on your behalf.",
   },
   {
     icon: Globe,

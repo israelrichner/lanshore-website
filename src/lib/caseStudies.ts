@@ -20,6 +20,12 @@ export type CaseStudy = {
      UPDATED.caseStudies; callers still fall back to it when this is absent,
      so a study only carries its own date once it actually diverges. */
   dateModified?: string;
+  /* Optional byline fields, rendered visibly and emitted in Article JSON-LD.
+     `datePublished` is set only where a real publish date is on file; it is
+     never back-filled with a guess. */
+  datePublished?: string;
+  author?: string;
+  image?: string;
 };
 
 export const CASE_STUDIES: CaseStudy[] = loadCaseStudies();

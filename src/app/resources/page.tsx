@@ -129,7 +129,7 @@ export default function ResourcesPage() {
       <section id="glossary" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6">
         <h2 className="mb-4 text-2xl font-bold text-ink sm:text-3xl">FAQ & Glossary</h2>
         <p className="max-w-2xl text-muted">
-          Plain-English definitions of SPM and agentic AI terms — from AI Assisted SPM and
+          Plain-English definitions of SPM and agentic AI terms, from AI Assisted SPM and
           crediting to clawbacks, SPIFs, and true-ups.
         </p>
         <Link

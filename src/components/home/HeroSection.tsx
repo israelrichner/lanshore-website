@@ -59,7 +59,7 @@ export default function HeroSection() {
 
           <p className="mx-auto mb-7 max-w-2xl text-lg leading-relaxed text-white/80 sm:mb-10 lg:text-xl">
             Fifteen years of enterprise SPM delivery, converged with autonomous AI agents
-            embedded directly in your commission workflows — eliminating manual work while
+            embedded directly in your commission workflows, eliminating manual work while
             surfacing risk in real time.
           </p>
 

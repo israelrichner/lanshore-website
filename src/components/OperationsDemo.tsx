@@ -36,7 +36,7 @@ const STAGE_LOGS: { time: string; entry: string }[][] = [
     { time: "02:00", entry: "Loaded Salesforce closed-won, core banking funded volume, HR roster, FX rates" },
     { time: "02:14", entry: "Roster delta: 2 new hires added to Commercial RM plan, 1 termination processed" },
   ],
-  [{ time: "02:47", entry: "Calculation run #149 complete — 170 statements staged" }],
+  [{ time: "02:47", entry: "Calculation run #149 complete; 170 statements staged" }],
   [{ time: "03:05", entry: "98 validation checks run; 2 warnings raised, both explained by realignment" }],
   [{ time: "03:06", entry: "3 exceptions routed to queue, each with a suggested fix attached" }],
   [{ time: "03:07", entry: "Approval packet sent to S. Patel; accrual preview posted to Workday sandbox" }],
@@ -48,19 +48,19 @@ const RUN_LOG = STAGE_LOGS.flat().slice(0, 5);
 const INITIAL_EXCEPTIONS = [
   {
     id: 1,
-    issue: "Duplicate credit — deal #91442 appears in both April and May feeds",
+    issue: "Duplicate credit: deal #91442 appears in both April and May feeds",
     fix: "Reverse April credit ($2,140); keep May per funding date",
     fixed: false,
   },
   {
     id: 2,
-    issue: "Negative payout — clawback exceeds J. Reyes's June earnings",
+    issue: "Negative payout: clawback exceeds J. Reyes's June earnings",
     fix: "Carry $412 balance to July per plan §4.2 rather than negative check",
     fixed: false,
   },
   {
     id: 3,
-    issue: "Unmapped territory — new hire M. Osei has no crediting rule",
+    issue: "Unmapped territory: new hire M. Osei has no crediting rule",
     fix: "Apply Gulf Coast default hierarchy pending territory assignment",
     fixed: false,
   },
@@ -70,7 +70,7 @@ const VALIDATIONS = [
   { check: "Statement totals reconcile to calc run", result: "pass" },
   { check: "No payee over 200% of quarterly cap", result: "pass" },
   { check: "Crediting hierarchy matches HR roster", result: "pass" },
-  { check: "Attainment moved >25 pts month-over-month", result: "warn — 2 payees, both explained by realignment" },
+  { check: "Attainment moved >25 pts month-over-month", result: "warn: 2 payees, both explained by realignment" },
 ];
 
 type RunState = "idle" | "running" | "done";
@@ -152,7 +152,7 @@ function CycleView() {
                 <button
                   onClick={() => setStageFilter(stageFilter === i ? null : i)}
                   aria-pressed={stageFilter === i}
-                  aria-label={`${stage.name} — show this stage's log`}
+                  aria-label={`${stage.name}: show this stage's log`}
                   className={`w-full rounded-md border p-3 text-center transition-colors ${
                     status === "done"
                       ? "border-ink-soft bg-ink-soft/20"
@@ -185,7 +185,7 @@ function CycleView() {
         </div>
         {runState === "done" && (
           <p className="mt-3 text-xs font-semibold text-emerald-300">
-            ✓ Cycle complete in minutes of agent time — humans reviewed 3 exceptions and one approval packet.
+            ✓ Cycle complete in minutes of agent time; humans reviewed 3 exceptions and one approval packet.
           </p>
         )}
       </div>
@@ -217,7 +217,7 @@ function CycleView() {
                 </p>
                 {ex.fixed ? (
                   <p className="mt-2 text-xs font-bold text-emerald-300">
-                    ✓ Fix applied — logged to audit trail
+                    ✓ Fix applied, logged to audit trail
                   </p>
                 ) : (
                   <button
@@ -317,7 +317,7 @@ const PARALLEL_RUN = [
     target: 612400,
     status: "Matched",
     detail:
-      "52 payees matched to the penny. Tiered rates, draw recovery, and accelerator logic all reproduce exactly — statement checksums equal in both systems.",
+      "52 payees matched to the penny. Tiered rates, draw recovery, and accelerator logic all reproduce exactly; statement checksums equal in both systems.",
   },
   {
     group: "Treasury Sales",
@@ -333,7 +333,7 @@ const PARALLEL_RUN = [
     target: 203140,
     status: "Investigating",
     detail:
-      "The agent isolated the $1,260 delta to the 2.00–2.25% tier boundary: the legacy engine rounds the rate before applying it, the new one after. 11 of 26 payees affected, $9–$186 each — the new system is right.",
+      "The agent isolated the $1,260 delta to the 2.00–2.25% tier boundary: the legacy engine rounds the rate before applying it, the new one after. 11 of 26 payees affected, $9–$186 each. The new system is right.",
   },
   {
     group: "Retail / Branch",
@@ -348,7 +348,7 @@ const RULE_TRANSLATION = [
   { rule: "Tiered commission rate table (6 tiers)", how: "Auto-translated by agent" },
   { rule: "Draw recovery logic", how: "Auto-translated by agent" },
   { rule: "Accelerator above 100% of quota", how: "Auto-translated by agent" },
-  { rule: "JV / referral crediting override", how: "Rebuilt by consultant — no legacy equivalent" },
+  { rule: "JV / referral crediting override", how: "Rebuilt by consultant (no legacy equivalent)" },
   { rule: "Territory crediting hierarchy", how: "Auto-translated · 3 exceptions resolved" },
 ];
 
@@ -474,7 +474,7 @@ function MigrationView() {
           <p className={`${inset} mt-4 p-3 text-xs text-white/70`}>
             <span className="font-semibold text-gold-light">The $1,260 Wealth Advisors delta?</span>{" "}
             A rounding bug in the legacy rate table, live for 14 months. The new system is
-            right — the parallel run caught what nobody knew was broken.
+            right: the parallel run caught what nobody knew was broken.
           </p>
         </div>
 
@@ -497,7 +497,7 @@ function MigrationView() {
           </div>
           <p className="mt-4 text-[11px] text-white/45">
             Agents translate the mechanical 95%; consultants who know both platforms rebuild
-            what has no equivalent — and every payee is paid correctly throughout.
+            what has no equivalent, and every payee is paid correctly throughout.
           </p>
         </div>
       </div>

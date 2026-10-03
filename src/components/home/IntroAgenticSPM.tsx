@@ -6,14 +6,14 @@ const CARDS = [
   {
     icon: BarChart3,
     title: "Executive Dashboards",
-    sub: "Ask your comp data a question in plain language — get a current, sourced answer",
+    sub: "Ask your comp data a question in plain language and get a current, sourced answer",
     href: "/agentic-spm/executive-dashboards",
     demoHref: "/agentic-spm/executive-dashboards/demo",
   },
   {
     icon: RefreshCw,
     title: "SPM Operations",
-    sub: "Agents run calculations, validations, and exceptions 24/7 — with a full audit trail",
+    sub: "Agents run calculations, validations, and exceptions 24/7, with a full audit trail",
     href: "/agentic-spm/operations",
     demoHref: "/agentic-spm/operations/demo",
   },
@@ -51,7 +51,7 @@ export default function IntroAgenticSPM() {
           <p className="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-white/80 lg:text-lg">
             An AI-native approach to Sales Performance Management built for the enterprise.
             Autonomous agents that continuously run commission calculations, surface risk in
-            real time, and eliminate the manual work that slows your team — fully integrated
+            real time, and eliminate the manual work that slows your team, fully integrated
             with your existing SPM, CRM, ERP, and other platforms. No rip-and-replace
             required.
           </p>
