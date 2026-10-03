@@ -8,9 +8,11 @@ For whoever writes the blog posts, case studies and white papers. No git, no cod
 
 Go to **https://lanshore.com/studio/signed-out** and press **Sign in with Google**.
 
-Bookmark that address. It is the only way in — the admin is deliberately not linked from anywhere on the public site.
+Bookmark that address. Typing **https://lanshore.com/studio** (or `/login`) while signed out also takes you there. The admin is deliberately not linked from anywhere on the public site.
 
-**If you get a "page not found":** that is normal when you are signed out. It is not a broken link. Only `/studio/signed-out` is reachable without signing in; everything else behind it looks like a missing page on purpose, so that people poking around cannot tell the admin exists.
+**If you get a "page not found":** that is normal when you are signed out and open a deeper admin link (for example a bookmarked editor page). It is not a broken link. Go to `/studio` or `/studio/signed-out` and sign in; everything else behind it looks like a missing page on purpose.
+
+**Use `lanshore.com`, not `www.lanshore.com`.** Signing in from the `www` address currently times out ("That sign-in attempt timed out"). Until a developer fixes the domain setup, start from `https://lanshore.com/studio`.
 
 **If Google says your account is not permitted:** your address has not been added to the allow list. That is an environment variable a developer sets in Vercel, not something you can change from the admin.
 
@@ -117,14 +119,30 @@ An empty or unset `ADMIN_ALLOWED_EMAILS` authorises **nobody**. It is never read
 
 Publishing uses a fine-grained personal access token, `GITHUB_TOKEN` in Vercel, scoped to this repository with **Contents: read and write**.
 
-**Fine-grained tokens expire.** When it does, **publishing silently stops working** — the admin will report that publishing is unavailable, and nothing else will look wrong.
+**Fine-grained tokens expire.** When it does, **publishing stops working** — the admin shows *"Publishing is unavailable. The GitHub token may be expired or missing."* and nothing else on the site looks wrong. This already happened once: the first token expired on **2026-09-26**.
+
+**This table is where the token's expiry is recorded.** Update it every time the token is rotated.
 
 | | |
 |---|---|
-| **Expiry date** | ⚠️ **NOT RECORDED — fill this in** |
+| **Expiry date** | ⚠️ **NOT RECORDED — fill in the expiry of the token created after 2026-09-26** (previous token expired 2026-09-26) |
 | **Who rotates it** | ⚠️ **NOT RECORDED — name someone** |
 
 Put a calendar reminder a month before. This will otherwise surface a year from now, to someone who was not involved in setting it up.
+
+### Troubleshooting: "Publishing is unavailable"
+
+**Symptom.** After signing in, `/studio` or an editor page shows *"Publishing is unavailable. The GitHub token may be expired or missing."*, or Save/Publish returns that message. Before 2026-09-29 the same fault showed up as a crash instead: an "Application error: a server-side exception has occurred" page (a Server Components render error) straight after sign-in. The server log (Vercel → Logs) has a line like `[studio] GitHub unavailable: GET request failed (status 401)`: **401** means the token is expired or revoked, **403** means it lacks permission (or GitHub is rate-limiting), **5xx** or "network error" means GitHub itself is having trouble (check githubstatus.com and try again later), and "GITHUB_TOKEN or GITHUB_REPO not set" means the variable is missing.
+
+**Fix: rotate the token.** This is Israel's job, done by hand. No bot or agent does it.
+
+1. GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens** → **Generate new token** (or open the expired one and use **Regenerate**).
+2. Give it the same setup as before: resource owner `israelrichner`, **Only select repositories** → `lanshore-website`, and under Repository permissions set **Contents: Read and write** (Metadata: Read-only is added automatically). Choose an expiry date.
+3. Copy the token once. Don't paste it into chat, email, tickets or any file.
+4. Vercel → the lanshore-website project → Settings → **Environment Variables** → edit `GITHUB_TOKEN` for **Production** and paste the new value. `GITHUB_REPO` and `GITHUB_BRANCH` stay as they are.
+5. **Redeploy** production (Deployments → latest production deployment → Redeploy). Environment variable changes only take effect on a new deployment.
+6. Open `https://lanshore.com/studio`, sign in, and check that the lists load.
+7. **Write the new expiry date in the table above**, and set a reminder a month before it.
 
 ### Commit authorship
 

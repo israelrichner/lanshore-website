@@ -4,6 +4,7 @@ import type { NextRequest } from "next/server";
    wrapper pulls in next/headers for requireAdmin(), which does not belong in
    the proxy runtime. See 04-review.md M4. */
 import { verifySession, COOKIE_NAME } from "@/lib/studio/session.mjs";
+import { isStudioPath, needsSessionCheck, studioGate } from "@/lib/studio/proxy-gate.mjs";
 
 /* Every page canonicalizes to lanshore.com (metadataBase), so any other host
    serving this build — *.vercel.app previews AND the production deployment's
@@ -32,33 +33,9 @@ function isRetiredWordPressPath(pathname: string): boolean {
  * Studio admin
  * ------------------------------------------------------------------ */
 
-/**
- * Paths reachable WITHOUT a session. Compared by EXACT EQUALITY, never by
- * prefix, and the list is exhaustive.
- *
- * A `startsWith("/studio/signed-out")` would also exempt
- * `/studio/signed-out-and-then-something`, and this check runs before the
- * real gate — so a prefix match here hands an attacker a way past it.
- *
- * The three auth routes are exempt because they are their own boundary: each
- * validates state/nonce/id_token/allowlist itself, and there is by definition
- * no session while signing in. 404ing them would break the flow exactly the
- * way review blocker B3 described.
- */
-const STUDIO_EXEMPT_PATHS = new Set([
-  "/studio/signed-out",
-  "/api/studio/auth/login",
-  "/api/studio/auth/callback",
-  "/api/studio/auth/logout",
-]);
-
-function isStudioPath(pathname: string): boolean {
-  return (
-    pathname === "/studio" ||
-    pathname.startsWith("/studio/") ||
-    pathname.startsWith("/api/studio/")
-  );
-}
+/* Which studio paths are exempt, which redirect to the sign-in page and
+   which 404 when signed out lives in proxy-gate.mjs as a pure function, so
+   the table is unit-tested (proxy-gate.test.mjs). */
 
 /**
  * Optimistic check only — Next's own guidance is explicit that proxy must not
@@ -92,12 +69,23 @@ export async function proxy(request: NextRequest) {
   }
 
   const studio = isStudioPath(pathname);
+  /* The HMAC is only verified when the answer depends on it. */
+  const hasSession = needsSessionCheck(pathname) ? await hasPlausibleSession(request) : false;
+  const gate = studioGate(pathname, hasSession);
 
-  if (studio && !STUDIO_EXEMPT_PATHS.has(pathname) && !(await hasPlausibleSession(request))) {
-    /* 404, not 401 and not a redirect: an unauthenticated hit is
-       indistinguishable from any other missing page, so a scanner learns
-       nothing. Cloaking, not a control — worth ten lines only because it
-       costs nothing. */
+  if (gate.action === "redirect") {
+    /* Signed-out /studio (and /login) -> the sign-in page. 307, not 308: a
+       permanent redirect would be cached and keep bouncing an editor who has
+       since signed in. The target is exempt, so this cannot loop. */
+    const res = NextResponse.redirect(new URL(gate.location, request.url), 307);
+    res.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return res;
+  }
+
+  if (gate.action === "notFound") {
+    /* 404, not 401 and not a redirect, for every gated path except the bare
+       /studio entry point: an unauthenticated hit on /studio/<anything> or
+       /api/studio/* is indistinguishable from any other missing page. */
     return new NextResponse(null, {
       status: 404,
       headers: { "X-Robots-Tag": "noindex, nofollow" },
