@@ -15,6 +15,7 @@ import { commitFiles, commitMessage, ConflictError } from "./commit-payload.mjs"
 import { saveDraft, publish, unpublish, remove, LEDGER_PATH, contentPath } from "./ledger-ops.mjs";
 import { preflight, type Ledger, type OnDiskEntry } from "./validate";
 import { recordForAction } from "./record-edit.mjs";
+import { missingPdfProblem, PDF_DIR } from "./pdf-check.mjs";
 import type { CollectionKey } from "@/lib/content/loadContent";
 
 export type Action = "saveDraft" | "publish" | "unpublish" | "delete";
@@ -131,6 +132,17 @@ export async function applyAction(args: {
       { slug, draft: written.record.draft === true },
     ] };
     const errors = preflight({ collection, slug, record: written.record, ledger: op.ledger, onDisk: nextOnDisk });
+
+    /* check:content also requires every white paper's PDF to exist, drafts
+       included. preflight() cannot see files, so check the repo at head
+       here — otherwise the commit lands and the production build fails
+       (c76939c, bf48471 on 2026-09-29). */
+    if (collection === "whitePapers") {
+      const names = (await client.listDir(PDF_DIR)).filter((e) => e.type === "file").map((e) => e.name);
+      const problem = missingPdfProblem(slug, names, extraFiles.map((f) => f.path));
+      if (problem) errors.push(problem);
+    }
+
     if (errors.length) return { ok: false, status: 422, errors };
   }
 

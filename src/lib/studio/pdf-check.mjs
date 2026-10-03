@@ -75,3 +75,33 @@ export function storedPdfPath(slug) {
 export function registryFilePath(slug) {
   return `/whitepapers/${slug}.pdf`;
 }
+
+/** Directory the PDFs live in, relative to the repo root. */
+export const PDF_DIR = "public/whitepapers";
+
+/**
+ * The build gate's "every registered white paper has its PDF" rule
+ * (scripts/check-content.mjs), evaluated against the repo at head BEFORE the
+ * studio commits.
+ *
+ * Why this exists: on 2026-09-29 the studio saved and then published a new
+ * white paper whose PDF was not in the repo (the studio does not upload PDFs
+ * yet — the form only checks the file locally). Both commits, c76939c and
+ * bf48471, failed the production build at check:content. The rule applies to
+ * drafts too, because check:content reads drafts from disk.
+ *
+ * @param {string} slug
+ * @param {string[]} pdfNamesAtHead  file names listed in public/whitepapers at head
+ * @param {string[]} [pathsInCommit] paths the same commit will write (a future upload)
+ * @returns {string|null} a problem for the editor, or null when the PDF is there
+ */
+export function missingPdfProblem(slug, pdfNamesAtHead, pathsInCommit = []) {
+  const stored = storedPdfPath(slug);
+  if (pathsInCommit.includes(stored)) return null;
+  if (pdfNamesAtHead.includes(`${slug}.pdf`)) return null;
+  return (
+    `The PDF for this white paper is not on the site yet (${stored}). ` +
+    `Uploading PDFs from the studio is not available yet — ask a developer to add the file, then save again. ` +
+    `Nothing was saved, so the live site is unaffected.`
+  );
+}
