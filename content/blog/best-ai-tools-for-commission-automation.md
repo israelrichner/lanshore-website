@@ -3,6 +3,7 @@ title: 'Best AI Tools for Commission Automation Compared'
 description: >-
   Compare AI tools for commission automation: what each vendor's agents do for
   calculations and disputes, per its own pages, plus the custom-agent build option.
+datePublished: '2026-08-17'
 dateModified: '2026-10-02'
 author: doug-erb
 featured: false
@@ -145,12 +146,12 @@ In May 2026 Xactly announced a Fleet of Agents (builder, workflow, and optimizat
 
 ## 8. The build option: custom agents on your existing platform
 
-Platform AI works inside one product. Commission problems often do not: a dispute may need CRM opportunity history, an ERP invoice, and an HR effective date. Lanshore's [AI commission automation](/solutions/ai-commission-automation) work, part of AI Assisted SPM, builds agents on top of the platform you already own instead of replacing it.
+Platform AI works inside one product. Commission problems often do not: a dispute may need CRM opportunity history, an ERP invoice, and an HR effective date. Lanshore's [AI commission automation](/solutions/ai-commission-automation) work, part of Agentic SPM, builds agents on top of the platform you already own instead of replacing it.
 
 Per Lanshore's published materials, its [SPM Operations](/agentic-spm/operations) agents run data loads, calculation runs, validations, and exception queues, with every action logged with timestamp, input, output, and approver, and a human approving what matters. Its [Custom Apps](/agentic-spm/custom-apps) include dispute and inquiry bots that answer rep statement questions from plan logic and data, built on Microsoft Power Automate, UiPath, or custom agentic frameworks using commercial AI models under your accounts. You own the delivered app, and Lanshore states most custom apps ship in eight to twelve weeks. Where a platform exposes an API or MCP server, Lanshore integrates with it directly.
 
 - **Strengths:** works across systems and around your specific plan and process.
-- **Watch out for:** you take on an additional build and its upkeep, and agents are only as good as the plan logic and data beneath them. [PROOF POINT NEEDED: an anonymized Lanshore agent deployment with the volume of exceptions or inquiries it handles per cycle]
+- **Watch out for:** you take on an additional build and its upkeep, and agents are only as good as the plan logic and data beneath them. For scale: at one national telecom carrier, Lanshore's exception agent handles about 400 crediting and data exceptions per monthly cycle, resolving roughly three quarters automatically and routing the rest with a suggested fix.
 
 ## What to check before an agent touches payouts
 
@@ -161,7 +162,7 @@ Per Lanshore's published materials, its [SPM Operations](/agentic-spm/operations
 5. **Approval:** does a person approve before anything reaches payroll?
 6. **Data use:** is your data used to train models?
 
-Our guide to [AI agents for commission governance](/resources/guides/ai-agents-commission-governance) covers these controls in depth, and [how to prevent incentive compensation disputes](/resources/guides/preventing-incentive-compensation-disputes) covers fixing causes upstream. [PROOF POINT NEEDED: a Lanshore client example where an agent-flagged anomaly was caught before payroll]
+Our guide to [AI agents for commission governance](/resources/guides/ai-agents-commission-governance) covers these controls in depth, and [how to prevent incentive compensation disputes](/resources/guides/preventing-incentive-compensation-disputes) covers fixing causes upstream. At Grammarly, an agent flagged a 300 percent attainment jump caused by a duplicate CRM booking, and the duplicate was removed before the payroll file was produced.
 
 ## Frequently asked questions
 

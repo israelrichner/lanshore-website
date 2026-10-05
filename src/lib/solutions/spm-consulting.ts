@@ -36,7 +36,7 @@ const solution: Solution = {
   howWeDeliver: [
     {
       title: "Plan design review",
-      body: "We read every plan document, SPIF, and policy memo in force, then map each component to its data source and calculation rule. Ambiguities, conflicting clauses, and rules that create unintended incentives come back to you as a written list with recommendations. Where the design itself should change, we propose options and model their cost before anything is configured. [PROOF POINT NEEDED: anonymized example of a plan-document ambiguity found in a Lanshore design review and its payout impact]",
+      body: "We read every plan document, SPIF, and policy memo in force, then map each component to its data source and calculation rule. Ambiguities, conflicting clauses, and rules that create unintended incentives come back to you as a written list with recommendations. Where the design itself should change, we propose options and model their cost before anything is configured. In one design review for a national telecom carrier, the plan document paid a new-logo bonus on the \"first order\" from a new account, but the CRM had no first-order flag, so the legacy system paid it on every order from any account under twelve months old. Roughly 6 percent of the prior year's new-logo bonus dollars were overpayments. We defined the first-order flag in the crediting rules before build, and the bonus paid once per account from the first cycle on the new system.",
     },
     {
       title: "Requirements and data mapping",
@@ -52,7 +52,7 @@ const solution: Solution = {
     },
     {
       title: "Testing and parallel runs",
-      body: "We test each rule against expected results, including edge cases such as mid-period transfers, splits, clawbacks, and retroactive changes. Then we run full periods in parallel with your existing process and reconcile every variance to a root cause. Cutover happens when the variances are explained, not when the calendar says so. [PROOF POINT NEEDED: parallel-run reconciliation result from a recent Lanshore implementation, such as variances found and resolved before cutover]",
+      body: "We test each rule against expected results, including edge cases such as mid-period transfers, splits, clawbacks, and retroactive changes. Then we run full periods in parallel with your existing process and reconcile every variance to a root cause. Cutover happens when the variances are explained, not when the calendar says so.",
     },
     {
       title: "Hypercare and handover",

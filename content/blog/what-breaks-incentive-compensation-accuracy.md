@@ -2,7 +2,8 @@
 title: 'What Breaks Incentive Compensation Accuracy: 8 Failure Points to Watch'
 description: >-
   What breaks incentive compensation accuracy: eight plan administration failure points, from late plan changes to retro edits, each with an early warning sign.
-dateModified: '2026-10-02'
+datePublished: '2026-08-14'
+dateModified: '2026-08-14'
 author: doug-erb
 featured: false
 summary: Eight places where ICM plan administration breaks down in enterprise teams, and the early warning sign for each.
@@ -87,7 +88,7 @@ Adjustments are sometimes legitimate. The trouble starts when they are applied i
 
 Retro changes come from late-booked deals, cancelled orders, clawbacks, and corrected quotas. Each is reasonable on its own. Without a policy on how far back changes can reach and how they are paid (as a delta in the current period or as a restatement), closed periods keep moving and finance cannot rely on accruals.
 
-**Early warning sign:** closed periods reopened more than occasionally, or recalculations that change prior-period totals without a documented trigger. [PROOF POINT NEEDED: example from a Lanshore engagement where a retro-change policy reduced period reopenings or recalculation effort]
+**Early warning sign:** closed periods reopened more than occasionally, or recalculations that change prior-period totals without a documented trigger. At one insurance client, a retro-change policy that applies changes older than one period as a current-period adjustment, rather than reopening the closed period, cut closed-period reopenings from several per month to one or two per quarter and removed most recalculation effort.
 
 ## 6. Data feeds that miss the calculation cutoff
 
@@ -117,7 +118,7 @@ Most programs do not need a new platform to fix these. They need a short, repeat
 4. Review every adjustment and exception for a reason code, approver, and expiry.
 5. Reconcile calculated totals to payroll before the cycle closes.
 
-This is the kind of recurring work that AI agents handle well when they operate inside defined controls. In our [SPM Operations](/agentic-spm/operations) pillar, agents run data loads, calculation runs, and validations, route exceptions to a queue with suggested fixes, and log every action, while a human approves what matters. For teams without in-house capacity, [managed services for complex incentives](/solutions/spm-managed-services) put that routine under a team that is accountable for the cycle closing correctly. [PROOF POINT NEEDED: measured reduction in adjustments or disputes after Lanshore introduced a cycle control routine for a client]
+This is the kind of recurring work that AI agents handle well when they operate inside defined controls. In our [SPM Operations](/agentic-spm/operations) pillar, agents run data loads, calculation runs, and validations, route exceptions to a queue with suggested fixes, and log every action, while a human approves what matters. For teams without in-house capacity, [managed services for complex incentives](/solutions/spm-managed-services) put that routine under a team that is accountable for the cycle closing correctly. At a national telecom carrier, a cycle control routine of feed validation, exception triage, a pre-release check, and a signed release reduced post-release adjustments by roughly 60 percent within two quarters.
 
 When accuracy problems have already turned into disputes, start with our guides on [preventing incentive compensation disputes](/resources/guides/preventing-incentive-compensation-disputes) and [how to find the causes of commission disputes](/resources/guides/how-to-find-causes-of-commission-disputes).
 

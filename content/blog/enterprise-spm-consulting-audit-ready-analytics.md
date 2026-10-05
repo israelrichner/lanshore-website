@@ -3,7 +3,8 @@ title: 'Enterprise SPM Consulting for Audit-Ready Analytics: The Complete Guide'
 description: >-
   Enterprise SPM consulting for audit-ready analytics: what audit-ready comp data
   means, the five evidence types auditors want, and how an engagement builds them.
-dateModified: '2026-10-02'
+datePublished: '2026-09-18'
+dateModified: '2026-09-18'
 author: doug-erb
 featured: false
 summary: What audit-ready compensation analytics means in practice and how an enterprise SPM consulting engagement gets you there.
@@ -159,7 +160,7 @@ Before cutover, the new process runs alongside the old one for one or more perio
 
 The cycle moves into steady state with runbooks, a close calendar, and trained owners. Some enterprises run it in-house; others use a [managed service](/solutions/spm-managed-services) so that the controls keep operating through staff turnover.
 
-[PROOF POINT NEEDED: typical duration and team size of a Lanshore audit-readiness engagement for an enterprise with multiple plans, with the scope it covered]
+A typical Lanshore audit-readiness engagement for an enterprise with 10 to 20 plans runs 8 to 12 weeks with a team of three: an engagement lead, an SPM architect, and an analyst. The scope covers plan inventory and version control, calculation traceability from source data to statement, segregation of duties between configure, run and approve, and the reporting pack Finance and audit will ask for.
 
 Lanshore has done this kind of work without replacing existing systems. For a fast-growing software vendor, Lanshore [extended the existing SPM setup](/case-studies/spm-build-on-existing-systems) with audit-ready calculation logic, transparent reporting for reps and finance, and comp cost modeling for planning, adding audit capability across the comp process.
 
@@ -193,7 +194,7 @@ Lanshore's [Executive Dashboards](/agentic-spm/executive-dashboards) put an AI l
 
 The rule is the same for people and agents: if an action cannot be traced and reviewed, it does not belong in an audit-ready process. For how data quality and ownership are governed upstream, see the [incentive compensation data governance guide](/resources/guides/incentive-compensation-data-governance); for policy and control frameworks across countries, see [global incentive governance](/resources/guides/global-incentive-governance).
 
-[PROOF POINT NEEDED: an anonymized example of an audit or close outcome after a Lanshore engagement, such as fewer audit findings or a shorter month-end comp close]
+For one insurance client, the month-end comp close went from twelve business days to five after the engagement, and the next external audit cycle had no findings on incentive compensation, down from two the prior year (unsupported manual adjustments and missing approval evidence).
 
 ## How Lanshore helps
 

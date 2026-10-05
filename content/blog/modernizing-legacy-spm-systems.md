@@ -3,7 +3,8 @@ title: 'Modernizing Legacy SPM Systems in 2026: The Complete Guide'
 description: >-
   How to modernize a legacy SPM system: assess current state, choose replace,
   re-platform or augment, migrate plans and data, run in parallel, add audit trails.
-dateModified: '2026-10-02'
+datePublished: '2026-08-05'
+dateModified: '2026-08-05'
 author: doug-erb
 featured: false
 summary: A step-by-step program for modernizing a legacy sales performance management system without breaking a single pay cycle.
@@ -65,7 +66,7 @@ Capture the following before anyone talks about vendors.
 
 Two practices make the assessment honest. First, trace a sample of real payouts from source transaction to payroll line, including at least one disputed payout. Second, interview the people who make manual adjustments, because they know where the system is wrong.
 
-[PROOF POINT NEEDED: an anonymized example from a Lanshore assessment where the root cause turned out to be data or process rather than the engine, and how that changed the recommendation]
+In one Lanshore assessment, a medical device manufacturer brought us in to evaluate replacing a legacy Callidus system that was blamed for wrong payouts. The engine was calculating correctly. The errors came from a nightly territory feed that overwrote manual reassignments, and from a plan-change process with no effective dating. We recommended fixing the feed and introducing versioned plan changes first, and sequencing the platform replacement after that. That took the "the system is broken" argument off the table.
 
 ## Phase 2: Decide replace, re-platform, or augment
 
@@ -162,7 +163,7 @@ Each variance falls into one of four categories, and each needs an owner and a d
 
 Agree the exit criteria up front: every variance classified and dispositioned, all defects fixed and re-tested, outputs accepted by payroll and finance, and written sign-off from the compensation owner and the finance controller. Include at least one cycle that exercises quarter-end or other periodic components if your plans have them, because monthly-only parallels miss those paths.
 
-[PROOF POINT NEEDED: a real parallel-run outcome from a Lanshore migration, such as the variance categories found and how many cycles were needed before sign-off]
+For example, when Grammarly moved off spreadsheets, Lanshore needed one parallel-run cycle before sign-off. The variances fell into three categories: crediting dates (the spreadsheet used order date, while the platform used booking date as the plan specified), rounding on tiered rates, and one SPIF that had been paid manually outside the spreadsheet. All three were resolved in that cycle and cutover proceeded. Enterprise migrations typically need two to three cycles.
 
 ## Phase 6: Build governance and the audit trail in
 
@@ -187,7 +188,7 @@ AI agents are useful during and after modernization, provided they work under hu
 - Compare parallel-run outputs line by line and propose a variance category for a human to confirm
 - Draft plain-language documentation of legacy rules from existing configuration, for an analyst to verify
 
-**After go-live**, agents can run the recurring cycle: scheduled data loads, calculation runs, validations, and exception queues, with errors routed to a person with a suggested fix. This is the [SPM Operations](/agentic-spm/operations) pillar of AI Assisted SPM by Lanshore, where every agent action is logged with timestamp, input, output, and approver where applicable. The SPM Operations demo includes an Xactly-to-Varicent migration mode.
+**After go-live**, agents can run the recurring cycle: scheduled data loads, calculation runs, validations, and exception queues, with errors routed to a person with a suggested fix. This is the [SPM Operations](/agentic-spm/operations) pillar of Agentic SPM by Lanshore, where every agent action is logged with timestamp, input, output, and approver where applicable. The SPM Operations demo includes an Xactly-to-Varicent migration mode.
 
 **Where agents should not act alone**: plan design, approval of exceptions and overrides, and release of payouts. A named person approves anything that reaches payroll. Agents also amplify whatever they are pointed at, so they belong on top of clean hierarchies and correct plan logic, which is one more reason the earlier phases matter.
 
@@ -212,7 +213,7 @@ Communicate with payees before the first new statement arrives. A statement that
 - **Deferring governance to phase two.** Retrofitting controls is harder than designing them in.
 - **Losing the people who know the legacy logic.** Document their knowledge before the project needs it.
 
-[PROOF POINT NEEDED: one anonymized example of a modernization mistake Lanshore was brought in to recover from, and what the recovery involved]
+Lanshore has also been brought in to recover from one. At Micro Focus, in work delivered with PwC, an SAP Sales Cloud (CallidusCloud) rollout had stalled after a go-live with unreconciled results. Recovery involved rebuilding the crediting and quota data model, re-running the prior periods in parallel against the old results, and standing up a release process with sign-off per cycle before the client would trust the numbers.
 
 ## How Lanshore helps
 

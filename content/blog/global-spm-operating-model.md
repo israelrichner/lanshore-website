@@ -3,7 +3,8 @@ title: 'The Complete Guide to Global Sales Performance Management Operating Mode
 description: >-
   How to build a global SPM operating model: centralized vs federated vs hybrid
   designs, roles, a RACI, the comp cycle across sales, finance, and HR, and SLAs.
-dateModified: '2026-10-02'
+datePublished: '2026-09-11'
+dateModified: '2026-09-11'
 author: doug-erb
 featured: false
 summary: How to design who runs incentive compensation, where, and on what cadence across sales, finance, HR, and payroll.
@@ -167,7 +168,7 @@ Managed services fit the operating model best when:
 
 Lanshore has taken over commission operations as a managed service for a client running on a manual Excel process, replacing it with [structured calculation runs, error controls, and standardized reporting](/case-studies/managed-services-commission-management) and covering comp operations without new headcount. For another client, Lanshore [restructured the SPM configuration and set up a flexible support model](/case-studies/flexible-spm-for-changing-business) so plan changes no longer depended on third-party service providers. More detail is on the [managed services solution page](/solutions/spm-managed-services).
 
-[PROOF POINT NEEDED: an anonymized example of a Lanshore client that moved from regional comp administration to a central or hybrid model, and what changed in cycle time, disputes, or headcount]
+PepsiCo moved from regional comp administration, with separate teams and spreadsheets per region, to a hybrid model with a central platform team and regional plan owners. Cycle time across regions converged on one calendar, dispute volume fell as statements became consistent, and the client redeployed several regional administrators to analysis instead of calculation.
 
 ## Where AI agents fit
 
@@ -182,7 +183,7 @@ In a global hybrid model, that usually means:
 - Executive briefs and dashboards answer leadership questions without adding analyst requests.
 - People keep plan design, approvals, judgment on exceptions, and anything that reaches payroll.
 
-[PROOF POINT NEEDED: an anonymized example of agent-run cycle steps in a Lanshore client environment, with the effect on cycle close time or admin effort]
+At a national telecom carrier, agents run the data validation, exception triage and pre-release statement checks in each monthly cycle, and humans approve. Cycle close time fell 74 percent, and administrator effort per cycle dropped from weeks to days.
 
 ## How to move to a new operating model
 

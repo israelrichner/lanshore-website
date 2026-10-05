@@ -3,7 +3,8 @@ title: 'Global Incentive Governance in 2026: The Complete Guide'
 description: >-
   Global incentive governance explained: decision rights, plan policies, controls,
   segregation of duties, change control, audit evidence, and analytics.
-dateModified: '2026-10-02'
+datePublished: '2026-09-15'
+dateModified: '2026-09-15'
 author: doug-erb
 featured: false
 summary: How enterprise SPM teams set decision rights, policies, controls, and audit evidence for incentive pay across countries.
@@ -66,7 +67,7 @@ Decision rights are the core of the model. Write them as a matrix, publish it, a
 
 Use monetary thresholds so small items move fast and large items get senior attention. Define delegation in writing: who can approve when the named approver is on leave, and for how long. Prohibit retroactive approvals after payout except through a documented exception process, and report them when they happen.
 
-[PROOF POINT NEEDED: an anonymized example of a decision-rights matrix Lanshore helped a client adopt, and what changed in exception or override volume afterwards]
+For example, Lanshore helped PepsiCo adopt a decision-rights matrix that set which changes were global (plan framework, rates by role), which were regional (local SPIFs, currency handling) and which were local (individual exceptions, with a cap). In the following year, override requests reaching the global comp committee dropped by more than half, because most were resolved at the regional level under the published rules.
 
 ## The policy set every global program needs
 
@@ -126,7 +127,7 @@ Uncontrolled change is where well-designed governance erodes. Treat every change
 
 Define an emergency change path for genuine errors that must be fixed before a payroll deadline, with retrospective approval required within a fixed window and reported in governance analytics.
 
-[PROOF POINT NEEDED: a client example where Lanshore introduced versioned change control and how it affected plan change turnaround or audit findings]
+In one Lanshore engagement, an insurance client introduced versioned, effective-dated change control for its plan rules. Plan changes that used to take three to four weeks of email approval and retesting moved to a one-week cycle with a documented approver, and the next internal audit noted the versioned history as a control improvement, with no findings on plan changes.
 
 ## Audit evidence: what to keep
 

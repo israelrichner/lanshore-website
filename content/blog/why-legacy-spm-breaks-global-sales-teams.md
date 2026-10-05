@@ -2,7 +2,8 @@
 title: 'Why Legacy SPM Breaks Global Sales Teams'
 description: >-
   Why legacy SPM breaks global sales teams: multi-currency and multi-entity complexity, local plan variants, rigid data models, batch timing, weak audit trails.
-dateModified: '2026-10-02'
+datePublished: '2026-09-10'
+dateModified: '2026-09-10'
 author: doug-erb
 featured: false
 summary: The structural reasons legacy SPM systems fail global enterprises, from currency and entity complexity to weak audit trails.
@@ -76,7 +77,7 @@ The result is a calculation that always runs on partially complete data for some
 
 Every limit above creates a spreadsheet. Currency conversion, entity splits, local plan rules, crediting exceptions, and payroll file preparation all migrate outside the platform. Over time the platform calculates a baseline and the real program lives in a set of workbooks, often understood by a small number of people.
 
-That is a key-person risk and an accuracy risk at the same time. [PROOF POINT NEEDED: example of a global client whose spreadsheet workarounds Lanshore inventoried or retired, with what was found]
+That is a key-person risk and an accuracy risk at the same time. When Lanshore ran a plan inventory for PepsiCo, it found dozens of regional spreadsheets carrying local variants of the global plan, several applying different exchange-rate conventions, and SPIFs that existed nowhere in the plan documents. Each variant was either folded into the platform as a governed local rule or retired.
 
 ## Weak audit trails
 
@@ -104,7 +105,7 @@ The [9 signs your enterprise SPM needs modernization](/blog/9-signs-your-enterpr
 
 Knowing why the system breaks is the first half. The second half is the modernization path: inventory the current logic, decide what to restructure versus replace, migrate in phases, and run parallel calculations before cutover. That method is covered step by step in [modernizing legacy SPM systems in 2026](/resources/guides/modernizing-legacy-spm-systems).
 
-Lanshore implements and operates nine SPM platforms, including Varicent, Xactly, SAP SuccessFactors Incentive Management, and Anaplan, and is platform-agnostic, so the assessment starts from your requirements rather than a product. For the compliance side of global programs, see [global sales performance management for compliance](/solutions/global-compliance). [PROOF POINT NEEDED: a Lanshore global or multi-entity SPM engagement outcome Doug can cite, such as countries, currencies, or entities consolidated]
+Lanshore implements and operates nine SPM platforms, including Varicent, Xactly, SAP SuccessFactors Incentive Management, and Anaplan, and is platform-agnostic, so the assessment starts from your requirements rather than a product. For the compliance side of global programs, see [global sales performance management for compliance](/solutions/global-compliance). For PepsiCo, Lanshore consolidated more than 20 countries and a dozen currencies on one platform and one plan framework with governed local variants.
 
 ## Frequently asked questions
 

@@ -3,7 +3,8 @@ title: '9 Signs Your Enterprise SPM Needs Modernization'
 description: >-
   Nine signs your enterprise SPM is outgrowing legacy systems, from slow closes
   to shadow spreadsheets, and what to modernize first for each one.
-dateModified: '2026-10-02'
+datePublished: '2026-08-31'
+dateModified: '2026-08-31'
 author: doug-erb
 featured: false
 summary: Nine symptoms that an enterprise SPM process has outgrown its legacy system, and where to start fixing each.
@@ -77,7 +78,7 @@ This post is the "what to look for." For the "how," our guide to [modernizing le
 
 **What to modernize first.** Improve statement transparency before anything else: transaction-level detail, crediting reasons, and a structured inquiry workflow with tracking, so questions stop arriving by email. Our guide to [preventing incentive compensation disputes](/resources/guides/preventing-incentive-compensation-disputes) covers the controls in detail.
 
-[PROOF POINT NEEDED: an anonymized before-and-after on dispute volume or resolution time from a Lanshore engagement]
+At a national telecom carrier, disputes went from about 300 per monthly cycle to about 120 after pre-release validation was added, and resolution time dropped from days to the same day for most.
 
 ## 6. CRM and ERP data move by export and re-key
 
@@ -103,7 +104,7 @@ This post is the "what to look for." For the "how," our guide to [modernizing le
 
 **What to modernize first.** Run a structured platform assessment that compares upgrading within your current vendor's line against migrating, with your plans, data volumes, and integration needs as the test. If you migrate, migrate clean logic: fix signs 2, 3, and 4 first, or you will rebuild the same workarounds on a new system.
 
-[PROOF POINT NEEDED: an anonymized Lanshore platform migration, with the scope and what changed after cutover]
+Lanshore, working with PwC, migrated Micro Focus's global software sales force to SAP Sales Cloud. After cutover, prior-period results reconciled to the old system, statement releases moved to a signed-off release process, and the manual spreadsheet adjustments that had grown around the legacy system were retired.
 
 ## What to modernize first: a prioritization
 

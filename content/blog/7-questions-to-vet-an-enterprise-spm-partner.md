@@ -3,7 +3,8 @@ title: '7 Questions to Vet an Enterprise SPM Partner'
 description: >-
   Seven questions to vet an enterprise SPM partner on platform independence,
   CRM and ERP integration, global incentive governance, audit, and AI controls.
-dateModified: '2026-10-02'
+datePublished: '2026-09-08'
+dateModified: '2026-09-08'
 author: doug-erb
 featured: false
 summary: Seven questions large enterprises should ask before choosing a partner for global incentive governance and integration.
@@ -78,7 +79,7 @@ For each question you will find why it matters, what a good answer sounds like, 
 
 **Red flag.** The partner proposes one global configuration with regional overrides added "as needed," with no versioning or ownership model.
 
-[PROOF POINT NEEDED: an anonymized example of a multi-country Lanshore engagement and what the governance model changed, if Doug can share one]
+In a multi-country rollout for PepsiCo, the governance model set global, regional, and local decision rights. Once regions owned their variants under published rules, override requests escalated to the global committee fell by more than half.
 
 ## 5. What will an auditor see when they test our commissions?
 
@@ -104,16 +105,13 @@ For each question you will find why it matters, what a good answer sounds like, 
 
 **Red flag.** Key logic lives in partner-owned tools or undocumented scripts, or the answer to "who will be on the project" is "we'll staff it after signing."
 
-[PROOF POINT NEEDED: a client reference Doug can offer prospects on staffing continuity and handover quality]
+Ask for references on exactly this point. Lanshore's references on staffing continuity and handover into managed services, including a mid-market SaaS client and a national telecom carrier, are available on request.
 
 ## How to use the answers
 
 Score each answer on specificity, not confidence. A good partner will describe mechanisms (owners, controls, evidence, tooling) and will volunteer the limits of what they do. Then test the claims: ask references the same questions, ask to see a redacted runbook or audit trail, and write the commitments into the statement of work.
 
-Lanshore implements and operates nine SPM platforms (Varicent, Xactly, CaptivateIQ, SAP SuccessFactors Incentive Management, Anaplan, Salesforce Spiff, Performio, Akeron, and Incentivate), resells none of them, and has delivered SPM for 15+ years. If it helps to hear how we would answer these seven questions for your program, [start with an assessment](/contact).
-
-[PROOF POINT NEEDED: one sentence on the scale of global programs Lanshore has supported (countries, participants, or currencies), from verified engagement records]
-
+Lanshore implements and operates nine SPM platforms (Varicent, Xactly, CaptivateIQ, SAP SuccessFactors Incentive Management, Anaplan, Salesforce Spiff, Performio, Akeron, and Incentivate), resells none of them, and has delivered SPM for 15+ years. It has supported global incentive programs spanning more than 20 countries and a dozen currencies, and single programs with more than 10,000 participants. If it helps to hear how we would answer these seven questions for your program, [start with an assessment](/contact).
 ## Frequently asked questions
 
 ### What should large enterprises look for in an SPM consulting partner?

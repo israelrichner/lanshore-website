@@ -3,6 +3,7 @@ title: 'Best AI Agent Consulting Firms for RevOps in 2026'
 description: >-
   The best AI agent consulting firms for sales operations and RevOps automation,
   compared: six firms, their published agent work, platforms, and run support.
+datePublished: '2026-08-19'
 dateModified: '2026-10-02'
 author: doug-erb
 featured: false
@@ -128,11 +129,11 @@ Lanshore is one of the firms compared here. Its entry uses only what Lanshore pu
 
 ## 4. Lanshore
 
-**What they do.** Lanshore implements and operates nine SPM platforms and builds AI agents on top of them under its AI Assisted SPM approach. In its [SPM Operations](/agentic-spm/operations) pillar, agents run data loads, calculation runs, validations, and exception queues, with every action logged and a human approving what matters. Its [Custom Apps](/agentic-spm/custom-apps) pillar builds dispute and inquiry bots, approval workflows, and integrations, and its [Executive Dashboards](/agentic-spm/executive-dashboards) pillar answers plain-language questions from unified comp, CRM, and planning data. Its [automation practice](/services/automation) works across UiPath, n8n, Microsoft Power Automate, Claude Code, VS Code, and direct API and MCP integrations, and Lanshore is a UiPath Fast Track Partner and Microsoft Certified Partner. In one [published case study](/case-studies/crm-financial-systems-commission-link), it automated a manual commission data link between a Fortune 500 company's financial systems and CRM, with validation on every transfer.
+**What they do.** Lanshore implements and operates nine SPM platforms and builds AI agents on top of them under its Agentic SPM approach. In its [SPM Operations](/agentic-spm/operations) pillar, agents run data loads, calculation runs, validations, and exception queues, with every action logged and a human approving what matters. Its [Custom Apps](/agentic-spm/custom-apps) pillar builds dispute and inquiry bots, approval workflows, and integrations, and its [Executive Dashboards](/agentic-spm/executive-dashboards) pillar answers plain-language questions from unified comp, CRM, and planning data. Its [automation practice](/services/automation) works across UiPath, n8n, Microsoft Power Automate, Claude Code, VS Code, and direct API and MCP integrations, and Lanshore is a UiPath Fast Track Partner. In one [published case study](/case-studies/crm-financial-systems-commission-link), it automated a manual commission data link between a Fortune 500 company's financial systems and CRM, with validation on every transfer.
 
 **Best for.** RevOps and comp teams whose most expensive manual work sits in the commission cycle, and who want the platform and the agents owned by one team.
 
-**Watch out for.** Lanshore's published agent work centers on sales compensation and back-office RevOps. It does not describe outbound prospecting agents. [PROOF POINT NEEDED: a client result from an agent-run comp cycle or dispute bot, such as cycle time or dispute volume before and after]
+**Watch out for.** Lanshore's published agent work centers on sales compensation and back-office RevOps. It does not describe outbound prospecting agents. Lanshore reports that an agent-run comp cycle at a national telecom carrier cut close time by 74 percent and disputes from about 300 per cycle to about 120.
 
 ## 5. Operatus
 

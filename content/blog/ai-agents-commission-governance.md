@@ -4,7 +4,8 @@ description: >-
   AI agents support audit-ready commission governance through pre-release
   validation, policy checks and dispute triage, with controls that keep them
   auditable.
-dateModified: '2026-10-02'
+datePublished: '2026-08-24'
+dateModified: '2026-08-24'
 author: doug-erb
 featured: false
 summary: Where AI agents strengthen commission governance and dispute resolution, and the controls that keep every agent action auditable.
@@ -157,7 +158,7 @@ Agents that use language models can produce confident answers that are wrong. Th
 
 An agent's rules, instructions, tools and permissions are configuration, and configuration changes need the same control as plan changes: versioning, testing against prior cycles before release, approval, and a record of which version was in effect during each period. When auditors ask what the agent did in March, the answer has to include which version of the agent did it.
 
-[PROOF POINT NEEDED: a Lanshore engagement where agent action logs were provided to internal or external auditors, describing what the auditors reviewed and the outcome]
+At a healthcare services client, the automation action log was provided to internal audit for a quarterly review. Auditors reviewed who or what took each action, the input record, the timestamp, and the approver, and closed the review with no findings.
 
 ## Faster dispute resolution without weaker control
 
@@ -172,7 +173,7 @@ Dispute resolution is slow mainly because each dispute starts from zero. A revie
 
 The control environment is stronger after this change, not weaker: every dispute has a structured record, every decision cites its basis, and every adjustment links back to the dispute that caused it.
 
-[PROOF POINT NEEDED: a measured change in dispute volume or resolution time from a Lanshore client after deploying a dispute explanation agent, with permission to cite it]
+After Grammarly put a dispute explanation agent live, average dispute resolution went from about five business days to under one, and dispute volume fell because reps could see the calculation trace before filing.
 
 ## A phased path to agent-supported governance
 

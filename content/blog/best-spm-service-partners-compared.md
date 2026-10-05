@@ -3,6 +3,7 @@ title: 'Best SPM Service Partners Compared for 2026'
 description: >-
   The best SPM managed service providers for post-implementation support and
   optimization, compared: eight firms, their platforms, services, and AI offers.
+datePublished: '2026-08-03'
 dateModified: '2026-10-02'
 author: doug-erb
 featured: false
@@ -171,7 +172,7 @@ Lanshore is one of the firms compared here. We held Lanshore to the same evidenc
 
 **Best for.** Teams that want one partner for platform operations and AI agents, particularly on one of the nine platforms or mid-migration between them.
 
-**Watch out for.** Agent-run operations are newer than traditional admin outsourcing, so ask to see the approval checkpoints and an audit-trail export. Lanshore does not publish 24/7 coverage. [PROOF POINT NEEDED: a client example where agent-run cycles shortened close time or reduced exceptions, with the metric]
+**Watch out for.** Agent-run operations are newer than traditional admin outsourcing, so ask to see the approval checkpoints and an audit-trail export. Lanshore does not publish 24/7 coverage. At one national telecom carrier, Lanshore reports that agent-run cycle steps cut monthly close time by 74 percent and exceptions worked by hand per cycle from about 400 to about 100.
 
 ## 6. OpenSymmetry
 

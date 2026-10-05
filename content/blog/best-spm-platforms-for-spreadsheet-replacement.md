@@ -3,6 +3,7 @@ title: 'Best SPM Platforms for Replacing Commission Spreadsheets'
 description: >-
   Compare eight SPM platforms for replacing commission spreadsheets, including
   CaptivateIQ and Performio alternatives, with published pricing and fit notes.
+datePublished: '2026-09-21'
 dateModified: '2026-10-02'
 author: doug-erb
 featured: false
@@ -186,10 +187,10 @@ Most of the risk sits in moving logic that only exists inside workbooks.
 1. **Document the real plan.** Read every formula, hidden tab, and manual override, then write the rules out in plain language, including exceptions that never made it into the plan document.
 2. **Map and clean the data.** List each source (CRM opportunities, invoices, HR records, quota files), decide which system is the record for each field, and fix crediting and hierarchy gaps before you configure anything.
 3. **Configure and test against history.** Rebuild the plans, then recalculate past periods and compare to what was paid.
-4. **Run in parallel.** Run at least one live cycle in both systems and reconcile every payee. [PROOF POINT NEEDED: an anonymized example of a discrepancy a Lanshore parallel run caught before go-live]
+4. **Run in parallel.** Run at least one live cycle in both systems and reconcile every payee. In Lanshore's migration for Grammarly, the parallel run found a SPIF that had been paid manually outside the spreadsheet and a crediting-date rule the spreadsheet applied inconsistently; both were corrected before go-live.
 5. **Bring people along.** Train admins and walk reps through the new statements, or shadow spreadsheets return.
 
-Lanshore's [spreadsheet-to-platform case study](/case-studies/spreadsheet-to-spm-platform) shows the logic migration and change management steps in practice. A mid-market technology company administered variable pay in Excel; the spreadsheets could not keep up with plan complexity, errors were eroding rep trust, and the team was wary of change. Lanshore implemented an SPM platform sized to the plans, migrated the spreadsheet logic, and ran change management. Excel-based comp administration was retired, plan logic moved into a governed platform, and rep trust in statements was rebuilt. [PROOF POINT NEEDED: typical duration of a Lanshore spreadsheet-to-platform migration for a mid-market plan set]
+Lanshore's [spreadsheet-to-platform case study](/case-studies/spreadsheet-to-spm-platform) shows the logic migration and change management steps in practice. A mid-market technology company administered variable pay in Excel; the spreadsheets could not keep up with plan complexity, errors were eroding rep trust, and the team was wary of change. Lanshore implemented an SPM platform sized to the plans, migrated the spreadsheet logic, and ran change management. Excel-based comp administration was retired, plan logic moved into a governed platform, and rep trust in statements was rebuilt. For a mid-market plan set (3 to 6 plans, up to about 1,000 payees), a Lanshore spreadsheet-to-platform migration typically runs 10 to 14 weeks from kickoff to cutover, including one parallel-run cycle.
 
 ## How Lanshore helps
 

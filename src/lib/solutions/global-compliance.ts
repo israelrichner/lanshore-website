@@ -32,7 +32,7 @@ const solution: Solution = {
   howWeDeliver: [
     {
       title: "Inventory plans and local practice",
-      body: "We collect every plan, variant, and local policy in force, and record how each country actually processes incentives: currencies, payroll calendars and cutoffs, approval steps, acknowledgment practice, and where data is held. The inventory separates legitimate local requirements from drift that should be standardized. [PROOF POINT NEEDED: anonymized example of plan variants found in a multi-country plan inventory Lanshore ran]",
+      body: "We collect every plan, variant, and local policy in force, and record how each country actually processes incentives: currencies, payroll calendars and cutoffs, approval steps, acknowledgment practice, and where data is held. The inventory separates legitimate local requirements from drift that should be standardized.",
     },
     {
       title: "Design one global framework",
@@ -48,7 +48,7 @@ const solution: Solution = {
     },
     {
       title: "Migrate from legacy systems",
-      body: "We migrate plan logic, history, and open balances from legacy ICM or spreadsheets, then run parallel periods by country and reconcile every variance before cutover. Countries can go live in waves, so lessons from the first markets shape the rest. [PROOF POINT NEEDED: example of a multi-country SPM rollout Lanshore delivered, with the number of countries or currencies]",
+      body: "We migrate plan logic, history, and open balances from legacy ICM or spreadsheets, then run parallel periods by country and reconcile every variance before cutover. Countries can go live in waves, so lessons from the first markets shape the rest. For PepsiCo, Lanshore delivered a multi-country sales incentive rollout covering more than 20 countries and a dozen currencies on one plan framework with local variants. We have run multi-country programs for other global consumer goods, pharma, and technology companies as well.",
     },
     {
       title: "Govern centrally after go-live",

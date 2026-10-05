@@ -22,7 +22,7 @@ const solution: Solution = {
     },
     {
       title: "Every leadership question becomes a ticket",
-      body: "Which territories are pacing under quota? Are we overspending on comp relative to attainment? Each question becomes an analyst request with a multi-day turnaround, and by the time the answer arrives the next question has replaced it. RevOps spends its week producing ad hoc reports instead of improving plan design. [PROOF POINT NEEDED: a client example of time from leadership question to answer before and after an executive dashboard]",
+      body: "Which territories are pacing under quota? Are we overspending on comp relative to attainment? Each question becomes an analyst request with a multi-day turnaround, and by the time the answer arrives the next question has replaced it. RevOps spends its week producing ad hoc reports instead of improving plan design.",
     },
     {
       title: "Forecast and comp numbers that do not agree",
@@ -56,7 +56,7 @@ const solution: Solution = {
     },
     {
       title: "Deliver on real data, then refine",
-      body: "Most engagements deliver a working executive dashboard against real data in four to six weeks. After launch we add questions, sources, and alerts as leaders use it, and Lanshore can support the data model and the platform underneath as a managed service. [PROOF POINT NEEDED: a client example of crediting or attainment errors caught mid-period before statements released]",
+      body: "Most engagements deliver a working executive dashboard against real data in four to six weeks. After launch we add questions, sources, and alerts as leaders use it, and Lanshore can support the data model and the platform underneath as a managed service.",
     },
   ],
   platforms: ["varicent", "xactly", "captivateiq", "salesforce-spiff", "anaplan"],

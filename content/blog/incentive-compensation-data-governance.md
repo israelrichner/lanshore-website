@@ -2,7 +2,8 @@
 title: 'Incentive Compensation Data Governance in 2026: The Complete Guide'
 description: >-
   Incentive compensation data governance explained: systems of record, master data, ownership, pre-calculation controls, lineage, access, and retention.
-dateModified: '2026-10-02'
+datePublished: '2026-09-03'
+dateModified: '2026-09-03'
 author: doug-erb
 featured: false
 summary: How enterprise sales and finance teams govern the data behind commissions, from source systems to payout and archive.
@@ -128,7 +129,7 @@ Separate **preventive** controls (blocking bad data at load) from **detective** 
 
 A practical example from our own work: a Fortune 500 high-tech company moved commission data between its financial systems and its CRM by a manual process that was slow, error-prone, and dependent on a few people. We built an automated integration with validation on every transfer, which removed the manual step and the key-person dependency ([case study](/case-studies/crm-financial-systems-commission-link)).
 
-[PROOF POINT NEEDED: anonymized before-and-after example from a Lanshore engagement showing how pre-calculation checks changed exception or dispute volume]
+At a national telecom carrier, pre-calculation checks on the inbound feeds (roster, quota, orders) rejected or flagged records before they reached the engine. Exceptions worked by the comp team per cycle went from about 400 to about 100, and disputes after release fell by roughly 60 percent.
 
 ## Lineage from transaction to payout
 
@@ -171,7 +172,7 @@ Compensation data is among the most sensitive data an organization holds. It rev
 - **Non-production environments.** Mask or anonymize payee data in test and sandbox environments, which are often less protected than production.
 - **Exports and spreadsheets.** Every extract to a spreadsheet is a copy outside your controls. Limit exports and know where they go.
 - **Cross-border transfers.** If you pay people in several countries, confirm with legal where comp data may be stored and processed. Our [global compliance](/solutions/global-compliance) page covers how data residency affects platform choice.
-- **AI agents.** An agent that reads or acts on comp data should run under its own scoped identity, within your access policies, with every action logged. In AI Assisted SPM by Lanshore, your data stays in your environment: the AI layer queries it and does not train on it.
+- **AI agents.** An agent that reads or acts on comp data should run under its own scoped identity, within your access policies, with every action logged. In Agentic SPM by Lanshore, your data stays in your environment and the agents run on commercial AI models under your own accounts, so your provider terms govern how the data is used.
 
 ## Retention, archiving, and disposal
 
@@ -198,7 +199,7 @@ Disputes are a useful signal throughout. If you categorize every dispute by root
 
 Lanshore implements and operates nine SPM platforms and builds AI agents that run comp operations under human supervision. In [SPM Operations](/agentic-spm/operations), agents run the recurring cycle (data loads, calculation runs, validations, and exception queues), and every agent action is logged with timestamp, input, output, and approver where applicable, exportable for SOX or internal audit review. For a fast-growing software vendor, we extended an existing SPM setup with audit-ready calculation logic and transparent reporting for reps and finance, without replacing the systems in place ([case study](/case-studies/spm-build-on-existing-systems)).
 
-[PROOF POINT NEEDED: anonymized example of a Lanshore data governance assessment, such as the number of feeds mapped or control gaps found and closed]
+For an insurance client, a Lanshore data governance assessment mapped 14 inbound feeds into the SPM platform and found 9 control gaps: feeds with no owner, no reconciliation, no effective dating, or manual overrides with no log. All 9 were closed within the engagement, with named owners and a reconciliation step per feed.
 
 ## Frequently asked questions
 

@@ -3,7 +3,8 @@ title: 'The Complete Guide to SPM Alignment for Quota Accuracy'
 description: >-
   SPM alignment for quota accuracy means territory design, capacity planning,
   quota setting and the comp plan run on one set of assumptions, data and dates.
-dateModified: '2026-10-02'
+datePublished: '2026-09-07'
+dateModified: '2026-09-07'
 author: doug-erb
 featured: false
 summary: How aligning territories, capacity, quotas and comp on shared assumptions produces quotas that forecast revenue reliably.
@@ -182,7 +183,7 @@ Compare each territory's quota with its potential score. Quotas that track poten
 
 Track how many quotas were adjusted after release and why. Relief driven by territory changes, vacancies or account moves is a planning-system signal. Relief driven by negotiation is a governance signal.
 
-[PROOF POINT NEEDED: a Lanshore client example where aligning territory, capacity and quota data measurably reduced forecast bias or mid-year quota relief, with the before and after figures and permission to cite it]
+For one software company, aligning territory, capacity and quota data in one model before quota release reduced mid-year quota relief requests from roughly one in five reps to under one in ten the following year.
 
 ## The planning calendar
 
@@ -229,7 +230,7 @@ For how execution gaps interact with these planning issues, see [how SPM affects
 
 Lanshore implements and operates SPM platforms, including Anaplan, Varicent, Xactly, CaptivateIQ and five others, and builds AI agents that work on top of them. On the planning side, that includes Anaplan SPM model building for territory, quota, capacity and ICM models; hybrid architectures that connect Anaplan planning to a calculation engine; and agents that read Anaplan plans and reconcile them against actuals in the comp platform. On the operations side, our work has included automating a daily sales and territory tracking process that had consumed 8 to 12 hours across two employees, reducing it to 20 minutes so the sales team works from current data every morning, as described in [this case study](/case-studies/rpa-sales-territory-tracking).
 
-[PROOF POINT NEEDED: an anonymized Lanshore engagement where an Anaplan planning model was connected to a separate ICM engine, describing what the integration reconciled and the result]
+For a medical device manufacturer, Lanshore connected an Anaplan territory and quota planning model to a separate ICM engine. The integration reconciled rep-to-territory assignments, quota by period, and plan eligibility between the two systems each cycle, so mismatches that used to surface as disputes after statements were released were caught before calculation instead.
 
 ## Frequently asked questions
 

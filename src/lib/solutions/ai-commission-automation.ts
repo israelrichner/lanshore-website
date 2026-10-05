@@ -18,7 +18,7 @@ const solution: Solution = {
     },
     {
       title: "Reps who cannot read their statements",
-      body: "A statement that shows amounts without showing why invites questions. Reps ask why a payout dropped, whether a split was credited, or when a draw is recovered, and those questions travel by email with no tracking. Comp administrators spend close week answering the same questions, and reps who wait too long for an answer stop trusting the plan.",
+      body: "A statement that shows amounts without showing why invites questions. Reps ask why a payout dropped, whether a split was credited, or when a draw is recovered, and those questions travel by email with no tracking. Comp administrators spend the close week answering the same questions, and reps who wait too long for an answer stop trusting the plan.",
     },
     {
       title: "Disputes without a trail",
@@ -40,7 +40,7 @@ const solution: Solution = {
     },
     {
       title: "Validate every run before statements release",
-      body: "After each calculation run, an agent executes the checks and routes every exception to a queue with a suggested fix and the plan clause behind it. A comp administrator approves or rejects each fix, and statements stay on hold until the exceptions are signed off. Our SPM Operations demo shows this cycle on fictitious data. [PROOF POINT NEEDED: client example of exceptions caught by pre-release validation and the resulting change in disputes]",
+      body: "After each calculation run, an agent executes the checks and routes every exception to a queue with a suggested fix and the plan clause behind it. A comp administrator approves or rejects each fix, and statements stay on hold until the exceptions are signed off. Our SPM Operations demo shows this cycle on fictitious data. At a national telecom carrier, pre-release validation catches missing quota, zero-rate assignments, duplicate credits, and attainment swings outside a tolerance band. In the first quarter it held back about 2 percent of statements per cycle for correction before release, and disputes after release fell by roughly 60 percent.",
     },
     {
       title: "Explain payouts to reps",
@@ -48,7 +48,7 @@ const solution: Solution = {
     },
     {
       title: "Triage and resolve disputes with a person deciding",
-      body: "When a rep files a dispute, the agent opens it with the deal record, supporting documents, and the relevant plan clause attached, checks it against plan logic, and drafts a recommendation. The comp administrator makes the decision. Approved adjustments are posted through the platform's normal adjustment process for the next run, and the decision, its reason, and its approver are logged. [PROOF POINT NEEDED: client example of dispute resolution time before and after a dispute agent]",
+      body: "When a rep files a dispute, the agent opens it with the deal record, supporting documents, and the relevant plan clause attached, checks it against plan logic, and drafts a recommendation. The comp administrator makes the decision. Approved adjustments are posted through the platform's normal adjustment process for the next run, and the decision, its reason, and its approver are logged. At Grammarly, a dispute explanation agent answers rep questions against the plan and the calculation trace. Average time to close a dispute went from about five business days of admin research and email to under one day, with most answered the same day.",
     },
     {
       title: "Keep the audit trail and close the loop",

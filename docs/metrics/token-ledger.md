@@ -1,6 +1,6 @@
 # Token & model usage ledger
 
-**Template version:** 0.1.75  
+**Template version:** 0.1.76  
 **Last updated:** 2026-10-05  
 **Policy:** update **VERSION** + this ledger on **every git commit** (`scripts/prepare_commit_metrics.py` / pre-commit hook).  
 **Source of figures:** session stats (`/context`, `/session-info`, host UI) — never invent.
@@ -13,8 +13,8 @@
 | Total output tokens (measured) | 0 |
 | Total tokens (measured) | 0 |
 | Measured entries | 0 |
-| Unmeasured commit stamps | 77 |
-| All ledger entries | 77 |
+| Unmeasured commit stamps | 78 |
+| All ledger entries | 78 |
 
 ## By model (measured only)
 
@@ -103,6 +103,7 @@
 | 2026-10-02 | commit-2026-10-02 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.73: claude-opus-5-5 session; host did not report usage [unmeasured] |
 | 2026-10-02 | commit-2026-10-02 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.74: claude-opus-5-5 session; host did not report usage [unmeasured] |
 | 2026-10-05 | commit-2026-10-05 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.75: auto unmeasured (no metrics in env/pending file) [unmeasured] |
+| 2026-10-05 | commit-2026-10-05 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.76: auto unmeasured (no metrics in env/pending file) [unmeasured] |
 
 <!-- LEDGER_END -->
 

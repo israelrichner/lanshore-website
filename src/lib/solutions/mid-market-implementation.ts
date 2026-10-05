@@ -26,7 +26,7 @@ const solution: Solution = {
     },
     {
       title: "No one to run the cycle after go-live",
-      body: "Implementation teams leave at go-live, and mid-market comp teams are thin. If the one administrator who understands the platform is out during close, the cycle slips. One telecom services provider ran commissions in a manual Excel process with frequent errors and no in-house resources to fix it. Lanshore took over commission operations as a managed service, eliminated the frequent calculation errors, and established structured reporting without new headcount.",
+      body: "Implementation teams leave at go-live, and mid-market comp teams are thin. If the one administrator who understands the platform is out during close, the cycle slips. One telecom services provider ran commissions in a manual Excel process with frequent errors and no in-house resources to fix it. Lanshore took over commission operations as a managed service, sharply reduced the calculation errors, and established structured reporting without new headcount.",
     },
   ],
   howWeDeliver: [
@@ -44,11 +44,11 @@ const solution: Solution = {
     },
     {
       title: "Prove it with parallel runs",
-      body: "Before cutover, the old process and the new platform calculate the same periods side by side. Every payee is reconciled, and every variance is traced to a cause, such as a rounding order or a tier boundary, and a decision on which system is right. Cutover happens when the remaining differences are explained and signed off. [PROOF POINT NEEDED: a mid-market migration with payee count, plan count, and number of parallel-run cycles before cutover]",
+      body: "Before cutover, the old process and the new platform calculate the same periods side by side. Every payee is reconciled, and every variance is traced to a cause, such as a rounding order or a tier boundary, and a decision on which system is right. Cutover happens when the remaining differences are explained and signed off. When Grammarly moved off spreadsheets, with more than 1,000 payees on 3 plan types, one parallel-run cycle was reconciled to the spreadsheet results before cutover. It surfaced a handful of crediting-date differences, all traced to the old spreadsheet, and Grammarly cut over on schedule.",
     },
     {
       title: "Drive adoption, then hand over or operate",
-      body: "We train administrators to run the cycle and make plan changes, and walk managers and reps through the new statements before the first live payout. After go-live you choose: your team runs the platform with documentation and support from us, or Lanshore runs the cycle as a managed service, with agents doing the repetitive work and our consultants handling the judgment calls. [PROOF POINT NEEDED: a mid-market client that moved to managed operations after implementation, with the effect on close time or errors]",
+      body: "We train administrators to run the cycle and make plan changes, and walk managers and reps through the new statements before the first live payout. After go-live you choose: your team runs the platform with documentation and support from us, or Lanshore runs the cycle as a managed service, with agents doing the repetitive work and our consultants handling the judgment calls. Grammarly moved comp administration to Lanshore managed operations after go-live. Monthly close went from about eight business days on spreadsheets to three on the platform, and statement corrections after release fell to near zero within the first two quarters.",
     },
   ],
   platforms: ["varicent", "xactly", "captivateiq", "performio"],

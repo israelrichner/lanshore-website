@@ -3,7 +3,8 @@ title: '10 SPM Software Features That Improve Incentive Accuracy'
 description: >-
   Ten SPM software features that improve incentive accuracy and forecasting,
   why each one matters, and exactly what to test for it in a vendor demo.
-dateModified: '2026-10-02'
+datePublished: '2026-09-17'
+dateModified: '2026-09-17'
 author: doug-erb
 featured: false
 summary: Ten vendor-neutral SPM software features that make incentive payouts and forecasts more accurate, with demo tests for each.
@@ -97,7 +98,7 @@ If you are earlier in the process, start with our guide on [how to choose sales 
 
 **What to test in a demo.** Ask how a correction made in the CRM after the period closes reaches the next calculation run, and how the platform reconciles loaded totals back to the source. Ask to see the API documentation, not just a connector list.
 
-[PROOF POINT NEEDED: an anonymized Lanshore integration engagement where validated feeds measurably reduced calculation errors]
+At a national telecom carrier, validated roster, quota, and order feeds with rejection rules cut calculation exceptions per cycle from about 400 to about 100.
 
 ## 9. Accrual and commission expense forecasting
 
@@ -111,7 +112,7 @@ If you are earlier in the process, start with our guide on [how to choose sales 
 
 **What to test in a demo.** Ask the vendor to show an anomaly the AI flagged, what evidence it gave, who reviewed it, and where the action is logged. Ask what the AI is permitted to change on its own. If the answer includes payouts, ask how that is approved and audited.
 
-[PROOF POINT NEEDED: an example of an anomaly caught by Lanshore agents before payout, with the type of issue and how it was resolved]
+At Grammarly, an agent flagged a rep whose attainment jumped more than 300 percent in one month. The cause was a duplicate booking imported twice from the CRM. The duplicate was removed before statements were released and the payout was corrected, so no clawback was needed.
 
 ## Run the demo on your scenarios, not theirs
 

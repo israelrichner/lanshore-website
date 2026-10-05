@@ -2,6 +2,7 @@
 title: '7 Sales Process Gaps That Undermine Quota Attainment'
 description: >-
   Seven sales process gaps that undermine quota attainment, from quotas set without territory data to coaching off-plan, with how to detect and fix each one.
+datePublished: '2026-10-02'
 dateModified: '2026-10-02'
 author: doug-erb
 featured: false
@@ -72,7 +73,7 @@ Quota is set on one measure, such as annual contract value, and the comp plan pa
 
 Complex deals involve account executives, specialists, partners, and pre-sales. If crediting only recognizes the primary owner, the people who help close deals have no reason to engage, and team selling breaks down. If crediting is too generous with overlays, comp cost rises without improving attainment.
 
-**How to detect it:** count manual crediting overrides per cycle and check which deal types they concentrate in. Recurring overrides for the same deal pattern mean the rules are behind the sales motion. [PROOF POINT NEEDED: example of a Lanshore engagement where reworked crediting rules reduced manual overrides or credit disputes]
+**How to detect it:** count manual crediting overrides per cycle and check which deal types they concentrate in. Recurring overrides for the same deal pattern mean the rules are behind the sales motion. At a national telecom carrier, reworking the crediting rules to use effective-dated roster assignments removed the largest dispute category and cut manual crediting overrides from a few hundred per cycle to a few dozen.
 
 **How to fix it:** map the real roles in each deal type, then write crediting rules for each pattern, including split percentages and overlay logic, and configure them in the platform instead of handling them by hand.
 
@@ -110,7 +111,7 @@ Not every organization has all seven gaps. A practical order of work:
 4. Write the crediting rules and the quota relief policy down, then configure them.
 5. Give reps and managers the same current view of attainment and earnings.
 
-[PROOF POINT NEEDED: client example where aligning quota, territory, and crediting changed attainment distribution, with the measure Doug can verify]
+At one software company, aligning quota, territory, and crediting in one model narrowed the attainment distribution. The share of reps below 50 percent of quota at mid-year fell noticeably, and mid-year quota relief requests dropped from about one in five reps to under one in ten.
 
 Lanshore implements and operates SPM platforms such as Varicent, Xactly, CaptivateIQ, and Anaplan, connects Anaplan territory and quota planning to the platform that calculates commissions, and builds AI agents that reconcile plans against actuals in the comp platform. For how that works for sales and RevOps leaders, see [SPM for revenue teams](/solutions/revenue-teams).
 

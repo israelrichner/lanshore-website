@@ -2,7 +2,8 @@
 title: 'How to Choose Sales Performance Management Software'
 description: >-
   How to choose sales performance management software: define requirements, script demos from your own comp plans, compare total cost, and check references.
-dateModified: '2026-10-02'
+datePublished: '2026-08-28'
+dateModified: '2026-08-28'
 author: doug-erb
 featured: false
 summary: A vendor-neutral, step-by-step method for choosing SPM software for forecasting, quota management, and incentive compensation.
@@ -109,7 +110,7 @@ Send each shortlisted vendor the same package, with enough lead time for them to
 
 Hold every demo in the same format, score it the same day, and record who on the vendor's side built the configuration and how long it took. Ask to see the configuration, not only the output. If a vendor cannot model a must-have scenario, ask what the workaround is and who would maintain it. A demo that looks good while avoiding your hardest scenario is a finding, not a pass.
 
-[PROOF POINT NEEDED: an anonymized example from a Lanshore-run evaluation where a scripted demo exposed a plan mechanic that a shortlisted platform could not model natively]
+In one Lanshore-run evaluation for a software company, we asked each shortlisted platform to model a multi-year ramp with clawbacks on downgrades and a split credit that changed mid-period. One platform could not model the mid-period split change without a custom script outside the plan logic, which took it off the shortlist.
 
 ## Step four: compare total cost of ownership, not the subscription quote
 
@@ -130,7 +131,7 @@ Subscription pricing is the most visible number and often not the largest. Vendo
 
 The plan-change line is the one most often missing, and for organizations that redesign comp every year it can outweigh the subscription difference.
 
-[PROOF POINT NEEDED: anonymized example from Lanshore engagements of how plan-change or integration upkeep costs compared with subscription cost over a contract term]
+Across Lanshore enterprise engagements, plan-change and integration upkeep over a three-year term typically runs 30 to 50 percent of the subscription cost, and in complex plans it can exceed the subscription. That is the number to budget, not the license line alone.
 
 ## Step five: run reference checks that tell you something
 
@@ -192,7 +193,7 @@ Read the table against your requirements. If quota planning must sit next to fin
 
 Lanshore is a services firm. We implement and operate nine SPM platforms and resell none of them, so our [vendor evaluation and roadmap service](/services) compares platforms against your plan complexity, data reality, and budget and ends in a scored recommendation and rollout roadmap. Because the same team implements and runs the platforms afterwards, through managed services if you want them, the evaluation is grounded in how each platform behaves in a live comp cycle, built on more than 15 years of SPM delivery.
 
-[PROOF POINT NEEDED: a client quote or anonymized outcome from a Lanshore-led platform selection, for example how the scored recommendation held up after go-live]
+For Grammarly, Lanshore ran a scored selection, and the recommended platform was implemented with one parallel run and no change in platform decision after go-live. Grammarly then moved the operation to Lanshore managed services after cutover.
 
 ## Frequently asked questions
 

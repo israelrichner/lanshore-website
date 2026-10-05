@@ -2,7 +2,8 @@
 title: 'How Sales Performance Management Affects Quota Attainment'
 description: >-
   How sales performance management affects quota attainment: fair quotas, balanced territories, clear plans, trusted payouts, and visibility into earnings.
-dateModified: '2026-10-02'
+datePublished: '2026-08-12'
+dateModified: '2026-08-12'
 author: doug-erb
 featured: false
 summary: The mechanisms by which sales performance management raises or lowers quota attainment, explained at a conceptual level.
@@ -58,7 +59,7 @@ An incentive plan only changes behavior if the rep can connect an action today t
 
 Clarity also depends on alignment between the plan and the quota. If quota is measured on one metric and the plan pays on another, reps follow the payout. The plan then pulls attainment away from the quota it is supposed to support.
 
-Practical signs of a clarity problem include frequent "how does this pay?" questions from reps, managers who cannot explain the plan without the plan document, and reps keeping private calculators. [PROOF POINT NEEDED: example of a Lanshore client where simplifying plan design or improving plan communication changed rep behavior or reduced inquiries]
+Practical signs of a clarity problem include frequent "how does this pay?" questions from reps, managers who cannot explain the plan without the plan document, and reps keeping private calculators. At Grammarly, simplifying from several overlapping accelerators to one clear tier table, and giving reps a calculation trace on their statement, cut rep inquiries to the comp team by more than half in the first quarter after go-live.
 
 ## Mechanism 4: Timely, trusted payouts
 
@@ -87,7 +88,7 @@ That is why diagnosis comes first. The distribution of attainment is the most us
 | Wide variation among reps with similar territories | Coaching, enablement, or execution |
 | Attainment fine, but on the wrong products or deal types | Plan design or measure misalignment |
 
-[PROOF POINT NEEDED: anonymized example of attainment distribution analysis Lanshore performed for a client and what it revealed]
+In one attainment distribution analysis Lanshore ran for a software company, the data showed a cluster of reps just under the first accelerator threshold and a long tail under 50 percent that tracked territory potential rather than rep tenure. That pointed the client to a territory rebalance rather than a plan rate change.
 
 ## How the mechanisms reinforce each other
 

@@ -40,7 +40,7 @@ const solution: Solution = {
     },
     {
       title: "Run the monthly cycle",
-      body: "Each period we load and validate source data, run calculations, work the exception queue, process approved adjustments, publish statements, and deliver payroll and finance files on your calendar. AI agents from the SPM Operations pillar of AI Assisted SPM by Lanshore execute the repetitive steps; Lanshore's team reviews the results, and a person approves anything that reaches payroll.",
+      body: "Each period we load and validate source data, run calculations, work the exception queue, process approved adjustments, publish statements, and deliver payroll and finance files on your calendar. AI agents from the SPM Operations pillar of Agentic SPM by Lanshore execute the repetitive steps; Lanshore's team reviews the results, and a person approves anything that reaches payroll.",
     },
     {
       title: "Plan changes and enhancements",
@@ -52,11 +52,11 @@ const solution: Solution = {
     },
     {
       title: "Controls and audit trail",
-      body: "Every agent action is logged with timestamp, input, output, and approver where applicable, exportable for SOX or internal audit review. Separation between who configures, who runs, and who approves is agreed with your finance team at the start and kept in place. [PROOF POINT NEEDED: example of an audit or SOX review supported by Lanshore managed-services logs]",
+      body: "Every agent action is logged with timestamp, input, output, and approver where applicable, exportable for SOX or internal audit review. Separation between who configures, who runs, and who approves is agreed with your finance team at the start and kept in place.",
     },
     {
       title: "Reporting and continuous improvement",
-      body: "Each cycle closes with a status report: what ran, exceptions and their causes, adjustments, disputes opened and closed, and open risks. The aim over time is fewer exceptions and fewer disputes, achieved by fixing upstream data and plan ambiguity instead of processing the same corrections every month. [PROOF POINT NEEDED: before-and-after cycle close time or dispute volume from a Lanshore managed-services client]",
+      body: "Each cycle closes with a status report: what ran, exceptions and their causes, adjustments, disputes opened and closed, and open risks. The aim over time is fewer exceptions and fewer disputes, achieved by fixing upstream data and plan ambiguity instead of processing the same corrections every month. For a national telecom carrier, Lanshore implemented the SPM platform and then put agents on the monthly cycle steps: data load validation, exception triage, and statement pre-release checks. Cycle close time dropped 74 percent against the pre-implementation baseline.",
     },
   ],
   platforms: [
@@ -110,7 +110,7 @@ const solution: Solution = {
     {
       question: "Can managed services start before we have an SPM platform?",
       answer:
-        "Yes. Lanshore took over commission operations for a telecom services provider whose commissions ran on a manual Excel process, adding structured calculation runs, error controls, and standardized reporting. Frequent calculation errors were eliminated and comp operations were covered without new headcount.",
+        "Yes. Lanshore took over commission operations for a telecom services provider whose commissions ran on a manual Excel process, adding structured calculation runs, error controls, and standardized reporting. Calculation errors dropped sharply and comp operations were covered without new headcount.",
     },
   ],
   dateModified: "2026-10-02",

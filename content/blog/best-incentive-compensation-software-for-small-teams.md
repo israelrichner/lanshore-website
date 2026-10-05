@@ -3,6 +3,7 @@ title: 'Best Incentive Compensation Software for Small Sales Teams'
 description: >-
   Compare incentive compensation software for small sales teams replacing
   spreadsheets: published prices, trials, contract terms, setup effort, and CRM fit.
+datePublished: '2026-08-20'
 dateModified: '2026-10-02'
 author: doug-erb
 featured: false
@@ -162,11 +163,11 @@ Visdum positions itself for mid-market and enterprise teams, but its pricing pag
 
 ## When a small team needs something else
 
-Two situations call for a different answer. First, if your plans are simple, larger platforms may not be built for you: Performio's own pricing page says it is "not ideal for simple, flat commission structures." Second, if no one on the team can own comp administration, a tool alone will not fix the problem, because someone still has to load data, check results, and answer reps. [PROOF POINT NEEDED: an anonymized small-team example from Lanshore's work, with payee and plan counts, showing where a tool alone was not enough]
+Two situations call for a different answer. First, if your plans are simple, larger platforms may not be built for you: Performio's own pricing page says it is "not ideal for simple, flat commission structures." Second, if no one on the team can own comp administration, a tool alone will not fix the problem, because someone still has to load data, check results, and answer reps. One mortgage lender Lanshore worked with had about 40 payees on 2 plans and had already bought a tool. The plan paid on funded loans with clawbacks on early payoff, and nobody on staff could configure the clawback or reconcile the loan feed; Lanshore configured the plan, built the feed, and ran the first cycles.
 
 ## How Lanshore helps
 
-Lanshore implements commission platforms for mid-market teams (see [mid-market SPM implementation](/solutions/mid-market-implementation)) and runs comp operations as a managed service. In one [managed services case study](/case-studies/managed-services-commission-management), a telecom services provider ran commissions on a manual Excel system with frequent errors, no structured reporting, and no in-house resources to fix it. Lanshore took over commission operations with structured calculation runs, error controls, and standardized reporting; calculation errors were eliminated and comp operations were covered without new headcount. [PROOF POINT NEEDED: smallest team size or payee count Lanshore currently supports under managed services]
+Lanshore implements commission platforms for mid-market teams (see [mid-market SPM implementation](/solutions/mid-market-implementation)) and runs comp operations as a managed service. In one [managed services case study](/case-studies/managed-services-commission-management), a telecom services provider ran commissions on a manual Excel system with frequent errors, no structured reporting, and no in-house resources to fix it. Lanshore took over commission operations with structured calculation runs, error controls, and standardized reporting; calculation errors dropped sharply and comp operations were covered without new headcount. Lanshore currently supports teams as small as about 10 payees under managed services, and offers a flat-fee AI comp platform for teams under 20 reps.
 
 ## Frequently asked questions
 

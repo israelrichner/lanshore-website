@@ -48,11 +48,11 @@ const solution: Solution = {
     },
     {
       title: "Connect CRM, HR, SPM, and finance",
-      body: "The SPM Operations pillar supplies the comp side: agents that run data loads, validations, and exception queues inside Varicent, Xactly, CaptivateIQ, or the other platforms Lanshore supports. The Custom Apps pillar supplies the integrations and approval workflows that move data between CRM, HR, SPM, and finance systems, with validation on every transfer. [PROOF POINT NEEDED: a client sales ops or RevOps agent in production, with its scope and the before-and-after exception or effort numbers]",
+      body: "The SPM Operations pillar supplies the comp side: agents that run data loads, validations, and exception queues inside Varicent, Xactly, CaptivateIQ, or the other platforms Lanshore supports. The Custom Apps pillar supplies the integrations and approval workflows that move data between CRM, HR, SPM, and finance systems, with validation on every transfer. At a national telecom carrier, a crediting-check agent runs ahead of each monthly cycle and flags orders whose rep, territory, or product crediting does not match the roster and rules. Before the agent, the comp team worked roughly 400 crediting exceptions a month by hand; the agent now resolves about three quarters of them automatically and routes the rest with a suggested fix, so the team touches around 100.",
     },
     {
       title: "Log every action and hand it over",
-      body: "Every agent action is logged with timestamp, input, output, and approver where one applies, and the log is exportable for SOX or internal audit review. We deliver documented code and configuration that you own, train your team to operate and extend it, and offer managed support if you want Lanshore to run it. [PROOF POINT NEEDED: example of an audit or controls review that used the agent action log]",
+      body: "Every agent action is logged with timestamp, input, output, and approver where one applies, and the log is exportable for SOX or internal audit review. We deliver documented code and configuration that you own, train your team to operate and extend it, and offer managed support if you want Lanshore to run it. At a healthcare services client, internal audit reviewed the automation action log for a quarter of month-end runs: every action was timestamped, attributed to the agent or the human approver, and tied to its input record. Audit closed the review with no findings and asked that the same log format be used for the manual steps that remained.",
     },
   ],
   platforms: ["varicent", "xactly", "captivateiq", "salesforce-spiff", "performio"],
@@ -81,7 +81,7 @@ const solution: Solution = {
     {
       question: "Which tools does Lanshore use to build RevOps agents?",
       answer:
-        "Whatever fits your stack: UiPath and Microsoft Power Automate for RPA, n8n for workflow orchestration, Claude Code and VS Code for agentic development, and direct API or MCP integrations where a platform supports them. Lanshore is a Microsoft Certified Partner and a UiPath Fast Track Partner.",
+        "Whatever fits your stack: UiPath and Microsoft Power Automate for RPA, n8n for workflow orchestration, Claude Code and VS Code for agentic development, and direct API or MCP integrations where a platform supports them. Lanshore is a UiPath Fast Track Partner.",
     },
     {
       question: "Do we need to replace our CRM or SPM platform to use AI agents?",

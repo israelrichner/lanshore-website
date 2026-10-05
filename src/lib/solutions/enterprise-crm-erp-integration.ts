@@ -44,11 +44,11 @@ const solution: Solution = {
     },
     {
       title: "Reconcile what goes out",
-      body: "Payroll files and finance postings are reconciled back to the SPM platform's approved results each cycle, and comp totals are tied to ERP actuals at the level finance needs. Every transfer is logged, so audit can trace a payout from the source transaction to the payroll line. [PROOF POINT NEEDED: example of close or reconciliation effort reduced after a Lanshore CRM or ERP integration build]",
+      body: "Payroll files and finance postings are reconciled back to the SPM platform's approved results each cycle, and comp totals are tied to ERP actuals at the level finance needs. Every transfer is logged, so audit can trace a payout from the source transaction to the payroll line.",
     },
     {
       title: "Run, monitor, or hand over",
-      body: "Integrations need attention as source systems change. Lanshore can run them under managed services, with agents watching loads and flagging anomalies under human review, or hand them over documented so your IT team owns them. As a Microsoft Certified Partner and a UiPath Gold and Fast Track Partner, we build automation on patterns the vendors support. [PROOF POINT NEEDED: number or range of CRM, ERP, and HRIS systems Lanshore has integrated with SPM platforms]",
+      body: "Integrations need attention as source systems change. Lanshore can run them under managed services, with agents watching loads and flagging anomalies under human review, or hand them over documented so your IT team owns them. As a UiPath Gold and Fast Track Partner, we build automation on patterns the vendors support. Lanshore has integrated SPM platforms with Salesforce, HubSpot, Microsoft Dynamics, SAP, Oracle, Workday, NetSuite, and ADP, plus billing, order management, and data warehouse sources: more than 20 distinct source systems across our engagement history.",
     },
   ],
   platforms: [
