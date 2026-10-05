@@ -86,7 +86,10 @@ const SIMPLE_REDIRECTS: Record<string, string[]> = {
     "/__trashed-2",
     "/contact-page-test",
     "/health-check",
-    "/dir-ai",
+    /* "/dir-ai" is NOT redirected: it is the Texas DIR contract page
+       (DIR-CPO-5160), a contract obligation at the URL DIR has on file.
+       Redirecting it here from July to October 2026 put the contract at
+       risk. See src/lib/dirContract.ts and scripts/check-dir-page.mjs. */
     "/agentic-spm-by-lanshore",
     "/spm-agentic",
   ],

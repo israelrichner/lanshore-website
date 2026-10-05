@@ -74,6 +74,7 @@ ${guides}
 - [SPM Glossary](${SITE_URL}/resources/glossary)
 - [About Lanshore](${SITE_URL}/about)
 - [Contact](${SITE_URL}/contact)
+- [Texas DIR Contract DIR-CPO-5160](${SITE_URL}/dir-ai): AI products and services available to Texas public-sector customers through the Texas Department of Information Resources (DIR) Cooperative Contracts Program, with DIR discounts and ordering instructions.
 
 ---
 

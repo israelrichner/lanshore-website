@@ -37,6 +37,7 @@ const FOOTER_LINKS = [
   { label: "Glossary", href: "/resources/glossary" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Texas DIR Contract", href: "/dir-ai" },
 ];
 
 /* Lucide dropped brand icons; keep a minimal official-style LinkedIn mark. */
