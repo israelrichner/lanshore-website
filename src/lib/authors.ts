@@ -6,11 +6,11 @@
  * builder out of this file is what avoids an import cycle between the two.
  *
  * Only `id` and `name` are required. `jobTitle`, `linkedin` and `bio` are
- * optional and currently unset: the owner has not supplied them yet (plan
- * OQ2). That absence is a working state, not a broken one. AuthorByline renders
- * an unlinked name, and `personNode` omits the keys rather than emitting empty
- * ones. Nothing here is a placeholder to be filled with a guess; an invented
- * LinkedIn URL would be a fabricated fact about a real person.
+ * optional; when one is absent, AuthorByline renders an unlinked name and
+ * `personNode` omits the key rather than emitting an empty one. Doug Erb's
+ * values were supplied by him in the October 2026 owner review (plan OQ2).
+ * Never fill these with a guess; an invented LinkedIn URL would be a
+ * fabricated fact about a real person.
  */
 
 import { AUTHOR_IDS } from "../../scripts/lib/content-rules.mjs";
@@ -32,6 +32,9 @@ export const AUTHORS: Record<string, Author> = {
   "doug-erb": {
     id: "doug-erb",
     name: "Doug Erb",
+    jobTitle: "Founder & CEO",
+    linkedin: "https://www.linkedin.com/in/douglaserb",
+    bio: "Doug Erb has designed, built and run sales compensation systems since 2000, from Callidus and Trilogy through Varicent, Xactly, CaptivateIQ, Performio and SAP Commissions, and today leads Lanshore's SPM and agentic AI practice.",
   },
 };
 
