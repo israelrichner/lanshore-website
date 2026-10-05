@@ -83,7 +83,7 @@ export default function ServicesPage() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-gold">
             Services
           </p>
-          <h1 className="text-4xl font-black sm:text-5xl">How we deliver AI Assisted SPM</h1>
+          <h1 className="text-4xl font-black sm:text-5xl">How Lanshore delivers AI Assisted SPM</h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             Lanshore&rsquo;s services are how AI Assisted SPM gets delivered, from platform
             implementation to ongoing managed operations. One team takes you from platform

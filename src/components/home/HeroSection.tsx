@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden text-white lg:flex lg:aspect-[1920/997] lg:items-start">
       <Image
-        src="/images/hero-bg.jpg"
+        src="/images/lanshore-agentic-ai-human-collaboration.jpg"
         alt=""
         fill
         priority

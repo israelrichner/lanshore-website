@@ -4,11 +4,30 @@ description: >-
   Build or buy your SPM stack? A decision framework for the agentic AI era:
   where platforms win, where custom builds win, and how hybrid approaches keep
   comp teams in control.
-dateModified: '2026-07-11'
+dateModified: '2026-10-05'
 featured: false
 summary: >-
   When to build custom comp tooling and when to buy a platform, now that agents
   change the economics of both.
+keyTakeaways:
+  - For most organizations, buying from a specialized SPM vendor is the sound choice, because agentic features now reach purpose-built platforms faster than an internal team can build them.
+  - Building is worth considering only when your comp model is genuinely unique, runs on proprietary data signals no vendor can access, and you have the engineering capacity to sustain it.
+  - Judge a platform on demonstrated agentic capabilities, CRM and ERP integration depth, five-year total cost, vendor specialization, and whether analysts can change plans without developers.
+  - Custom builds tend to underestimate the maintenance load of split credits, clawbacks, retroactive adjustments, and yearly plan changes after the original engineers move on.
+  - A custom system needs clean, governed source data and, if it uses AI agents, guardrails and audit trails for every automated action.
+faq:
+  - question: Should we build or buy sales performance management software?
+    answer: >-
+      For most organizations, buy. A specialized SPM platform brings proven compensation logic, faster time to value, and agentic AI features as the vendor ships them. Building is worth considering only when your compensation model is genuinely unique, depends on proprietary data signals that drive competitive advantage, and you have the engineering capacity to build and sustain the system for years.
+  - question: What makes building SPM software harder than it looks?
+    answer: >-
+      Incentive compensation logic has to handle split credits, draws, clawbacks, multi-currency conversions, retroactive adjustments, and compliance across jurisdictions, and plans change every year. A custom system also needs clean, governed source data, its own training and support, and, if it uses AI agents, guardrails and audit trails for every automated action.
+  - question: What should we evaluate before buying an SPM platform?
+    answer: >-
+      Ask vendors to demonstrate agentic capabilities rather than describe them, validate integration with your CRM and ERP versions and data volumes, model total cost over five years including services and administration, check how central SPM is to the vendor's business, and confirm that compensation analysts can change plan logic without developers.
+  - question: Does agentic AI change the build vs. buy decision?
+    answer: >-
+      It shortens the evaluation horizon. Agentic capabilities that would take years to build internally are appearing in purpose-built platforms within quarters, so an organization that delays buying in order to build risks spending years to reach what a vendor could deliver at go-live.
 ---
 ## What Is Sales Performance Management?
 
@@ -67,3 +86,21 @@ The build vs. buy decision for SPM in the current environment is best evaluated 
 The most important shift the agentic AI era introduces is this: the evaluation horizon has shortened. Agentic capabilities that would have taken years to build internally are appearing in purpose-built platforms within quarters. Organizations that delay buying in order to build risk spending two years and significant capital to arrive at capabilities their preferred vendor could have delivered at go-live. In a competitive revenue environment, that lag is not a neutral outcome; it is a measurable disadvantage.
 
 Whichever path you choose, the organizations that win with SPM in the agentic AI era will be those that treat their sales performance infrastructure as a strategic asset: governed rigorously, connected to real-time data, and continuously optimized in response to what their top performers and frontline managers actually need to succeed.
+
+## Frequently asked questions
+
+### Should we build or buy sales performance management software?
+
+For most organizations, buy. A specialized SPM platform brings proven compensation logic, faster time to value, and agentic AI features as the vendor ships them. Building is worth considering only when your compensation model is genuinely unique, depends on proprietary data signals that drive competitive advantage, and you have the engineering capacity to build and sustain the system for years.
+
+### What makes building SPM software harder than it looks?
+
+Incentive compensation logic has to handle split credits, draws, clawbacks, multi-currency conversions, retroactive adjustments, and compliance across jurisdictions, and plans change every year. A custom system also needs clean, governed source data, its own training and support, and, if it uses AI agents, guardrails and audit trails for every automated action.
+
+### What should we evaluate before buying an SPM platform?
+
+Ask vendors to demonstrate agentic capabilities rather than describe them, validate integration with your CRM and ERP versions and data volumes, model total cost over five years including services and administration, check how central SPM is to the vendor's business, and confirm that compensation analysts can change plan logic without developers.
+
+### Does agentic AI change the build vs. buy decision?
+
+It shortens the evaluation horizon. Agentic capabilities that would take years to build internally are appearing in purpose-built platforms within quarters, so an organization that delays buying in order to build risks spending years to reach what a vendor could deliver at go-live.

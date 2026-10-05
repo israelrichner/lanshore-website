@@ -4,11 +4,30 @@ description: >-
   Selecting an SPM system in 2026 means looking past dashboards: how to evaluate
   platforms when AI agents, not analysts, will run your comp operations day to
   day.
-dateModified: '2026-07-11'
+dateModified: '2026-10-05'
 featured: false
 summary: >-
   Selection criteria for SPM platforms that go beyond traditional reporting
   capabilities.
+keyTakeaways:
+  - Assistive AI waits to be asked; agentic AI monitors compensation, quota, and territory data continuously and acts within the governance rules you set.
+  - Many legacy SPM platforms were built for human administrators, with read-heavy APIs, rigid data models, and no record of why an automated action was taken.
+  - Score platforms on write-back APIs, decision logging and approval workflows, outcome-based logic, real-time data integration, and openness to third-party agents.
+  - Every autonomous action an agent takes on compensation must be explainable, auditable, and reversible.
+  - Deployed agents need ongoing monitoring, because plan rules and business logic keep changing after go-live.
+faq:
+  - question: What is the difference between assistive AI and agentic AI in SPM?
+    answer: >-
+      Assistive AI responds when someone asks: it summarizes performance, flags an anomaly, or generates a report on demand, and a person still interprets and decides. Agentic AI monitors incentive compensation, quota, and territory data continuously, models a response when something drifts, routes it for approval, and, depending on your governance settings, executes the change.
+  - question: What should an SPM selection scorecard include for agentic AI?
+    answer: >-
+      Five criteria: documented, bidirectional APIs that let agents write back changes; decision integrity, meaning every agent action is explainable, logged, and reversible under approval workflows; outcome-based logic rather than activity tracking; real-time data integration instead of nightly syncs; and the ability to embed third-party or custom agents in the platform's workflow engine.
+  - question: Why can't legacy SPM platforms simply add AI agents?
+    answer: >-
+      Their gaps are structural. Closed or rate-limited APIs block agents from writing changes back, monolithic data schemas cannot expose real-time attainment signals to an orchestration layer, and missing audit trails cannot reconstruct why an automated compensation adjustment was made.
+  - question: Do AI agents in SPM need ongoing management after go-live?
+    answer: >-
+      Yes. Business rules, plan terms, and governance policies change, and an agent that was correct at launch can drift out of line with them. Continuous monitoring keeps deployed agents aligned with current plan rules and catches unexpected behavior before it affects payouts.
 ---
 ## Schedule Your SPM Health Check
 
@@ -67,6 +86,24 @@ Many organizations already own capable SPM platforms that are dramatically under
 The organizations that will define sales performance excellence in 2026 and beyond are not the ones with the best dashboards. They are the ones with agents that detect, decide, and act, while humans focus on strategy, relationships, and judgment that machines cannot replicate. The SPM systems that can support this future are identifiable today, if you know what to look for. The partners who can build, govern, and sustain that future are rare.
 
 Lanshore sits at that intersection of platform intelligence and agentic execution. The transition from reactive SPM to autonomous revenue operations is not a future state; it is happening now, and the selection decisions being made today will determine who leads and who falls behind.
+
+## Frequently asked questions
+
+### What is the difference between assistive AI and agentic AI in SPM?
+
+Assistive AI responds when someone asks: it summarizes performance, flags an anomaly, or generates a report on demand, and a person still interprets and decides. Agentic AI monitors incentive compensation, quota, and territory data continuously, models a response when something drifts, routes it for approval, and, depending on your governance settings, executes the change.
+
+### What should an SPM selection scorecard include for agentic AI?
+
+Five criteria: documented, bidirectional APIs that let agents write back changes; decision integrity, meaning every agent action is explainable, logged, and reversible under approval workflows; outcome-based logic rather than activity tracking; real-time data integration instead of nightly syncs; and the ability to embed third-party or custom agents in the platform's workflow engine.
+
+### Why can't legacy SPM platforms simply add AI agents?
+
+Their gaps are structural. Closed or rate-limited APIs block agents from writing changes back, monolithic data schemas cannot expose real-time attainment signals to an orchestration layer, and missing audit trails cannot reconstruct why an automated compensation adjustment was made.
+
+### Do AI agents in SPM need ongoing management after go-live?
+
+Yes. Business rules, plan terms, and governance policies change, and an agent that was correct at launch can drift out of line with them. Continuous monitoring keeps deployed agents aligned with current plan rules and catches unexpected behavior before it affects payouts.
 
 ## Ready to Move Beyond Dashboards?
 

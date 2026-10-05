@@ -80,7 +80,7 @@ export default async function CaseStudyDetail({
         <h2 className="text-2xl font-bold text-ink">Challenge</h2>
         <p className="mt-3 text-muted">{study.challenge}</p>
 
-        <h2 className="mt-10 text-2xl font-bold text-ink">What we did</h2>
+        <h2 className="mt-10 text-2xl font-bold text-ink">What Lanshore did</h2>
         <p className="mt-3 text-muted">{study.whatWeDid}</p>
 
         <h2 className="mt-10 text-2xl font-bold text-ink">Result</h2>

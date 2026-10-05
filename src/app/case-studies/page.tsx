@@ -45,7 +45,7 @@ export default function CaseStudiesPage() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-gold">
             Case Studies
           </p>
-          <h1 className="text-4xl font-bold sm:text-5xl">Results</h1>
+          <h1 className="text-4xl font-bold sm:text-5xl">Lanshore client results</h1>
           <p className="mt-4 max-w-2xl text-lg text-white/75">
             Enterprise SPM work, with numbers attached.
           </p>
