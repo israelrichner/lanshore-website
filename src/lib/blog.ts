@@ -66,9 +66,14 @@ export function postPath(post: { slug: string; kind?: string }): string {
   return post.kind === "guide" ? `/resources/guides/${post.slug}` : `/blog/${post.slug}`;
 }
 
+/* Newest first, by publish date where one exists, else last-modified. ISO
+   dates compare correctly as strings; ties keep file order (stable sort). */
+const newestFirst = (a: BlogPost, b: BlogPost) =>
+  (b.datePublished ?? b.dateModified).localeCompare(a.datePublished ?? a.dateModified);
+
 /* The collection holds both; each route lists only its own. */
-export const ARTICLES: BlogPost[] = BLOG_POSTS.filter((p) => p.kind !== "guide");
-export const GUIDES: BlogPost[] = BLOG_POSTS.filter((p) => p.kind === "guide");
+export const ARTICLES: BlogPost[] = BLOG_POSTS.filter((p) => p.kind !== "guide").sort(newestFirst);
+export const GUIDES: BlogPost[] = BLOG_POSTS.filter((p) => p.kind === "guide").sort(newestFirst);
 
 /** A /blog post by slug. A guide's slug does not resolve here. */
 export function getPost(slug: string): BlogPost | undefined {

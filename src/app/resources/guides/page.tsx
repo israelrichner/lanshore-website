@@ -71,7 +71,10 @@ export default function GuidesIndexPage() {
               >
                 <h2 className="text-xl font-bold text-ink group-hover:text-accent">{guide.title}</h2>
                 <p className="mt-1 text-xs text-muted">
-                  Updated <time dateTime={guide.dateModified}>{formatDate(guide.dateModified)}</time>
+                  {guide.datePublished ? "Published " : "Updated "}
+                  <time dateTime={guide.datePublished ?? guide.dateModified}>
+                    {formatDate(guide.datePublished ?? guide.dateModified)}
+                  </time>
                 </p>
                 <p className="mt-2 text-sm text-muted">{guide.description}</p>
                 <span className="mt-3 inline-block text-sm font-semibold text-accent">

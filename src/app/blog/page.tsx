@@ -69,8 +69,10 @@ export default function BlogIndexPage() {
                 {post.title}
               </h2>
               <p className="mt-1 text-xs text-muted">
-                Updated{" "}
-                <time dateTime={post.dateModified}>{formatDate(post.dateModified)}</time>
+                {post.datePublished ? "Published " : "Updated "}
+                <time dateTime={post.datePublished ?? post.dateModified}>
+                  {formatDate(post.datePublished ?? post.dateModified)}
+                </time>
               </p>
               <p className="mt-2 text-sm text-muted">{post.description}</p>
               <span className="mt-3 inline-block text-sm font-semibold text-accent">
