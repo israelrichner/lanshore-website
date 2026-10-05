@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NOT_FOUND_METADATA } from "@/lib/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
@@ -17,7 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const industry = getIndustry(slug);
-  if (!industry) return {};
+  if (!industry) return NOT_FOUND_METADATA;
   return {
     title: industry.titleTag,
     description: industry.metaDescription,

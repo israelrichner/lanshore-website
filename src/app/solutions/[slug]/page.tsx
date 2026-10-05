@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NOT_FOUND_METADATA } from "@/lib/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckCircle2 } from "lucide-react";
@@ -21,7 +22,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const s = getSolution(slug);
-  if (!s) return {};
+  if (!s) return NOT_FOUND_METADATA;
   return {
     title: s.titleTag,
     description: s.metaDescription,

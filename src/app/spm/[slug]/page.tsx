@@ -7,7 +7,7 @@ import CtaBand from "@/components/CtaBand";
 import FaqSection from "@/components/FaqSection";
 import { SPM_PLATFORMS, getSpmPlatform } from "@/lib/spmPlatforms";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
-import { GARTNER_2019 } from "@/lib/site";
+import { GARTNER_2019, NOT_FOUND_METADATA } from "@/lib/site";
 
 export function generateStaticParams() {
   return SPM_PLATFORMS.map((platform) => ({ slug: platform.slug }));
@@ -20,7 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const platform = getSpmPlatform(slug);
-  if (!platform) return {};
+  if (!platform) return NOT_FOUND_METADATA;
   return {
     title: platform.titleTag,
     description: platform.metaDescription,

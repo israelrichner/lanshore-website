@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NOT_FOUND_METADATA } from "@/lib/site";
 import { notFound } from "next/navigation";
 import ArticleView, { GUIDES_SECTION, articleMetadata } from "@/components/ArticleView";
 import { GUIDES, getGuide } from "@/lib/blog";
@@ -14,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const guide = getGuide(slug);
-  return guide ? articleMetadata(guide) : {};
+  return guide ? articleMetadata(guide) : NOT_FOUND_METADATA;
 }
 
 export default async function GuidePage({

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NOT_FOUND_METADATA } from "@/lib/site";
 import { notFound } from "next/navigation";
 import PillarPage from "@/components/PillarPage";
 import JsonLd from "@/components/JsonLd";
@@ -16,7 +17,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const pillar = getPillar(slug);
-  if (!pillar) return {};
+  if (!pillar) return NOT_FOUND_METADATA;
   return {
     title: pillar.titleTag,
     description: pillar.metaDescription,

@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
+
 export const SITE_URL = "https://lanshore.com";
 export const SITE_NAME = "Lanshore";
 export const ENTITY = "AI Assisted SPM by Lanshore";
+
+/* Used by app/not-found.tsx and by every [slug] route's generateMetadata
+   fallback. A notFound() thrown from a page keeps that page's metadata, so
+   without the fallback an unknown slug would show the root layout's title. */
+export const NOT_FOUND_METADATA = { title: "Page Not Found | Lanshore" } satisfies Metadata;
 
 export const CONTACT = {
   email: "sales@lanshore.com",

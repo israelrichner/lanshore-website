@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NOT_FOUND_METADATA } from "@/lib/site";
 import { notFound } from "next/navigation";
 import ArticleView, { BLOG_SECTION, articleMetadata } from "@/components/ArticleView";
 import { ARTICLES, getPost } from "@/lib/blog";
@@ -16,7 +17,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
-  return post ? articleMetadata(post) : {};
+  return post ? articleMetadata(post) : NOT_FOUND_METADATA;
 }
 
 export default async function BlogPostPage({
