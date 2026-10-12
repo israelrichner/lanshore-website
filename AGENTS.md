@@ -138,9 +138,9 @@ A previous root `AGENTS.md` was backed up to `AGENTS.md.bak-before-agentic-templ
 - **Build:** `npm run build`. `prebuild` runs check:content, test:rules, test:schema, test:auth,
   test:loaders, test:redirects, check:admin. `postbuild` runs check:headings and
   check:schema-mirror over `.next/server/app/**/*.html`.
-- **Unit tests:** `npm run test:rules` (content validators, 56 tests) ·
-  `npm run test:schema` (JSON-LD node builders, heading ids, schema mirror rules, 50) ·
-  `npm run test:loaders` (content loader, 7) ·
+- **Unit tests:** `npm run test:rules` (content validators, 91 tests) ·
+  `npm run test:schema` (JSON-LD node builders, heading ids, schema mirror rules, 54) ·
+  `npm run test:loaders` (content loader, 8) ·
   `npm run test:auth` (studio session/google/gate/escaping/commit/ledger/validate/pdf/record-edit, 107) ·
   `npm run test:redirects` (redirect destinations, 3)
 - **Coverage:** NO COVERAGE TOOL — no instrumentation configured.

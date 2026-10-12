@@ -4,11 +4,11 @@ const solution: Solution = {
   slug: "spm-consulting",
   hubspotId: "255671903",
   name: "SPM Consulting for Complex Compensation Plans",
-  titleTag: "SPM Consulting for Complex Comp Plans | Lanshore",
+  titleTag: "Audit-Ready SPM Consulting: Complex, Global Plans | Lanshore",
   metaDescription:
-    "SPM consulting for complex compensation plans: plan design review, requirements, platform fit, build, testing, and hypercare by Lanshore on nine SPM platforms.",
+    "Audit-ready SPM consulting for complex compensation plans and global incentive plans: plan design, integration, analytics, testing, and rollout by Lanshore.",
   firstSentence:
-    "SPM consulting for complex compensation plans turns a plan document that strains out-of-the-box configuration into calculation logic that pays correctly and survives an audit. Lanshore does this end to end: plan design review, requirements, platform fit, build, testing, and hypercare, on any of nine SPM platforms, backed by 15+ years of incentive compensation delivery.",
+    "SPM consulting for complex compensation plans turns a plan document that strains out-of-the-box configuration into audit-ready calculation logic that pays correctly, for a plan paid in one country or for global incentive plans paid across many. Lanshore does this end to end: plan design review, requirements, platform fit, build, CRM and ERP integration, audit-ready analytics, testing, governed rollout, and hypercare, on any of nine SPM platforms, backed by 15+ years of incentive compensation delivery.",
   whoItIsFor:
     "Sales compensation, RevOps, and finance leaders at enterprises whose plans have outgrown standard templates: multi-level crediting with overlay roles, team splits, accelerators that interact with caps, clawbacks and draws, retroactive quota changes, or several plan populations running at once. It fits teams selecting a first SPM platform, teams whose current implementation produces numbers nobody trusts, and teams facing a re-platform. It assumes you need someone accountable for the calculations, not a slide deck about them.",
   problems: [
@@ -32,6 +32,10 @@ const solution: Solution = {
       title: "Go-live without a safety net",
       body: "Cutting over the month the build finishes, without a parallel run against the existing process, makes the first live payroll the real test. Discrepancies then surface as rep complaints instead of test defects, often after the team that built the system has moved on. Trust in statements, once lost in the first cycles, is slow to rebuild.",
     },
+    {
+      title: "Global plans whose controls cannot be evidenced country by country",
+      body: "A global incentive plan is usually governed in one place and administered in many. Each country adds its own currency handling, payroll cutoffs, approvals, and local adjustments, and the evidence of who approved what ends up in regional inboxes and spreadsheets. Headquarters may believe the controls exist, but when an auditor asks for the approval behind an adjustment in one market, or the plan version a seller acknowledged in another, nobody can produce it without a reconstruction.",
+    },
   ],
   howWeDeliver: [
     {
@@ -51,8 +55,20 @@ const solution: Solution = {
       body: "Our consultants configure calculations, crediting, hierarchies, integrations, statements, and reports, with audit trails and approval steps designed in rather than added later. Plan logic is built from the agreed requirements, so every rule traces back to a signed-off decision. Everything we deliver is documented and owned by you, with no black boxes and no dependency by design.",
     },
     {
+      title: "CRM and ERP integration",
+      body: "Commissions are only as accurate as the crediting data that feeds them and only as defensible as their tie-out to finance. We connect the CRM, ERP, HRIS, and payroll to the platform, validate every inbound load before calculation, and reconcile payouts and accruals back to finance each cycle. Where the data flows are the main problem, our CRM and ERP integration service takes the work further.",
+    },
+    {
+      title: "Audit-ready analytics",
+      body: "Reporting is designed around the evidence auditors and controllers ask for: traceability from each payout back to its source transactions and plan rule, reconciliation to payroll and the general ledger, approval evidence for every plan change and adjustment, variance and exception reporting with a disposition for each item, and accrual support finance can book from. Because these are properties of the data and the process, not of a dashboard, we build them into the platform and the monthly cycle rather than reconstructing them when an audit request arrives.",
+    },
+    {
       title: "Testing and parallel runs",
       body: "We test each rule against expected results, including edge cases such as mid-period transfers, splits, clawbacks, and retroactive changes. Then we run full periods in parallel with your existing process and reconcile every variance to a root cause. Cutover happens when the variances are explained, not when the calendar says so.",
+    },
+    {
+      title: "Governed global rollout",
+      body: "For global incentive plans, we roll out in waves: one framework of global plan components, crediting rules, and controls that every country inherits, with local parameters such as currency, rates, and payout timing approved and versioned centrally. Lessons from the first markets shape the rest. For PepsiCo, Lanshore delivered a multi-country sales incentive rollout covering more than 20 countries and a dozen currencies on one plan framework with local variants.",
     },
     {
       title: "Hypercare and handover",
@@ -77,6 +93,9 @@ const solution: Solution = {
     "flexible-spm-for-changing-business",
   ],
   related: [
+    { label: "Global Sales Performance Management for Compliance", href: "/solutions/global-compliance" },
+    { label: "Enterprise SPM for CRM and ERP Integration", href: "/solutions/enterprise-crm-erp-integration" },
+    { label: "Global Incentive Governance in 2026", href: "/resources/guides/global-incentive-governance" },
     {
       label: "Enterprise SPM Consulting for Audit-Ready Analytics",
       href: "/resources/guides/enterprise-spm-consulting-audit-ready-analytics",
@@ -116,8 +135,13 @@ const solution: Solution = {
       answer:
         "It depends on the number of plans, the complexity of crediting, data readiness, and whether a platform is already in place. Lanshore scopes each engagement after reviewing your plans and source data, and phases the work so that a parallel run against your existing process happens before cutover.",
     },
+    {
+      question: "What makes incentive compensation analytics audit-ready?",
+      answer:
+        "Analytics is audit-ready when an auditor can test it without your team building a special reconstruction. That takes five kinds of evidence built into the data and the process: every payout traceable to its source transactions and plan rule, reconciliation to payroll and the general ledger, retained approval evidence for plan changes and adjustments, variance and exception reports with a disposition for each item, and accrual support finance can book from. For global incentive plans, the same evidence has to exist in every country, under one set of controls.",
+    },
   ],
-  dateModified: "2026-10-02",
+  dateModified: "2026-10-12",
 };
 
 export default solution;

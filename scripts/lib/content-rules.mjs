@@ -18,7 +18,7 @@
 
 import { normalize, containsPhrase, markdownText, markdownHeadings } from "./schema-mirror.mjs";
 import { headingId } from "../../src/lib/heading-id.mjs";
-import { findInRecord } from "./house-style.mjs";
+import { findInRecord, findProofMarkers } from "./house-style.mjs";
 
 export const SLUG_RE = /^[a-z0-9][a-z0-9-]*$/;
 export const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -468,6 +468,23 @@ function validateHouseStyle(record, where, errors) {
   }
 }
 
+/**
+ * No "[PROOF POINT NEEDED]" markers in a published record (plan
+ * aeo-hubspot-recs-2026-10-12, section 3.4). A draft may carry one while an
+ * owner supplies the evidence; publishing it would print the placeholder.
+ * Proposed proof points belong in the owner review file, not in copy.
+ */
+function validateNoProofMarkers(record, where, errors) {
+  if (record.draft === true) return;
+  for (const field of findProofMarkers(record)) {
+    errors.push(
+      `${where}: "${field}" contains a proof-point marker ("proof point needed"). ` +
+        `A published record cannot ship a placeholder claim: supply the evidence, ` +
+        `rewrite the sentence so it is true without it, or set draft: true.`
+    );
+  }
+}
+
 /* ------------------------------------------------------------------ *
  * Per-collection field validation
  * ------------------------------------------------------------------ */
@@ -521,6 +538,7 @@ export function validateBlogPost(record, slug) {
     errors.push(`${where}: "publishedOnce" must be a boolean when present`);
   }
   validateHouseStyle(record, where, errors);
+  validateNoProofMarkers(record, where, errors);
   return errors;
 }
 
@@ -554,6 +572,7 @@ export function validateCaseStudy(record, slug) {
     errors.push(`${where}: "publishedOnce" must be a boolean when present`);
   }
   validateHouseStyle(record, where, errors);
+  validateNoProofMarkers(record, where, errors);
   return errors;
 }
 
@@ -584,6 +603,7 @@ export function validateWhitePaper(record, slug) {
     errors.push(`${where}: "publishedOnce" must be a boolean when present`);
   }
   validateHouseStyle(record, where, errors);
+  validateNoProofMarkers(record, where, errors);
   return errors;
 }
 

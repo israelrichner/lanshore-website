@@ -681,3 +681,90 @@ test("itemList: an item that is not a heading, one item, or a duplicate anchor i
   const dup = { ...okBlog(), body: "## A thing\n\nx\n\n## A Thing\n\ny", itemList: { name: "L", items: ["A thing", "A Thing"] } };
   assert.ok(has(validateBlogPost(dup, "a-post"), "duplicate entry"));
 });
+
+/* ------------------------------------------------------------------ *
+ * Proof-point markers: never in a published record, in any collection
+ * (plan aeo-hubspot-recs-2026-10-12, section 3.4)
+ * ------------------------------------------------------------------ */
+
+const MARKER = "[PROOF POINT NEEDED: client name and figure]";
+
+test("markers: a published post with a marker in the body is rejected, naming the field", () => {
+  const post = okBlog();
+  post.body = `## Heading\n\nClose time fell sharply. ${MARKER}`;
+  const errors = validateBlogPost(post, "a-post");
+  assert.ok(has(errors, 'blog/a-post: "body" contains a proof-point marker'));
+});
+
+test("markers: the same post saved as draft: true is allowed", () => {
+  const post = okBlog();
+  post.body = `## Heading\n\nClose time fell sharply. ${MARKER}`;
+  post.draft = true;
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+});
+
+test("markers: draft: false, or a draft flag that is not boolean true, does not exempt the record", () => {
+  const post = okBlog();
+  post.body = `## Heading\n\n${MARKER}`;
+  post.draft = false;
+  assert.ok(has(validateBlogPost(post, "a-post"), "proof-point marker"));
+  post.draft = "true";
+  const errors = validateBlogPost(post, "a-post");
+  assert.ok(has(errors, "proof-point marker"));
+  assert.ok(has(errors, '"draft" must be a boolean'));
+});
+
+test("markers: a marker in keyTakeaways[0] names keyTakeaways[0]", () => {
+  const post = okBlog();
+  post.keyTakeaways = [`Faster close. ${MARKER}`, "Second point."];
+  assert.ok(has(validateBlogPost(post, "a-post"), '"keyTakeaways[0]" contains a proof-point marker'));
+});
+
+test("markers: a marker in an FAQ answer is reported once per field, not swallowed by the mirror rule", () => {
+  const post = okBlog();
+  post.faq = [{ question: "Q?", answer: `Yes. ${MARKER}` }];
+  post.body += `\n\n### Q?\n\nYes. ${MARKER}`;
+  const errors = validateBlogPost(post, "a-post");
+  assert.ok(has(errors, '"faq[0].answer" contains a proof-point marker'));
+  assert.ok(has(errors, '"body" contains a proof-point marker'));
+  assert.equal(errors.filter((e) => e.includes("proof-point marker")).length, 2);
+});
+
+test("markers: a published case study with a marker in whatWeDid is rejected; as a draft it is allowed", () => {
+  const study = okCaseStudy();
+  study.whatWeDid = `We rebuilt crediting. ${MARKER}`;
+  assert.ok(has(validateCaseStudy(study, "a-study"), 'case-studies/a-study: "whatWeDid" contains a proof-point marker'));
+  study.draft = true;
+  assert.deepEqual(validateCaseStudy(study, "a-study"), []);
+});
+
+test("markers: a marker inside a case study results array names the index", () => {
+  const study = okCaseStudy();
+  study.results = ["40% faster", `Errors down ${MARKER}`];
+  assert.ok(has(validateCaseStudy(study, "a-study"), '"results[1]" contains a proof-point marker'));
+});
+
+test("markers: a published white paper with a marker in description is rejected; as a draft it is allowed", () => {
+  const paper = okWhitePaper();
+  paper.description = `Cuts disputes. ${MARKER}`;
+  assert.ok(
+    has(validateWhitePaper(paper, "death-of-commissions"), 'white-papers/death-of-commissions: "description" contains a proof-point marker')
+  );
+  paper.draft = true;
+  assert.deepEqual(validateWhitePaper(paper, "death-of-commissions"), []);
+});
+
+test("markers: prose that talks about proof points is not a marker, in any collection", () => {
+  const post = okBlog();
+  post.body = "## Heading\n\nEvery claim needs a proof point, and proof points matter.";
+  assert.deepEqual(validateBlogPost(post, "a-post"), []);
+  const study = okCaseStudy();
+  study.outcome = "The proof point is the close time.";
+  assert.deepEqual(validateCaseStudy(study, "a-study"), []);
+});
+
+test("markers: the valid fixtures for all three collections still produce zero errors", () => {
+  assert.deepEqual(validateBlogPost(okBlog(), "a-post"), []);
+  assert.deepEqual(validateCaseStudy(okCaseStudy(), "a-study"), []);
+  assert.deepEqual(validateWhitePaper(okWhitePaper(), "death-of-commissions"), []);
+});

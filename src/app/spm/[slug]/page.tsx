@@ -176,6 +176,22 @@ export default async function SpmPlatformPage({
           </Link>
           .
         </p>
+
+        {/* Same markup as the Related line on /solutions/[slug]; renders
+            nothing at all for a platform without `related`. */}
+        {platform.related && platform.related.length > 0 && (
+          <p className="mt-4 text-sm text-muted">
+            Related:{" "}
+            {platform.related.map((r, i) => (
+              <span key={r.href}>
+                {i > 0 && " · "}
+                <Link href={r.href} className="font-semibold text-accent hover:text-accent-hover">
+                  {r.label}
+                </Link>
+              </span>
+            ))}
+          </p>
+        )}
       </section>
 
       <FaqSection items={platform.faq} heading={`${platform.name}: FAQ`} />

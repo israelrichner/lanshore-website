@@ -1,7 +1,7 @@
 import type { Solution } from "./types";
 import { SPM_PLATFORMS } from "../spmPlatforms";
 import { CASE_STUDIES } from "../caseStudies";
-import { findInRecord } from "../../../scripts/lib/house-style.mjs";
+import { findInRecord, findProofMarkers } from "../../../scripts/lib/house-style.mjs";
 
 import spmConsulting from "./spm-consulting";
 import enterpriseCrmErpIntegration from "./enterprise-crm-erp-integration";
@@ -9,6 +9,7 @@ import spmManagedServices from "./spm-managed-services";
 import globalCompliance from "./global-compliance";
 import midMarketImplementation from "./mid-market-implementation";
 import revenueTeams from "./revenue-teams";
+import quotaIncentiveAlignment from "./quota-incentive-alignment";
 import aiAgentsSalesOperations from "./ai-agents-sales-operations";
 import aiCommissionAutomation from "./ai-commission-automation";
 
@@ -22,6 +23,7 @@ export const SOLUTIONS: Solution[] = [
   globalCompliance,
   midMarketImplementation,
   revenueTeams,
+  quotaIncentiveAlignment,
   aiAgentsSalesOperations,
   aiCommissionAutomation,
 ];
@@ -46,6 +48,10 @@ for (const s of SOLUTIONS) {
     throw new Error(`${where}: mentions Gartner. /solutions has no trademark footnote wiring; remove it.`);
   }
   if (text.includes("STUB")) throw new Error(`${where}: still contains STUB placeholder text`);
+  /* Plan aeo-hubspot-recs-2026-10-12 section 3.4: no placeholder claims in
+     published copy. Gaps go in the owner review file, never in source. */
+  const markers = findProofMarkers(s);
+  if (markers.length) throw new Error(`${where}: proof-point marker in ${markers.join(", ")}; remove it before publishing`);
   const dashes = findInRecord(s);
   if (dashes.length) throw new Error(`${where}: em dash in ${dashes.join(", ")} (house style)`);
   if (s.faq.length < 4) throw new Error(`${where}: needs at least 4 FAQ entries`);

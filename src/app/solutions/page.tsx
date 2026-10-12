@@ -6,7 +6,7 @@ import { breadcrumbSchema, itemListSchema, webPageSchema } from "@/lib/schema";
 import { SOLUTIONS } from "@/lib/solutions";
 
 const DESCRIPTION =
-  "Lanshore solutions for sales performance management: SPM consulting, CRM and ERP integration, managed services, global compliance, mid-market implementation, and AI agents for commissions and RevOps.";
+  "Lanshore SPM solutions: consulting, integration, managed services, global compliance, mid-market implementation, quota and incentive alignment, and AI agents.";
 
 export const metadata: Metadata = {
   title: "SPM Solutions: Consulting, Managed Services & AI Agents | Lanshore",

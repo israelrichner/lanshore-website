@@ -1,6 +1,6 @@
 # Token & model usage ledger
 
-**Template version:** 0.1.81  
+**Template version:** 0.1.82  
 **Last updated:** 2026-10-12  
 **Policy:** update **VERSION** + this ledger on **every git commit** (`scripts/prepare_commit_metrics.py` / pre-commit hook).  
 **Source of figures:** session stats (`/context`, `/session-info`, host UI) — never invent.
@@ -13,8 +13,8 @@
 | Total output tokens (measured) | 0 |
 | Total tokens (measured) | 0 |
 | Measured entries | 0 |
-| Unmeasured commit stamps | 84 |
-| All ledger entries | 84 |
+| Unmeasured commit stamps | 85 |
+| All ledger entries | 85 |
 
 ## By model (measured only)
 
@@ -110,6 +110,7 @@
 | 2026-10-05 | commit-2026-10-05 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.79: claude-opus-5-5; host did not report usage; branded 404 [unmeasured] |
 | 2026-10-05 | commit-2026-10-05 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.80: claude-opus-5-5; host did not report usage; AEO technical fixes [unmeasured] |
 | 2026-10-12 | commit-2026-10-12 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.81: claude-opus-5-5 via Claude Code; host did not report per-commit usage; plan + cold review [unmeasured] |
+| 2026-10-12 | commit-2026-10-12 | unmeasured | 0 | 0 | 0 | commit metrics v0.1.82: claude-opus-5-5 via Claude Code; host did not report per-commit usage; WP1 [unmeasured] |
 
 <!-- LEDGER_END -->
 

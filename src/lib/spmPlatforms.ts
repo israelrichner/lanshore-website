@@ -25,6 +25,11 @@ export type SpmPlatform = {
   gartnerPartnerLeadIn?: string;
   lanshoreAngle: string[];
   faq: FaqItem[];
+  /* Other internal pages worth linking, same shape as Solution.related.
+     Optional: a platform without it renders no "Related" line at all. Never
+     link a case study here unless that study ran on this platform; a link on
+     a platform page implies it did. */
+  related?: { label: string; href: string }[];
 };
 
 export const SPM_PLATFORMS: SpmPlatform[] = [
@@ -145,7 +150,7 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
     firstSentence:
       "CaptivateIQ is a modern incentive compensation management platform known for its spreadsheet-like modeling flexibility; Lanshore implements CaptivateIQ, operates comp on it, and connects it to your AI stack.",
     positioning:
-      "CaptivateIQ combines the flexibility comp teams love in spreadsheets with the control and scale of an enterprise platform. It has moved aggressively into agentic AI: CaptivateIQ Agents launched in limited beta in May 2026, and an MCP server that makes comp data available to AI assistants is announced, with general availability of both planned for later in 2026.",
+      "CaptivateIQ combines the flexibility comp teams love in spreadsheets with the control and scale of an enterprise platform. It has moved aggressively into agentic AI: CaptivateIQ Agents launched in limited beta in May 2026 with broader access rolling out through the year, the Revenue Planning Agent became generally available in September 2026, and CaptivateIQ lists an MCP server that gives AI assistants governed access to comp and planning data as coming soon.",
     capabilities: [
       "Incentive compensation modeling with spreadsheet-like logic",
       "Commission processing and statements reps actually read",
@@ -155,8 +160,8 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
     customerProfile:
       "High-growth and enterprise teams that iterate on comp plans frequently and want modeling flexibility without a services-heavy change cycle.",
     aiFeatures: [
-      "CaptivateIQ Agents for comp workflows (limited beta, May 2026)",
-      "MCP server exposing comp data to AI assistants (announced; general availability planned for later in 2026)",
+      "CaptivateIQ Agents for comp and planning workflows (limited beta from May 2026; the Revenue Planning Agent generally available since September 2026)",
+      "MCP server giving AI assistants governed access to comp and planning data (listed by CaptivateIQ as coming soon)",
     ],
     analystNote:
       "Named a Leader in both The Forrester Wave™: Incentive Compensation Management, Q1 2025, and the 2026 Gartner® Magic Quadrant™ for Sales Performance Management.",
@@ -174,12 +179,29 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
       {
         question: "Can Lanshore connect CaptivateIQ to our AI tools?",
         answer:
-          "Yes. Lanshore builds agentic workflows against CaptivateIQ, from Claude Code and n8n to fully custom agents under your accounts. CaptivateIQ has also announced an MCP server, with general availability planned for later in 2026.",
+          "Yes. Lanshore builds agentic workflows against CaptivateIQ, from Claude Code and n8n to fully custom agents under your accounts. CaptivateIQ also lists an MCP server for AI assistants as coming soon.",
       },
       {
         question: "Is CaptivateIQ a good fit for enterprise comp plans?",
         answer:
           "Often, yes. It's a Leader in both major analyst evaluations. Fit depends on plan complexity, data volumes, and team model; Lanshore runs platform assessments to answer this for your specific plans.",
+      },
+      {
+        question: "How does Lanshore move commissions from spreadsheets to CaptivateIQ?",
+        answer:
+          "In five steps: inventory every plan document and the workbook logic that actually pays people, rebuild that logic in CaptivateIQ with each rule documented against its plan clause, load the payee roster and the history needed for clawbacks and disputes, run at least one full cycle in parallel with the spreadsheets and trace every variance to a cause, then cut over and train your administrators. For a mid-market plan set (3 to 6 plans, up to about 1,000 payees), a Lanshore spreadsheet-to-platform migration typically runs 10 to 14 weeks from kickoff to cutover, including one parallel-run cycle. That range is Lanshore's figure across platforms, not a CaptivateIQ-specific one.",
+      },
+      {
+        question: "What does Lanshore integrate around CaptivateIQ?",
+        answer:
+          "The systems that feed and consume commissions: the CRM for opportunities and crediting, the HRIS for the roster and reporting lines, payroll for payouts, and the ERP or finance system for bookings and accruals. Each inbound load is validated before calculation and each outbound file is reconciled back to approved results. Across its engagement history, Lanshore has integrated SPM platforms with Salesforce, HubSpot, Microsoft Dynamics, SAP, Oracle, Workday, NetSuite, and ADP, plus billing, order management, and data warehouse sources: more than 20 distinct source systems in all.",
+      },
+    ],
+    related: [
+      { label: "Mid-Market SPM Implementation Services", href: "/solutions/mid-market-implementation" },
+      {
+        label: "Best SPM Platforms for Replacing Commission Spreadsheets",
+        href: "/blog/best-spm-platforms-for-spreadsheet-replacement",
       },
     ],
   },
@@ -342,6 +364,7 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
       "Performio implementation and plan builds",
       "Managed comp operations on Performio",
       "MCP-native agentic integrations: Lanshore connects Performio's MCP server to Claude Code, n8n, and custom agents",
+      "Migration from spreadsheet commissions onto Performio, with parallel runs that reconcile every payee before cutover",
     ],
     faq: [
       {
@@ -353,6 +376,23 @@ export const SPM_PLATFORMS: SpmPlatform[] = [
         question: "Does Lanshore offer managed services on Performio?",
         answer:
           "Yes. Lanshore runs comp cycles, validations, and exception queues on Performio as a managed service with human review on what matters.",
+      },
+      {
+        question: "Can Lanshore move our commissions from spreadsheets to Performio?",
+        answer:
+          "Yes. Lanshore inventories the plan documents and workbook logic, rebuilds the plans in Performio with each rule documented against its plan clause, loads the roster and the history you still need, and runs at least one full cycle in parallel with the spreadsheets, tracing every variance to a cause before cutover. For a mid-market plan set (3 to 6 plans, up to about 1,000 payees), a Lanshore spreadsheet-to-platform migration typically runs 10 to 14 weeks from kickoff to cutover, including one parallel-run cycle. That range is Lanshore's figure across platforms, not a Performio-specific one.",
+      },
+      {
+        question: "What does Lanshore integrate around Performio?",
+        answer:
+          "The systems that feed and consume commissions: the CRM for opportunities and crediting, the HRIS for the roster and reporting lines, payroll for payouts, and the ERP or finance system for bookings and accruals, with every inbound load validated before calculation and every outbound file reconciled. Across its engagement history, Lanshore has integrated SPM platforms with Salesforce, HubSpot, Microsoft Dynamics, SAP, Oracle, Workday, NetSuite, and ADP, plus billing, order management, and data warehouse sources: more than 20 distinct source systems in all.",
+      },
+    ],
+    related: [
+      { label: "Mid-Market SPM Implementation Services", href: "/solutions/mid-market-implementation" },
+      {
+        label: "Best SPM Platforms for Replacing Commission Spreadsheets",
+        href: "/blog/best-spm-platforms-for-spreadsheet-replacement",
       },
     ],
   },

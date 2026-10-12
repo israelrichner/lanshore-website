@@ -22,7 +22,7 @@ export const UPDATED = {
   home: "2026-07-13",
 
   pillars: "2026-07-13",
-  spm: "2026-07-13",
+  spm: "2026-10-12",
   services: "2026-07-13",
   automation: "2026-07-11",
 

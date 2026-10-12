@@ -7,9 +7,13 @@ import type { FaqItem } from "../schema";
  * Every string here is published. Rules, enforced at module load in
  * ./index.ts: no em dashes, no mention of Gartner (the trademark footnote is
  * not wired for /solutions and the citation rules in lib/site.ts are strict),
- * every `platforms` and `relatedCaseStudies` slug must exist, and no "STUB"
- * text may ship. A claim we cannot substantiate is written as a literal
- * "[PROOF POINT NEEDED: ...]" marker, never as a number.
+ * every `platforms` and `relatedCaseStudies` slug must exist, no "STUB"
+ * text may ship, and no proof-point marker (PROOF_MARKER_RE in
+ * scripts/lib/house-style.mjs) may ship.
+ * A claim we cannot substantiate is not written into source at all, not as a
+ * number and not as a marker: write copy that is true without it, and put the
+ * proposed proof point (exact sentence and where it would go) in the owner
+ * review file for the round, e.g. docs/owner-review/aeo-hubspot-2026-10-12.md.
  */
 export type Solution = {
   slug: string;

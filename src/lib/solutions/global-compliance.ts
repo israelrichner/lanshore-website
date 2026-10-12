@@ -58,6 +58,7 @@ const solution: Solution = {
   platforms: ["varicent", "sap-incentive-management", "xactly", "akeron", "incentivate"],
   relatedCaseStudies: [],
   related: [
+    { label: "SPM Consulting for Complex Compensation Plans", href: "/solutions/spm-consulting" },
     {
       label: "Global Incentive Governance in 2026",
       href: "/resources/guides/global-incentive-governance",
@@ -98,7 +99,7 @@ const solution: Solution = {
         "Legacy systems and spreadsheet estates rarely record who approved a plan variant, which version an employee acknowledged, or why a payout changed, so compliance is hard to evidence. A replacement project is the chance to design central governance and local parameters in, rather than migrating the same gaps onto a new platform.",
     },
   ],
-  dateModified: "2026-10-02",
+  dateModified: "2026-10-12",
 };
 
 export default solution;
