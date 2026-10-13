@@ -348,6 +348,16 @@ WP2: no logic lines change (one TSX sentence, content files), so coverage is "UN
 | OQ10 | Approved: update all three locations together if live verification changes the facts. |
 | OQ11 | Noted only; an ADR when the sitewide rename is decided. |
 
+### Owner change (Doug, 2026-10-13): rec 2 replaced
+
+Doug replaced the WP2 rec 2 draft with his own post, five graphics (`public/images/spm-*.svg`, plus one PNG for the `image:` front matter) and owner-review rows (section (r2) of the owner file). This overrides the parts of WP2 step 2 and step 3 that he changed:
+- Deloitte removed, with large systems integrators covered by category under "Not listed". The section 7 grandfathering amendment no longer applies.
+- SpectrumTek added. The "Also qualifying" paragraph was dropped.
+- The tables are restructured around five jobs, and there are 8 FAQs instead of 5 or 6.
+- The OQ9 sentence is removed from rec 2. OQ9 still applies to the case study.
+
+The Lead verified Doug's draft against the site and the live firm pages. Every factual correction is logged on its row and in the owner file's (f) WP2 log. Supersedes: the rec 2 counts target in section 5 ("5 or 6" FAQs) and the rec 2 parts of the WP2 Status row.
+
 ### Still open (need an answer, but do not block WP1)
 
 - **A1 (assumption to confirm): Vercel builds a preview deploy for `aeo-hubspot-2026-10-12` that Doug can open.** If not, Doug reviews from local `verify` screenshots and the rendered HTML, with page links listed in the owner review file.
@@ -355,6 +365,11 @@ WP2: no logic lines change (one TSX sentence, content files), so coverage is "UN
 - **Incentivate is described two ways on the live site** (logged in owner review category (b), does not gate WP1): `/spm` says "legacy estates on Iconixx and Incentivate" are supported through the partner network, while `SPM_PLATFORMS` has a full Incentivate implementation entry. Rec 4's "Lanshore relationship" column uses the `SPM_PLATFORMS` position (implements), and Doug decides the sitewide wording. Iconixx is not added to the rec 4 pool.
 - **Claims-audit exception path:** a "must be zero" token that appears inside a **quoted, sourced vendor or firm claim**, or as a false positive (for example "sprints"), is allowed only when the Lead logs it in the owner review verification log with source URL and date. Paraphrasing a sourced claim to dodge the audit is not allowed.
 - **Rec 2 cap tie-break:** if more than 10 firms qualify, keep those that publish **both** implementation and post-implementation services, then those cited in HubSpot's competitor list, then alphabetical. Name the rest under "Not listed (cap)".
+  - **Amended 2026-10-12 (Lead, during WP2):** the vendors' partner directories list about 35 more firms, so a literal tie-break would drop already-published firms (Delbridge, IncentiveOps, WorkCentive) on alphabet alone, contradicting the section 6 mitigation "Keep the existing table". The existing 8 are therefore kept, subject to live re-verification. A firm that now fails the rule moves to "Not listed" with its reason. The tie-break fills only the 2 remaining slots. "Also qualifying" names only firms whose own page was fetched and meets the rule; the rest of the directories are covered by one sentence that links them as not assessed.
+- **Follow-ups found in WP2 (out of scope, not blocking):**
+  - SAP now names the product "SAP Incentive Management". The rec 4 post uses the new name and explains it, while Lanshore's own pages keep "SAP SuccessFactors Incentive Management", and `spmPlatforms.ts` `officialUrl` for SAP returns 404.
+  - Varicent's partner directory carries an outdated Lanshore description (off-site).
+  - The rec 4 "Not listed" section came out empty: all 12 platforms met the rule (residual risk accepted in the review). Salesforce Spiff is the closest call and is flagged for Doug.
 - **Reverting WP1 alone** also conflicts in `content/SLUGS.lock.json`; resolve by union, the same as the `UPDATED.spm` rule.
 
 ---
@@ -450,7 +465,7 @@ Depends on the WP1 commit being on the branch.
 2. **Rec 2 firm re-survey and retrieval.**
    - **Discovery sources:** (a) the existing 8 firms; (b) the firms behind the competitor pages HubSpot cites for these recs (OpenSymmetry, Spaulding Ridge and Deloitte are known; ask the Lead for the full list from the export, or record "not available"); (c) the published implementation-partner pages of Varicent, Xactly and CaptivateIQ.
    - **Rule (OQ6):** the firm's own site publishes SPM platform implementation or post-implementation support services. **Excluded and named under "Not listed" with the reason:** plan-design-only consultancies (The Alexander Group, Korn Ferry) and vendor-owned professional services arms (for example Varicent's), because they are vendors, not independent partners.
-   - **Cap:** if more than 10 firms qualify, the main list keeps the firms that publish both implementation and post-implementation services. The other qualifying firms are named in an "Also qualifying" paragraph, one line each.
+   - **Cap (superseded by the section 7 amendment of 2026-10-12: the existing 8 are grandfathered and the tie-break fills only the remaining slots):** if more than 10 firms qualify, the main list keeps the firms that publish both implementation and post-implementation services. The other qualifying firms are named in an "Also qualifying" paragraph, one line each.
    - **Retrieval:** for every listed firm, fetch its consulting, implementation, plan-design and global pages, and re-fetch every existing source. Log quotes, URLs and dates. Log the survey (who was considered, the verdict, the reason) in the owner review file.
 3. **Extend `content/blog/best-spm-service-partners-compared.md`:**
    - **Header copy:** title "Best SPM Consulting and Service Partners Compared" (no year: keeps `<title>` at 60 characters or fewer and avoids annual staleness; "2026" may appear in the description and opening); description, summary and answer-first opening widened to consulting plus managed services; `keyTakeaways` revised (6 or fewer).
@@ -519,7 +534,7 @@ Depends on the WP1 commit being on the branch.
 |---|---|---|
 | Plan | Approved (cold review pass 2, 2026-10-12) | Four pass-2 amendments applied by Lead |
 | Branch setup | Branch created 2026-10-12 | Plan + review commit deferred to just before the WP1 commit, under the same user `/pre-pr` marker (a docs-only `/pre-pr` would check nothing); still committed separately and first |
-| WP1 | Implemented 2026-10-12, awaiting commit | Full regression green (test:rules 70 to 91); coverage house-style 100% / content-rules changed lines covered; verify 10 routes at 1280 and 375 px clean; internal links 0 unresolved; claims audit 0 hits, numbers audit signed by Lead; CaptivateIQ wording updated from live vendor pages (d1-d3, re-checked by Lead) |
-| WP2 | Not started | Blocked on the WP1 commit |
-| Owner review | Not started | Sign-off format in section 9 |
+| WP1 | Committed 8a4f6a9 (plan + review in 40a4033), 2026-10-12 | Full regression green (test:rules 70 to 91); coverage house-style 100% / content-rules changed lines covered; verify 10 routes at 1280 and 375 px clean; internal links 0 unresolved; claims audit 0 hits, numbers audit signed by Lead; CaptivateIQ wording updated from live vendor pages (d1-d3, re-checked by Lead) |
+| WP2 | Implemented 2026-10-12; rec 2 replaced by Doug's draft and re-verified 2026-10-13; awaiting commit | Rec 2 (Doug's version): 10 firms, 8 FAQs, 5 graphics, verified live and corrected (owner file (r2) and (f)); regression green 2026-10-13, 358 internal links, 0 unresolved; verify PASS incl. images at 375px. Original WP2 note: rec 2 listed 10 firms (existing 8 re-verified + Ackle, Blue Horizons), rec 4 lists 12 platforms; ItemList = headings on both; 353 internal links, 0 unresolved; claims audit 0 hits; numbers audit signed by Lead after re-fetching prices; verify PASS incl. /spm |
+| Owner review | WP1 rows: user relayed "Doug approved" 2026-10-12. Rec 2: Doug sent a replacement 2026-10-13 (rows r2, still UNDECIDED) | Needs Doug's decisions on the (r2) rows (including the Lead corrections) and on the rec 4, case-study and cross-link rows; then the sign-off line |
 | Publish | Not started | Blocked on sign-off |

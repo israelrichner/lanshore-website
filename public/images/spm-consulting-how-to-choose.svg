@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" font-family="Helvetica, Arial, sans-serif">
+<rect width="1200" height="440" fill="#FFFFFF"/>
+<text x="60" y="70" font-size="30" font-weight="700" fill="#111111">How to choose an SPM consulting partner</text>
+<rect x="60" y="110" width="240" height="230" rx="10" fill="#FFFFFF" stroke="#025A75" stroke-width="2"/>
+<circle cx="96" cy="150" r="20" fill="#C9C000"/>
+<text x="96" y="157" font-size="20" font-weight="700" fill="#111111" text-anchor="middle">1</text>
+<text x="128" y="157" font-size="18" font-weight="700" fill="#025A75">Start with the job</text>
+<text x="82" y="210" font-size="16" fill="#111111">Wrong plan? Cost modeling.</text>
+<text x="82" y="236" font-size="16" fill="#111111">Wrong numbers? Integration.</text>
+<text x="82" y="262" font-size="16" fill="#111111">Many countries? Governance.</text>
+<text x="82" y="288" font-size="16" fill="#111111">About to build? Readiness.</text>
+<path d="M306 225.0 h22 m-8 -8 l8 8 l-8 8" fill="none" stroke="#0091D2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="340" y="110" width="240" height="230" rx="10" fill="#FFFFFF" stroke="#025A75" stroke-width="2"/>
+<circle cx="376" cy="150" r="20" fill="#C9C000"/>
+<text x="376" y="157" font-size="20" font-weight="700" fill="#111111" text-anchor="middle">2</text>
+<text x="408" y="157" font-size="18" font-weight="700" fill="#025A75">Filter by platform</text>
+<text x="362" y="210" font-size="16" fill="#111111">Use the firm's own</text>
+<text x="362" y="236" font-size="16" fill="#111111">published list. Ask how</text>
+<text x="362" y="262" font-size="16" fill="#111111">many consultants work</text>
+<text x="362" y="288" font-size="16" fill="#111111">on it today.</text>
+<path d="M586 225.0 h22 m-8 -8 l8 8 l-8 8" fill="none" stroke="#0091D2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="620" y="110" width="240" height="230" rx="10" fill="#FFFFFF" stroke="#025A75" stroke-width="2"/>
+<circle cx="656" cy="150" r="20" fill="#C9C000"/>
+<text x="656" y="157" font-size="20" font-weight="700" fill="#111111" text-anchor="middle">3</text>
+<text x="688" y="157" font-size="18" font-weight="700" fill="#025A75">Get the evidence</text>
+<text x="642" y="210" font-size="16" fill="#111111">The cost model. The</text>
+<text x="642" y="236" font-size="16" fill="#111111">source-field map. A</text>
+<text x="642" y="262" font-size="16" fill="#111111">reference in your</text>
+<text x="642" y="288" font-size="16" fill="#111111">jurisdiction.</text>
+<path d="M866 225.0 h22 m-8 -8 l8 8 l-8 8" fill="none" stroke="#0091D2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="900" y="110" width="240" height="230" rx="10" fill="#FFFFFF" stroke="#025A75" stroke-width="2"/>
+<circle cx="936" cy="150" r="20" fill="#C9C000"/>
+<text x="936" y="157" font-size="20" font-weight="700" fill="#111111" text-anchor="middle">4</text>
+<text x="968" y="157" font-size="18" font-weight="700" fill="#025A75">Write in the handover</text>
+<text x="922" y="210" font-size="16" fill="#111111">Which team owns what</text>
+<text x="922" y="236" font-size="16" fill="#111111">from the first cycle</text>
+<text x="922" y="262" font-size="16" fill="#111111">after go-live, in the</text>
+<text x="922" y="288" font-size="16" fill="#111111">statement of work.</text>
+<text x="60" y="400" font-size="15" fill="#555555">Platform fit is step two, not step one. The firm that is deep on your job will tell you which platform fits; the reverse is rarely true.</text>
+<text x="1140" y="420" font-size="13" fill="#555555" text-anchor="end">lanshore.com</text>
+</svg>

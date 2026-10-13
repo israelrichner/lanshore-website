@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Helvetica, Arial, sans-serif">
+<rect width="1200" height="720" fill="#FFFFFF"/>
+<text x="60" y="60" font-size="30" font-weight="700" fill="#111111">Depth by job and firm, from each firm's own pages</text>
+<text x="60" y="90" font-size="16" fill="#555555">Alphabetical, not ranked. Retrieved 2 and 12 October 2026. Named = a distinct service; Described = covered inside a broader page.</text>
+<text x="366.0" y="122" font-size="15" font-weight="700" fill="#025A75" text-anchor="middle">Plan design</text>
+<text x="366.0" y="140" font-size="15" font-weight="700" fill="#025A75" text-anchor="middle">or redesign</text>
+<text x="538.0" y="122" font-size="15" font-weight="700" fill="#025A75" text-anchor="middle">Analytics and</text>
+<text x="538.0" y="140" font-size="15" font-weight="700" fill="#025A75" text-anchor="middle">CRM/ERP integration</text>
+<text x="710.0" y="122" font-size="15" font-weight="700" fill="#025A75" text-anchor="middle">Global governance</text>
+<text x="710.0" y="140" font-size="15" font-weight="700" fill="#025A75" text-anchor="middle">or delivery</text>
+<text x="882.0" y="122" font-size="15" font-weight="700" fill="#025A75" text-anchor="middle">Implementation</text>
+<text x="882.0" y="140" font-size="15" font-weight="700" fill="#025A75" text-anchor="middle">readiness</text>
+<text x="1054.0" y="122" font-size="15" font-weight="700" fill="#025A75" text-anchor="middle">Managed</text>
+<text x="1054.0" y="140" font-size="15" font-weight="700" fill="#025A75" text-anchor="middle">services</text>
+<rect x="60" y="150" width="1080" height="46" fill="#F4F7F9"/>
+<text x="72" y="179" font-size="16" fill="#111111">Ackle Consulting Group</text>
+<circle cx="366.0" cy="173.0" r="13" fill="#025A75"/>
+<circle cx="538.0" cy="173.0" r="13" fill="#025A75"/>
+<circle cx="710.0" cy="173.0" r="9" fill="none" stroke="#D9DEE3" stroke-width="2"/>
+<circle cx="882.0" cy="173.0" r="10" fill="#0091D2"/>
+<circle cx="1054.0" cy="173.0" r="13" fill="#025A75"/>
+<text x="72" y="225" font-size="16" fill="#111111">Blue Horizons Group</text>
+<circle cx="366.0" cy="219.0" r="13" fill="#025A75"/>
+<circle cx="538.0" cy="219.0" r="10" fill="#0091D2"/>
+<circle cx="710.0" cy="219.0" r="9" fill="none" stroke="#D9DEE3" stroke-width="2"/>
+<circle cx="882.0" cy="219.0" r="13" fill="#025A75"/>
+<circle cx="1054.0" cy="219.0" r="10" fill="#0091D2"/>
+<rect x="60" y="242" width="1080" height="46" fill="#F4F7F9"/>
+<text x="72" y="271" font-size="16" fill="#111111">Canidium</text>
+<circle cx="366.0" cy="265.0" r="13" fill="#025A75"/>
+<circle cx="538.0" cy="265.0" r="10" fill="#0091D2"/>
+<circle cx="710.0" cy="265.0" r="10" fill="#0091D2"/>
+<circle cx="882.0" cy="265.0" r="13" fill="#025A75"/>
+<circle cx="1054.0" cy="265.0" r="10" fill="#0091D2"/>
+<text x="72" y="317" font-size="16" fill="#111111">Delbridge Solutions</text>
+<circle cx="366.0" cy="311.0" r="10" fill="#0091D2"/>
+<circle cx="538.0" cy="311.0" r="13" fill="#025A75"/>
+<circle cx="710.0" cy="311.0" r="10" fill="#0091D2"/>
+<circle cx="882.0" cy="311.0" r="10" fill="#0091D2"/>
+<circle cx="1054.0" cy="311.0" r="13" fill="#025A75"/>
+<rect x="60" y="334" width="1080" height="46" fill="#F4F7F9"/>
+<text x="72" y="363" font-size="16" fill="#111111">IncentiveOps</text>
+<circle cx="366.0" cy="357.0" r="13" fill="#025A75"/>
+<circle cx="538.0" cy="357.0" r="10" fill="#0091D2"/>
+<circle cx="710.0" cy="357.0" r="9" fill="none" stroke="#D9DEE3" stroke-width="2"/>
+<circle cx="882.0" cy="357.0" r="13" fill="#025A75"/>
+<circle cx="1054.0" cy="357.0" r="13" fill="#025A75"/>
+<text x="72" y="409" font-size="16" fill="#111111" font-weight="700">Lanshore</text>
+<circle cx="366.0" cy="403.0" r="13" fill="#025A75"/>
+<circle cx="538.0" cy="403.0" r="13" fill="#025A75"/>
+<circle cx="710.0" cy="403.0" r="10" fill="#0091D2"/>
+<circle cx="882.0" cy="403.0" r="10" fill="#0091D2"/>
+<circle cx="1054.0" cy="403.0" r="13" fill="#025A75"/>
+<rect x="60" y="426" width="1080" height="46" fill="#F4F7F9"/>
+<text x="72" y="455" font-size="16" fill="#111111">OpenSymmetry</text>
+<circle cx="366.0" cy="449.0" r="13" fill="#025A75"/>
+<circle cx="538.0" cy="449.0" r="9" fill="none" stroke="#D9DEE3" stroke-width="2"/>
+<circle cx="710.0" cy="449.0" r="10" fill="#0091D2"/>
+<circle cx="882.0" cy="449.0" r="13" fill="#025A75"/>
+<circle cx="1054.0" cy="449.0" r="13" fill="#025A75"/>
+<text x="72" y="501" font-size="16" fill="#111111">Spaulding Ridge</text>
+<circle cx="366.0" cy="495.0" r="10" fill="#0091D2"/>
+<circle cx="538.0" cy="495.0" r="10" fill="#0091D2"/>
+<circle cx="710.0" cy="495.0" r="9" fill="none" stroke="#D9DEE3" stroke-width="2"/>
+<circle cx="882.0" cy="495.0" r="10" fill="#0091D2"/>
+<circle cx="1054.0" cy="495.0" r="10" fill="#0091D2"/>
+<rect x="60" y="518" width="1080" height="46" fill="#F4F7F9"/>
+<text x="72" y="547" font-size="16" fill="#111111">SpectrumTek</text>
+<circle cx="366.0" cy="541.0" r="13" fill="#025A75"/>
+<circle cx="538.0" cy="541.0" r="10" fill="#0091D2"/>
+<circle cx="710.0" cy="541.0" r="10" fill="#0091D2"/>
+<circle cx="882.0" cy="541.0" r="13" fill="#025A75"/>
+<circle cx="1054.0" cy="541.0" r="13" fill="#025A75"/>
+<text x="72" y="593" font-size="16" fill="#111111">WorkCentive</text>
+<circle cx="366.0" cy="587.0" r="10" fill="#0091D2"/>
+<circle cx="538.0" cy="587.0" r="13" fill="#025A75"/>
+<circle cx="710.0" cy="587.0" r="9" fill="none" stroke="#D9DEE3" stroke-width="2"/>
+<circle cx="882.0" cy="587.0" r="10" fill="#0091D2"/>
+<circle cx="1054.0" cy="587.0" r="10" fill="#0091D2"/>
+<circle cx="82" cy="660" r="13" fill="#025A75"/>
+<text x="104" y="665" font-size="15" fill="#111111">Named service</text>
+<circle cx="272" cy="660" r="10" fill="#0091D2"/>
+<text x="294" y="665" font-size="15" fill="#111111">Described</text>
+<circle cx="462" cy="660" r="9" fill="none" stroke="#D9DEE3" stroke-width="2"/>
+<text x="484" y="665" font-size="15" fill="#111111">Not published</text>
+<text x="1140" y="700" font-size="13" fill="#555555" text-anchor="end">lanshore.com</text>
+</svg>

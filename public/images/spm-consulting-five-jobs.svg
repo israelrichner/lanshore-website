@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="Helvetica, Arial, sans-serif">
+<rect width="1200" height="630" fill="#FFFFFF"/>
+<text x="60" y="80" font-size="34" font-weight="700" fill="#111111">The five jobs enterprises hire SPM partners for</text>
+<text x="60" y="114" font-size="18" fill="#555555">Four before go-live, one after. Most firms publish real depth on two or three. Match the firm to the job first.</text>
+<rect x="60" y="160" width="200" height="290" rx="10" fill="#F4F7F9" stroke="#D9DEE3"/>
+<rect x="60" y="160" width="200" height="8" rx="4" fill="#0091D2"/>
+<text x="82" y="218" font-size="40" font-weight="700" fill="#C9C000">1</text>
+<text x="82" y="264" font-size="19" font-weight="700" fill="#025A75">Plan redesign</text>
+<text x="82" y="304" font-size="14.5" fill="#111111">Measures, rates and</text>
+<text x="82" y="328" font-size="14.5" fill="#111111">crediting rules, modeled</text>
+<text x="82" y="352" font-size="14.5" fill="#111111">against last year's actuals</text>
+<rect x="280" y="160" width="200" height="290" rx="10" fill="#F4F7F9" stroke="#D9DEE3"/>
+<rect x="280" y="160" width="200" height="8" rx="4" fill="#025A75"/>
+<text x="302" y="218" font-size="40" font-weight="700" fill="#C9C000">2</text>
+<text x="302" y="264" font-size="19" font-weight="700" fill="#025A75">Integration and</text>
+<text x="302" y="290" font-size="19" font-weight="700" fill="#025A75">analytics</text>
+<text x="302" y="330" font-size="14.5" fill="#111111">CRM, ERP and HR source</text>
+<text x="302" y="354" font-size="14.5" fill="#111111">fields mapped; results</text>
+<text x="302" y="378" font-size="14.5" fill="#111111">reconciled to finance</text>
+<rect x="500" y="160" width="200" height="290" rx="10" fill="#F4F7F9" stroke="#D9DEE3"/>
+<rect x="500" y="160" width="200" height="8" rx="4" fill="#0091D2"/>
+<text x="522" y="218" font-size="40" font-weight="700" fill="#C9C000">3</text>
+<text x="522" y="264" font-size="19" font-weight="700" fill="#025A75">Global</text>
+<text x="522" y="290" font-size="19" font-weight="700" fill="#025A75">governance</text>
+<text x="522" y="330" font-size="14.5" fill="#111111">Plan approval by country,</text>
+<text x="522" y="354" font-size="14.5" fill="#111111">currency handling, audit</text>
+<text x="522" y="378" font-size="14.5" fill="#111111">evidence on demand</text>
+<rect x="720" y="160" width="200" height="290" rx="10" fill="#F4F7F9" stroke="#D9DEE3"/>
+<rect x="720" y="160" width="200" height="8" rx="4" fill="#025A75"/>
+<text x="742" y="218" font-size="40" font-weight="700" fill="#C9C000">4</text>
+<text x="742" y="264" font-size="19" font-weight="700" fill="#025A75">Implementation</text>
+<text x="742" y="290" font-size="19" font-weight="700" fill="#025A75">readiness</text>
+<text x="742" y="330" font-size="14.5" fill="#111111">Plan documentation, clean</text>
+<text x="742" y="354" font-size="14.5" fill="#111111">data and decision rights</text>
+<text x="742" y="378" font-size="14.5" fill="#111111">before the build starts</text>
+<rect x="940" y="160" width="200" height="290" rx="10" fill="#F4F7F9" stroke="#D9DEE3"/>
+<rect x="940" y="160" width="200" height="8" rx="4" fill="#C9C000"/>
+<text x="962" y="218" font-size="40" font-weight="700" fill="#C9C000">5</text>
+<text x="962" y="264" font-size="19" font-weight="700" fill="#025A75">Managed</text>
+<text x="962" y="290" font-size="19" font-weight="700" fill="#025A75">services</text>
+<text x="962" y="330" font-size="14.5" fill="#111111">Platform support or comp</text>
+<text x="962" y="354" font-size="14.5" fill="#111111">operations after go-live;</text>
+<text x="962" y="378" font-size="14.5" fill="#111111">SLA, hours, price in writing</text>
+<rect x="60" y="490" width="1080" height="64" rx="10" fill="#025A75"/>
+<text x="600" y="530" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">Jobs 1 to 4 change the design. Job 5 keeps it running. Scope the handover between them in writing.</text>
+<text x="1140" y="610" font-size="13" fill="#555555" text-anchor="end">lanshore.com</text>
+</svg>

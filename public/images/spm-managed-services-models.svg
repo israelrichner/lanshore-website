@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" font-family="Helvetica, Arial, sans-serif">
+<rect width="1200" height="640" fill="#FFFFFF"/>
+<text x="60" y="60" font-size="30" font-weight="700" fill="#111111">Managed services: what each firm publishes</text>
+<text x="60" y="90" font-size="16" fill="#555555">Platform support keeps the system healthy. Comp operations runs the cycle. Positions are from the firms' own pages, not a rating.</text>
+<line x1="60" y1="150" x2="1140" y2="150" stroke="#D9DEE3" stroke-width="3"/>
+<text x="60" y="132" font-size="16" font-weight="700" fill="#025A75">Platform support</text>
+<text x="1140" y="132" font-size="16" font-weight="700" fill="#025A75" text-anchor="end">Comp operations</text>
+<rect x="60" y="190" width="260" height="38" rx="8" fill="#F4F7F9" stroke="#D9DEE3"/>
+<text x="74" y="215" font-size="15" fill="#111111">Blue Horizons Group</text>
+<rect x="60" y="242" width="260" height="38" rx="8" fill="#F4F7F9" stroke="#D9DEE3"/>
+<text x="74" y="267" font-size="15" fill="#111111">Canidium</text>
+<rect x="60" y="294" width="260" height="38" rx="8" fill="#F4F7F9" stroke="#D9DEE3"/>
+<text x="74" y="319" font-size="15" fill="#111111">Delbridge Solutions</text>
+<rect x="330" y="300" width="170" height="26" rx="13" fill="#C9C000"/>
+<text x="415" y="318" font-size="12.5" font-weight="700" fill="#111111" text-anchor="middle">SLAs stated</text>
+<rect x="60" y="346" width="260" height="38" rx="8" fill="#F4F7F9" stroke="#D9DEE3"/>
+<text x="74" y="371" font-size="15" fill="#111111">OpenSymmetry</text>
+<rect x="330" y="352" width="170" height="26" rx="13" fill="#C9C000"/>
+<text x="415" y="370" font-size="12.5" font-weight="700" fill="#111111" text-anchor="middle">24/7/365</text>
+<rect x="60" y="398" width="260" height="38" rx="8" fill="#F4F7F9" stroke="#D9DEE3"/>
+<text x="74" y="423" font-size="15" fill="#111111">Spaulding Ridge</text>
+<rect x="60" y="450" width="260" height="38" rx="8" fill="#F4F7F9" stroke="#D9DEE3"/>
+<text x="74" y="475" font-size="15" fill="#111111">SpectrumTek</text>
+<rect x="330" y="456" width="170" height="26" rx="13" fill="#C9C000"/>
+<text x="415" y="474" font-size="12.5" font-weight="700" fill="#111111" text-anchor="middle">SLAs, dual-shore</text>
+<rect x="60" y="502" width="260" height="38" rx="8" fill="#F4F7F9" stroke="#D9DEE3"/>
+<text x="74" y="527" font-size="15" fill="#111111">WorkCentive</text>
+<rect x="660" y="190" width="260" height="38" rx="8" fill="#F4F7F9" stroke="#D9DEE3"/>
+<text x="674" y="215" font-size="15" fill="#111111">Ackle Consulting Group</text>
+<rect x="930" y="196" width="170" height="26" rx="13" fill="#C9C000"/>
+<text x="1015" y="214" font-size="12.5" font-weight="700" fill="#111111" text-anchor="middle">retainer</text>
+<rect x="660" y="242" width="260" height="38" rx="8" fill="#F4F7F9" stroke="#D9DEE3"/>
+<text x="674" y="267" font-size="15" fill="#111111">IncentiveOps</text>
+<rect x="930" y="248" width="170" height="26" rx="13" fill="#C9C000"/>
+<text x="1015" y="266" font-size="12.5" font-weight="700" fill="#111111" text-anchor="middle">$12k to $18k per month</text>
+<rect x="660" y="294" width="260" height="38" rx="8" fill="#F4F7F9" stroke="#D9DEE3"/>
+<text x="674" y="319" font-size="15" fill="#111111" font-weight="700">Lanshore</text>
+<rect x="930" y="300" width="170" height="26" rx="13" fill="#C9C000"/>
+<text x="1015" y="318" font-size="12.5" font-weight="700" fill="#111111" text-anchor="middle">agents in the cycle</text>
+<text x="60" y="600" font-size="15" fill="#555555">Only one firm publishes a price for running the cycle; only one publishes a 24/7/365 commitment. Get both into the statement of work.</text>
+<text x="1140" y="620" font-size="13" fill="#555555" text-anchor="end">lanshore.com</text>
+</svg>

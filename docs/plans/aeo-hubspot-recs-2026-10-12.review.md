@@ -1,64 +1,57 @@
-# Cold review — aeo-hubspot-recs-2026-10-12 (pass 3: pre-commit refresh after WP1)
+# Cold review: aeo-hubspot-recs-2026-10-12 (pass 5, Doug's rec 2 replacement, before the WP2 commit)
 
-**Reviewer:** Claude Code (fresh-context forked agent, read-only; saved by Lead)
-**Date:** 2026-10-12
-**Plan version reviewed:** revision 2 with pass-2 amendments; since pass 2 only §10 Status rows and one §5 link-check sentence changed
-**Verdict:** APPROVE
+**Reviewer:** Claude Code (a fresh-context agent, read-only; the Lead saved its output)
+**Date:** 2026-10-13
+**Scope:** Doug's rec 2 replacement, comprising the post, 5 SVGs, 1 PNG and the owner rows in section (r2), plus the Lead's corrections, the plan section 7 owner-change entry and the section 10 Status rows. The rec 4 post, case study, `/spm/compare` and modernizing guide were spot-checked and are unchanged since pass 4.
+**Verdict:** APPROVE WITH CONDITIONS. All conditions were resolved by the Lead as shown below, so the WP2 branch commit is unblocked once the user re-runs `/pre-pr`. The publish step is still owner-gated.
 
-## Plan delta since pass 2
+## Findings and Lead disposition (2026-10-13)
 
-- §5 link-check: metadata routes built as `.body` files (`src/app/favicon.ico`, `src/app/apple-icon.png`,
-  `src/app/opengraph-image.tsx`) count as resolved. Correct; narrows false positives only.
-- §10 Status: WP1 implemented, plan+review commit deferred to just before the WP1 commit. Gate Check 4 only
-  tests that `.claude/.verify-passed-$SESSION` exists and never deletes it, so one `/pre-pr` covers both.
-- No checkbox lines; only this plan and its review are modified in `docs/plans/` within 24 h.
+Each factual finding was re-checked against site source or the raw HTML of the firm's page before any change was made.
 
-## WP1 diff vs WP1 steps
+| # | Sev | Finding | Disposition |
+|---|---|---|---|
+| 1 | should-fix | The post said Lanshore makes "no 24/7 claim", but the homepage (`IntroAgenticSPM.tsx:16`) says agents run 24/7 | Confirmed. Table and "Ask about" now read "no support SLA or coverage hours published". Logged on d-r2-11 and in (f) |
+| 2 | should-fix | Lanshore engagement order was reversed | Confirmed (`spm-consulting.ts:42,46`). The body puts the design review first, then requirements and data mapping; the table cell reads "right after the design review" |
+| 3 | should-fix | OpenSymmetry's Performio cell was empty in the platform graphic | Confirmed (raw HTML of `/partners/spm-solutions/` lists all 11). Cell filled; full list noted on d-r2-11 |
+| 4 | should-fix | Blue Horizons does publish partners (Varicent, Xactly, CaptivateIQ) | Confirmed (raw HTML, including the Xactly implementation-partner slug). Body, "Strongest on", "Ask about" and graphic updated; the slug word "certified" is not used. Logged on d-r2-3 |
+| 5 | should-fix | FAQ 1 had IncentiveOps with no modeling evidence; FAQ 2 had Ackle with no mapping or reconciliation evidence | Confirmed. IncentiveOps removed from FAQ 1. FAQ 2 now states Ackle's published wording (CRM, ERP and HRIS integration, testing against real payout history). Logged on d-r2-8 and d-r2-2 |
+| 6 | should-fix | Lanshore claims overstated: "where applicable" missing; the 74 percent and 400-to-100 claims merged; the fee link pointed at the wrong source | Fixed. Qualifier restored. Two sentences, each keeping its own scope, with no "same carrier" implication. Fee linked to `/solutions/spm-managed-services`. The conflicting live figure in `best-ai-agent-consulting-firms-for-revops.md:136` is flagged for Doug on b-r2-5 (out of scope) |
+| 7 | gate | Review older than the plan; `/pre-pr` marker stale | This file was saved after the last plan edit. The user must re-run `/pre-pr` before the commit |
+| 8 | nit | Large-SI reason contradicted the Deloitte evidence | Reworded as an editorial scope choice |
+| 9 | nit | OpenSymmetry "AI in operations" cell | Now "Not published for operations (AI-enabled implementation approach)" |
+| 10 | nit/should-fix | `dateModified` stale; depth-column label implied modeling for firms marked "Named" | `dateModified` set to 2026-10-13. Column renamed "Plan design or redesign" in the table and graphic. Lead's own over-claim ("the others describe plan work without a modeling step") reverted to Doug's "more briefly" |
 
-**MISSING:** none. Every §4 WP1 row is in the diff. `enterprise-crm-erp-integration.ts` and
-`ai-agents-sales-operations.ts` correctly untouched (already say "lists its MCP server as coming soon").
+Re-run after the fixes:
+- full regression: 9 of 9 steps rc=0;
+- postbuild: 94 routes, 53 FAQPage/HowTo nodes;
+- ItemList: 10, matching the headings;
+- FAQ: 8, matching the visible entries;
+- links: 359, 0 unresolved;
+- browser verification: 4 routes at 1280px and 375px, PASS; all 5 images load and fit.
 
-Spot checks passed: `spm-consulting` titleTag 60 chars, metaDescription 156, `name` unchanged, +3 steps,
-6 FAQs, +3 related, PepsiCo sentence verbatim; rec 6 has 4 problems, 5 steps, no dashboards, the 6 named
-platforms, `relatedCaseStudies: []`, metaDescription 160, 5 FAQs; guide front matter per plan with no
-`datePublished`, 5 mirrored FAQs, six root-cause H2s, all 6 §2 outbound links, adviser disclaimer,
-Fortune 500 sentence verbatim; 21 new tests (70 to 91); must-be-zero token grep re-run: 0 hits, no em dashes.
+## Checks passed (reviewer)
 
-**UNPLANNED:** `AGENTS.md` test counts corrected (doc-only; keep in WP1 commit, note in body).
-`.claude/logs/subagents.log` modified: never stage it.
-
-## Findings and Lead disposition (2026-10-12)
-
-| # | Finding | Disposition |
-|---|---|---|
-| F1 | Owner file's literal placeholder token in its instructions (lines 5, 10) keeps the §9 sign-off count from reaching 0 | Fixed: instructions reworded so the token appears only in decision cells |
-| F2 | Deferred first commit means pass 3 overwrites the pass 2 record | Fixed: pass 2 conditions and residual risk carried below; plan header line 3 updated |
-| F3 | Status-row edit between the two back-to-back commits would trip Check 3 | Accepted: no plan edit between the plan+review commit and the WP1 commit; SHAs recorded in the WP2 cycle's Status edit |
-| — | b5 rewording dropped "plus billing, order management, and data warehouse sources", so the 8 named systems could read as totaling 20+ | Fixed: clause restored in both FAQs in `spmPlatforms.ts`; owner row b5 updated |
-| — | `/spm` index renders the longer captivateiq `positioning` but was not in the WP1 verify set | Carried to WP2 verify pass |
-| — | `spm-consulting` titleTag drops the literal "compensation" (60-char limit) | No action; owner row a1 shows Doug the title |
-
-## Verification gaps
-
-None blocking: the owner file's verification log carries pass/fail evidence for every WP1 step 10 item.
+- **Owner file:** superseded rows marked correctly; b11 narrowed; all (r2) rows UNDECIDED; no sign-off line written by an agent.
+- **Package diff:** Doug's package matches the logged Lead hunks; the SVGs were byte-identical before the pass 5 graphic fixes.
+- **Plan and gate:** the section 7 owner-change entry and the Status rows are accurate; 0 checkbox lines; the gate selects only the plan.
+- **Claims and house rules:** 0 banned tokens and 0 em dashes; only PepsiCo is named; alphabetical, unranked, no ratings.
+- **Lanshore claims:** trace to site source.
+- **Security:** the SVGs are static shapes and text (no script, handlers, `foreignObject`, href or `url()`); Markdown images use react-markdown's default `<img>` without `rehype-raw`; no new XSS path. Not setting image width and height is a minor CLS risk only.
 
 ---
 
-# Carried record: pass 2 of 2 (2026-10-12) — APPROVE, conditional on four amendments (all applied)
+## Carried record
 
-| # | Finding | Lead verification | Applied as |
-|---|---|---|---|
-| 1 | Gate needs plan mtime within 24 h, and review newer than plan, for **every** commit; a NOT READY re-run still passes Check 3 | `precommit-gate.sh` uses `find -mtime -1` and `-nt` | §8.0 "Mandatory sequence for every commit"; non-APPROVE blocks the commit |
-| 2 | Only user-invoked `/pre-pr` writes the Check 4 marker; `verify` does not | `pre-pr/SKILL.md:4` `disable-model-invocation: true`, step 6 writes marker | §8.0 Check 4 rewritten |
-| 3 | Rec 2 retitle contradicted "H1s unchanged" in Risks | `ArticleView.tsx:82` renders `post.title` as H1 | Rec 2 is the one deliberate H1 change; title "Best SPM Consulting and Service Partners Compared" (60 chars with suffix) |
-| 4 | Spreadsheet case study in CaptivateIQ/Performio `related` implies it ran on that platform (§3.6) | plan §2 | Removed from platform `related` lists, with reason |
-
-Non-gating items logged in plan §7: partner-network strike must rewrite (not delete) `src/app/spm/page.tsx:97-99`
-and the `/spm/compare` FAQ answer; Incentivate described two ways; claims-audit exception path; rec 2 cap
-tie-break; WP1-alone revert resolves `SLUGS.lock.json` by union.
-
-**Residual risk (accepted, disclosed):** the rec 4 inclusion rule will likely admit all candidates, so
-"Not listed" may be empty. Disclosed in "How we compared"; owner accepted under OQ7.
-
-Pass 1 (2026-10-12, NOT READY) findings were all resolved in revision 2; see git history of this file
-once committed.
+- **Pass 4 (2026-10-12, APPROVE):** WP2 diff vs steps 1 to 9 had nothing missing. Conditions: fresh `/pre-pr`, and staging by explicit path. Recommendations R1 to R4 were applied (hedged "Not published" pricing, unsourced phrases, SAP naming, Cap bullet superseded).
+- **Pass 3 (2026-10-12, APPROVE):** WP1 diff vs WP1 steps had nothing missing; F1–F3 dispositioned; `/spm` carried to WP2 verify (now covered).
+- **Pass 2 (2026-10-12, APPROVE conditional on four amendments, all applied):** (1) every commit needs plan mtime
+  within 24 h, review newer than plan, and a non-APPROVE review blocks the commit; (2) only the user-invoked
+  `/pre-pr` writes the Check 4 marker; (3) rec 2 retitle is the one deliberate H1 change ("Best SPM Consulting and
+  Service Partners Compared"); (4) spreadsheet case study removed from the CaptivateIQ/Performio `related` lists.
+- **Non-gating items from pass 2:** partner-network strike must rewrite, not delete, `src/app/spm/page.tsx:97-99`
+  and the `/spm/compare` FAQ; Incentivate described two ways; claims-audit exception path; rec 2 cap tie-break (now
+  amended); WP1-only revert resolves `SLUGS.lock.json` by union.
+- **Residual risk (accepted under OQ7):** rec 4 rule admits all candidates; it did (12 of 12, "Not listed" empty);
+  Salesforce Spiff flagged to Doug in e38.
+- **Pass 1 (NOT READY):** all findings resolved in revision 2.

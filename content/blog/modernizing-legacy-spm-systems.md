@@ -4,7 +4,7 @@ description: >-
   How to modernize a legacy SPM system: assess current state, choose replace,
   re-platform or augment, migrate plans and data, run in parallel, add audit trails.
 datePublished: '2026-08-05'
-dateModified: '2026-08-05'
+dateModified: '2026-10-12'
 author: doug-erb
 featured: false
 summary: A step-by-step program for modernizing a legacy sales performance management system without breaking a single pay cycle.
@@ -70,7 +70,7 @@ In one Lanshore assessment, a medical device manufacturer brought us in to evalu
 
 ## Phase 2: Decide replace, re-platform, or augment
 
-There are three legitimate answers, and the right one follows from the assessment. For a deeper treatment of the economics, see [SPM build vs. buy in the agentic AI era](/blog/sales-performance-management-build-vs-buy-in-the-agentic-ai-era).
+There are three legitimate answers, and the right one follows from the assessment. For a deeper treatment of the economics, see [SPM build vs. buy in the agentic AI era](/blog/sales-performance-management-build-vs-buy-in-the-agentic-ai-era). If you decide to replace, our comparison of the [best enterprise SPM software for complex incentives](/blog/best-enterprise-spm-software-for-complex-incentives) sets out the platforms that position for complex enterprise plans.
 
 | Option | What it means | When it fits | Main risk |
 |--------|---------------|--------------|-----------|

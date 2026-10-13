@@ -183,6 +183,18 @@ export default function SpmComparePage() {
           </Link>
           . Odds are we&apos;ve worked in it.
         </p>
+
+        <p className="mt-4 text-sm text-muted">
+          Choosing for complex enterprise incentive plans? Our{" "}
+          <Link
+            href="/blog/best-enterprise-spm-software-for-complex-incentives"
+            className="font-semibold text-accent hover:text-accent-hover"
+          >
+            comparison of enterprise SPM software for complex incentives
+          </Link>{" "}
+          sets out what each vendor publishes about pricing, rollout time, and fit, and covers
+          replacing a legacy system.
+        </p>
       </section>
 
       <section className="bg-paper py-16">

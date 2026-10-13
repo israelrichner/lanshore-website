@@ -1,61 +1,101 @@
 # PR readiness — aeo-hubspot-recs-2026-10-12
 
 **Session:** 97439253-1235-4461-852b-1ebac9b4913e
-**Date:** 2026-10-12
-**Scope of this run:** the plan + review commit and the WP1 commit on branch `aeo-hubspot-2026-10-12`. This is a commit gate, not a PR to `main`: WP2 and the owner-gated publish step are not started, and nothing merges before Doug's sign-off (plan §9).
+**Date:** 2026-10-13
+**Scope of this run:** the WP2 commit on branch `aeo-hubspot-2026-10-12`, including Doug's rec 2 replacement. This gates a commit, not a PR to `main`. Nothing merges before Doug's sign-off and the §9 publish step. The 2026-10-12 run (WP1, READY) is superseded by this file and remains in git history.
 
-## Verdict: READY (for the plan and WP1 commits)
+## Verdict: READY (for the WP2 commit)
 
 ## Plan audit
 
-| Plan item | In diff | Status |
+| Item | Status | Evidence |
 |---|---|---|
-| WP1.1 baseline regression + before-counts | owner review file (counts table) | DONE |
-| WP1.2 proof-marker gate (`house-style.mjs`, `content-rules.mjs` incl. white paper, `check-house-style.mjs`, `solutions/index.ts` throw, `types.ts` comment) + unit tests | yes | DONE (hardened in this run, see code review) |
-| WP1.3 CaptivateIQ / Performio live verification (hygiene) | `spmPlatforms.ts`, owner review (d) | DONE; Lead re-fetched d2/d3 |
-| WP1.4 rec 3: `related` on `SpmPlatform` + render; captivateiq/performio FAQs; mid-market FAQ | yes | DONE |
-| WP1.5 rec 1: `spm-consulting` extension; `global-compliance` related | yes | DONE (H1 unchanged) |
-| WP1.6 rec 6: `quota-incentive-alignment.ts`, registered, `/solutions` DESCRIPTION | yes | DONE |
-| WP1.7 rec 5: `sales-finance-misalignment.md` + SLUGS.lock | yes | DONE (no datePublished, per OQ4) |
-| WP1.8 negative-injection proof | owner review (f) | DONE |
-| WP1.9 owner review file at `docs/owner-review/` | yes | DONE |
-| WP1.10 regression, link check, capability check, claims audit, verify, coverage | evidence below | DONE |
-| WP2 (rec 2, rec 4 + rec 7, OQ9 case study, cross-links) | no | PENDING: next package, by design |
-| §9 owner review + publish | no | PENDING: owner-gated |
-| UNPLANNED: `AGENTS.md` test counts corrected | yes | Accepted (doc-only; noted in commit body) |
+| WP2.1 baseline regression, counts re-captured | DONE | Owner file (f) WP2 log; counts table |
+| WP2.2 rec 2 firm survey and retrieval | DONE, superseded by owner change | Doug's replacement (plan §7 "Owner change", 2026-10-13); survey in owner file (r2-e); live re-verification in (r2-d) and (f) |
+| WP2.3 extend `best-spm-service-partners-compared.md` | DONE (Doug's version, Lead-corrected) | `content/blog/best-spm-service-partners-compared.md`: 10-firm itemList = numbered H2s; 8 FAQs mirrored; `/solutions/spm-consulting` link; `datePublished` unchanged at 2026-08-03; `dateModified` 2026-10-13 |
+| WP2.3 graphics (owner change) | DONE | 5 SVGs and 1 PNG under `public/images/spm-*` |
+| WP2.4 OQ9 case study | DONE | `managed-services-commission-management.json`: `results[0]` "sharply reduced"; `dateModified` 2026-10-12 |
+| WP2.5 rec 4 vendor retrieval | DONE | Owner file (d) d33-d44 and (e2) |
+| WP2.6 new `best-enterprise-spm-software-for-complex-incentives.md` + SLUGS.lock | DONE | New file; `SLUGS.lock.json` +1 slug; no `datePublished` (OQ4) |
+| WP2.7 cross-links: `/spm/compare`, modernizing guide Phase 2, `UPDATED.spm` | DONE | `src/app/spm/compare/page.tsx` +1 paragraph and link; `modernizing-legacy-spm-systems.md` +1 sentence, `dateModified` 2026-10-12; `UPDATED.spm` already 2026-10-12 from WP1 (equals the WP2 edit date, so no change needed) |
+| WP2.8 owner review rows | DONE | Owner file sections (b), (d), (e), (e2), (r2); superseded rows marked |
+| WP2.9 verify | DONE | See Verification |
+| §9 owner sign-off and publish | PENDING (owner-gated) | 116+ `UNDECIDED` cells; no sign-off line |
 | UNPLANNED: `.claude/logs/subagents.log` | modified | Excluded from staging |
+
+Plan audit verdict: READY. Nothing is missing for WP2. The only unplanned file is the log, which will not be staged.
 
 ## Cold review
 
-Exists at `docs/plans/aeo-hubspot-recs-2026-10-12.review.md` (pass 3, APPROVE), dated 2026-10-12 14:33:35, newer than the plan (14:33:15).
+Exists at `docs/plans/aeo-hubspot-recs-2026-10-12.review.md`: pass 5, APPROVE WITH CONDITIONS, all conditions resolved. Saved 2026-10-13 11:50:53, after the current plan version (11:42:25). The plan has not been edited since.
+
+The four content fixes below came from this run's code review and were made after pass 5. They are narrow wording and source changes, verified by the Lead against live pages and a full re-run. They have not been re-reviewed cold.
 
 ## Code review findings
 
-`/code-review high`, 9 findings. Dispositions:
+From a fresh code-reviewer agent over the WP2 diff (bug 0, gap 1, then suggestions and nits).
 
-- **gap (fixed)**: `PROOF_MARKER_RE` missed hyphen/underscore separators. Now `/proof[\s\-_*]+point[\s\-_*]+needed/i`; tests added (positive variants and a hyphenated-prose negative).
-- **gap (fixed)**: marker split by inline markup (`<strong>PROOF POINT</strong> NEEDED`) or wrapped across an llms line was missed. HTML scan re-tests the joined visible text (no double report); llms scan tests the whole file when no line matched. Tests added, including a negative for words in separate blocks.
-- **gap (fixed)**: no test for nested Solution fields. Added a Solution-shaped fixture asserting `howWeDeliver[1].body` is reported and clears when removed. The throw wiring in `solutions/index.ts` itself is proven by negative injection 1 (owner review (f)); it is not unit-testable without TS module resolution for extensionless imports.
-- **suggestion (non-blocking, accepted risk)**: `UPDATED.spm` restamps all 9 `/spm/<slug>` lastmods. Plan §6 already accepts this as the registry design; per-platform dates are out of scope.
-- **suggestion (non-blocking, follow-up)**: `related` hrefs are not validated at load time. Today every href is verified by the one-off internal-link check (0 of 293 unresolved). Recommended follow-up: validate `related` against built routes in `solutions/index.ts`.
-- **suggestion (non-blocking, follow-up)**: no load-time marker/em-dash check over `SPM_PLATFORMS`. The postbuild HTML backstop catches it (negative injection 3 failed the build on `/spm/captivateiq`, `/spm`, `/llms-full.txt`).
-- **nit**: Related block duplicated from `solutions/[slug]/page.tsx`; candidate `<RelatedLinks>` extraction.
-- **nit**: `publishedParts()` runs twice per page in `check-house-style.mjs`.
-- **suggestion (non-blocking, by design)**: new guide has no `datePublished`. OQ4: set to the real go-live date in the §9 publish step, which is listed there.
+- **gap (fixed)**: rec 2 FAQ 1 lists OpenSymmetry under "plan design with modeling", but the post's table and body didn't show modeling.
+  - **Checked live:** the OpenSymmetry plan design page (raw HTML, 692 KB) reads "Plan Assessment, Plan Design, Plan Modeling, and Rollout Communications".
+  - **Fix:** the page is added to `sources`, and the table cell and body now name modeling.
+- **suggestion (fixed, correctness)**: "only a few firms here describe the latter" (a governance model) conflicted with the table. It now reads "mostly publish offices or delivery models rather than a governance model".
+- **suggestion (fixed, correctness)**: rec 4 said "Varicent and Xactly both describe a complete audit trail of changes"; only Varicent says "of changes". The sentence now quotes Xactly exactly. The SAP quote "without relying on IT" was confirmed against d42.
+- **nit (fixed)**: FAQ 4 called IncentiveOps' monthly fee a "retainer". It now reads "retainer or monthly fee", in both front matter and body.
+- **suggestions (non-blocking, open for Doug, logged in the owner file)**:
+  - Markdown images have no intrinsic size and are small at 375px. The facts are repeated in the tables, so nothing is lost.
+  - The platform-coverage graphic sits under the "Managed services" heading.
+  - The `image:` front matter feeds JSON-LD only, not Open Graph. This is intended.
+- **nits (non-blocking)**:
+  - "A national telecom carrier" appears in two consecutive sentences.
+  - CaptivateIQ's "matter of weeks" quote sits under "Watch out for".
+  - The WP2 log lines from 2026-10-12 record that day's `dateModified`. The rec 2 replacement log records 2026-10-13.
+- **Clean**:
+  - itemLists match the headings, and both lists are alphabetical.
+  - Every FAQ is mirrored in the body.
+  - All 41 internal links in the posts resolve.
+  - All image paths exist and the case study JSON is valid.
+  - No em dashes, and no Sprint or T-Mobile.
+  - `datePublished` is unchanged on both edited posts.
 
 ## Security review findings
 
-- None. `/security-review` sub-task over the working-tree diff: no finding at confidence 5 or above. Checked: JSON-LD `dangerouslySetInnerHTML` sink (still escaped via `toJsonLd()`), new `related` hrefs (hard-coded internal paths, React-escaped labels), Markdown renderer (no `rehype-raw`, no raw HTML in the new post), validator code (string-only, no exec/eval/dynamic import), module-load throw (build-time only), no secrets or PII.
+The review ran because the diff touches `commission` (the case study path) and `comp` (`spm/compare`).
+
+- **None.** A fresh security-auditor agent checked:
+  - **SVGs:** only rect, text, circle, path and line elements. No script, on* handlers, href, foreignObject, DOCTYPE/ENTITY or url().
+  - **PNG:** only IHDR, IDAT and IEND chunks, with no trailing data.
+  - **Markdown:** no rehype-raw; the default URL filter is intact; the content has no raw HTML.
+  - **JSON-LD:** strings go through `toJsonLd()` escaping.
+  - **Data:** no secrets or PII.
+  - **External links:** plain https, with no tracking or credential parameters.
 
 ## Verification
 
-- **pass**: `npm run build` exit 0 after the code-review fixes. Prebuild green (check:content; test:rules 94/94; test:schema 54; test:auth 107; test:loaders 8; test:redirects 3; check:admin). Postbuild green: check:headings, check:schema-mirror (52 nodes), check:house-style (93 routes + llms files, no em dashes, no markers), check:dir-page.
-- **pass**: `npm run lint` exit 0.
-- **pass**: `verify` skill, production build served on a fresh `next start` (confirmed serving the new build: restored b5 clause present on `/spm/captivateiq`). Playwright over 10 routes at 1280 px and 375 px, 20/20 PASS: status 200, one h1, no heading jumps, no horizontal scroll, all JSON-LD parses, zero console errors / pageerror, Related line only on `/spm/captivateiq` and `/spm/performio`. Routes: `/solutions/spm-consulting`, `/solutions/global-compliance`, `/solutions/mid-market-implementation`, `/solutions/quota-incentive-alignment`, `/solutions`, `/resources/guides/sales-finance-misalignment`, `/spm/captivateiq`, `/spm/performio`, `/spm`, `/spm/varicent`.
-- Note: a first verify attempt after the rebuild hit a stale server from the earlier run (port in use); it was discarded, the stale process stopped, and the run repeated on a fresh server.
+- **pass**: full regression run after the code-review fixes, `regress.sh prepr3`, all 9 steps rc=0.
+  - **Content check:** check:content OK (blog 29, caseStudies 14, whitePapers 6).
+  - **Unit tests:** test:rules 94/94, test:schema 54/54, test:loaders 8/8, test:auth 107/107, test:redirects 3/3.
+  - **Admin, lint, build:** check:admin OK; lint exit 0; build exit 0.
+  - **Postbuild:** check:headings (94 routes), check:schema-mirror (53 FAQPage/HowTo nodes), check:house-style (no em dashes or markers), check:dir-page.
+- **pass**: internal-link check, 12 pages, 359 distinct hrefs, 0 unresolved.
+- **pass**: `verify` skill with Playwright on a fresh `next start -p 3823`. The server was first confirmed to serve the new text ("plan modeling as a named step", "back it all up").
+  - **Routes:** `/blog/best-spm-service-partners-compared`, `/blog/best-enterprise-spm-software-for-complex-incentives`, `/spm/compare` and `/case-studies/managed-services-commission-management`, each at 1280px and 375px.
+  - **Result:** 8/8 PASS. Each page returned 200 with one h1, no heading jumps, no horizontal scroll and 0 console errors, and every JSON-LD block parses. All 5 rec 2 images load and fit their containers.
+- **Note:** one verify attempt reached a stale server from earlier in this run that still held the port. It was discarded, the process was stopped, and the run was repeated on a fresh server.
 
 ## Required before merging
 
-1. WP2 implemented and passing its own gate cycle.
-2. Doug's sign-off in `docs/owner-review/aeo-hubspot-2026-10-12.md` (no placeholder decisions left, signed line recorded by the user).
-3. §9 publish step: real `datePublished` / `dateModified`, `UPDATED.spm`, `hubspotId` placeholder replaced, rebase onto `main`, full regression + verify.
+1. Commit WP2 (explicit paths; never `.claude/logs/subagents.log` or the verify marker).
+2. Doug's decisions on every `UNDECIDED` row in `docs/owner-review/aeo-hubspot-2026-10-12.md`:
+   - the (r2) rows, including the Lead corrections;
+   - rec 4, the case study and the cross-link rows.
+
+   The user then records `Signed off: Doug Erb, <date>`.
+3. §9 publish step:
+   - apply each EDIT and STRIKE;
+   - set real `datePublished` and `dateModified`, and `UPDATED.spm`;
+   - replace the `hubspotId` placeholder;
+   - rebase onto `main`;
+   - run the full regression, link check and verify;
+   - complete the §8.0 gate sequence.
+
+   Then merge, asking the user before pushing `main`.

@@ -7,7 +7,7 @@
   "challenge": "Commissions ran on nothing but a manual Excel system: frequent errors, no structured reporting, and no in-house resources to fix it.",
   "whatWeDid": "We took over commission operations as a managed service: structured calculation runs, error controls, and standardized reporting.",
   "results": [
-    "Frequent calculation errors eliminated",
+    "Frequent calculation errors sharply reduced",
     "Structured reporting established",
     "Comp operations covered without new headcount"
   ],
@@ -15,5 +15,6 @@
     "Managed services",
     "Excel replacement"
   ],
+  "dateModified": "2026-10-12",
   "legacyUrl": "https://lanshore.com/case_studies/tackling-resource-challenges-with-expert-advice-and-managed-services/"
 }
