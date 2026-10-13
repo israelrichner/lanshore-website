@@ -34,7 +34,7 @@ const solution: Solution = {
     },
     {
       title: "Global plans whose controls cannot be evidenced country by country",
-      body: "A global incentive plan is usually governed in one place and administered in many. Each country adds its own currency handling, payroll cutoffs, approvals, and local adjustments, and the evidence of who approved what ends up in regional inboxes and spreadsheets. Headquarters may believe the controls exist, but when an auditor asks for the approval behind an adjustment in one market, or the plan version a seller acknowledged in another, nobody can produce it without a reconstruction.",
+      body: "A global incentive plan is usually governed in one place and administered in many. Each country adds its own currency handling, payroll cutoffs, approvals, and local adjustments, and the evidence of who approved what ends up in regional inboxes and spreadsheets. Headquarters may believe the controls exist, but when an auditor asks for the approval behind an adjustment in one market, or the plan version a seller acknowledged in another, nobody can produce it without a reconstruction. Our global work starts by recording, country by country, how approvals, plan acknowledgments, and adjustments are evidenced today, so each gap is known before the next audit.",
     },
   ],
   howWeDeliver: [
@@ -141,7 +141,7 @@ const solution: Solution = {
         "Analytics is audit-ready when an auditor can test it without your team building a special reconstruction. That takes five kinds of evidence built into the data and the process: every payout traceable to its source transactions and plan rule, reconciliation to payroll and the general ledger, retained approval evidence for plan changes and adjustments, variance and exception reports with a disposition for each item, and accrual support finance can book from. For global incentive plans, the same evidence has to exist in every country, under one set of controls.",
     },
   ],
-  dateModified: "2026-10-12",
+  dateModified: "2026-10-13",
 };
 
 export default solution;

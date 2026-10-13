@@ -2,100 +2,74 @@
 
 **Session:** 97439253-1235-4461-852b-1ebac9b4913e
 **Date:** 2026-10-13
-**Scope of this run:** the WP2 commit on branch `aeo-hubspot-2026-10-12`, including Doug's rec 2 replacement. This gates a commit, not a PR to `main`. Nothing merges before Doug's sign-off and the §9 publish step. The 2026-10-12 run (WP1, READY) is superseded by this file and remains in git history.
+**Scope of this run:** the §9 publish-step commit on branch `aeo-hubspot-2026-10-12`, then the fast-forward merge to `main`. Pushing `main` puts the pages live and needs a separate yes from the user. The WP2 run (READY, committed in f9bffe4) is superseded by this file and remains in git history.
 
-## Verdict: READY (for the WP2 commit)
+## Verdict: READY (for the publish commit and the local merge)
 
 ## Plan audit
 
 | Item | Status | Evidence |
 |---|---|---|
-| WP2.1 baseline regression, counts re-captured | DONE | Owner file (f) WP2 log; counts table |
-| WP2.2 rec 2 firm survey and retrieval | DONE, superseded by owner change | Doug's replacement (plan §7 "Owner change", 2026-10-13); survey in owner file (r2-e); live re-verification in (r2-d) and (f) |
-| WP2.3 extend `best-spm-service-partners-compared.md` | DONE (Doug's version, Lead-corrected) | `content/blog/best-spm-service-partners-compared.md`: 10-firm itemList = numbered H2s; 8 FAQs mirrored; `/solutions/spm-consulting` link; `datePublished` unchanged at 2026-08-03; `dateModified` 2026-10-13 |
-| WP2.3 graphics (owner change) | DONE | 5 SVGs and 1 PNG under `public/images/spm-*` |
-| WP2.4 OQ9 case study | DONE | `managed-services-commission-management.json`: `results[0]` "sharply reduced"; `dateModified` 2026-10-12 |
-| WP2.5 rec 4 vendor retrieval | DONE | Owner file (d) d33-d44 and (e2) |
-| WP2.6 new `best-enterprise-spm-software-for-complex-incentives.md` + SLUGS.lock | DONE | New file; `SLUGS.lock.json` +1 slug; no `datePublished` (OQ4) |
-| WP2.7 cross-links: `/spm/compare`, modernizing guide Phase 2, `UPDATED.spm` | DONE | `src/app/spm/compare/page.tsx` +1 paragraph and link; `modernizing-legacy-spm-systems.md` +1 sentence, `dateModified` 2026-10-12; `UPDATED.spm` already 2026-10-12 from WP1 (equals the WP2 edit date, so no change needed) |
-| WP2.8 owner review rows | DONE | Owner file sections (b), (d), (e), (e2), (r2); superseded rows marked |
-| WP2.9 verify | DONE | See Verification |
-| §9 owner sign-off and publish | PENDING (owner-gated) | 116+ `UNDECIDED` cells; no sign-off line |
+| §9 sign-off: 0 UNDECIDED, last line `Signed off: Doug Erb, <date>` | DONE | `docs/owner-review/aeo-hubspot-2026-10-12.md`: 0 UNDECIDED, 116 APPROVE, 58 SUPERSEDED; the last line is `Signed off: Doug Erb, 2026-10-13` (written by the user) |
+| §9.1 apply every EDIT and STRIKE | DONE (none) | No EDIT or STRIKE decision cells. Table (c) APPROVEs applied as the user chose: c1 and c5 as method statements in `quota-incentive-alignment.ts` and `spm-consulting.ts`; c2 to c4 not inserted, with the reason on each row |
+| §9.2 `datePublished` and `dateModified` on the 2 new articles | DONE | `sales-finance-misalignment.md`, `best-enterprise-spm-software-for-complex-incentives.md`: both 2026-10-13 |
+| §9.3 `dateModified` on every changed record | DONE | `spm-consulting`, `global-compliance`, `mid-market-implementation`, `quota-incentive-alignment`, the modernizing guide and the case study are 2026-10-13; rec 2 was already 2026-10-13 (f9bffe4). `enterprise-crm-erp-integration` and `ai-agents-sales-operations` were not changed on the branch and keep their dates |
+| §9.4 `UPDATED.spm` | DONE | `src/lib/contentDates.ts`: 2026-10-13 |
+| §9.5 replace the `hubspotId` placeholder | DONE (label) | `"hubspot-aeo-2026-10-12-rec6"`. The real ID was not found in HubSpot; the user chose the label, and OQ8 records it with "replace if found" |
+| §9.6 rebase onto `main`, regression, link check, verify, gate sequence, merge | DONE up to the merge | No rebase needed: `origin/main` is the merge base e26a816, re-fetched in this run with 0 new commits. Status row, cold review pass 6 APPROVE and this `/pre-pr` are done. Commit and merge are next |
+| §9.7 mark recs complete, update memory | PENDING | After the merge; not claimed as done |
 | UNPLANNED: `.claude/logs/subagents.log` | modified | Excluded from staging |
 
-Plan audit verdict: READY. Nothing is missing for WP2. The only unplanned file is the log, which will not be staged.
+Plan audit verdict: READY. Nothing is missing for this commit. Step 7 comes after the merge by design.
 
 ## Cold review
 
-Exists at `docs/plans/aeo-hubspot-recs-2026-10-12.review.md`: pass 5, APPROVE WITH CONDITIONS, all conditions resolved. Saved 2026-10-13 11:50:53, after the current plan version (11:42:25). The plan has not been edited since.
-
-The four content fixes below came from this run's code review and were made after pass 5. They are narrow wording and source changes, verified by the Lead against live pages and a full re-run. They have not been re-reviewed cold.
+Exists at `docs/plans/aeo-hubspot-recs-2026-10-12.review.md`: pass 6, APPROVE after re-review. Saved 2026-10-13 14:02:17, after the current plan version (14:01:45). The plan has not been edited since.
 
 ## Code review findings
 
-From a fresh code-reviewer agent over the WP2 diff (bug 0, gap 1, then suggestions and nits).
+From a fresh code-reviewer agent over the publish diff: approve with nits, bug 0, gap 0. It also ran `check:content` and `tsc --noEmit` (both clean).
 
-- **gap (fixed)**: rec 2 FAQ 1 lists OpenSymmetry under "plan design with modeling", but the post's table and body didn't show modeling.
-  - **Checked live:** the OpenSymmetry plan design page (raw HTML, 692 KB) reads "Plan Assessment, Plan Design, Plan Modeling, and Rollout Communications".
-  - **Fix:** the page is added to `sources`, and the table cell and body now name modeling.
-- **suggestion (fixed, correctness)**: "only a few firms here describe the latter" (a governance model) conflicted with the table. It now reads "mostly publish offices or delivery models rather than a governance model".
-- **suggestion (fixed, correctness)**: rec 4 said "Varicent and Xactly both describe a complete audit trail of changes"; only Varicent says "of changes". The sentence now quotes Xactly exactly. The SAP quote "without relying on IT" was confirmed against d42.
-- **nit (fixed)**: FAQ 4 called IncentiveOps' monthly fee a "retainer". It now reads "retainer or monthly fee", in both front matter and body.
-- **suggestions (non-blocking, open for Doug, logged in the owner file)**:
-  - Markdown images have no intrinsic size and are small at 375px. The facts are repeated in the tables, so nothing is lost.
-  - The platform-coverage graphic sits under the "Managed services" heading.
-  - The `image:` front matter feeds JSON-LD only, not Open Graph. This is intended.
-- **nits (non-blocking)**:
-  - "A national telecom carrier" appears in two consecutive sentences.
-  - CaptivateIQ's "matter of weeks" quote sits under "Watch out for".
-  - The WP2 log lines from 2026-10-12 record that day's `dateModified`. The rec 2 replacement log records 2026-10-13.
+- **nit (not changed)**: `spm-consulting.ts:37`. "Our global work..." is the only first-person sentence in `problems[]`; "Lanshore's global work" would match the other blocks. Left as is because the wording is the one the cold review approved.
+- **nit (recorded)**: `hubspotId` is non-numeric, while the other records hold numbers. Nothing reads it today. OQ8 records that the real ID is still owed.
 - **Clean**:
-  - itemLists match the headings, and both lists are alphabetical.
-  - Every FAQ is mirrored in the body.
-  - All 41 internal links in the posts resolve.
-  - All image paths exist and the case study JSON is valid.
-  - No em dashes, and no Sprint or T-Mobile.
-  - `datePublished` is unchanged on both edited posts.
+  - front matter and JSON are valid, and field order matches the sibling files;
+  - the date rules pass (`datePublished` is not after `dateModified`; no future-date rule);
+  - TS escaping is fine and there are no em dashes;
+  - every record changed since e26a816 is re-dated;
+  - the sitemap derives `/solutions` and `/spm/*` from the bumped dates;
+  - the method sentence in the problem block follows the existing pattern of a closing remedy sentence.
 
 ## Security review findings
 
-The review ran because the diff touches `commission` (the case study path) and `comp` (`spm/compare`).
+The review ran because a changed path contains `commission` (the case-study filename).
 
 - **None.** A fresh security-auditor agent checked:
-  - **SVGs:** only rect, text, circle, path and line elements. No script, on* handlers, href, foreignObject, DOCTYPE/ENTITY or url().
-  - **PNG:** only IHDR, IDAT and IEND chunks, with no trailing data.
-  - **Markdown:** no rehype-raw; the default URL filter is intact; the content has no raw HTML.
-  - **JSON-LD:** strings go through `toJsonLd()` escaping.
+  - **JSON-LD:** the only `dangerouslySetInnerHTML` is `JsonLd.tsx`, behind the `toJsonLd()` escaping.
+  - **hubspotId:** never sent anywhere. The only HubSpot call is the forms API, with form IDs from env.
   - **Data:** no secrets or PII.
-  - **External links:** plain https, with no tracking or credential parameters.
 
 ## Verification
 
-- **pass**: full regression run after the code-review fixes, `regress.sh prepr3`, all 9 steps rc=0.
-  - **Content check:** check:content OK (blog 29, caseStudies 14, whitePapers 6).
-  - **Unit tests:** test:rules 94/94, test:schema 54/54, test:loaders 8/8, test:auth 107/107, test:redirects 3/3.
+All of this ran after the last source edit: the source files were saved at 13:58:58 and the build at 13:59:31. Only docs changed after that.
+
+- **pass**: full regression, `regress.sh publish2`, all 9 steps rc=0.
+  - **Content check:** check:content OK.
+  - **Unit tests:** test:rules, test:schema, test:loaders, test:auth and test:redirects all green.
   - **Admin, lint, build:** check:admin OK; lint exit 0; build exit 0.
-  - **Postbuild:** check:headings (94 routes), check:schema-mirror (53 FAQPage/HowTo nodes), check:house-style (no em dashes or markers), check:dir-page.
-- **pass**: internal-link check, 12 pages, 359 distinct hrefs, 0 unresolved.
-- **pass**: `verify` skill with Playwright on a fresh `next start -p 3823`. The server was first confirmed to serve the new text ("plan modeling as a named step", "back it all up").
-  - **Routes:** `/blog/best-spm-service-partners-compared`, `/blog/best-enterprise-spm-software-for-complex-incentives`, `/spm/compare` and `/case-studies/managed-services-commission-management`, each at 1280px and 375px.
-  - **Result:** 8/8 PASS. Each page returned 200 with one h1, no heading jumps, no horizontal scroll and 0 console errors, and every JSON-LD block parses. All 5 rec 2 images load and fit their containers.
-- **Note:** one verify attempt reached a stale server from earlier in this run that still held the port. It was discarded, the process was stopped, and the run was repeated on a fresh server.
+  - **Postbuild:** check:headings (94 routes), check:schema-mirror (53 nodes), check:house-style (no em dashes or markers), check:dir-page.
+- **pass**: internal links, 359 hrefs, 0 unresolved.
+- **pass**: built output checks.
+  - The sitemap shows lastmod 2026-10-13 on the changed routes.
+  - JSON-LD shows `datePublished` 2026-10-13 on the 2 new articles and 2026-08-03 on rec 2.
+  - The new sentences are present in the built HTML.
+- **pass**: `verify` skill with Playwright on a fresh `next start`, confirmed to serve the new text. 0 failures at 1280px and 375px in both suites:
+  - **WP1 suite:** 10 routes, plus 7 platform pages without `related`. Checks: one h1, no heading jumps, no horizontal scroll, 0 console errors, and the Related line only where expected.
+  - **WP2 suite:** 4 routes, including the rec 2 images.
 
 ## Required before merging
 
-1. Commit WP2 (explicit paths; never `.claude/logs/subagents.log` or the verify marker).
-2. Doug's decisions on every `UNDECIDED` row in `docs/owner-review/aeo-hubspot-2026-10-12.md`:
-   - the (r2) rows, including the Lead corrections;
-   - rec 4, the case study and the cross-link rows.
-
-   The user then records `Signed off: Doug Erb, <date>`.
-3. §9 publish step:
-   - apply each EDIT and STRIKE;
-   - set real `datePublished` and `dateModified`, and `UPDATED.spm`;
-   - replace the `hubspotId` placeholder;
-   - rebase onto `main`;
-   - run the full regression, link check and verify;
-   - complete the §8.0 gate sequence.
-
-   Then merge, asking the user before pushing `main`.
+1. Commit the publish step, staging paths by name and never `.claude/logs/subagents.log` or the verify marker.
+2. Re-fetch `origin/main` and confirm 0 new commits, then fast-forward merge locally.
+3. **Ask the user before pushing `main`.** The go-live dates assume the deploy happens on 2026-10-13. If it slips, re-date §9 steps 2 to 4.
+4. After the push: §9 step 7. Mark the 7 recs complete and update the HubSpot recs memory note.

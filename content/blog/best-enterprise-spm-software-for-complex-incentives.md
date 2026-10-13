@@ -3,7 +3,8 @@ title: 'Best Enterprise SPM Software for Complex Incentives'
 description: >-
   Twelve enterprise SPM platforms for complex incentive plans compared, from
   vendor pages: positioning, pricing, rollout time, plus legacy replacement.
-dateModified: '2026-10-12'
+datePublished: '2026-10-13'
+dateModified: '2026-10-13'
 author: doug-erb
 featured: false
 summary: Twelve SPM platforms that state they serve enterprises or complex incentive plans, compared from their own pages, plus how to replace a legacy system.

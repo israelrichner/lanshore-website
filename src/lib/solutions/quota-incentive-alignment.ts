@@ -5,7 +5,7 @@ import type { Solution } from "./types";
    dashboards are the revenue-teams offer and are linked, not re-offered. */
 const solution: Solution = {
   slug: "quota-incentive-alignment",
-  hubspotId: "UNASSIGNED-2026-10-12",
+  hubspotId: "hubspot-aeo-2026-10-12-rec6",
   name: "SPM for Quota and Incentive Alignment",
   titleTag: "SPM for Quota and Incentive Alignment | Lanshore",
   metaDescription:
@@ -47,7 +47,7 @@ const solution: Solution = {
     },
     {
       title: "Configure crediting in the platform",
-      body: "We configure crediting rules, splits, overlays, and hierarchy rollups in your SPM platform from the same territory master and roster the quotas use, and test them against expected results before go-live. A deal is then credited to the people whose quota includes it, and attainment and payout calculations read the same transactions. Under Lanshore's Agentic SPM approach, agents can check each crediting run against quota assignment and route mismatches to a person to resolve.",
+      body: "We configure crediting rules, splits, overlays, and hierarchy rollups in your SPM platform from the same territory master and roster the quotas use, and test them against expected results before go-live. Any crediting variance found in that testing is traced to its cause, whether the territory master, the roster, or a rule, and fixed before the first live payout. A deal is then credited to the people whose quota includes it, and attainment and payout calculations read the same transactions. Under Lanshore's Agentic SPM approach, agents can check each crediting run against quota assignment and route mismatches to a person to resolve.",
     },
     {
       title: "Planning calendar and change control",
@@ -98,7 +98,7 @@ const solution: Solution = {
         "Not as part of alignment. This work fixes how quotas, plan measures, and crediting are produced and changed. In-period visibility of attainment and earnings for sales leaders and reps is a separate Lanshore offer, sales performance management for revenue teams, and it is most useful once the numbers underneath are aligned.",
     },
   ],
-  dateModified: "2026-10-12",
+  dateModified: "2026-10-13",
 };
 
 export default solution;

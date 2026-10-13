@@ -4,7 +4,7 @@ description: >-
   How to modernize a legacy SPM system: assess current state, choose replace,
   re-platform or augment, migrate plans and data, run in parallel, add audit trails.
 datePublished: '2026-08-05'
-dateModified: '2026-10-12'
+dateModified: '2026-10-13'
 author: doug-erb
 featured: false
 summary: A step-by-step program for modernizing a legacy sales performance management system without breaking a single pay cycle.

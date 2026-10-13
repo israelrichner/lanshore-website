@@ -3,7 +3,8 @@ title: 'The Complete Guide to Sales-Finance Misalignment'
 description: >-
   Sales-finance misalignment explained: the six root causes (targets, measures,
   incentive logic, data flows, timing, governance) and a sequence to fix them.
-dateModified: '2026-10-12'
+datePublished: '2026-10-13'
+dateModified: '2026-10-13'
 author: doug-erb
 featured: false
 summary: Why sales and finance end up with different numbers for the same quarter, the six places the gap opens, and how to close it.

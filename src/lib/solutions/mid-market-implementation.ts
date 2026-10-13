@@ -94,7 +94,7 @@ const solution: Solution = {
         "Yes. Lanshore implements both, alongside Varicent and Xactly, and runs a spreadsheet migration the same way on each: plan logic rebuilt from the workbook and the plan documents, history reconciled to past payouts, and at least one parallel-run cycle before cutover. Lanshore resells neither platform, so the choice between them follows your plans, data, and team.",
     },
   ],
-  dateModified: "2026-10-12",
+  dateModified: "2026-10-13",
 };
 
 export default solution;

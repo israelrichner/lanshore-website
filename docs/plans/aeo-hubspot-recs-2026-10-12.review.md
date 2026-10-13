@@ -1,11 +1,61 @@
-# Cold review: aeo-hubspot-recs-2026-10-12 (pass 5, Doug's rec 2 replacement, before the WP2 commit)
+# Cold review: aeo-hubspot-recs-2026-10-12 (pass 6, publish step)
+
+**Reviewer:** Claude Code (a fresh-context agent, read-only; the Lead saved its output)
+**Date:** 2026-10-13
+**Scope:** the section 9 publish step in the working tree, the section 7 OQ8 row, and the section 10 Owner review and Publish rows. WP1 (8a4f6a9) and WP2 (f9bffe4) are already committed and were not re-reviewed.
+**Verdict:** APPROVE. The first pass returned APPROVE WITH CONDITIONS with one condition; the user decided it, and the re-review approved. All nits are fixed, so the publish commit is unblocked once the user re-runs `/pre-pr`.
+
+## Findings and Lead disposition (2026-10-13)
+
+| # | Pass | Sev | Finding | Disposition |
+|---|---|---|---|---|
+| 1 | 6 | should-fix (condition) | The blanket APPROVE also approved the proposed proof points in table (c), and nobody had decided what that meant. c2 and c3 are complete sentences that could go in now; c1, c4 and c5 still had blanks. | Asked the user. They asked for "reasonable values" in the blanks, which the Lead declined: invented client results would be false claims. The user then chose method statements without results. **c1** was added to `quota-incentive-alignment.ts` (crediting step) and **c5** to `spm-consulting.ts` (global-controls problem), each built from wording already published. **c4** was not added because both platform FAQs already state the method. **c2** was not added: as written it merges two separate results. **c3** is approved but not inserted this round. Each decision is recorded on its row. |
+| 2 | 6 | nit | Owner file line 12 still said the sign-off line was for the user to add; other lines in the file are out of date | Line 12 updated. The other lines are part of the dated WP1 and WP2 history and were left as they were |
+| 3 | 6 | nit | The Publish row didn't mention section 9 step 7 | Added "then §9 step 7" |
+| 4 | 6 | nit | The fast-forward claim could go stale, and the go-live date assumes the deploy happens today | The Publish row now says to re-fetch `origin/main` right before the merge, and to re-date steps 2 to 4 if the deploy slips past 2026-10-13 |
+| 5 | 6 re-review | nit | The Owner review row still said "no content changes from the review" | Now reads "table (c) approvals applied as c1 and c5 method statements" |
+| 6 | 6 re-review | nit | Row a2 said the spm-consulting problem block makes no Lanshore claim, but c5 now appends a method sentence to it | a2 annotated |
+| 7 | 6 re-review | nit | The c2 row cited `best-spm-service-partners-compared.md:175` | Updated to `:240` (Doug's replacement post) |
+| 8 | 6 re-review | out of scope | `best-ai-agent-consulting-firms-for-revops.md:136` reports the telecom result differently (disputes about 300 to about 120) | Already flagged for Doug; it must be reconciled before c2 is ever used |
+
+## Checks passed (reviewer)
+
+- **Owner file:** 0 UNDECIDED; no EDIT or STRIKE decision cells; 116 APPROVE and 58 SUPERSEDED. The last line is exactly `Signed off: Doug Erb, 2026-10-13`.
+- **Dates:**
+  - The 2 new articles have `datePublished` and `dateModified` 2026-10-13.
+  - Every record changed since e26a816 has `dateModified` 2026-10-13, and no unchanged record was bumped.
+  - The rec 2 post still has `datePublished` 2026-08-03.
+  - `UPDATED.spm` is 2026-10-13.
+- **hubspotId:** holds `"hubspot-aeo-2026-10-12-rec6"`. It is read only by its type and the records, and no validator requires a number.
+- **Merge:** `git merge-base HEAD origin/main` is e26a816, and `HEAD..origin/main` is empty, so the merge is a fast-forward.
+- **Validators and site output:**
+  - The content rules reject only `datePublished` later than `dateModified`.
+  - Sitemap lastmod, blog sorting and llms.txt are all unaffected by the new values.
+- **c1 and c5:**
+  - c1 restates published method wording: "test them against expected results before go-live", "trace every variance to a cause" (`spmPlatforms.ts:192,383`) and "reconcile every variance before cutover" (`global-compliance.ts:51`).
+  - c5 restates the published global assessment step (`global-compliance.ts:34-35`, plus `:29` and `:55`).
+  - Neither sentence contains a figure, a named client or an em dash.
+- **Section 9 step 7:** not claimed as done.
+
+## Lead verification after the changes
+
+- **Regression:** 9 of 9 steps rc=0; postbuild OK (94 routes, 53 FAQPage/HowTo nodes, no em dashes or markers).
+- **Internal links:** 359, 0 unresolved.
+- **Sitemap:** lastmod 2026-10-13 on the changed routes.
+- **Browser verification:** run on a fresh `next start`, confirmed to serve the new text. Both suites ran at 1280 and 375px with 0 failures:
+  - WP1 suite: 10 routes, plus 7 platforms without `related`.
+  - WP2 suite: 4 routes.
+
+---
+
+## Carried record: Cold review: aeo-hubspot-recs-2026-10-12 (pass 5, Doug's rec 2 replacement, before the WP2 commit)
 
 **Reviewer:** Claude Code (a fresh-context agent, read-only; the Lead saved its output)
 **Date:** 2026-10-13
 **Scope:** Doug's rec 2 replacement, comprising the post, 5 SVGs, 1 PNG and the owner rows in section (r2), plus the Lead's corrections, the plan section 7 owner-change entry and the section 10 Status rows. The rec 4 post, case study, `/spm/compare` and modernizing guide were spot-checked and are unchanged since pass 4.
 **Verdict:** APPROVE WITH CONDITIONS. All conditions were resolved by the Lead as shown below, so the WP2 branch commit is unblocked once the user re-runs `/pre-pr`. The publish step is still owner-gated.
 
-## Findings and Lead disposition (2026-10-13)
+### Findings and Lead disposition (2026-10-13)
 
 Each factual finding was re-checked against site source or the raw HTML of the firm's page before any change was made.
 
@@ -30,7 +80,7 @@ Re-run after the fixes:
 - links: 359, 0 unresolved;
 - browser verification: 4 routes at 1280px and 375px, PASS; all 5 images load and fit.
 
-## Checks passed (reviewer)
+### Checks passed (reviewer)
 
 - **Owner file:** superseded rows marked correctly; b11 narrowed; all (r2) rows UNDECIDED; no sign-off line written by an agent.
 - **Package diff:** Doug's package matches the logged Lead hunks; the SVGs were byte-identical before the pass 5 graphic fixes.
@@ -41,7 +91,7 @@ Re-run after the fixes:
 
 ---
 
-## Carried record
+### Carried record
 
 - **Pass 4 (2026-10-12, APPROVE):** WP2 diff vs steps 1 to 9 had nothing missing. Conditions: fresh `/pre-pr`, and staging by explicit path. Recommendations R1 to R4 were applied (hedged "Not published" pricing, unsourced phrases, SAP naming, Cap bullet superseded).
 - **Pass 3 (2026-10-12, APPROVE):** WP1 diff vs WP1 steps had nothing missing; F1–F3 dispositioned; `/spm` carried to WP2 verify (now covered).
